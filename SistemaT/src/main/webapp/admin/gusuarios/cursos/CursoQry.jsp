@@ -1,20 +1,27 @@
+<%-- 
+    Document   : AdminQry
+    Created on : 31/08/2014, 04:25:48 PM
+    Author     : Arturo
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <title>SISED</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-        <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        <link href="../css/ionicons.min.css" rel="stylesheet" type="text/css" />
-        <link href="../css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
-        <link href="../css/AdminLTE.css" rel="stylesheet" type="text/css" />
-        <link href="../css/ionicons.min.css" rel="stylesheet" type="text/css" />
-        <link href="../css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="../../../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="../../../css/ionicons.min.css" rel="stylesheet" type="text/css" />
+        <link href="../../../css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
+        <link href="../../../css/AdminLTE.css" rel="stylesheet" type="text/css" />
+        <link href="../../../css/ionicons.min.css" rel="stylesheet" type="text/css" />
+        <link href="../../../css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
     </head>
     <body class="skin-blue">
         <header class="header">
-            <a href="indexA.html" class="logo">
+            <a href="../../indexA.html" class="logo">
                 SISED
             </a>
             <nav class="navbar navbar-static-top" role="navigation">
@@ -59,8 +66,8 @@
                         </div>
                     </div>
                     <ul class="sidebar-menu">
-                        <li class="active">
-                            <a href="indexA.html">
+                        <li >
+                            <a href="../../indexA.html">
                                 <i class="fa fa-dashboard"></i> <span>Servicio Académico</span>
                             </a>
                         </li>
@@ -70,11 +77,11 @@
                                 <i class="fa fa-table"></i> <span>Gestion Usuarios</span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
-                            <ul class="treeview-menu">
-                                <li><a href="gusuarios/admins/AdminQry.jsp"><i class="fa fa-angle-double-right"></i> Administradores</a></li>
-                                <li><a href="gusuarios/tutores/TutorQry.jsp"><i class="fa fa-angle-double-right"></i> Tutores</a></li>
-                                <li><a href="gusuarios/alumnos/AlumnoQry.jsp"><i class="fa fa-angle-double-right"></i> Alumnos</a></li>
-                                <li><a href="gusuarios/cursos/CursoQry.jsp"><i class="fa fa-angle-double-right"></i> Cursos</a></li>
+                            <ul class="treeview-menu ">
+                                <li><a href="../admins/AdminQry.jsp"><i class="fa fa-angle-double-right"></i> Administradores</a></li>
+                                <li ><a href="../tutores/TutorQry.jsp"><i class="fa fa-angle-double-right"></i> Tutores</a></li>
+                                <li><a href="../alumnos/AlumnoQry.jsp"><i class="fa fa-angle-double-right"></i> Alumnos</a></li>
+                                <li class="active"><a href="../cursos/CursoQry.jsp"><i class="fa fa-angle-double-right"></i> Cursos</a></li>
                             </ul>
                         </li>
 
@@ -91,38 +98,16 @@
             <aside class="right-side">
                 <section class="content-header">
                     <h1>
-                        Servicio Academico
+                        Gestión de Cursos
                     </h1>
 
                 </section>
                 <section class="content">
                     <div class="row">
-                        <div class="col-lg-4 col-xs-4">
-                        </div>
-                        <div class="col-lg-4 col-xs-4">
-                            <div class="small-box bg-light-blue">
-                                <div class="inner">
-                                    <h5 style='font-size: 25px'>
-                                        Servicio educativo
-                                    </h5>
-                                    <p>
-                                        Tutoría o taller
-                                    </p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-ios7-alarm-outline"></i>
-                                </div>
-                                <a href="#" class="small-box-footer">
-                                    Click Aqui <i class="fa fa-arrow-circle-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
                         <div class="col-xs-12">
                             <div class="box">
                                 <div class="box-header">
-                                    <h3 class="box-title">Servicios Asignados</h3>
+                                    <h3 class="box-title">Cursos</h3>
                                 </div><!-- /.box-header -->
                                 <div class="box-body table-responsive">
                                     <table id="example1" class="table table-bordered table-striped">
@@ -135,7 +120,6 @@
                                                 <th>Fecha</th>
                                                 <th>Hora Inicio</th>
                                                 <th>Hora Fin</th>
-                                                <th> <a href="">E</a> </th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -147,8 +131,6 @@
                                                 <td>12/10/2014</td>
                                                 <td>1:00 pm</td>
                                                 <td>2:00 pm</td>
-                                                <td> <input type="checkbox"> </td>
-                                                
                                             </tr>
                                             <tr>
                                                 <td>2</td>
@@ -158,7 +140,6 @@
                                                 <td>12/10/2014</td>
                                                 <td>1:00 pm</td>
                                                 <td>2:00 pm</td>
-                                                <td> <input type="checkbox"> </td>
                                             </tr>
                                             <tr>
                                                 <td>3</td>
@@ -168,7 +149,6 @@
                                                 <td>12/10/2014</td>
                                                 <td>1:00 pm</td>
                                                 <td>2:00 pm</td>
-                                                <td> <input type="checkbox"> </td>
                                             </tr>
                                             <tr>
                                                 <td>4</td>
@@ -178,7 +158,6 @@
                                                 <td>12/10/2014</td>
                                                 <td>1:00 pm</td>
                                                 <td>2:00 pm</td>
-                                                <td> <input type="checkbox"> </td>
                                             </tr>
                                             <tr>
                                                 <td>5</td>
@@ -188,7 +167,6 @@
                                                 <td>12/10/2014</td>
                                                 <td>1:00 pm</td>
                                                 <td>2:00 pm</td>
-                                                <td> <input type="checkbox"> </td>
                                             </tr>
 
                                       </table>
@@ -203,15 +181,15 @@
 
 
 
-       <script src="../js/jquery.min.js"></script>
-        <script src="../js/bootstrap.min.js" type="text/javascript"></script>
+       <script src="../../../js/jquery.min.js"></script>
+        <script src="../../../js/bootstrap.min.js" type="text/javascript"></script>
         <!-- DATA TABES SCRIPT -->
-        <script src="../js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
-        <script src="../js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+        <script src="../../../js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
+        <script src="../../../js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
         <!-- AdminLTE App -->
-        <script src="../js/AdminLTE/app.js" type="text/javascript"></script>
+        <script src="../../../js/AdminLTE/app.js" type="text/javascript"></script>
         <!-- AdminLTE for demo purposes -->
-        <script src="../js/AdminLTE/demo.js" type="text/javascript"></script>
+        <script src="../../../js/AdminLTE/demo.js" type="text/javascript"></script>
         <!-- page script -->
         <script type="text/javascript">
             $(function() {
