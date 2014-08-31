@@ -120,10 +120,12 @@
                                                 <th>Fecha</th>
                                                 <th>Hora Inicio</th>
                                                 <th>Hora Fin</th>
+                                                <th> <a href="">El</a> </th>
+                                                <th> <a href="">Ed</a> </th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                             <tr>
+                                              <tr>
                                                 <td>1</td>
                                                 <td>Calculo 1</td>
                                                 <td>Tutoria</td>
@@ -131,6 +133,8 @@
                                                 <td>12/10/2014</td>
                                                 <td>1:00 pm</td>
                                                 <td>2:00 pm</td>
+                                                <td> <input type="checkbox"> </td>
+                                                <td> <input type="radio" name="ed"> </td>
                                             </tr>
                                             <tr>
                                                 <td>2</td>
@@ -140,6 +144,8 @@
                                                 <td>12/10/2014</td>
                                                 <td>1:00 pm</td>
                                                 <td>2:00 pm</td>
+                                                <td> <input type="checkbox"> </td>
+                                                <td> <input type="radio" name="ed"> </td>
                                             </tr>
                                             <tr>
                                                 <td>3</td>
@@ -149,6 +155,8 @@
                                                 <td>12/10/2014</td>
                                                 <td>1:00 pm</td>
                                                 <td>2:00 pm</td>
+                                                <td> <input type="checkbox"> </td>
+                                                <td> <input type="radio" name="ed"> </td>
                                             </tr>
                                             <tr>
                                                 <td>4</td>
@@ -158,6 +166,8 @@
                                                 <td>12/10/2014</td>
                                                 <td>1:00 pm</td>
                                                 <td>2:00 pm</td>
+                                                <td> <input type="checkbox"> </td>
+                                                <td> <input type="radio" name="ed"> </td>
                                             </tr>
                                             <tr>
                                                 <td>5</td>
@@ -167,6 +177,8 @@
                                                 <td>12/10/2014</td>
                                                 <td>1:00 pm</td>
                                                 <td>2:00 pm</td>
+                                                <td> <input type="checkbox"> </td>
+                                                <td> <input type="radio" name="ed"> </td>
                                             </tr>
 
                                       </table>

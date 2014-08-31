@@ -111,7 +111,7 @@
                                 </div><!-- /.box-header -->
                                 <div class="box-body table-responsive">
                                     <table id="example1" class="table table-bordered table-striped">
-                                       <thead>
+                                        <thead>
                                             <tr>
                                                 <th>Codigo</th>
                                                 <th>Nombre Servicio</th>
@@ -120,10 +120,12 @@
                                                 <th>Fecha</th>
                                                 <th>Hora Inicio</th>
                                                 <th>Hora Fin</th>
+                                                <th> <a href="">E</a> </th>
+                                                <th> <a href="">Ed</a> </th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                             <tr>
+                                            <tr>
                                                 <td>1</td>
                                                 <td>Calculo 1</td>
                                                 <td>Tutoria</td>
@@ -131,6 +133,8 @@
                                                 <td>12/10/2014</td>
                                                 <td>1:00 pm</td>
                                                 <td>2:00 pm</td>
+                                                <td> <input type="checkbox"> </td>
+                                                <td> <input type="radio" name="ed"> </td>
                                             </tr>
                                             <tr>
                                                 <td>2</td>
@@ -140,6 +144,8 @@
                                                 <td>12/10/2014</td>
                                                 <td>1:00 pm</td>
                                                 <td>2:00 pm</td>
+                                                <td> <input type="checkbox"> </td>
+                                                <td> <input type="radio" name="ed"> </td>
                                             </tr>
                                             <tr>
                                                 <td>3</td>
@@ -149,6 +155,8 @@
                                                 <td>12/10/2014</td>
                                                 <td>1:00 pm</td>
                                                 <td>2:00 pm</td>
+                                                <td> <input type="checkbox"> </td>
+                                                <td> <input type="radio" name="ed"> </td>
                                             </tr>
                                             <tr>
                                                 <td>4</td>
@@ -158,6 +166,8 @@
                                                 <td>12/10/2014</td>
                                                 <td>1:00 pm</td>
                                                 <td>2:00 pm</td>
+                                                <td> <input type="checkbox"> </td>
+                                                <td> <input type="radio" name="ed"> </td>
                                             </tr>
                                             <tr>
                                                 <td>5</td>
@@ -167,9 +177,10 @@
                                                 <td>12/10/2014</td>
                                                 <td>1:00 pm</td>
                                                 <td>2:00 pm</td>
+                                                <td> <input type="checkbox"> </td>
+                                                <td> <input type="radio" name="ed"> </td>
                                             </tr>
-
-                                      </table>
+                                    </table>
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
                         </div>
@@ -181,7 +192,7 @@
 
 
 
-       <script src="../../../js/jquery.min.js"></script>
+        <script src="../../../js/jquery.min.js"></script>
         <script src="../../../js/bootstrap.min.js" type="text/javascript"></script>
         <!-- DATA TABES SCRIPT -->
         <script src="../../../js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
