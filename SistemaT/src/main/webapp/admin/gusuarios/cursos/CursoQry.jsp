@@ -107,11 +107,16 @@
                         <div class="col-xs-12">
                             <div class="box">
                                 <div class="box-header">
-                                    <h3 class="box-title">Cursos</h3>
+                                    <div class="col-md-5 col-xs-4">
+                                        <h3 class="box-title">Cursos</h3>
+                                    </div>
+                                    <div class="col-md-7 col-xs-4" style="top: 5px">
+                                        <button class="btn btn-primary">Insertar</button>      
+                                    </div>
                                 </div><!-- /.box-header -->
                                 <div class="box-body table-responsive">
                                     <table id="example1" class="table table-bordered table-striped">
-                                       <thead>
+                                        <thead>
                                             <tr>
                                                 <th>Codigo</th>
                                                 <th>Nombre Servicio</th>
@@ -125,7 +130,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                              <tr>
+                                            <tr>
                                                 <td>1</td>
                                                 <td>Calculo 1</td>
                                                 <td>Tutoria</td>
@@ -181,7 +186,7 @@
                                                 <td> <input type="radio" name="ed"> </td>
                                             </tr>
 
-                                      </table>
+                                    </table>
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
                         </div>
@@ -193,7 +198,7 @@
 
 
 
-       <script src="../../../js/jquery.min.js"></script>
+        <script src="../../../js/jquery.min.js"></script>
         <script src="../../../js/bootstrap.min.js" type="text/javascript"></script>
         <!-- DATA TABES SCRIPT -->
         <script src="../../../js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>

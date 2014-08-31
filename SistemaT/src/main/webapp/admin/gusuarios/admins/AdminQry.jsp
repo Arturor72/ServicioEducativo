@@ -107,7 +107,13 @@
                         <div class="col-xs-12">
                             <div class="box">
                                 <div class="box-header">
-                                    <h3 class="box-title">Administradores</h3>
+
+                                    <div class="col-md-5 col-xs-8">
+                                        <h3 class="box-title">Administradores</h3>
+                                    </div>
+                                    <div class="col-md-7 col-xs-4" style="top: 5px">
+                                        <button class="btn btn-primary">Insertar</button>      
+                                    </div>
                                 </div><!-- /.box-header -->
                                 <div class="box-body table-responsive">
                                     <table id="example1" class="table table-bordered table-striped">
