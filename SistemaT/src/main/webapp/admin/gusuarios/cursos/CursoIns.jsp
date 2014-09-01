@@ -78,10 +78,10 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu ">
-                                <li><a href="../admins/AdminQry.jsp"><i class="fa fa-angle-double-right"></i> Administradores</a></li>
-                                <li ><a href="../tutores/TutorQry.jsp"><i class="fa fa-angle-double-right"></i> Tutores</a></li>
+                                <li class="active"><a href="../admins/AdminQry.jsp"><i class="fa fa-angle-double-right"></i> Administradores</a></li>
+                                <li><a href="../tutores/TutorQry.jsp"><i class="fa fa-angle-double-right"></i> Tutores</a></li>
                                 <li><a href="../alumnos/AlumnoQry.jsp"><i class="fa fa-angle-double-right"></i> Alumnos</a></li>
-                                <li class="active"><a href="../cursos/CursoQry.jsp"><i class="fa fa-angle-double-right"></i> Cursos</a></li>
+                                <li><a href="../cursos/CursoQry.jsp"><i class="fa fa-angle-double-right"></i> Cursos</a></li>
                             </ul>
                         </li>
 
@@ -104,70 +104,47 @@
                 </section>
                 <section class="content">
                     <div class="row">
-                        <div class="col-xs-12">
-                            <div class="box">
+                        <!-- left column -->
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8">
+                            <!-- general form elements -->
+                            <div class="box box-primary">
                                 <div class="box-header">
-                                    <div class="col-md-5 col-xs-4">
-                                        <h3 class="box-title">Cursos</h3>
-                                    </div>
-                                    <div class="col-md-7 col-xs-4" style="top: 5px">
-                                        <button class="btn btn-primary">Insertar</button>      
-                                    </div>
+                                    <h3 class="box-title">Registro Curso</h3>
                                 </div><!-- /.box-header -->
-                                <div class="box-body table-responsive">
-                                    <table id="example1" class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Codigo</th>
-                                                <th>Nombre </th>
-                                                <th>Especialidad</th>
-                                                <th> <a href="">E</a> </th>
-                                                <th> <a href="">Ed</a> </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Calculo 1</td>
-                                                <td>Matematica</td>
-                                                <td> <input type="checkbox"> </td>
-                                                <td> <input type="radio" name="ed"> </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Lenguaje</td>
-                                                <td>Comunicacion</td>
-                                                <td> <input type="checkbox"> </td>
-                                                <td> <input type="radio" name="ed"> </td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Lenguaje de Programacion</td>
-                                                <td>Programacion</td>
-                                                <td> <input type="checkbox"> </td>
-                                                <td> <input type="radio" name="ed"> </td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>Calculo 2</td>
-                                                <td>Matematica</td>
-                                                <td> <input type="checkbox"> </td>
-                                                <td> <input type="radio" name="ed"> </td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>Calculo 3</td>
-                                                <td>Matematica</td>
-                                                <td> <input type="checkbox"> </td>
-                                                <td> <input type="radio" name="ed"> </td>
-                                            </tr>
+                                <!-- form start -->
+                                <form role="form">
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Código">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Nombre">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Especialidad</label>
+                                            <select class="form-control">
+                                                <option>Matematica</option>
+                                                <option>Especilidad 2</option>
+                                                <option>Especialidad 3</option>
+                                            </select>
+                                        </div>
+                                    </div><!-- /.box-body -->
 
-                                    </table>
-                                </div><!-- /.box-body -->
+                                    <div class="box-footer">
+                                        <button type="submit" class="btn btn-primary">Guardar</button>
+                                        &nbsp;&nbsp;
+                                        <button type="submit" class="btn btn-danger">Cancelar</button>
+                                    </div>
+                                </form>
                             </div><!-- /.box -->
-                        </div>
-                    </div>
-                </section>
+                        </div><!--/.col (left) -->
+                        <!-- right column -->
+                        <div class="col-md-2">
+
+                        </div><!--/.col (right) -->
+                    </div>   <!-- /.row -->
+                </section><!-- /.content -->
 
             </aside>
         </div>

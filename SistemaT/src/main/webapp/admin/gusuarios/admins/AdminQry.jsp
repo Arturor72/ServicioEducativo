@@ -120,12 +120,9 @@
                                         <thead>
                                             <tr>
                                                 <th>Codigo</th>
-                                                <th>Nombre Servicio</th>
-                                                <th>Tipo</th>
-                                                <th>Tutor</th>
-                                                <th>Fecha</th>
-                                                <th>Hora Inicio</th>
-                                                <th>Hora Fin</th>
+                                                <th>Nombre Admin</th>
+                                                <th>Especialidad</th>
+                                                <th>Sede</th>
                                                 <th> <a href="">E</a> </th>
                                                 <th> <a href="">Ed</a> </th>
                                             </tr>
@@ -133,59 +130,45 @@
                                         <tbody>
                                             <tr>
                                                 <td>1</td>
-                                                <td>Calculo 1</td>
-                                                <td>Tutoria</td>
                                                 <td>Edward Flores</td>
-                                                <td>12/10/2014</td>
-                                                <td>1:00 pm</td>
-                                                <td>2:00 pm</td>
+                                                <td>Matematica</td>
+                                                <td>Miraflores 1</td>
                                                 <td> <input type="checkbox"> </td>
                                                 <td> <input type="radio" name="ed"> </td>
                                             </tr>
                                             <tr>
                                                 <td>2</td>
-                                                <td>Calculo 1</td>
-                                                <td>Tutoria</td>
-                                                <td>Edward Flores</td>
-                                                <td>12/10/2014</td>
-                                                <td>1:00 pm</td>
-                                                <td>2:00 pm</td>
+                                                <td>Jose Pastor</td>
+                                                <td>Matematica</td>
+                                                <td>Miraflores 2</td>
                                                 <td> <input type="checkbox"> </td>
                                                 <td> <input type="radio" name="ed"> </td>
                                             </tr>
                                             <tr>
                                                 <td>3</td>
-                                                <td>Calculo 1</td>
-                                                <td>Tutoria</td>
-                                                <td>Edward Flores</td>
-                                                <td>12/10/2014</td>
-                                                <td>1:00 pm</td>
-                                                <td>2:00 pm</td>
+                                                <td>Jose Alvarado</td>
+                                                <td>Matematica</td>
+                                                <td>San Isidro</td>
                                                 <td> <input type="checkbox"> </td>
                                                 <td> <input type="radio" name="ed"> </td>
                                             </tr>
                                             <tr>
                                                 <td>4</td>
-                                                <td>Calculo 1</td>
-                                                <td>Tutoria</td>
-                                                <td>Edward Flores</td>
-                                                <td>12/10/2014</td>
-                                                <td>1:00 pm</td>
-                                                <td>2:00 pm</td>
+                                                <td>Claudia Marchand</td>
+                                                <td>Matematica</td>
+                                                <td>Miraflores 1</td>
                                                 <td> <input type="checkbox"> </td>
                                                 <td> <input type="radio" name="ed"> </td>
                                             </tr>
                                             <tr>
                                                 <td>5</td>
-                                                <td>Calculo 1</td>
-                                                <td>Tutoria</td>
-                                                <td>Edward Flores</td>
-                                                <td>12/10/2014</td>
-                                                <td>1:00 pm</td>
-                                                <td>2:00 pm</td>
+                                                <td>Jose Sanchez</td>
+                                                <td>Matematica</td>
+                                                <td>Miraflores 1</td>
                                                 <td> <input type="checkbox"> </td>
                                                 <td> <input type="radio" name="ed"> </td>
                                             </tr>
+
                                     </table>
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
