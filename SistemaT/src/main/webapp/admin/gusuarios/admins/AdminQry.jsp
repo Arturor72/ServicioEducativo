@@ -108,10 +108,10 @@
                             <div class="box">
                                 <div class="box-header">
 
-                                    <div class="col-md-5 col-xs-8">
+                                    <div class="col-md-11 col-xs-8">
                                         <h3 class="box-title">Administradores</h3>
                                     </div>
-                                    <div class="col-md-7 col-xs-4" style="top: 5px">
+                                    <div class="col-md-1 col-xs-4" style="top: 5px">
                                         <button class="btn btn-primary">Insertar</button>      
                                     </div>
                                 </div><!-- /.box-header -->
