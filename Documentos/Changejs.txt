@@ -1,0 +1,2 @@
+Siguiente y Atras 
+Lineas 9227 del archivo dataTables.js
