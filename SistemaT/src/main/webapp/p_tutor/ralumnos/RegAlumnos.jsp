@@ -18,6 +18,7 @@
         <link href="../../css/AdminLTE.css" rel="stylesheet" type="text/css" />
         <link href="../../css/ionicons.min.css" rel="stylesheet" type="text/css" />
         <link href="../../css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="../../css/mycss.css" rel="stylesheet" type="text/css" />
     </head>
     <body class="skin-blue">
         <header class="header">
@@ -106,25 +107,25 @@
                                                 <td>1</td>
                                                 <td>Julio</td>
                                                 <td>Carranza</td>
-                                                <td><input type="checkbox"/></td>
+                                                <td class="mrc"> <input type="checkbox"> </td>
                                             </tr>
                                             <tr>
                                                 <td>2</td>
                                                 <td>Fernando</td>
                                                 <td>Tupac Yupanqui</td>
-                                                <td><input type="checkbox"/></td>
+                                                <td class="mrc"> <input type="checkbox"> </td>
                                             </tr>
                                             <tr>
                                                 <td>3</td>
                                                 <td>Allison</td>
                                                 <td>Arana</td>
-                                                <td><input type="checkbox"/></td>
+                                                <td class="mrc"> <input type="checkbox"> </td>
                                             </tr>
                                             <tr>
                                                 <td>4</td>
                                                 <td>Claudia</td>
                                                 <td>Marchand </td>
-                                                <td><input type="checkbox"/></td>
+                                                <td class="mrc"> <input type="checkbox"> </td>
                                             </tr>
 
                                     </table>
