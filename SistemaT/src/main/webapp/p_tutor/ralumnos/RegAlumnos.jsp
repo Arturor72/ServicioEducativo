@@ -99,7 +99,7 @@
                                                 <th>#</th>
                                                 <th>Nombre</th>
                                                 <th>Apellidos</th>
-                                                <th>Asistió</th>
+                                                <th class="mrc">Asistió</th>
                                             </tr>
                                         </thead>
                                         <tbody>
