@@ -18,6 +18,7 @@
         <link href="../../../css/AdminLTE.css" rel="stylesheet" type="text/css" />
         <link href="../../../css/ionicons.min.css" rel="stylesheet" type="text/css" />
         <link href="../../../css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="../../../css/mycss.css" rel="stylesheet" type="text/css" />
     </head>
     <body class="skin-blue">
         <header class="header">
@@ -123,8 +124,8 @@
                                                 <th>Nombre Admin</th>
                                                 <th>Especialidad</th>
                                                 <th>Sede</th>
-                                                <th> <a href="">E</a> </th>
-                                                <th> <a href="">Ed</a> </th>
+                                                <th class="mrc"> <a href=""><img src="../../../img/edit.png" /></a> </th>
+                                                <th class="mrc"> <a href=""><img src="../../../img/delete.png" /></a> </th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -133,40 +134,40 @@
                                                 <td>Edward Flores</td>
                                                 <td>Matematica</td>
                                                 <td>Miraflores 1</td>
-                                                <td> <input type="checkbox"> </td>
-                                                <td> <input type="radio" name="ed"> </td>
+                                                <td class="mrc"> <input type="checkbox"> </td>
+                                                <td class="mrc"> <input type="radio" name="ed"> </td>
                                             </tr>
                                             <tr>
                                                 <td>2</td>
                                                 <td>Jose Pastor</td>
                                                 <td>Matematica</td>
                                                 <td>Miraflores 2</td>
-                                                <td> <input type="checkbox"> </td>
-                                                <td> <input type="radio" name="ed"> </td>
+                                                <td class="mrc"> <input type="checkbox"> </td>
+                                                <td class="mrc"> <input type="radio" name="ed"> </td>
                                             </tr>
                                             <tr>
                                                 <td>3</td>
                                                 <td>Jose Alvarado</td>
                                                 <td>Matematica</td>
                                                 <td>San Isidro</td>
-                                                <td> <input type="checkbox"> </td>
-                                                <td> <input type="radio" name="ed"> </td>
+                                                <td class="mrc"> <input type="checkbox"> </td>
+                                                <td class="mrc"> <input type="radio" name="ed"> </td>
                                             </tr>
                                             <tr>
                                                 <td>4</td>
                                                 <td>Claudia Marchand</td>
                                                 <td>Matematica</td>
                                                 <td>Miraflores 1</td>
-                                                <td> <input type="checkbox"> </td>
-                                                <td> <input type="radio" name="ed"> </td>
+                                                <td class="mrc"> <input type="checkbox"> </td>
+                                                <td class="mrc"> <input type="radio" name="ed"> </td>
                                             </tr>
                                             <tr>
                                                 <td>5</td>
                                                 <td>Jose Sanchez</td>
                                                 <td>Matematica</td>
                                                 <td>Miraflores 1</td>
-                                                <td> <input type="checkbox"> </td>
-                                                <td> <input type="radio" name="ed"> </td>
+                                                <td class="mrc"> <input type="checkbox"> </td>
+                                                <td class="mrc"> <input type="radio" name="ed"> </td>
                                             </tr>
 
                                     </table>

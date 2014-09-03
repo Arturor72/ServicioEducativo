@@ -18,6 +18,7 @@
         <link href="../../../css/AdminLTE.css" rel="stylesheet" type="text/css" />
         <link href="../../../css/ionicons.min.css" rel="stylesheet" type="text/css" />
         <link href="../../../css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="../../../css/mycss.css" rel="stylesheet" type="text/css" />
     </head>
     <body class="skin-blue">
         <header class="header">
@@ -120,7 +121,7 @@
                                                 <th>Fecha</th>
                                                 <th>Hora Inicio</th>
                                                 <th>Hora Fin</th>
-                                                <th> <a href="">Sus</a> </th>
+                                                <th class="mrc"> <a href=""><img src="../../../img/suspender.png" /></a> </th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -132,7 +133,7 @@
                                                 <td>12/10/2014</td>
                                                 <td>1:00 pm</td>
                                                 <td>2:00 pm</td>
-                                                <td> <input type="checkbox"> </td>
+                                                <td class="mrc"> <input type="checkbox"> </td>
                                             </tr>
                                             <tr>
                                                 <td>2</td>
@@ -142,7 +143,7 @@
                                                 <td>12/10/2014</td>
                                                 <td>1:00 pm</td>
                                                 <td>2:00 pm</td>
-                                                <td> <input type="checkbox"> </td>
+                                                <td class="mrc"> <input type="checkbox"> </td>
                                             </tr>
                                             <tr>
                                                 <td>3</td>
@@ -152,7 +153,7 @@
                                                 <td>12/10/2014</td>
                                                 <td>1:00 pm</td>
                                                 <td>2:00 pm</td>
-                                                <td> <input type="checkbox"> </td>
+                                                <td class="mrc"> <input type="checkbox"> </td>
                                             </tr>
                                             <tr>
                                                 <td>4</td>
@@ -162,7 +163,7 @@
                                                 <td>12/10/2014</td>
                                                 <td>1:00 pm</td>
                                                 <td>2:00 pm</td>
-                                                <td> <input type="checkbox"> </td>
+                                                <td class="mrc"> <input type="checkbox"> </td>
                                             </tr>
                                             <tr>
                                                 <td>5</td>
@@ -172,7 +173,7 @@
                                                 <td>12/10/2014</td>
                                                 <td>1:00 pm</td>
                                                 <td>2:00 pm</td>
-                                                <td> <input type="checkbox"> </td>
+                                                <td class="mrc"> <input type="checkbox"> </td>
                                             </tr>
 
                                       </table>

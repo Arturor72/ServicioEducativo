@@ -18,6 +18,7 @@
         <link href="../../../css/AdminLTE.css" rel="stylesheet" type="text/css" />
         <link href="../../../css/ionicons.min.css" rel="stylesheet" type="text/css" />
         <link href="../../../css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="../../../css/mycss.css" rel="stylesheet" type="text/css" />
     </head>
     <body class="skin-blue">
         <header class="header">
@@ -121,8 +122,8 @@
                                                 <th>Codigo</th>
                                                 <th>Nombre </th>
                                                 <th>Especialidad</th>
-                                                <th> <a href="">E</a> </th>
-                                                <th> <a href="">Ed</a> </th>
+                                                <th class="mrc"> <a href=""><img src="../../../img/edit.png" /></a> </th>
+                                                <th class="mrc"> <a href=""><img src="../../../img/delete.png" /></a> </th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -130,36 +131,36 @@
                                                 <td>1</td>
                                                 <td>Calculo 1</td>
                                                 <td>Matematica</td>
-                                                <td> <input type="checkbox"> </td>
-                                                <td> <input type="radio" name="ed"> </td>
+                                                <td class="mrc"> <input type="checkbox"> </td>
+                                                <td class="mrc"> <input type="radio" name="ed"> </td>
                                             </tr>
                                             <tr>
                                                 <td>2</td>
                                                 <td>Lenguaje</td>
                                                 <td>Comunicacion</td>
-                                                <td> <input type="checkbox"> </td>
-                                                <td> <input type="radio" name="ed"> </td>
+                                                <td class="mrc"> <input type="checkbox"> </td>
+                                                <td class="mrc"> <input type="radio" name="ed"> </td>
                                             </tr>
                                             <tr>
                                                 <td>3</td>
                                                 <td>Lenguaje de Programacion</td>
                                                 <td>Programacion</td>
-                                                <td> <input type="checkbox"> </td>
-                                                <td> <input type="radio" name="ed"> </td>
+                                                <td class="mrc"> <input type="checkbox"> </td>
+                                                <td class="mrc"> <input type="radio" name="ed"> </td>
                                             </tr>
                                             <tr>
                                                 <td>4</td>
                                                 <td>Calculo 2</td>
                                                 <td>Matematica</td>
-                                                <td> <input type="checkbox"> </td>
-                                                <td> <input type="radio" name="ed"> </td>
+                                                <td class="mrc"> <input type="checkbox"> </td>
+                                                <td class="mrc"> <input type="radio" name="ed"> </td>
                                             </tr>
                                             <tr>
                                                 <td>5</td>
                                                 <td>Calculo 3</td>
                                                 <td>Matematica</td>
-                                                <td> <input type="checkbox"> </td>
-                                                <td> <input type="radio" name="ed"> </td>
+                                                <td class="mrc"> <input type="checkbox"> </td>
+                                                <td class="mrc"> <input type="radio" name="ed"> </td>
                                             </tr>
 
                                     </table>
