@@ -121,7 +121,6 @@
                                             <tr>
                                                 <th>Código</th>
                                                 <th>Nombre Tutor</th>
-                                                <th>Especialidad</th>
                                                 <th class="mrc"> <a href=""><img src="../../../img/delete.png" /></a> </th>
                                                 <th class="mrc"> <a href=""><img src="../../../img/edit.png" /></a> </th>
                                             </tr>
@@ -130,35 +129,30 @@
                                             <tr>
                                                 <td>1</td>
                                                 <td>Edward Flores</td>
-                                                <td>Matematica</td>
                                                 <td class="mrc"> <input type="checkbox"> </td>
                                                 <td class="mrc"> <input type="radio" name="ed"> </td>
                                             </tr>
                                             <tr>
                                                 <td>2</td>
                                                 <td>Jose Pastor</td>
-                                                <td>Matematica</td>
                                                 <td class="mrc"> <input type="checkbox"> </td>
                                                 <td class="mrc"> <input type="radio" name="ed"> </td>
                                             </tr>
                                             <tr>
                                                 <td>3</td>
                                                 <td>Jose Alvarado</td>
-                                                <td>Matematica</td>
                                                 <td class="mrc"> <input type="checkbox"> </td>
                                                 <td class="mrc"> <input type="radio" name="ed"> </td>
                                             </tr>
                                             <tr>
                                                 <td>4</td>
                                                 <td>Claudia Marchand</td>
-                                                <td>Matematica</td>
                                                 <td class="mrc"> <input type="checkbox"> </td>
                                                 <td class="mrc"> <input type="radio" name="ed"> </td>
                                             </tr>
                                             <tr>
                                                 <td>5</td>
                                                 <td>Jose Sanchez</td>
-                                                <td>Matematica</td>
                                                 <td class="mrc"> <input type="checkbox"> </td>
                                                 <td class="mrc"> <input type="radio" name="ed"> </td>
                                             </tr>
