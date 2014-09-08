@@ -11,18 +11,18 @@
         <meta charset="UTF-8">
         <title>SISED</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-        <link href="../../../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="../../../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        <link href="../../../css/ionicons.min.css" rel="stylesheet" type="text/css" />
-        <link href="../../../css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
-        <link href="../../../css/AdminLTE.css" rel="stylesheet" type="text/css" />
-        <link href="../../../css/ionicons.min.css" rel="stylesheet" type="text/css" />
-        <link href="../../../css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
-        <link href="../../../css/mycss.css" rel="stylesheet" type="text/css" />
+        <link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="../../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="../../css/ionicons.min.css" rel="stylesheet" type="text/css" />
+        <link href="../../css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
+        <link href="../../css/AdminLTE.css" rel="stylesheet" type="text/css" />
+        <link href="../../css/ionicons.min.css" rel="stylesheet" type="text/css" />
+        <link href="../../css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="../../css/mycss.css" rel="stylesheet" type="text/css" />
     </head>
     <body class="skin-blue">
         <header class="header">
-            <a href="../../indexA.html" class="logo">
+            <a href="../indexA.html" class="logo">
                 SISED
             </a>
             <nav class="navbar navbar-static-top" role="navigation">
@@ -61,7 +61,7 @@
                         <div class="pull-left image">
                         </div>
                         <div class="pull-left info">
-                            <p>[NOMBRE ADMIN]</p>
+                            <p>[NOMBRE TUTOR]</p>
 
                             <a href="#"><i class="fa fa-circle text-success"></i> Conectado(a)</a>
                         </div>
@@ -72,22 +72,21 @@
                                 <i class="fa fa-dashboard"></i> <span>Servicio Académico</span>
                             </a>
                         </li>
-
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-table"></i> <span>Gestion Usuarios</span>
+                                <i class="fa fa-table"></i> <span>Gestion Alumnos</span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
-                            <ul class="treeview-menu ">
-                                <li class="active"><a href="../ralumnos/AlumnoQry.jsp"><i class="fa fa-angle-double-right"></i> Alumnos</a></li>
+                            <ul class="treeview-menu">
+                                <li><a href="../ralumnos/AlumnoQry.jsp"><i class="fa fa-angle-double-right"></i> Alumnos</a></li>
                             </ul>
                         </li>
-
                         <li class="">
                             <a href="index.html">
                                 <i class="fa fa-dashboard"></i> <span>Reportes</span>
                             </a>
                         </li>
+
                     </ul>
                 </section>
 
@@ -111,69 +110,38 @@
                                     <table id="example1" class="table table-bordered table-striped">
                                        <thead>
                                             <tr>
-                                                <th>Codigo</th>
-                                                <th>Nombre Servicio</th>
-                                                <th>Tipo</th>
-                                                <th>Tutor</th>
-                                                <th>Fecha</th>
-                                                <th>Hora Inicio</th>
-                                                <th>Hora Fin</th>
+                                                <th>#</th>
+                                                <th>Nombre</th>
+                                                <th>Apellidos</th>
                                                 <th class="mrc"> <a href=""><img src="../../img/suspender.png" /></a> </th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                               <tr>
+                                            <tr>
                                                 <td>1</td>
-                                                <td>Calculo 1</td>
-                                                <td>Tutoria</td>
-                                                <td>Edward Flores</td>
-                                                <td>12/10/2014</td>
-                                                <td>1:00 pm</td>
-                                                <td>2:00 pm</td>
+                                                <td>Julio</td>
+                                                <td>Carranza</td>
                                                 <td class="mrc"> <input type="checkbox"> </td>
                                             </tr>
                                             <tr>
                                                 <td>2</td>
-                                                <td>Calculo 1</td>
-                                                <td>Tutoria</td>
-                                                <td>Edward Flores</td>
-                                                <td>12/10/2014</td>
-                                                <td>1:00 pm</td>
-                                                <td>2:00 pm</td>
+                                                <td>Fernando</td>
+                                                <td>Tupac Yupanqui</td>
                                                 <td class="mrc"> <input type="checkbox"> </td>
                                             </tr>
                                             <tr>
                                                 <td>3</td>
-                                                <td>Calculo 1</td>
-                                                <td>Tutoria</td>
-                                                <td>Edward Flores</td>
-                                                <td>12/10/2014</td>
-                                                <td>1:00 pm</td>
-                                                <td>2:00 pm</td>
+                                                <td>Allison</td>
+                                                <td>Arana</td>
                                                 <td class="mrc"> <input type="checkbox"> </td>
                                             </tr>
                                             <tr>
                                                 <td>4</td>
-                                                <td>Calculo 1</td>
-                                                <td>Tutoria</td>
-                                                <td>Edward Flores</td>
-                                                <td>12/10/2014</td>
-                                                <td>1:00 pm</td>
-                                                <td>2:00 pm</td>
+                                                <td>Claudia</td>
+                                                <td>Marchand </td>
                                                 <td class="mrc"> <input type="checkbox"> </td>
                                             </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>Calculo 1</td>
-                                                <td>Tutoria</td>
-                                                <td>Edward Flores</td>
-                                                <td>12/10/2014</td>
-                                                <td>1:00 pm</td>
-                                                <td>2:00 pm</td>
-                                                <td class="mrc"> <input type="checkbox"> </td>
-                                            </tr>
-
-                                      </table>
+                                    </table>
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
                         </div>
@@ -185,15 +153,15 @@
 
 
 
-       <script src="../../../js/jquery.min.js"></script>
-        <script src="../../../js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../../js/jquery.min.js"></script>
+        <script src="../../js/bootstrap.min.js" type="text/javascript"></script>
         <!-- DATA TABES SCRIPT -->
-        <script src="../../../js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
-        <script src="../../../js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+        <script src="../../js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
+        <script src="../../js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
         <!-- AdminLTE App -->
-        <script src="../../../js/AdminLTE/app.js" type="text/javascript"></script>
+        <script src="../../js/AdminLTE/app.js" type="text/javascript"></script>
         <!-- AdminLTE for demo purposes -->
-        <script src="../../../js/AdminLTE/demo.js" type="text/javascript"></script>
+        <script src="../../js/AdminLTE/demo.js" type="text/javascript"></script>
         <!-- page script -->
         <script type="text/javascript">
             $(function() {

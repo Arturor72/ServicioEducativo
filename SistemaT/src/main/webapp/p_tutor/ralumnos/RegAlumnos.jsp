@@ -72,7 +72,20 @@
                                 <i class="fa fa-dashboard"></i> <span>Tus Servicios</span>
                             </a>
                         </li>
-   
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-table"></i> <span>Gestion Alumnos</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="AlumnoQry.jsp"><i class="fa fa-angle-double-right"></i> Alumnos</a></li>
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a href="index.html">
+                                <i class="fa fa-dashboard"></i> <span>Reportes</span>
+                            </a>
+                        </li>
                     </ul>
                 </section>
 
@@ -86,7 +99,7 @@
 
                 </section>
                 <section class="content">
-                     <div class="row">
+                    <div class="row">
                         <div class="col-xs-12">
                             <div class="box">
                                 <div class="box-header">
@@ -129,23 +142,23 @@
                                             </tr>
 
                                     </table>
-                                    
+
                                     <div class="row">
-                                    
-                                    <div class="col-xs-12">
-                                               <div class="form-group">
-                                            <label>Descripción</label>
-                                            <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <label>Descripción</label>
+                                                <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                                            </div>
                                         </div>
-                                    </div>
-                                    
+
                                     </div>
                                     <div class="row">
-                                    <div class="col-md-3 col-xs-1"></div>
-                                    <div class="col-md-5 col-xs-6"><button class="btn btn-primary ">Registrar Alumnos</button></div>
-                                    <div class="col-md-4 col-xs-3"><button class="btn btn-danger ">Cancelar</button></div>
+                                        <div class="col-md-3 col-xs-1"></div>
+                                        <div class="col-md-5 col-xs-6"><button class="btn btn-primary ">Registrar Alumnos</button></div>
+                                        <div class="col-md-4 col-xs-3"><button class="btn btn-danger ">Cancelar</button></div>
                                     </div>
-                                    
+
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
                         </div>
