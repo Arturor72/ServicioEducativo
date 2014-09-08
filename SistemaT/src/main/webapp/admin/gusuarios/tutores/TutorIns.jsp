@@ -78,9 +78,8 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu ">
-                                <li class="active"><a href="../admins/AdminQry.jsp"><i class="fa fa-angle-double-right"></i> Administradores</a></li>
-                                <li><a href="../tutores/TutorQry.jsp"><i class="fa fa-angle-double-right"></i> Tutores</a></li>
-                                <li><a href="../alumnos/AlumnoQry.jsp"><i class="fa fa-angle-double-right"></i> Alumnos</a></li>
+                                <li ><a href="../admins/AdminQry.jsp"><i class="fa fa-angle-double-right"></i> Administradores</a></li>
+                                <li class="active"><a href="../tutores/TutorQry.jsp"><i class="fa fa-angle-double-right"></i> Tutores</a></li>
                                 <li><a href="../cursos/CursoQry.jsp"><i class="fa fa-angle-double-right"></i> Cursos</a></li>
                             </ul>
                         </li>
