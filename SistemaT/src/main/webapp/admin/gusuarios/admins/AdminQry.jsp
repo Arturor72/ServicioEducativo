@@ -81,7 +81,7 @@
                             <ul class="treeview-menu ">
                                 <li class="active"><a href="../admins/AdminQry.jsp"><i class="fa fa-angle-double-right"></i> Administradores</a></li>
                                 <li><a href="../tutores/TutorQry.jsp"><i class="fa fa-angle-double-right"></i> Tutores</a></li>
-                                <li><a href="../alumnos/AlumnoQry.jsp"><i class="fa fa-angle-double-right"></i> Alumnos</a></li>
+<!--                                <li><a href="../alumnos/AlumnoQry.jsp"><i class="fa fa-angle-double-right"></i> Alumnos</a></li>-->
                                 <li><a href="../cursos/CursoQry.jsp"><i class="fa fa-angle-double-right"></i> Cursos</a></li>
                             </ul>
                         </li>
@@ -109,30 +109,28 @@
                             <div class="box">
                                 <div class="box-header">
 
-                                    <div class="col-md-11 col-xs-8">
+                                    <div class="col-md-10 col-xs-6">
                                         <h3 class="box-title">Administradores</h3>
                                     </div>
-                                    <div class="col-md-1 col-xs-4" style="top: 5px">
-                                        <button class="btn btn-primary">Insertar</button>      
+                                    <div class="col-md-2 col-xs-8" style="top: 5px">
+                                        <button class="btn btn-primary"> <img src="../../../img/add3.png">  Administrador</button>      
                                     </div>
                                 </div><!-- /.box-header -->
                                 <div class="box-body table-responsive">
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Codigo</th>
+                                                <th>Código</th>
                                                 <th>Nombre Admin</th>
-                                                <th>Especialidad</th>
                                                 <th>Sede</th>
-                                                <th class="mrc"> <a href=""><img src="../../../img/edit.png" /></a> </th>
                                                 <th class="mrc"> <a href=""><img src="../../../img/delete.png" /></a> </th>
+                                                <th class="mrc"> <a href=""><img src="../../../img/edit.png" /></a> </th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
                                                 <td>1</td>
                                                 <td>Edward Flores</td>
-                                                <td>Matematica</td>
                                                 <td>Miraflores 1</td>
                                                 <td class="mrc"> <input type="checkbox"> </td>
                                                 <td class="mrc"> <input type="radio" name="ed"> </td>
@@ -140,7 +138,6 @@
                                             <tr>
                                                 <td>2</td>
                                                 <td>Jose Pastor</td>
-                                                <td>Matematica</td>
                                                 <td>Miraflores 2</td>
                                                 <td class="mrc"> <input type="checkbox"> </td>
                                                 <td class="mrc"> <input type="radio" name="ed"> </td>
@@ -148,7 +145,6 @@
                                             <tr>
                                                 <td>3</td>
                                                 <td>Jose Alvarado</td>
-                                                <td>Matematica</td>
                                                 <td>San Isidro</td>
                                                 <td class="mrc"> <input type="checkbox"> </td>
                                                 <td class="mrc"> <input type="radio" name="ed"> </td>
@@ -156,7 +152,6 @@
                                             <tr>
                                                 <td>4</td>
                                                 <td>Claudia Marchand</td>
-                                                <td>Matematica</td>
                                                 <td>Miraflores 1</td>
                                                 <td class="mrc"> <input type="checkbox"> </td>
                                                 <td class="mrc"> <input type="radio" name="ed"> </td>
@@ -164,7 +159,6 @@
                                             <tr>
                                                 <td>5</td>
                                                 <td>Jose Sanchez</td>
-                                                <td>Matematica</td>
                                                 <td>Miraflores 1</td>
                                                 <td class="mrc"> <input type="checkbox"> </td>
                                                 <td class="mrc"> <input type="radio" name="ed"> </td>

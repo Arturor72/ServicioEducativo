@@ -121,14 +121,6 @@
                                         <div class="form-group">
                                             <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Nombre">
                                         </div>
-                                        <div class="form-group">
-                                            <label>Especialidad</label>
-                                            <select class="form-control">
-                                                <option>Matematica</option>
-                                                <option>Especilidad 2</option>
-                                                <option>Especialidad 3</option>
-                                            </select>
-                                        </div>
                                     </div><!-- /.box-body -->
 
                                     <div class="box-footer">

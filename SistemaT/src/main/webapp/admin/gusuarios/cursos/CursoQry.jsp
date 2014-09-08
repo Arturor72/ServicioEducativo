@@ -81,7 +81,7 @@
                             <ul class="treeview-menu ">
                                 <li><a href="../admins/AdminQry.jsp"><i class="fa fa-angle-double-right"></i> Administradores</a></li>
                                 <li ><a href="../tutores/TutorQry.jsp"><i class="fa fa-angle-double-right"></i> Tutores</a></li>
-                                <li><a href="../alumnos/AlumnoQry.jsp"><i class="fa fa-angle-double-right"></i> Alumnos</a></li>
+<!--                                <li><a href="../alumnos/AlumnoQry.jsp"><i class="fa fa-angle-double-right"></i> Alumnos</a></li>-->
                                 <li class="active"><a href="../cursos/CursoQry.jsp"><i class="fa fa-angle-double-right"></i> Cursos</a></li>
                             </ul>
                         </li>
@@ -108,57 +108,51 @@
                         <div class="col-xs-12">
                             <div class="box">
                                 <div class="box-header">
-                                    <div class="col-md-11 col-xs-4">
+                                    <div class="col-md-10 col-xs-4">
                                         <h3 class="box-title">Cursos</h3>
                                     </div>
-                                    <div class="col-md-1 col-xs-4" style="top: 5px">
-                                        <button class="btn btn-primary">Insertar</button>      
+                                    <div class="col-md-2 col-xs-4" style="top: 5px">
+                                        <button class="btn btn-primary"><img src="../../../img/add3.png"> Curso</button>      
                                     </div>
                                 </div><!-- /.box-header -->
                                 <div class="box-body table-responsive">
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Codigo</th>
+                                                <th>Código</th>
                                                 <th>Nombre </th>
-                                                <th>Especialidad</th>
-                                                <th class="mrc"> <a href=""><img src="../../../img/edit.png" /></a> </th>
                                                 <th class="mrc"> <a href=""><img src="../../../img/delete.png" /></a> </th>
+                                                <th class="mrc"> <a href=""><img src="../../../img/edit.png" /></a> </th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
                                                 <td>1</td>
                                                 <td>Calculo 1</td>
-                                                <td>Matematica</td>
                                                 <td class="mrc"> <input type="checkbox"> </td>
                                                 <td class="mrc"> <input type="radio" name="ed"> </td>
                                             </tr>
                                             <tr>
                                                 <td>2</td>
                                                 <td>Lenguaje</td>
-                                                <td>Comunicacion</td>
                                                 <td class="mrc"> <input type="checkbox"> </td>
                                                 <td class="mrc"> <input type="radio" name="ed"> </td>
                                             </tr>
                                             <tr>
                                                 <td>3</td>
                                                 <td>Lenguaje de Programacion</td>
-                                                <td>Programacion</td>
                                                 <td class="mrc"> <input type="checkbox"> </td>
                                                 <td class="mrc"> <input type="radio" name="ed"> </td>
                                             </tr>
                                             <tr>
                                                 <td>4</td>
                                                 <td>Calculo 2</td>
-                                                <td>Matematica</td>
                                                 <td class="mrc"> <input type="checkbox"> </td>
                                                 <td class="mrc"> <input type="radio" name="ed"> </td>
                                             </tr>
                                             <tr>
                                                 <td>5</td>
                                                 <td>Calculo 3</td>
-                                                <td>Matematica</td>
                                                 <td class="mrc"> <input type="checkbox"> </td>
                                                 <td class="mrc"> <input type="radio" name="ed"> </td>
                                             </tr>

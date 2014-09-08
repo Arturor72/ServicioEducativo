@@ -114,7 +114,7 @@
                                 </div><!-- /.box-header -->
                                 <!-- form start -->
                                 <form role="form">
-                                        <div class="box-body">
+                                    <div class="box-body">
                                         <div class="form-group">
                                             <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Código">
                                         </div>
@@ -128,20 +128,22 @@
                                             <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Apellido Materno">
                                         </div>
                                         <div class="form-group">
-                                            <label>Especialidad</label>
-                                            <select class="form-control">
-                                                <option>Matematica</option>
-                                                <option>Especilidad 2</option>
-                                                <option>Especialidad 3</option>
-                                            </select>
+                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="DNI">
                                         </div>
-                                         <div class="form-group">
-                                            <label>Sede</label>
-                                            <select class="form-control">
-                                                <option>Miraflores 1</option>
-                                                <option>Sede 2</option>
-                                                <option>Sede 3</option>
-                                            </select>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Usuario">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Contraseña">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Repita Contraseña">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="e-mail">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="celular">
                                         </div>
                                     </div><!-- /.box-body -->
 
@@ -149,14 +151,14 @@
                                         <button type="submit" class="btn btn-primary">Guardar</button>
                                         &nbsp;&nbsp;
                                         <button type="submit" class="btn btn-danger">Cancelar</button>
-                                        
+
                                     </div>
                                 </form>
                             </div><!-- /.box -->
                         </div><!--/.col (left) -->
                         <!-- right column -->
                         <div class="col-md-2">
-                            
+
                         </div><!--/.col (right) -->
                     </div>   <!-- /.row -->
                 </section><!-- /.content -->
