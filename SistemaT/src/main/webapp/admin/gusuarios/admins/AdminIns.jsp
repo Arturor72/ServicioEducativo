@@ -11,13 +11,7 @@
         <meta charset="UTF-8">
         <%@include file="../../../WEB-INF/jspf/title.jspf" %>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-        <link href="../../../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="../../../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        <link href="../../../css/ionicons.min.css" rel="stylesheet" type="text/css" />
-        <link href="../../../css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
-        <link href="../../../css/AdminLTE.css" rel="stylesheet" type="text/css" />
-        <link href="../../../css/ionicons.min.css" rel="stylesheet" type="text/css" />
-        <link href="../../../css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+        <%@include file="../../../WEB-INF/jspf/links.jspf" %>
     </head>
     <body class="skin-blue">
         <%@include file="../../../WEB-INF/jspf/header.jspf" %>
