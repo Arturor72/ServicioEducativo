@@ -1,0 +1,38 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+  <aside class="left-side sidebar-offcanvas">
+                <section class="sidebar">
+                    <div class="user-panel">
+                        <div class="pull-left image">
+                        </div>
+                        <div class="pull-left info">
+                            <p>[NOMBRE TUTOR]</p>
+
+                            <a href="#"><i class="fa fa-circle text-success"></i> Conectado(a)</a>
+                        </div>
+                    </div>
+                    <ul class="sidebar-menu">
+                        <li class="active">
+                            <a href="<%= request.getContextPath() %>/p_tutor/indexT.jsp">
+                                <i class="fa fa-dashboard"></i> <span>Servicio Académico</span>
+                            </a>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-table"></i> <span>Gestion Alumnos</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="<%= request.getContextPath() %>/p_tutor/ralumnos/AlumnoQry.jsp"><i class="fa fa-angle-double-right"></i> Alumnos</a></li>
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a href="index.html">
+                                <i class="fa fa-dashboard"></i> <span>Reportes</span>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+
+            </aside>
+            
