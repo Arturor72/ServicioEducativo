@@ -13,7 +13,7 @@ public class Usuario {
 
     private Integer Usr_Id;
     private Integer Tip_Usr_Id;
-    private String Esp_Id;
+    private Integer Esp_Id;
     private String Usr_Cod;
     private String Usr_Nom;
     private String Usr_Apat;
@@ -42,11 +42,11 @@ public class Usuario {
         this.Tip_Usr_Id = Tip_Usr_Id;
     }
 
-    public String getEsp_Id() {
+    public Integer getEsp_Id() {
         return Esp_Id;
     }
 
-    public void setEsp_Id(String Esp_Id) {
+    public void setEsp_Id(Integer Esp_Id) {
         this.Esp_Id = Esp_Id;
     }
 
