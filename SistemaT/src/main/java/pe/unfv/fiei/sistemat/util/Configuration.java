@@ -23,7 +23,6 @@ public final class Configuration {
 	private Configuration() {
 		InputStream in = null;
 		try {
-                    	log4j.info("INIT --->.");
 			FileInputStream fis = new FileInputStream(SistemTConstants.SISTEMAT_PROPERTIES_FILE);
 			in = fis;
 			log4j.info("Setting configuration file successfully.");
