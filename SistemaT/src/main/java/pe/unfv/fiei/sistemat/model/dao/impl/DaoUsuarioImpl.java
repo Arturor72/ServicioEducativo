@@ -24,7 +24,7 @@ public class DaoUsuarioImpl implements DaoUsuario {
 
     static Logger log4j = Logger.getLogger(DaoUsuarioImpl.class);
 
-    StConnection db;
+    StConnection db = null;
 
     public DaoUsuarioImpl() {
         db = new StConnection();
