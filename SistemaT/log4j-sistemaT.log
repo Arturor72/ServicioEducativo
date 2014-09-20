@@ -1,0 +1,6 @@
+2014-09-20 13:43:33 INFO  Configuration:28 - Setting configuration file successfully.
+2014-09-20 13:43:33 INFO  StConnection:28 - + Init getConnection
+2014-09-20 13:43:39 ERROR StConnection:42 - Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+2014-09-20 13:43:39 INFO  StConnection:44 - - Finish getConnection
