@@ -32,10 +32,11 @@
                         <img src="img/logo3.png" class="img-responsive" style="margin-left:auto;margin-right:auto">
                         SISED
                     </div>
-                    <form action="index.html" method="post">
+                    <form action="UsuarioServlet" method="post">
+                        <input type="hidden" name="operation" value="login"/>
                         <div class="body bg-gray">
                             <div class="form-group">
-                                <input type="text" name="userid" class="form-control" placeholder="Usuario"/>
+                                <input type="text" name="user" class="form-control" placeholder="Usuario"/>
                             </div>
                             <div class="form-group">
                                 <input type="password" name="password" class="form-control" placeholder="Password"/>
