@@ -16,4 +16,8 @@ public class SistemTConstants {
         public static final String SISTEMAT_USER = Configuration.getInstance().getProperty("sistemat.user");
         public static final String SISTEMAT_PASSWORD = Configuration.getInstance().getProperty("sistemat.password");
         
+        /* LOGIN Constants */        
+        public static final String LOGIN_SELECT = Configuration.getInstance().getProperty("login.select");
+        
+        
 }
