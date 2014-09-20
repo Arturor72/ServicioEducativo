@@ -7,17 +7,18 @@ import pe.unfv.fiei.sistemat.util.Configuration;
 public class SistemTConstants {
 
 	/* Configuration file constants */
-	public static final String SISTEMAT_PROPERTIES_FILE = "src\\main\\java\\pe\\unfv\\fiei\\sistemat\\util\\properties.properties";
-
+//	public static final String SISTEMAT_PROPERTIES_FILE = "src\\main\\java\\pe\\unfv\\fiei\\sistemat\\util\\properties.properties";
+        /* IMPORTANT NOT CHANGE THIS LINE*/
+        public static final String SISTEMAT_PROPERTIES_FILE = "";
         /* Connection Constants */
-	public static final String SISTEMAT_BDNAME = Configuration.getInstance().getProperty("sistemat.bdname");
-        public static final String SISTEMAT_URL = Configuration.getInstance().getProperty("sistemat.url");
-        public static final String SISTEMAT_DRIVER = Configuration.getInstance().getProperty("sistemat.driver");
-        public static final String SISTEMAT_USER = Configuration.getInstance().getProperty("sistemat.user");
-        public static final String SISTEMAT_PASSWORD = Configuration.getInstance().getProperty("sistemat.password");
+	public static final String SISTEMAT_BDNAME = "dbservicio";
+        public static final String SISTEMAT_URL = "jdbc:mysql://localhost:3306/";
+        public static final String SISTEMAT_DRIVER ="com.mysql.jdbc.Driver";
+        public static final String SISTEMAT_USER = "root";
+        public static final String SISTEMAT_PASSWORD = "root";
         
         /* LOGIN Constants */        
-        public static final String LOGIN_SELECT = Configuration.getInstance().getProperty("login.select");
+        public static final String LOGIN_SELECT = "SELECT usr_id, usr_cod, tip_usr_id, usr_nom, usr_apat, usr_amat, usr_dni, usr_gen, usr_cel, usr_mail, usr_user, AES_DECRYPT(usr_pass, 'F1O2R3114'), usr_est, esp_id FROM tbl_usuario WHERE (usr_user=?) and (AES_DECRYPT(usr_pass,'F1O2R3114') = ?)";
         
         
 }
