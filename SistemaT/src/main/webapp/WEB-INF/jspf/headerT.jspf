@@ -1,7 +1,7 @@
 <%-- any content can be specified here e.g.: --%>
 <%@ page pageEncoding="UTF-8" %>
 <header class="header">
-    <a href="<%= request.getContextPath() %>\p_tutor\indexT.jsp"> class="logo">
+    <a href="<%= request.getContextPath() %>\p_tutor\indexT.jsp" class="logo">
        
         SISED
     </a>
@@ -26,7 +26,7 @@
                                 <small>[ESPECIALIDAD]</small>
                             </p>
                             <br><br>
-                            <a href="#" class="btn btn-default btn-flat">Desconectar</a>
+                            <a onclick="logout('<%= request.getContextPath()%>')" class="btn btn-default btn-flat">Desconectar</a>
                         </li>
                     </ul>
                 </li>
