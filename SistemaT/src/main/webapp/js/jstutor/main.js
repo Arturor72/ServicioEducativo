@@ -4,14 +4,14 @@
  * and open the template in the editor.
  */
 function logout(path) {
-    window.location = path+"/UsuarioServlet?operation=logout"
+    window.location = path + "/LoginServlet?operation=logout"
 }
 
 
 function login(operation) {
-
+    alert("asd");
     $.ajax({
-        url: "UsuarioServlet",
+        url: "LoginServlet",
         data: {
             operation: operation,
             user: $("#user").val(),
