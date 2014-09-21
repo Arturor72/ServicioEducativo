@@ -6,6 +6,7 @@
 
 package pe.unfv.fiei.sistemat.model.dao;
 
+import java.util.List;
 import pe.unfv.fiei.sistemat.model.dto.Usuario;
 
 /**
@@ -14,4 +15,5 @@ import pe.unfv.fiei.sistemat.model.dto.Usuario;
  */
 public interface DaoUsuario {
         public Usuario Login(String user, String password);
+        public List<Usuario> usuarioQry(Integer tip_usr_id, Integer esp_id);
 }
