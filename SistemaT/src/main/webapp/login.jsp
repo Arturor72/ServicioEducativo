@@ -28,7 +28,6 @@
             <div class="col-md-4">
                 <div class="form-box" id="login-box">
                     <div class="header"> 
-
                         <img src="img/logo3.png" class="img-responsive" style="margin-left:auto;margin-right:auto">
                         SISED
                     </div>
@@ -36,16 +35,24 @@
                         <input type="hidden" name="operation" value="login"/>
                         <div class="body bg-gray">
                             <div class="form-group">
-                                <input type="text" name="user" class="form-control" placeholder="Usuario"/>
+                                <input type="text" name="user" id="user" class="form-control" placeholder="Usuario"/>
                             </div>
                             <div class="form-group">
-                                <input type="password" name="password" class="form-control" placeholder="Password"/>
+                                <input type="password" name="password" id="password" class="form-control" placeholder="Password"/>
                             </div>          
                         </div>
                         <div class="footer">
-                            <button type="submit" class="btn bg-light-blue btn-block">Ingresar</button>  
+                            <button type="button" class="btn bg-light-blue btn-block" onclick="login('login')" >Ingresar</button>  
                         </div>
                     </form>
+
+                    <div class="col-md-2">
+                    </div>
+                    <div class="col-md-8" style="text-align: center" id="result">
+                        
+                    </div>
+                    <div class="col-md-2">
+                    </div>
                 </div>
             </div>
         </div>
@@ -53,6 +60,6 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
         <!-- Bootstrap -->
         <script src="js/bootstrap.min.js" type="text/javascript"></script>        
-
+        <%@include file="WEB-INF/jspf/linksfooter.jspf" %>
     </body>
 </html>

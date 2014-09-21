@@ -27,16 +27,17 @@ public class UsuarioServlet extends HttpServlet {
     Logger log4j = Logger.getLogger(UsuarioServlet.class);
     private final static String OPERATION_LOGIN = "login";
     private final static String OPERATION_QRY = "QRY";
+    private final static String OPERATION_LOGOUT = "logout";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         /* Here declare your DAO object*/
         DaoUsuario daoUsuario = new DaoUsuarioImpl();
         /* Here declare your DAO object*/
-        response.setContentType("text/html;charset=UTF-8");
         String operation = request.getParameter("operation");
-        String message = "";
-        String target = "/index.jsp";
+        String message = null;
+        String message2 = "";
+        String target = "/login.jsp";
         if (operation != null) {
             log4j.info("The operation is: " + operation);
             if (operation.equalsIgnoreCase(OPERATION_LOGIN)) {
@@ -45,14 +46,24 @@ public class UsuarioServlet extends HttpServlet {
                 if (user != null && password != null) {
                     Usuario usuario = daoUsuario.Login(user, password);
                     if (usuario != null) {
-                        target = "/indexAdmin.html";
+                        if (usuario.getTip_Usr_Id() == 1) {
+                            target = "/admin/indexA.jsp";
+                            log4j.info("ADMIN");
+                            message2 = "admin";
+                        } else if (usuario.getTip_Usr_Id() == 2) {
+                            log4j.info("TUTOR");
+                            target = "/p_tutor/indexT.jsp";
+                            message2 = "tutor";
+                        }
+                        request.getSession().setAttribute("usuario", usuario);
 
                     } else {
-                        message += "Usuario y/o Contraseña incorrectos\n";
+                        message = "Usuario y/o Contraseña incorrectos\n";
                     }
                 } else {
-                    message += "No ingreso Usuario o Contraseña\n";
+                    message = "No ingreso Usuario o Contraseña\n";
                 }
+
             } else if(operation.equalsIgnoreCase(OPERATION_QRY)){
                 Integer tip_usr_idx = Integer.valueOf(request.getParameter("tip_usr_id"));
                 Integer esp_idx =  Integer.valueOf(request.getParameter("esp_id"));
@@ -63,14 +74,37 @@ public class UsuarioServlet extends HttpServlet {
                     request.setAttribute("list", list);
                     target = "AdminQry.jsp";
                 }
+
+            } else if (operation.equalsIgnoreCase(OPERATION_LOGOUT)) {
+                request.getSession().removeAttribute("usuario");
+                target = "/login.jsp";
+                message2 = "logout";
+                request.getRequestDispatcher("/login.jsp").forward(request, response);
+
             }
 
         } else {
             log4j.error("The operation is: " + operation);
-            message += "La operacion no es válida\n";
+            message2 = "logout";
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher(target);
-        dispatcher.forward(request, response);
+//        response.sendRedirect("p_tutor\\indexT.jsp");
+        if (!message2.equalsIgnoreCase("logout")) {
+            if (message != null) {
+
+                response.setContentType("text/html;charset=UTF-8");
+                PrintWriter out = response.getWriter();
+                out.print(message);
+                out.close();
+            } else {
+                response.setContentType("text/html;charset=UTF-8");
+                PrintWriter out = response.getWriter();
+                out.print(message2);
+                out.close();
+//            RequestDispatcher dispatcher = request.getRequestDispatcher(target);
+//            dispatcher.forward(request, response);
+            }
+        }
 
     }
 
