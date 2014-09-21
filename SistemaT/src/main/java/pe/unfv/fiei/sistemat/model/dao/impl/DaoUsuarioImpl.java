@@ -9,7 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
+import java.util.LinkedList;
+import java.util.List;
 import org.apache.log4j.Logger;
 import pe.unfv.fiei.sistemat.constants.SistemTConstants;
 import pe.unfv.fiei.sistemat.model.connection.StConnection;
@@ -23,7 +24,6 @@ import pe.unfv.fiei.sistemat.model.dto.Usuario;
 public class DaoUsuarioImpl implements DaoUsuario {
 
     static Logger log4j = Logger.getLogger(DaoUsuarioImpl.class);
-
     StConnection db = null;
 
     public DaoUsuarioImpl() {
@@ -76,4 +76,45 @@ public class DaoUsuarioImpl implements DaoUsuario {
         return usuario;
     }
 
+    @Override
+    public List<Usuario> usuarioQry(Integer tip_usr_id, Integer esp_id) {
+        List<Usuario> list = null;
+        String sql = SistemTConstants.USER_SELECT;
+        Connection cn = db.getConnection();
+        if (cn != null) {
+            try {
+                PreparedStatement ps = cn.prepareStatement(sql);
+                ps.setInt(1, tip_usr_id);
+                ps.setInt(2, esp_id);
+                ResultSet rs = ps.executeQuery();
+                list = new LinkedList<Usuario>();
+                while(rs.next()){
+                    Usuario u = new Usuario();
+                    u.setUsr_Id(rs.getInt(1));
+                    u.setUsr_Cod(rs.getString(2));
+                    u.setTip_Usr_Id(rs.getInt(3));
+                    u.setUsr_Nom(rs.getString(4));
+                    u.setUsr_Apat(rs.getString(5));
+                    u.setUsr_Amat(rs.getString(6));
+                    u.setUsr_Dni(rs.getString(7));
+                    u.setUsr_Gen(rs.getInt(8));
+                    u.setUsr_Cel(rs.getString(9));
+                    u.setUsr_Mail(rs.getString(10));
+                    u.setUsr_User(rs.getString(11));
+                    u.setUsr_Pass(rs.getString(12));
+                    u.setUsr_Est(rs.getInt(13));
+                    u.setEsp_Id(rs.getInt(14));
+                    
+                    list.add(u);
+                }
+            } catch (SQLException ex) {  
+            } finally{
+                try {
+                    cn.close();
+                } catch (SQLException ex) { 
+                }
+            }
+        }
+        return list;
+    }
 }
