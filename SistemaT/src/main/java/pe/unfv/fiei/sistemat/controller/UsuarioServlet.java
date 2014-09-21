@@ -7,6 +7,7 @@ package pe.unfv.fiei.sistemat.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -25,6 +26,7 @@ public class UsuarioServlet extends HttpServlet {
 
     Logger log4j = Logger.getLogger(UsuarioServlet.class);
     private final static String OPERATION_LOGIN = "login";
+    private final static String OPERATION_QRY = "QRY";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -50,6 +52,16 @@ public class UsuarioServlet extends HttpServlet {
                     }
                 } else {
                     message += "No ingreso Usuario o Contraseña\n";
+                }
+            } else if(operation.equalsIgnoreCase(OPERATION_QRY)){
+                Integer tip_usr_idx = Integer.valueOf(request.getParameter("tip_usr_id"));
+                Integer esp_idx =  Integer.valueOf(request.getParameter("esp_id"));
+                List<Usuario> list = daoUsuario.usuarioQry(tip_usr_idx, esp_idx);
+                if(list == null){
+                    message += "Sin acceso a la base de datos";
+                }else{
+                    request.setAttribute("list", list);
+                    target = "AdminQry.jsp";
                 }
             }
 
