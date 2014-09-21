@@ -5,11 +5,13 @@
  */
 package pe.unfv.fiei.sistemat.model.dto;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Arturo
  */
-public class Usuario {
+public class Usuario  implements Serializable{
 
     private Integer Usr_Id;
     private Integer Tip_Usr_Id;
