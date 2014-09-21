@@ -1,9 +1,5 @@
 package pe.unfv.fiei.sistemat.constants;
 
-import pe.unfv.fiei.sistemat.util.Configuration;
-
-
-
 public class SistemTConstants {
 
 	/* Configuration file constants */
@@ -18,7 +14,7 @@ public class SistemTConstants {
         public static final String SISTEMAT_PASSWORD = "root";
         
         /* LOGIN Constants */        
-        public static final String LOGIN_SELECT = "SELECT usr_id, usr_cod, tip_usr_id, usr_nom, usr_apat, usr_amat, usr_dni, usr_gen, usr_cel, usr_mail, usr_user, AES_DECRYPT(usr_pass, 'F1O2R3114'), usr_est, esp_id FROM tbl_usuario WHERE (usr_user=?) and (AES_DECRYPT(usr_pass,'F1O2R3114') = ?)";
+        public static final String LOGIN_SELECT = "SELECT usr_id, usr_cod, tip_usr_id, usr_nom, usr_apat, usr_amat, usr_dni, usr_gen, usr_cel, usr_mail, usr_user, AES_DECRYPT(usr_pass, 'F1O2R3114'), usr_est, esp_id FROM dbservicio.tbl_usuario WHERE (usr_user=?) and (AES_DECRYPT(usr_pass,'F1O2R3114') = ?)";
         
         
 }
