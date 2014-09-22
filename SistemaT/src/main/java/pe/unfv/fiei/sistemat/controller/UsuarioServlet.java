@@ -36,7 +36,7 @@ public class UsuarioServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String operation = request.getParameter("operation");
         String message = null;
-        String target = "/AdminQry.jsp";
+        String target = "/admin/gusuarios/admins/AdminQry.jsp";
         DaoUsuario daoUsuario = new DaoUsuarioImpl();
         Usuario u = (Usuario) request.getSession().getAttribute("usuario");
         if (operation != null) {
@@ -48,9 +48,9 @@ public class UsuarioServlet extends HttpServlet {
                 } else {
                     request.setAttribute("list", list);
                     if (u.getTip_Usr_Id() == 1) {
-                        target = "AdminQry.jsp";
+                        target = "/admin/gusuarios/admins/AdminQry.jsp";
                     } else if (u.getTip_Usr_Id() == 2) {
-                        target = "TutorQry.jsp";
+                        target = "/admin/gusuarios/tutores/TutorQry.jsp";
                     }
                 }
             } else if (operation.equalsIgnoreCase(OPERATION_INS)) {
