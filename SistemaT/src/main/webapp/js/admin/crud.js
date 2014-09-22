@@ -3,7 +3,8 @@
  * and open the template in the editor.
  */
 
-function admin_QRY(){
-    window.location = "UsuarioServlet?operation=QRY";
+function admin_QRY(path){
+    alert(path);
+    window.location = path+"/UsuarioServlet?operation=QRY";
 }
 
