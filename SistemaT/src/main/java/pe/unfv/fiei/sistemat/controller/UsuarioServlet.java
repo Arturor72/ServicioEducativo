@@ -36,21 +36,24 @@ public class UsuarioServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String operation = request.getParameter("operation");
         String message = null;
+
         String target = "/admin/gusuarios/admins/AdminQry.jsp";
+
         DaoUsuario daoUsuario = new DaoUsuarioImpl();
         Usuario u = (Usuario) request.getSession().getAttribute("usuario");
         if (operation != null) {
             log4j.info("The operation is: " + operation);
             if (operation.equalsIgnoreCase(OPERATION_QRY)) {
-                List<Usuario> list = daoUsuario.usuarioQry(u.getTip_Usr_Id(), u.getEsp_Id());
+                List<Usuario> list = daoUsuario.usuarioQry(u.getTip_usr_id(), u.getEsp_id());
                 if (list == null) {
                     message = "Sin acceso a la base de datos";
                 } else {
                     request.setAttribute("list", list);
-                    if (u.getTip_Usr_Id() == 1) {
+                    if (u.getTip_usr_id() == 1) {
                         target = "/admin/gusuarios/admins/AdminQry.jsp";
-                    } else if (u.getTip_Usr_Id() == 2) {
+                    } else if (u.getTip_usr_id() == 2) {
                         target = "/admin/gusuarios/tutores/TutorQry.jsp";
+
                     }
                 }
             } else if (operation.equalsIgnoreCase(OPERATION_INS)) {
