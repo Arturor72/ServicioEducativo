@@ -4,3 +4,52 @@
 
 The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
 2014-09-20 13:43:39 INFO  StConnection:44 - - Finish getConnection
+2014-09-21 16:12:55 INFO  Configuration:28 - Setting configuration file successfully.
+2014-09-21 16:12:55 INFO  StConnection:28 - + Init getConnection
+2014-09-21 16:19:41 INFO  Configuration:28 - Setting configuration file successfully.
+2014-09-21 16:19:41 INFO  StConnection:28 - + Init getConnection
+2014-09-21 16:21:59 INFO  Configuration:28 - Setting configuration file successfully.
+2014-09-21 16:21:59 INFO  StConnection:28 - + Init getConnection
+2014-09-21 16:23:09 INFO  Configuration:28 - Setting configuration file successfully.
+2014-09-21 16:23:09 INFO  StConnection:28 - + Init getConnection
+2014-09-21 16:25:47 INFO  Configuration:28 - Setting configuration file successfully.
+2014-09-21 16:25:48 INFO  StConnection:28 - + Init getConnection
+2014-09-21 16:26:26 INFO  StConnection:28 - + Init getConnection
+2014-09-21 16:26:29 INFO  StConnection:34 - Connection succesful !!!
+2014-09-21 16:26:29 INFO  StConnection:44 - - Finish getConnection
+2014-09-21 16:45:55 INFO  StConnection:28 - + Init getConnection
+2014-09-21 16:45:56 INFO  StConnection:34 - Connection succesful !!!
+2014-09-21 16:45:56 INFO  StConnection:44 - - Finish getConnection
+2014-09-21 17:02:51 INFO  StConnection:28 - + Init getConnection
+2014-09-21 17:02:52 INFO  StConnection:34 - Connection succesful !!!
+2014-09-21 17:02:52 INFO  StConnection:44 - - Finish getConnection
+2014-09-21 17:24:49 INFO  StConnection:28 - + Init getConnection
+2014-09-21 17:24:56 INFO  StConnection:34 - Connection succesful !!!
+2014-09-21 17:24:56 INFO  StConnection:44 - - Finish getConnection
+2014-09-21 17:29:48 INFO  StConnection:28 - + Init getConnection
+2014-09-21 17:29:49 INFO  StConnection:34 - Connection succesful !!!
+2014-09-21 17:29:49 INFO  StConnection:44 - - Finish getConnection
+2014-09-21 17:58:05 INFO  StConnection:28 - + Init getConnection
+2014-09-21 17:58:08 INFO  StConnection:34 - Connection succesful !!!
+2014-09-21 17:58:08 INFO  StConnection:44 - - Finish getConnection
+2014-09-21 18:17:29 INFO  StConnection:28 - + Init getConnection
+2014-09-21 18:17:59 INFO  StConnection:34 - Connection succesful !!!
+2014-09-21 18:17:59 INFO  StConnection:44 - - Finish getConnection
+2014-09-21 18:29:15 INFO  StConnection:28 - + Init getConnection
+2014-09-21 18:29:16 INFO  StConnection:34 - Connection succesful !!!
+2014-09-21 18:29:16 INFO  StConnection:44 - - Finish getConnection
+2014-09-21 18:41:17 INFO  StConnection:28 - + Init getConnection
+2014-09-21 18:41:18 INFO  StConnection:34 - Connection succesful !!!
+2014-09-21 18:41:18 INFO  StConnection:44 - - Finish getConnection
+2014-09-21 18:46:59 INFO  StConnection:28 - + Init getConnection
+2014-09-21 18:47:00 INFO  StConnection:34 - Connection succesful !!!
+2014-09-21 18:47:00 INFO  StConnection:44 - - Finish getConnection
+2014-09-21 18:48:10 INFO  StConnection:28 - + Init getConnection
+2014-09-21 18:48:11 INFO  StConnection:34 - Connection succesful !!!
+2014-09-21 18:48:11 INFO  StConnection:44 - - Finish getConnection
+2014-09-21 18:56:06 INFO  StConnection:28 - + Init getConnection
+2014-09-21 18:56:06 INFO  StConnection:34 - Connection succesful !!!
+2014-09-21 18:56:06 INFO  StConnection:44 - - Finish getConnection
+2014-09-21 18:56:59 INFO  StConnection:28 - + Init getConnection
+2014-09-21 18:57:00 INFO  StConnection:34 - Connection succesful !!!
+2014-09-21 18:57:00 INFO  StConnection:44 - - Finish getConnection

@@ -25,7 +25,6 @@ public class LoginServlet extends HttpServlet {
 
     Logger log4j = Logger.getLogger(LoginServlet.class);
     private final static String OPERATION_LOGIN = "login";
-    private final static String OPERATION_QRY = "QRY";
     private final static String OPERATION_LOGOUT = "logout";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -61,19 +60,7 @@ public class LoginServlet extends HttpServlet {
                     }
                 } else {
                     message = "No ingreso Usuario o Contraseña\n";
-                }
-
-            } else if (operation.equalsIgnoreCase(OPERATION_QRY)) {
-                Integer tip_usr_idx = Integer.valueOf(request.getParameter("tip_usr_id"));
-                Integer esp_idx = Integer.valueOf(request.getParameter("esp_id"));
-                List<Usuario> list = daoUsuario.usuarioQry(tip_usr_idx, esp_idx);
-                if (list == null) {
-                    message += "Sin acceso a la base de datos";
-                } else {
-                    request.setAttribute("list", list);
-                    target = "AdminQry.jsp";
-                }
-
+                } 
             } else if (operation.equalsIgnoreCase(OPERATION_LOGOUT)) {
                 request.getSession().removeAttribute("usuario");
                 target = "/login.jsp";

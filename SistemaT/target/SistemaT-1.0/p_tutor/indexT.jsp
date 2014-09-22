@@ -10,41 +10,7 @@
     <body class="skin-blue">
         <%@include file="../WEB-INF/jspf/headerT.jspf" %>
         <div class="wrapper row-offcanvas row-offcanvas-left">
-            <aside class="left-side sidebar-offcanvas">
-                <section class="sidebar">
-                    <div class="user-panel">
-                        <div class="pull-left image">
-                        </div>
-                        <div class="pull-left info">
-                            <p>[NOMBRE TUTOR]</p>
-
-                            <a href="#"><i class="fa fa-circle text-success"></i> Conectado(a)</a>
-                        </div>
-                    </div>
-                    <ul class="sidebar-menu">
-                        <li class="active">
-                            <a href="indexT.html">
-                                <i class="fa fa-dashboard"></i> <span>Servicio Académico</span>
-                            </a>
-                        </li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-table"></i> <span>Gestion Alumnos</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="ralumnos/AlumnoQry.jsp"><i class="fa fa-angle-double-right"></i> Alumnos</a></li>
-                            </ul>
-                        </li>
-                        <li class="">
-                            <a href="index.html">
-                                <i class="fa fa-dashboard"></i> <span>Reportes</span>
-                            </a>
-                        </li>
-                    </ul>
-                </section>
-
-            </aside>
+            <%@include file="../WEB-INF/jspf/asideMenuT.jspf" %>
 
             <aside class="right-side">
                 <section class="content-header">
@@ -153,18 +119,7 @@
 
                         </aside>
                     </div>
-
-
-
-                    <script src="../js/jquery.min.js"></script>
-                    <script src="../js/bootstrap.min.js" type="text/javascript"></script>
-                    <!-- DATA TABES SCRIPT -->
-                    <script src="../js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
-                    <script src="../js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
-                    <!-- AdminLTE App -->
-                    <script src="../js/AdminLTE/app.js" type="text/javascript"></script>
-                    <!-- AdminLTE for demo purposes -->
-                    <script src="../js/AdminLTE/demo.js" type="text/javascript"></script>
+                    <%@include file="../WEB-INF/jspf/linksfooter.jspf" %>
                     <!-- page script -->
                     <script type="text/javascript">
                         $(function() {

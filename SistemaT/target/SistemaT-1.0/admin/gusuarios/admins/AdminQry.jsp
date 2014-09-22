@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,7 +24,6 @@
                     <h1>
                         Gestión de Administradores
                     </h1>
-
                 </section>
                 <section class="content">
                     <div class="row">
@@ -44,48 +44,20 @@
                                             <tr>
                                                 <th>Código</th>
                                                 <th>Nombre Admin</th>
-                                                <th>Sede</th>
                                                 <th class="mrc"> <a href=""><img src="../../../img/delete.png" /></a> </th>
                                                 <th class="mrc"> <a href=""><img src="../../../img/edit.png" /></a> </th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Edward Flores</td>
-                                                <td>Miraflores 1</td>
-                                                <td class="mrc"> <input type="checkbox"> </td>
-                                                <td class="mrc"> <input type="radio" name="ed"> </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Jose Pastor</td>
-                                                <td>Miraflores 2</td>
-                                                <td class="mrc"> <input type="checkbox"> </td>
-                                                <td class="mrc"> <input type="radio" name="ed"> </td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Jose Alvarado</td>
-                                                <td>San Isidro</td>
-                                                <td class="mrc"> <input type="checkbox"> </td>
-                                                <td class="mrc"> <input type="radio" name="ed"> </td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>Claudia Marchand</td>
-                                                <td>Miraflores 1</td>
-                                                <td class="mrc"> <input type="checkbox"> </td>
-                                                <td class="mrc"> <input type="radio" name="ed"> </td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>Jose Sanchez</td>
-                                                <td>Miraflores 1</td>
-                                                <td class="mrc"> <input type="checkbox"> </td>
-                                                <td class="mrc"> <input type="radio" name="ed"> </td>
-                                            </tr>
-
+                                            <c:forEach var="a" items="${list}">
+                                                <tr>
+                                                    <td>{a.Usr_Cod}</td>
+                                                    <td>{a.Usr_Nom} {a.Usr_Apat} {a.Usr_Amat}</td>
+                                                    <td class="mrc"> <input type="checkbox" name="DEL" value="${a.Usr_Id}"> </td>
+                                                    <td class="mrc"> <input type="radio" name="UPD" value="${a.Usr_Id}"> </td>
+                                                </tr>
+                                            </c:forEach>
+                                        </tbody>
                                     </table>
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
