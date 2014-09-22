@@ -51,10 +51,10 @@
                                         <tbody>
                                             <c:forEach var="a" items="${list}">
                                                 <tr>
-                                                    <td>{a.Usr_Cod}</td>
-                                                    <td>{a.Usr_Nom} {a.Usr_Apat} {a.Usr_Amat}</td>
-                                                    <td class="mrc"> <input type="checkbox" name="DEL" value="${a.Usr_Id}"> </td>
-                                                    <td class="mrc"> <input type="radio" name="UPD" value="${a.Usr_Id}"> </td>
+                                                    <td>${a.usr_cod}</td>
+                                                    <td>${a.usr_nom} ${a.usr_apat} ${a.usr_amat}</td>
+                                                    <td class="mrc"> <input type="checkbox" name="DEL" value="${a.usr_id}"> </td>
+                                                    <td class="mrc"> <input type="radio" name="UPD" value="${a.usr_id}"> </td>
                                                 </tr>
                                             </c:forEach>
                                         </tbody>

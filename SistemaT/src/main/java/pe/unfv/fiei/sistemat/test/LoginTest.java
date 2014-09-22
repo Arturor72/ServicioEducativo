@@ -20,7 +20,7 @@ public class LoginTest {
         String password="mypass";
         DaoUsuario daoUsuario=new DaoUsuarioImpl();
         Usuario usuario=daoUsuario.Login(user, password);
-        System.out.println(""+usuario.getUsr_Nom()+usuario.getUsr_Pass());
+        System.out.println(""+usuario.getUsr_nom()+usuario.getUsr_pass());
         
         
     }

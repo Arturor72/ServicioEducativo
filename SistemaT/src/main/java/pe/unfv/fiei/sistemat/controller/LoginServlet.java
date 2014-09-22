@@ -44,11 +44,11 @@ public class LoginServlet extends HttpServlet {
                 if (user != null && password != null) {
                     Usuario usuario = daoUsuario.Login(user, password);
                     if (usuario != null) {
-                        if (usuario.getTip_Usr_Id() == 1) {
+                        if (usuario.getTip_usr_id() == 1) {
                             target = "/admin/indexA.jsp";
                             log4j.info("ADMIN");
                             message2 = "admin";
-                        } else if (usuario.getTip_Usr_Id() == 2) {
+                        } else if (usuario.getTip_usr_id() == 2) {
                             log4j.info("TUTOR");
                             target = "/p_tutor/indexT.jsp";
                             message2 = "tutor";

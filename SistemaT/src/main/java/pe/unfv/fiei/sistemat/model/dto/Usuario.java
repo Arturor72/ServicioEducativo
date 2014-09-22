@@ -13,134 +13,132 @@ import java.io.Serializable;
  */
 public class Usuario  implements Serializable{
 
-    private Integer Usr_Id;
-    private Integer Tip_Usr_Id;
-    private Integer Esp_Id;
-    private String Usr_Cod;
-    private String Usr_Nom;
-    private String Usr_Apat;
-    private String Usr_Amat;
-    private String Usr_Dni;
-    private Integer Usr_Gen;
-    private String Usr_Cel;
-    private String Usr_Mail;
-    private String Usr_User;
-    private String Usr_Pass;
-    private Integer Usr_Est;
+    private Integer usr_id;
+    private Integer tip_usr_id;
+    private Integer esp_id;
+    private String usr_cod;
+    private String usr_nom;
+    private String usr_apat;
+    private String usr_amat;
+    private String usr_dni;
+    private Integer usr_gen;
+    private String usr_cel;
+    private String usr_mail;
+    private String usr_user;
+    private String usr_pass;
+    private Integer usr_est;
 
-    public Integer getUsr_Id() {
-        return Usr_Id;
+    public Integer getUsr_id() {
+        return usr_id;
     }
 
-    public void setUsr_Id(Integer Usr_Id) {
-        this.Usr_Id = Usr_Id;
+    public void setUsr_id(Integer usr_id) {
+        this.usr_id = usr_id;
     }
 
-    public Integer getTip_Usr_Id() {
-        return Tip_Usr_Id;
+    public Integer getTip_usr_id() {
+        return tip_usr_id;
     }
 
-    public void setTip_Usr_Id(Integer Tip_Usr_Id) {
-        this.Tip_Usr_Id = Tip_Usr_Id;
+    public void setTip_usr_id(Integer tip_usr_id) {
+        this.tip_usr_id = tip_usr_id;
     }
 
-    public Integer getEsp_Id() {
-        return Esp_Id;
+    public Integer getEsp_id() {
+        return esp_id;
     }
 
-    public void setEsp_Id(Integer Esp_Id) {
-        this.Esp_Id = Esp_Id;
+    public void setEsp_id(Integer esp_id) {
+        this.esp_id = esp_id;
     }
 
-    public String getUsr_Cod() {
-        return Usr_Cod;
+    public String getUsr_cod() {
+        return usr_cod;
     }
 
-    public void setUsr_Cod(String Usr_Cod) {
-        this.Usr_Cod = Usr_Cod;
+    public void setUsr_cod(String usr_cod) {
+        this.usr_cod = usr_cod;
     }
 
-    public String getUsr_Nom() {
-        return Usr_Nom;
+    public String getUsr_nom() {
+        return usr_nom;
     }
 
-    public void setUsr_Nom(String Usr_Nom) {
-        this.Usr_Nom = Usr_Nom;
+    public void setUsr_nom(String usr_nom) {
+        this.usr_nom = usr_nom;
     }
 
-    public String getUsr_Apat() {
-        return Usr_Apat;
+    public String getUsr_apat() {
+        return usr_apat;
     }
 
-    public void setUsr_Apat(String Usr_Apat) {
-        this.Usr_Apat = Usr_Apat;
+    public void setUsr_apat(String usr_apat) {
+        this.usr_apat = usr_apat;
     }
 
-    public String getUsr_Amat() {
-        return Usr_Amat;
+    public String getUsr_amat() {
+        return usr_amat;
     }
 
-    public void setUsr_Amat(String Usr_Amat) {
-        this.Usr_Amat = Usr_Amat;
+    public void setUsr_amat(String usr_amat) {
+        this.usr_amat = usr_amat;
     }
 
-    public String getUsr_Dni() {
-        return Usr_Dni;
+    public String getUsr_dni() {
+        return usr_dni;
     }
 
-    public void setUsr_Dni(String Usr_Dni) {
-        this.Usr_Dni = Usr_Dni;
+    public void setUsr_dni(String usr_dni) {
+        this.usr_dni = usr_dni;
     }
 
-    public Integer getUsr_Gen() {
-        return Usr_Gen;
+    public Integer getUsr_gen() {
+        return usr_gen;
     }
 
-    public void setUsr_Gen(Integer Usr_Gen) {
-        this.Usr_Gen = Usr_Gen;
+    public void setUsr_gen(Integer usr_gen) {
+        this.usr_gen = usr_gen;
     }
 
-    public String getUsr_Cel() {
-        return Usr_Cel;
+    public String getUsr_cel() {
+        return usr_cel;
     }
 
-    public void setUsr_Cel(String Usr_Cel) {
-        this.Usr_Cel = Usr_Cel;
+    public void setUsr_cel(String usr_cel) {
+        this.usr_cel = usr_cel;
     }
 
-    public String getUsr_Mail() {
-        return Usr_Mail;
+    public String getUsr_mail() {
+        return usr_mail;
     }
 
-    public void setUsr_Mail(String Usr_Mail) {
-        this.Usr_Mail = Usr_Mail;
+    public void setUsr_mail(String usr_mail) {
+        this.usr_mail = usr_mail;
     }
 
-    public String getUsr_User() {
-        return Usr_User;
+    public String getUsr_user() {
+        return usr_user;
     }
 
-    public void setUsr_User(String Usr_User) {
-        this.Usr_User = Usr_User;
+    public void setUsr_user(String usr_user) {
+        this.usr_user = usr_user;
     }
 
-    public String getUsr_Pass() {
-        return Usr_Pass;
+    public String getUsr_pass() {
+        return usr_pass;
     }
 
-    public void setUsr_Pass(String Usr_Pass) {
-        this.Usr_Pass = Usr_Pass;
+    public void setUsr_pass(String usr_pass) {
+        this.usr_pass = usr_pass;
     }
 
-    public Integer getUsr_Est() {
-        return Usr_Est;
+    public Integer getUsr_est() {
+        return usr_est;
     }
 
-    public void setUsr_Est(Integer Usr_Est) {
-        this.Usr_Est = Usr_Est;
+    public void setUsr_est(Integer usr_est) {
+        this.usr_est = usr_est;
     }
+
     
-    
-    
-
 }
