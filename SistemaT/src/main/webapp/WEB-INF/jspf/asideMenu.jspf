@@ -24,8 +24,8 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a onclick="admin_QRY('<%= request.getContextPath()%>')"><i class="fa fa-angle-double-right"></i> Administradores</a></li>
-                    <li><a href="<%= request.getContextPath()%>\admin\gusuarios/tutores/TutorQry.jsp"><i class="fa fa-angle-double-right"></i> Tutores</a></li>
-                    <li><a href="<%= request.getContextPath()%>\admin\gusuarios/cursos/CursoQry.jsp"><i class="fa fa-angle-double-right"></i> Cursos</a></li>
+                    <li><a onclick="admin_QRY('<%= request.getContextPath()%>')"><i class="fa fa-angle-double-right"></i> Tutores</a></li>
+                    <li><a onclick="curso_QRY('<%= request.getContextPath()%>')"><i class="fa fa-angle-double-right"></i> Cursos</a></li>
                 </ul>
             </li>
 
