@@ -34,7 +34,7 @@
                                 </div><!-- /.box-header -->
                                 <div class="box-body table-responsive">
                                     <table id="example1" class="table table-bordered table-striped">
-                                       <thead>
+                                        <thead>
                                             <tr>
                                                 <th>Codigo</th>
                                                 <th>Nombre Servicio</th>
@@ -47,7 +47,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                               <tr>
+                                            <tr>
                                                 <td>1</td>
                                                 <td>Calculo 1</td>
                                                 <td>Tutoria</td>
@@ -98,7 +98,7 @@
                                                 <td class="mrc"> <input type="checkbox"> </td>
                                             </tr>
 
-                                      </table>
+                                    </table>
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
                         </div>
@@ -107,19 +107,7 @@
 
             </aside>
         </div>
-
-
-
-       <script src="../../../js/jquery.min.js"></script>
-        <script src="../../../js/bootstrap.min.js" type="text/javascript"></script>
-        <!-- DATA TABES SCRIPT -->
-        <script src="../../../js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
-        <script src="../../../js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
-        <!-- AdminLTE App -->
-        <script src="../../../js/AdminLTE/app.js" type="text/javascript"></script>
-        <!-- AdminLTE for demo purposes -->
-        <script src="../../../js/AdminLTE/demo.js" type="text/javascript"></script>
-        <!-- page script -->
+        <%@include file="../../../WEB-INF/jspf/linksfooter.jspf" %>
         <script type="text/javascript">
             $(function() {
                 $("#example1").dataTable();
