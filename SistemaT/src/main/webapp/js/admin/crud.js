@@ -8,3 +8,7 @@ function admin_QRY(path){
     window.location = path+"/UsuarioServlet?operation=QRY";
 }
 
+function curso_QRY(path){
+    alert(path);
+    window.location = path+"/CursoServlet?operation=QRY";
+}
