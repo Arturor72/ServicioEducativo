@@ -35,7 +35,7 @@
                                         <h3 class="box-title">Administradores</h3>
                                     </div>
                                     <div class="col-md-2 col-xs-8" style="top: 5px">
-                                        <button class="btn btn-primary"> <img src="../../../img/add3.png">  Administrador</button>      
+                                        <button class="btn btn-primary"> <img src="<%= request.getContextPath() %>/img/add3.png">  Administrador</button>      
                                     </div>
                                 </div><!-- /.box-header -->
                                 <div class="box-body table-responsive">
@@ -44,8 +44,8 @@
                                             <tr>
                                                 <th>Código</th>
                                                 <th>Nombre Admin</th>
-                                                <th class="mrc"> <a href=""><img src="../../../img/delete.png" /></a> </th>
-                                                <th class="mrc"> <a href=""><img src="../../../img/edit.png" /></a> </th>
+                                                <th class="mrc"> <a href=""><img src="<%= request.getContextPath() %>/img/delete.png" /></a> </th>
+                                                <th class="mrc"> <a href=""><img src="<%= request.getContextPath() %>/img/edit.png" /></a> </th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -70,15 +70,7 @@
 
 
 
-        <script src="../../../js/jquery.min.js"></script>
-        <script src="../../../js/bootstrap.min.js" type="text/javascript"></script>
-        <!-- DATA TABES SCRIPT -->
-        <script src="../../../js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
-        <script src="../../../js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
-        <!-- AdminLTE App -->
-        <script src="../../../js/AdminLTE/app.js" type="text/javascript"></script>
-        <!-- AdminLTE for demo purposes -->
-        <script src="../../../js/AdminLTE/demo.js" type="text/javascript"></script>
+        <%@include file="../../../WEB-INF/jspf/linksfooter.jspf" %>
         <!-- page script -->
         <script type="text/javascript">
             $(function() {
