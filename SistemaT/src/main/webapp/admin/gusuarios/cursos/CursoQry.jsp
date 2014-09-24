@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -33,7 +34,7 @@
                                         <h3 class="box-title">Cursos</h3>
                                     </div>
                                     <div class="col-md-2 col-xs-4" style="top: 5px">
-                                        <button class="btn btn-primary"><img src="../../../img/add3.png"> Curso</button>      
+                                        <button class="btn btn-primary"><img src="<%= request.getContextPath() %>/img/add3.png"> Curso</button>      
                                     </div>
                                 </div><!-- /.box-header -->
                                 <div class="box-body table-responsive">
@@ -42,42 +43,20 @@
                                             <tr>
                                                 <th>Código</th>
                                                 <th>Nombre </th>
-                                                <th class="mrc"> <a href=""><img src="../../../img/delete.png" /></a> </th>
-                                                <th class="mrc"> <a href=""><img src="../../../img/edit.png" /></a> </th>
+                                                <th class="mrc"> <a href=""><img src="<%= request.getContextPath() %>/img/delete.png" /></a> </th>
+                                                <th class="mrc"> <a href=""><img src="<%= request.getContextPath() %>/img/edit.png" /></a> </th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Calculo 1</td>
-                                                <td class="mrc"> <input type="checkbox"> </td>
-                                                <td class="mrc"> <input type="radio" name="ed"> </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Lenguaje</td>
-                                                <td class="mrc"> <input type="checkbox"> </td>
-                                                <td class="mrc"> <input type="radio" name="ed"> </td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Lenguaje de Programacion</td>
-                                                <td class="mrc"> <input type="checkbox"> </td>
-                                                <td class="mrc"> <input type="radio" name="ed"> </td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>Calculo 2</td>
-                                                <td class="mrc"> <input type="checkbox"> </td>
-                                                <td class="mrc"> <input type="radio" name="ed"> </td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>Calculo 3</td>
-                                                <td class="mrc"> <input type="checkbox"> </td>
-                                                <td class="mrc"> <input type="radio" name="ed"> </td>
-                                            </tr>
-
+                                            <c:forEach var="cu" items="${listcursos}">
+                                                <tr>
+                                                    <td>${cu.cur_cod}</td>
+                                                    <td>${cu.cur_nom}</td>
+                                                    <td class="mrc"> <input type="checkbox" name="DEL" value="${cu.cur_id}"> </td>
+                                                    <td class="mrc"> <input type="radio" name="UPD" value="${cu.cur_id}"> </td>
+                                                </tr>
+                                            </c:forEach>
+                                        </tbody>
                                     </table>
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
@@ -87,19 +66,7 @@
 
             </aside>
         </div>
-
-
-
-        <script src="../../../js/jquery.min.js"></script>
-        <script src="../../../js/bootstrap.min.js" type="text/javascript"></script>
-        <!-- DATA TABES SCRIPT -->
-        <script src="../../../js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
-        <script src="../../../js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
-        <!-- AdminLTE App -->
-        <script src="../../../js/AdminLTE/app.js" type="text/javascript"></script>
-        <!-- AdminLTE for demo purposes -->
-        <script src="../../../js/AdminLTE/demo.js" type="text/javascript"></script>
-        <!-- page script -->
+        <%@include file="../../../WEB-INF/jspf/linksfooter.jspf" %>
         <script type="text/javascript">
             $(function() {
                 $("#example1").dataTable();
