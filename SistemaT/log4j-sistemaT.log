@@ -92,3 +92,6 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 2014-09-21 20:40:25 INFO  StConnection:28 - + Init getConnection
 2014-09-21 20:40:25 INFO  StConnection:34 - Connection succesful !!!
 2014-09-21 20:40:25 INFO  StConnection:44 - - Finish getConnection
+2014-09-24 00:07:23 INFO  StConnection:28 - + Init getConnection
+2014-09-24 00:07:23 INFO  StConnection:34 - Connection succesful !!!
+2014-09-24 00:07:23 INFO  StConnection:44 - - Finish getConnection

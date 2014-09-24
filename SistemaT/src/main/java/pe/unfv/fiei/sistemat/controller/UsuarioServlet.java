@@ -35,6 +35,8 @@ public class UsuarioServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         String operation = request.getParameter("operation");
+        String tip_usr_id = request.getParameter("tip_usr_id");
+        Integer tip_usr_idx = Integer.valueOf(tip_usr_id);
         String message = null;
 
         String target = "/admin/gusuarios/admins/AdminQry.jsp";
@@ -49,11 +51,10 @@ public class UsuarioServlet extends HttpServlet {
                     message = "Sin acceso a la base de datos";
                 } else {
                     request.setAttribute("list", list);
-                    if (u.getTip_usr_id() == 1) {
+                    if (tip_usr_idx == 1) {
                         target = "/admin/gusuarios/admins/AdminQry.jsp";
-                    } else if (u.getTip_usr_id() == 2) {
+                    } else if (tip_usr_idx == 2) {
                         target = "/admin/gusuarios/tutores/TutorQry.jsp";
-
                     }
                 }
             } else if (operation.equalsIgnoreCase(OPERATION_INS)) {
