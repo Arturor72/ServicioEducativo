@@ -359,3 +359,34 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2014-09-18 18:55:32
+
+UPDATE dbservicio.tbl_usuario SET usr_pass= (AES_ENCRYPT('dad1', 'F1O2R3114')) where usr_id=1;
+UPDATE dbservicio.tbl_usuario SET usr_pass= (AES_ENCRYPT('mvc2', 'F1O2R3114')) where usr_id=2;
+UPDATE dbservicio.tbl_usuario SET usr_pass= (AES_ENCRYPT('lrr3', 'F1O2R3114')) where usr_id=3;
+UPDATE dbservicio.tbl_usuario SET usr_pass= (AES_ENCRYPT('aac4', 'F1O2R3114')) where usr_id=4;
+UPDATE dbservicio.tbl_usuario SET usr_pass= (AES_ENCRYPT('jcr5', 'F1O2R3114')) where usr_id=5;
+UPDATE dbservicio.tbl_usuario SET usr_pass= (AES_ENCRYPT('nps6', 'F1O2R3114')) where usr_id=6;
+UPDATE dbservicio.tbl_usuario SET usr_pass= (AES_ENCRYPT('emv7', 'F1O2R3114')) where usr_id=7;
+UPDATE dbservicio.tbl_usuario SET usr_pass= (AES_ENCRYPT('cmg8', 'F1O2R3114')) where usr_id=8;
+UPDATE dbservicio.tbl_usuario SET usr_pass= (AES_ENCRYPT('kha9', 'F1O2R3114')) where usr_id=9;
+UPDATE dbservicio.tbl_usuario SET usr_pass= (AES_ENCRYPT('dgp10', 'F1O2R3114')) where usr_id=10;
+UPDATE dbservicio.tbl_usuario SET usr_pass= (AES_ENCRYPT('ffb11', 'F1O2R3114')) where usr_id=11;
+UPDATE dbservicio.tbl_usuario SET usr_pass= (AES_ENCRYPT('car12', 'F1O2R3114')) where usr_id=12;
+UPDATE dbservicio.tbl_usuario SET usr_pass= (AES_ENCRYPT('ecr13', 'F1O2R3114')) where usr_id=13;
+UPDATE dbservicio.tbl_usuario SET usr_pass= (AES_ENCRYPT('jcm14', 'F1O2R3114')) where usr_id=14;
+UPDATE dbservicio.tbl_usuario SET usr_pass= (AES_ENCRYPT('vgc15', 'F1O2R3114')) where usr_id=15;
+UPDATE dbservicio.tbl_usuario SET usr_pass= (AES_ENCRYPT('rrt16', 'F1O2R3114')) where usr_id=16;
+UPDATE dbservicio.tbl_usuario SET usr_pass= (AES_ENCRYPT('rnm17', 'F1O2R3114')) where usr_id=17;
+UPDATE dbservicio.tbl_usuario SET usr_pass= (AES_ENCRYPT('pac18', 'F1O2R3114')) where usr_id=18;
+UPDATE dbservicio.tbl_usuario SET usr_pass= (AES_ENCRYPT('omt19', 'F1O2R3114')) where usr_id=19;
+UPDATE dbservicio.tbl_usuario SET usr_pass= (AES_ENCRYPT('lcg20', 'F1O2R3114')) where usr_id=20;
+UPDATE dbservicio.tbl_usuario SET usr_pass= (AES_ENCRYPT('auf21', 'F1O2R3114')) where usr_id=21;
+UPDATE dbservicio.tbl_usuario SET usr_pass= (AES_ENCRYPT('plb22', 'F1O2R3114')) where usr_id=22;
+UPDATE dbservicio.tbl_usuario SET usr_pass= (AES_ENCRYPT('rlc23', 'F1O2R3114')) where usr_id=23;
+UPDATE dbservicio.tbl_usuario SET usr_pass= (AES_ENCRYPT('jms24', 'F1O2R3114')) where usr_id=24;
+UPDATE dbservicio.tbl_usuario SET usr_pass= (AES_ENCRYPT('jrb25', 'F1O2R3114')) where usr_id=25;
+UPDATE dbservicio.tbl_usuario SET usr_pass= (AES_ENCRYPT('lcb26', 'F1O2R3114')) where usr_id=26;
+UPDATE dbservicio.tbl_usuario SET usr_pass= (AES_ENCRYPT('pcg27', 'F1O2R3114')) where usr_id=27;
+UPDATE dbservicio.tbl_usuario SET usr_pass= (AES_ENCRYPT('coz28', 'F1O2R3114')) where usr_id=28;
+UPDATE dbservicio.tbl_usuario SET usr_pass= (AES_ENCRYPT('mtc29', 'F1O2R3114')) where usr_id=29;
+UPDATE dbservicio.tbl_usuario SET usr_pass= (AES_ENCRYPT('fsg30', 'F1O2R3114')) where usr_id=30;
