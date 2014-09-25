@@ -23,7 +23,7 @@ import pe.unfv.fiei.sistemat.model.dto.Curso;
  */
 public class DaoCursoImpl implements DaoCurso {
 
-    private Logger logh4j = Logger.getLogger(DaoCursoImpl.class);
+    private Logger log4j = Logger.getLogger(DaoCursoImpl.class);
     private StConnection db;
 
     public DaoCursoImpl() {
@@ -32,7 +32,7 @@ public class DaoCursoImpl implements DaoCurso {
 
     @Override
     public List<Curso> cursoQry(Integer esp_id) {
-        logh4j.info("+init cursoQry");
+        log4j.info("+init cursoQry");
         List<Curso> listCursos = null;
         String sql = SistemTConstants.CURSO_SELECT;
 
@@ -54,18 +54,124 @@ public class DaoCursoImpl implements DaoCurso {
                 }
 
             } catch (SQLException e) {
-                logh4j.error(e.getMessage());
+                log4j.error(e.getMessage());
 
             } finally {
                 try {
                     cn.close();
                 } catch (SQLException e) {
-                    logh4j.error(e.getMessage());
+                    log4j.error(e.getMessage());
                 }
             }
         }
-        logh4j.info("-finish cursoQry");
+        log4j.info("-finish cursoQry");
         return listCursos;
+    }
+
+    @Override
+    public Curso getCurso(Integer cur_id, Integer esp_id) {
+        log4j.info("+init GetCurso");
+        Curso curso = null;
+        String sql = "";
+        Connection cn = db.getConnection();
+        if (cn != null) {
+            try {
+                PreparedStatement psmt = cn.prepareStatement(sql);
+                psmt.setInt(1, esp_id);
+                psmt.setInt(2, cur_id);
+                ResultSet rs = psmt.executeQuery();
+                if (rs.next()) {
+                    curso = new Curso();
+                    curso.setCur_id(rs.getInt(1));
+                    curso.setCur_cod(rs.getString(2));
+                    curso.setCur_nom(rs.getString(3));
+                    curso.setEsp_id(rs.getInt(4));
+                    curso.setCur_est(rs.getBoolean(5));
+                }
+            } catch (SQLException e) {
+                log4j.error(e.getMessage());
+            } finally {
+                try {
+                    cn.close();
+                } catch (SQLException e) {
+                    log4j.error(e.getMessage());
+                }
+            }
+        }
+        log4j.info("-finish GetCurso");
+        return curso;
+    }
+
+    @Override
+    public String cursoUpd(Curso curso) {
+        log4j.info("+init cursoUpd");
+        String sql = SistemTConstants.CURSO_UPDATE;
+        Connection cn = db.getConnection();
+        String result = null;
+        if (cn != null) {
+            try {
+                PreparedStatement psmt = cn.prepareStatement(sql);
+                psmt.setString(1, curso.getCur_cod());
+                psmt.setString(2, curso.getCur_nom());
+                psmt.setInt(3, curso.getEsp_id());
+                psmt.setBoolean(4, curso.isCur_est());
+                psmt.setInt(5, curso.getCur_id());
+                int r = psmt.executeUpdate();
+                if (r <= 0) {
+                    result = "No se actualizo";
+                    log4j.error(result);
+                }
+
+            } catch (SQLException e) {
+                log4j.error(e.getMessage());
+                result = "Error: " + e.getMessage();
+            } finally {
+                try {
+                    cn.close();
+                } catch (SQLException e) {
+                    log4j.error(e.getMessage());
+                    result = "Error: " + e.getMessage();
+
+                }
+            }
+        }
+        log4j.info("-finish cursoUpd");
+        return result;
+    }
+
+    @Override
+    public String cursoDelete(List<Integer> lst) {
+        log4j.info("+init cursoDelete");
+        String sql = "";
+        Connection cn = db.getConnection();
+        String result = null;
+        if (cn != null) {
+            try {
+                PreparedStatement psmt = cn.prepareStatement(sql);
+                for (Integer x : lst) {
+                    psmt.setInt(1, x);
+                    int r = psmt.executeUpdate();
+                    if (r == 0) {
+                        result = "No se actualizo" + x;
+                        log4j.error(result);
+                    }
+                }
+
+            } catch (SQLException e) {
+                log4j.error(e.getMessage());
+                result = "Error: " + e.getMessage();
+            } finally {
+                try {
+                    cn.close();
+                } catch (SQLException e) {
+                    log4j.error(e.getMessage());
+                    result = "Error: " + e.getMessage();
+
+                }
+            }
+        }
+        log4j.info("-finish cursoDelete");
+        return result;
     }
 
 }
