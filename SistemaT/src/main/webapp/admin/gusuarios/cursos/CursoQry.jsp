@@ -33,9 +33,44 @@
                                     <div class="col-md-10 col-xs-4">
                                         <h3 class="box-title">Cursos</h3>
                                     </div>
-                                    <div class="col-md-2 col-xs-4" style="top: 5px">
-                                        <button class="btn btn-primary"><img src="<%= request.getContextPath() %>/img/add3.png"> Curso</button>      
+
+
+                                    <div class="col-md-2 col-xs-8" >
+                                        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"><img src="<%= request.getContextPath()%>/img/add3.png"/> Curso</button>
                                     </div>
+
+                                    <!--inicio-->
+                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                                    <h4 class="modal-title" id="myModalLabel">Registro Curso</h4>
+                                                </div>
+                                                <form role="form">
+                                                    <div class="modal-body">
+
+                                                        <div class="box-body">
+                                                            <div class="form-group">
+                                                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Código">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Nombre">
+                                                            </div>
+                                                        </div><!-- /.box-body -->
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                                        <button type="button" class="btn btn-primary">Guardar</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--fin-->
+
                                 </div><!-- /.box-header -->
                                 <div class="box-body table-responsive">
                                     <table id="example1" class="table table-bordered table-striped">
@@ -43,8 +78,8 @@
                                             <tr>
                                                 <th>Código</th>
                                                 <th>Nombre </th>
-                                                <th class="mrc"> <a href=""><img src="<%= request.getContextPath() %>/img/delete.png" /></a> </th>
-                                                <th class="mrc"> <a href=""><img src="<%= request.getContextPath() %>/img/edit.png" /></a> </th>
+                                                <th class="mrc"> <a href=""><img src="<%= request.getContextPath()%>/img/delete.png" /></a> </th>
+                                                <th class="mrc"> <a href=""><img src="<%= request.getContextPath()%>/img/edit.png" /></a> </th>
                                             </tr>
                                         </thead>
                                         <tbody>
