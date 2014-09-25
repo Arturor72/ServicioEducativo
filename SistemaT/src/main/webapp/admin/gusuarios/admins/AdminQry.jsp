@@ -34,9 +34,69 @@
                                     <div class="col-md-10 col-xs-6">
                                         <h3 class="box-title">Administradores</h3>
                                     </div>
-                                    <div class="col-md-2 col-xs-8" style="top: 5px">
-                                        <button class="btn btn-primary"> <img src="<%= request.getContextPath() %>/img/add3.png">  Administrador</button>      
+
+                                    <div class="col-md-2 col-xs-8" >
+                                        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"><img src="<%= request.getContextPath()%>/img/add3.png"/> Administrador</button>
                                     </div>
+
+                                    <!--inicio-->
+                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                                    <h4 class="modal-title" id="myModalLabel">Registro Administrador</h4>
+                                                </div>
+                                                <form role="form">
+                                                    <div class="modal-body">
+
+                                                        <div class="box-body">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Código">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nombre">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Apellido Paterno">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Apellido Materno">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="DNI">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Usuario">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="password" class="form-control" id="exampleInputEmail1" placeholder="Contraseña">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="password" class="form-control" id="exampleInputEmail1" placeholder="Repita Contraseña">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="e-mail">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="phone" class="form-control" id="exampleInputEmail1" placeholder="celular">
+                                                            </div>
+                                                        </div><!-- /.box-body -->
+
+
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                                        <button type="button" class="btn btn-primary">Guardar</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--fin-->
                                 </div><!-- /.box-header -->
                                 <div class="box-body table-responsive">
                                     <table id="example1" class="table table-bordered table-striped">
@@ -44,8 +104,8 @@
                                             <tr>
                                                 <th>Código</th>
                                                 <th>Nombre Admin</th>
-                                                <th class="mrc"> <a href=""><img src="<%= request.getContextPath() %>/img/delete.png" /></a> </th>
-                                                <th class="mrc"> <a href=""><img src="<%= request.getContextPath() %>/img/edit.png" /></a> </th>
+                                                <th class="mrc"> <a href=""><img src="<%= request.getContextPath()%>/img/delete.png" /></a> </th>
+                                                <th class="mrc"> <a href=""><img src="<%= request.getContextPath()%>/img/edit.png" /></a> </th>
                                             </tr>
                                         </thead>
                                         <tbody>
