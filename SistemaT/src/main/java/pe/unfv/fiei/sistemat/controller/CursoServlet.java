@@ -54,6 +54,18 @@ public class CursoServlet extends HttpServlet {
                     request.setAttribute("listcursos", list);
                 }
             } else if (operation.equalsIgnoreCase(OPERATION_INS)) {
+                String codigo = request.getParameter("codigo");
+                String nombre = request.getParameter("nombre");
+                if (codigo != null) {
+                    if (nombre != null) {
+                        
+                    } else {
+
+                    }
+                } else {
+
+                }
+
             } else if (operation.equalsIgnoreCase(OPERATION_GET)) {
             } else if (operation.equalsIgnoreCase(OPERATION_DEL)) {
             } else if (operation.equalsIgnoreCase(OPERATION_UPD)) {
