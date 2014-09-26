@@ -35,10 +35,10 @@
                         <input type="hidden" name="operation" value="login"/>
                         <div class="body bg-gray">
                             <div class="form-group">
-                                <input type="text" name="user" id="user" class="form-control" placeholder="Usuario"/>
+                                <input type="text" name="user" id="user" class="form-control" placeholder="Usuario" required="true"/>
                             </div>
                             <div class="form-group">
-                                <input type="password" name="password" id="password" class="form-control" placeholder="Password"/>
+                                <input type="password" name="password" id="password" class="form-control" placeholder="Password" required="true"/>
                             </div>          
                         </div>
                         <div class="footer">
