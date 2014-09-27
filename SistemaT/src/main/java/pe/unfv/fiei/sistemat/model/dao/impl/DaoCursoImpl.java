@@ -139,6 +139,43 @@ public class DaoCursoImpl implements DaoCurso {
         return result;
     }
 
+    
+     @Override
+    public String cursoIns(Curso curso) {
+        log4j.info("+init cursoIns");
+        String sql = SistemTConstants.CURSO_INS;
+        Connection cn = db.getConnection();
+        String result = null;
+        if (cn != null) {
+            try {
+                PreparedStatement psmt = cn.prepareStatement(sql);
+                psmt.setString(1, curso.getCur_cod());
+                psmt.setString(2, curso.getCur_nom());
+                psmt.setInt(3, curso.getEsp_id());
+                psmt.setBoolean(4, curso.isCur_est());
+                int r = psmt.executeUpdate();
+                if (r <= 0) {
+                    result = "No se ingreso";
+                    log4j.error(result);
+                }
+
+            } catch (SQLException e) {
+                log4j.error(e.getMessage());
+                result = "Error: " + e.getMessage();
+            } finally {
+                try {
+                    cn.close();
+                } catch (SQLException e) {
+                    log4j.error(e.getMessage());
+                    result = "Error: " + e.getMessage();
+
+                }
+            }
+        }
+        log4j.info("-finish cursoIns");
+        return result;
+    }
+    
     @Override
     public String cursoDelete(List<Integer> lst) {
         log4j.info("+init cursoDelete");
