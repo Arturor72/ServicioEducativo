@@ -18,6 +18,8 @@ public interface DaoCurso {
 
     public Curso getCurso(Integer cur_id,Integer esp_id);
     
+    public String cursoIns(Curso curso);
+    
     public String cursoUpd(Curso curso);
     
     public String cursoDelete(List<Integer> lst);
