@@ -199,8 +199,8 @@ DROP TABLE IF EXISTS `tbl_servicio_educativo`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_servicio_educativo` (
   `ser_edu_id` int(11) NOT NULL AUTO_INCREMENT,
-  `ser_edu_fec` varchar(45) NOT NULL,
-  `ser_edu_hin` varchar(45) NOT NULL,
+  `ser_edu_fec` date NOT NULL,
+  `ser_edu_hin` time NOT NULL,
   `cur_id` int(11) NOT NULL,
   `amb_id` int(11) NOT NULL,
   `sed_id` int(11) NOT NULL,
