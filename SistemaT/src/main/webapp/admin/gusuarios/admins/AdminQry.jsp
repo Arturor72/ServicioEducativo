@@ -48,39 +48,49 @@
                                                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                                                     <h4 class="modal-title" id="myModalLabel">Registro Administrador</h4>
                                                 </div>
-                                                <form role="form">
+                                                <form role="form" data-toggle="validator">
                                                     <div class="modal-body">
 
                                                         <div class="box-body">
                                                             <div class="form-group">
-                                                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Código">
+                                                                <input type="text" class="form-control" id="codigo" data-error="Codigo no valido" placeholder="Código" required>
+                                                                <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nombre">
+                                                                <input type="text" class="form-control" id="nombre" placeholder="Nombre" required>
+                                                                <div class="help-block with-errors">Solo letras</div>
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Apellido Paterno">
+                                                                <input type="text" class="form-control" id="apellidoPat" placeholder="Apellido Paterno" required>
+                                                                <div class="help-block with-errors">Solo letras</div>
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Apellido Materno">
+                                                                <input type="text" class="form-control" id="apellidoMat" placeholder="Apellido Materno" required>
+                                                                <div class="help-block with-errors">Solo letras</div>
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="DNI">
+                                                                <input type="text" class="form-control" id="dni" placeholder="DNI" required>
+                                                                <div class="help-block with-errors">Solo numeros</div>
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Usuario">
+                                                                <input type="text" class="form-control" id="usuario" placeholder="Usuario" required>
+                                                                <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="password" class="form-control" id="exampleInputEmail1" placeholder="Contraseña">
+                                                                <input type="password" data-minlength="6"  class="form-control" id="password" placeholder="Contraseña" required>
+                                                                <div class="help-block with-errors">Minimo 6 caracteres</div>
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="password" class="form-control" id="exampleInputEmail1" placeholder="Repita Contraseña">
+                                                                <input type="password" class="form-control" id="passwordConf" data-match="#password" data-match-error="Ups,deben coincidir" placeholder="Repita Contraseña" required>
+                                                                <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="e-mail">
+                                                                <input type="email" class="form-control" id="email" placeholder="e-mail" required>
+                                                                <div class="help-block with-errors">Formato de email</div>
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="phone" class="form-control" id="exampleInputEmail1" placeholder="celular">
+                                                                <input type="text" class="form-control" id="celular" placeholder="celular" required>
+                                                                <div class="help-block with-errors">Solo numeros</div>
                                                             </div>
                                                         </div><!-- /.box-body -->
 
