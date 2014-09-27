@@ -20,6 +20,7 @@ import pe.unfv.fiei.sistemat.model.dao.impl.DaoCursoImpl;
 import pe.unfv.fiei.sistemat.model.dao.impl.DaoUsuarioImpl;
 import pe.unfv.fiei.sistemat.model.dto.Curso;
 import pe.unfv.fiei.sistemat.model.dto.Usuario;
+import pe.unfv.fiei.sistemat.util.Util;
 
 /**
  *
@@ -58,17 +59,71 @@ public class CursoServlet extends HttpServlet {
                 String nombre = request.getParameter("nombre");
                 if (codigo != null) {
                     if (nombre != null) {
-                        
-                    } else {
+                        Curso curso = new Curso();
+                        curso.setCur_cod(codigo);
+                        curso.setCur_nom(nombre);
+                        curso.setEsp_id(u.getEsp_id());
+                        curso.setCur_est(true);
+                        if (validaCurso(curso).equals("")) {
+                            String result = daoCurso.cursoIns(curso);
+                            if (result == null) {
+                                message = "Se insertó correctamente";
+                                target = "/admin/gusuarios/cursos/CursoQry.jsp";
+                                request.setAttribute("mensaje", message);
+                            }
+                        }
 
+                    } else {
+                        message = "nombre invalido o vacio";
                     }
                 } else {
-
+                    message = "código invalido o vacio";
                 }
 
             } else if (operation.equalsIgnoreCase(OPERATION_GET)) {
+                String cursoid = request.getParameter("cursoid");
+                if (cursoid != null) {
+                    try {
+                        Curso curso = daoCurso.getCurso(Integer.parseInt(cursoid), u.getEsp_id());
+                        request.setAttribute("cursoget", curso);
+                    } catch (NumberFormatException e) {
+                        message = "Formato de id Invalido";
+                    }
+
+                } else {
+                    message = "código invalido o vacio";
+                }
             } else if (operation.equalsIgnoreCase(OPERATION_DEL)) {
+                String ids = request.getParameter("ids");
+                List<Integer> list = Util.toids(ids);
+                if (list != null) {
+                    message = daoCurso.cursoDelete(list);
+                }
             } else if (operation.equalsIgnoreCase(OPERATION_UPD)) {
+                String codigo = request.getParameter("codigo");
+                String nombre = request.getParameter("nombre");
+                if (codigo != null) {
+                    if (nombre != null) {
+                        Curso curso = new Curso();
+                        curso.setCur_cod(codigo);
+                        curso.setCur_nom(nombre);
+                        curso.setEsp_id(u.getEsp_id());
+                        curso.setCur_est(true);
+                        if (validaCurso(curso).equals("")) {
+                            String result = daoCurso.cursoUpd(curso);
+                            if (result == null) {
+                                message = "Se actualizó correctamente";
+                                target = "/admin/gusuarios/cursos/CursoQry.jsp";
+                                request.setAttribute("mensaje", message);
+                            }
+                        }
+
+                    } else {
+                        message = "nombre invalido o vacio";
+                    }
+                } else {
+                    message = "código invalido o vacio";
+                }
             } else {
                 message = "Solicitud no reconocida.";
             }
@@ -79,6 +134,20 @@ public class CursoServlet extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher(target);
             dispatcher.forward(request, response);
         }
+    }
+
+    public String validaCurso(Curso curso) {
+        String result = "";
+        if ((Util.validaLetrasyNumeros(curso.getCur_cod()) != null)) {
+            result += " * Codigo de curso inválido";
+        }
+        if ((Util.validaLetras(curso.getCur_nom()) != null)) {
+            result += " * Nombre de curso inválido";
+        }
+        if ((Util.validaNum(String.valueOf(curso.getEsp_id())) != null)) {
+            result += " * Id de especialidad inválido";
+        }
+        return result;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
