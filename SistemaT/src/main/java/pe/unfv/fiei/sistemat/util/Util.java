@@ -28,7 +28,7 @@ public class Util {
         String result = null;
         for (int i = 0; i < cadena.length(); i++) {
             char t = cadena.charAt(i);
-            if (!((t >= 97 && t <= 122) || (t >= 65 && t <= 90) || (t == 209 || t == 241) || (t == 225) || (t == 233) || (t == 237) || (t == 243) || (t == 250))) {
+            if (!((t >= 97 && t <= 122) || (t >= 65 && t <= 90) || (t == 209 || t == 241) || (t == 225) || (t == 233) || (t == 237) || (t == 243) || (t == 250) || (t==' '))) {
                 result = "error";
             }
         }
