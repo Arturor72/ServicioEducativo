@@ -31,14 +31,23 @@
                         <img src="img/logo3.png" class="img-responsive" style="margin-left:auto;margin-right:auto">
                         SISED
                     </div>
-                    <form action="UsuarioServlet" method="post">
+                    <form data-toggle="validator" role="form" action="UsuarioServlet" method="post">
                         <input type="hidden" name="operation" value="login"/>
                         <div class="body bg-gray">
                             <div class="form-group">
-                                <input type="text" name="user" id="user" class="form-control" placeholder="Usuario"/>
+                                <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+                                <input type="text" name="user" pattern="^[a-zA-Z0-9]*$" id="user" class="form-control" placeholder="Usuario" data-error="El usuario solo debe contener caracteres alfanumericos y no espacios" required="true"/>
+                                </div>
+                                <div class="help-block with-errors"></div>
+                                
                             </div>
                             <div class="form-group">
-                                <input type="password" name="password" id="password" class="form-control" placeholder="Password"/>
+                                <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-fw fa-unlock-alt"></i></span>
+                                <input type="password" name="password" id="password" class="form-control" placeholder="Password" data-error="" required="true"/>
+                                </div>
+                                <div class="help-block with-errors"></div>
                             </div>          
                         </div>
                         <div class="footer">
