@@ -105,20 +105,20 @@
 
 
                             <div class="form-group">
-                                <input type="text" pattern="^[a-zA-Z0-9]*$" class="form-control" id="codigo" data-error="Solo debe contener numeros y letras, no espacios" placeholder="Código">
+                                <input type="text" pattern="^[a-zA-Z0-9]*$" class="form-control" id="codigo" data-error="Solo debe contener numeros y letras, no espacios" placeholder="Código" required="true">
                                 <div class="help-block with-errors">Solo letras y numeros</div>
 
 
                             </div>
                             <div class="form-group">
-                                <input type="text" pattern="^[a-zA-Z\s]*$" class="form-control" id="nombre" data-error="Solo debe contener numeros y letras" placeholder="Nombre">
+                                <input type="text" pattern="^[a-zA-Z\s]*$" class="form-control" id="nombre" data-error="Solo debe contener numeros y letras" placeholder="Nombre" required="true">
                                 <div class="help-block with-errors">Solo letras y numeros</div>
                             </div>
 
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <button type="button" class="btn btn-primary" id="guarda" onclick="guardarCurso()" >Guardar</button>
                         </div>
                     </form> <!-- /.form -->
                 </div><!-- /.modal content -->
