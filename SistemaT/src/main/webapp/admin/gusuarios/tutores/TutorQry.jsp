@@ -39,66 +39,7 @@
                                         <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"><img src="<%= request.getContextPath()%>/img/add3.png"/> Tutor</button>
                                     </div>
 
-                                    <!--inicio-->
-                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                                    <h4 class="modal-title" id="myModalLabel">Registro Tutor</h4>
-                                                </div>
-                                                <form role="form">
-                                                    <div class="modal-body">
-
-
-                                                        <div class="form-group">
-                                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Código">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Nombre">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Apellido Paterno">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Apellido Materno">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="DNI">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Usuario">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Contraseña">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Repita Contraseña">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="e-mail">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="celular">
-                                                        </div>
-                                                    </div><!-- /.box-body -->
-
-
-
-                                            
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                                <button type="button" class="btn btn-primary">Guardar</button>
-                                            </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!--fin-->
-
-
+                                    
 
                             </div><!-- /.box-header -->
                             <div class="box-body table-responsive">
@@ -147,8 +88,8 @@
                                 </table>
                             </div><!-- /.box-body -->
                         </div><!-- /.box -->
-                    </div>
-                    </div>
+                    </div><!-- /.col -->
+                    </div><!-- /.row -->
                 </section>
 
             </aside>
@@ -172,5 +113,100 @@
         </script>
 
 
+        
+        
+       
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+            <div class="modal-dialog modal-lg" style="width:60%;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+
+                        <h3 class="modal-title" id="myModalLabel">Registro Tutor</h3>
+                    </div><!-- /.model-header -->
+                    <form role="form" data-toggle="validator">
+                        <div class="modal-body">
+
+
+                            <div class="row">
+                                <div class="col-md-6 col-xs-12">
+                                    <fieldset>
+                                        <legend><h4>Datos Personales</h4></legend>
+                                        <div class="form-group">
+                                            <input type="text" pattern="^[a-zA-ZñÑ\s]*$" class="form-control" id="nombre" placeholder="Nombre" required>
+                                            <div class="help-block with-errors">Solo letras</div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" pattern="^[a-zA-ZñÑ\s]*$" class="form-control" id="apellidoPat" placeholder="Apellido Paterno" required>
+                                            <div class="help-block with-errors">Solo letras</div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" pattern="^[a-zA-ZñÑ\s]*$" class="form-control" id="apellidoMat" placeholder="Apellido Materno" required>
+                                            <div class="help-block with-errors">Solo letras</div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="text" pattern="^[0-9]*$" maxlength="8" class="form-control" id="dni" placeholder="DNI" required>
+                                            <div class="help-block with-errors">Solo numeros</div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" id="email" placeholder="e-mail" required>
+                                            <div class="help-block with-errors">Formato de email</div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" pattern="^[0-9]*$" maxlength="9" class="form-control" id="celular" placeholder="celular" required>
+                                            <div class="help-block with-errors">Solo numeros</div>
+                                        </div>
+
+
+                                    </fieldset> <!-- /.fieldset -->
+                                </div><!-- /.col -->
+                                <div class="col-md-6 col-xs-12">
+                                    <fieldset>
+                                        <legend><h4>Datos de Usuario</h4></legend>
+
+                                        <div class="form-group">
+                                            <input type="text" pattern="^[a-zA-Z0-9]*$"class="form-control" id="codigo" data-error="Codigo no valido" maxlength="10" placeholder="Código" data-error="" required>
+                                            <div class="help-block with-errors">Solo letras y numeros</div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <input type="text" pattern="^[a-zA-Z0-9]*$" class="form-control" id="usuario" placeholder="Usuario" required>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password"   class="form-control" id="password" placeholder="Contraseña" required>
+                                            <div class="help-block with-errors">No estan permitidos caracteres especiales</div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" id="passwordConf" data-match="#password" data-match-error="Upss,deben coincidir" placeholder="Repita Contraseña" required>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+
+                                    </fieldset><!-- /.fieldset -->
+                                </div><!-- /.col -->
+                            </div><!-- /.row -->
+
+                        </div><!-- /.modal-body -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </div><!-- /.modal-footer -->
+
+
+                    </form><!-- /.form -->
+                </div><!-- /.model-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <!--fin-->
+
+        
+        
+        
+        
+        
     </body>
 </html>
