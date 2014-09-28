@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
+import pe.unfv.fiei.sistemat.model.dao.DaoEspecialidad;
 import pe.unfv.fiei.sistemat.model.dao.DaoUsuario;
+import pe.unfv.fiei.sistemat.model.dao.impl.DaoEspecialidadImpl;
 import pe.unfv.fiei.sistemat.model.dao.impl.DaoUsuarioImpl;
 import pe.unfv.fiei.sistemat.model.dto.Usuario;
 
@@ -31,6 +33,7 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         /* Here declare your DAO object*/
         DaoUsuario daoUsuario = new DaoUsuarioImpl();
+        DaoEspecialidad daoEspecialidad = new DaoEspecialidadImpl();
         /* Here declare your DAO object*/
         String operation = request.getParameter("operation");
         String message = null;
@@ -54,6 +57,7 @@ public class LoginServlet extends HttpServlet {
                             message2 = "tutor";
                         }
                         request.getSession().setAttribute("usuario", usuario);
+                        request.getSession().setAttribute("especialidad", daoEspecialidad.getEspecialidad(usuario.getEsp_id()));
 
                     } else {
                         message = "Usuario y/o Contraseña incorrectos\n";
