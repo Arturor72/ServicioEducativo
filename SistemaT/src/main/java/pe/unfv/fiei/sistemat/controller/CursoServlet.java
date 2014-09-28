@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
+import pe.unfv.fiei.sistemat.constants.SistemTConstants;
 import pe.unfv.fiei.sistemat.model.dao.DaoCurso;
 import pe.unfv.fiei.sistemat.model.dao.DaoUsuario;
 import pe.unfv.fiei.sistemat.model.dao.impl.DaoCursoImpl;
@@ -53,6 +54,7 @@ public class CursoServlet extends HttpServlet {
                     message = "Sin acceso a la base de datos";
                 } else {
                     request.setAttribute("listcursos", list);
+                    target = "/admin/gusuarios/cursos/CursoQry.jsp";
                 }
             } else if (operation.equalsIgnoreCase(OPERATION_INS)) {
                 String codigo = request.getParameter("codigo");
@@ -67,10 +69,13 @@ public class CursoServlet extends HttpServlet {
                         if (validaCurso(curso).equals("")) {
                             String result = daoCurso.cursoIns(curso);
                             if (result == null) {
-                                message = "Se insertó correctamente";
+
                                 target = "/admin/gusuarios/cursos/CursoQry.jsp";
                                 request.setAttribute("mensaje", message);
+                            } else {
+                                message = "No se insertó correctamente";
                             }
+
                         }
 
                     } else {
@@ -98,6 +103,12 @@ public class CursoServlet extends HttpServlet {
                 List<Integer> list = Util.toids(ids);
                 if (list != null) {
                     message = daoCurso.cursoDelete(list);
+                    if (message == null) {
+                        target = "/admin/gusuarios/cursos/CursoQry.jsp";
+                    } else {
+                        message = "No se elimino correctamente";
+                    }
+
                 }
             } else if (operation.equalsIgnoreCase(OPERATION_UPD)) {
                 String codigo = request.getParameter("codigo");
@@ -112,9 +123,10 @@ public class CursoServlet extends HttpServlet {
                         if (validaCurso(curso).equals("")) {
                             String result = daoCurso.cursoUpd(curso);
                             if (result == null) {
-                                message = "Se actualizó correctamente";
                                 target = "/admin/gusuarios/cursos/CursoQry.jsp";
                                 request.setAttribute("mensaje", message);
+                            } else {
+                                message = "No se actualizó correctamente";
                             }
                         }
 
@@ -127,12 +139,21 @@ public class CursoServlet extends HttpServlet {
             } else {
                 message = "Solicitud no reconocida.";
             }
+            response.setContentType("text/html;charset=UTF-8");
+            PrintWriter out = response.getWriter();
             if (message != null) {
                 request.setAttribute("msg", message);
-                target = "mensaje.jsp";
+                out.print("error");
+                out.close();
+            } else if (operation.equalsIgnoreCase(SistemTConstants.CURSO_INS)) {
+                target = "CursoQry";
+                out.print(target);
+                out.close();
+            } else {
+                RequestDispatcher dispatcher = request.getRequestDispatcher(target);
+                dispatcher.forward(request, response);
             }
-            RequestDispatcher dispatcher = request.getRequestDispatcher(target);
-            dispatcher.forward(request, response);
+
         }
     }
 
