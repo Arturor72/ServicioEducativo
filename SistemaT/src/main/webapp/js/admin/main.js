@@ -15,4 +15,31 @@ function curso_QRY(path) {
     window.location = path + "/CursoServlet?operation=QRY";
 }
 
+function guardarCurso() {
 
+    var codigo = $("#codigo").val();
+    var nombre = $("#nombre").val();
+//        var datos=$(this).serializeArray();
+//        datos=[
+//            {name:"codigo", value:codigo},
+//            {name:"nombre", value:nombre}
+//        ];
+
+    $.ajax({
+        url: '/SistemaT/CursoServlet',
+        type: 'post',
+        data: {
+            operation: 'INS',
+            codigo: codigo,
+            nombre: nombre
+        }, success: function(data) {
+            alert(data);
+            if (data === 'error') {
+                alert(data)
+            }else{
+                window.location = "/SistemaT/CursoServlet?operation=QRY";
+            }
+        }
+    });
+
+}
