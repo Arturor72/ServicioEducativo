@@ -12,6 +12,11 @@ public class SistemTConstants {
         public static final String SISTEMAT_DRIVER ="com.mysql.jdbc.Driver";
         public static final String SISTEMAT_USER = "root";
         public static final String SISTEMAT_PASSWORD = "root";
+        /* Admin and Tutor Type Constants */
+        public static final Integer TYPE_ADMIN = 1;
+        public static final Integer TYPE_TUTOR = 2;
+        
+                
         
         /* LOGIN Constants */        
         public static final String LOGIN_SELECT = "SELECT usr_id, usr_cod, tip_usr_id, usr_nom, usr_apat, usr_amat, usr_dni, usr_gen, usr_cel, usr_mail, usr_user, AES_DECRYPT(usr_pass, 'F1O2R3114'), usr_est, esp_id FROM tbl_usuario WHERE (usr_user=?) and (AES_DECRYPT(usr_pass,'F1O2R3114') = ?)";
@@ -24,5 +29,10 @@ public class SistemTConstants {
         public static final String CURSO_DELETE = "UPDATE tbl_curso SET cur_est=FALSE WHERE cur_id = ?";    
         public static final String CURSO_GET = "SELECT cur_id, cur_cod, cur_nom, esp_id, cur_est FROM tbl_curso WHERE esp_id = ? AND cur_id=?";    
         public static final String CURSO_INS = "INSERT INTO tbl_curso (cur_id, cur_cod, cur_nom, esp_id, cur_est) VALUES (DEFAULT, ?, ?, ?, ?)";    
+        
+        /* ESPECIALIDAD Constants */        
+        public static final String ESPECIALIDAD_GET = "SELECT esp_id, esp_cod, esp_nom FROM tbl_especialidad WHERE esp_id = ?";    
+        
+        
         
 }
