@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@include file="../../../WEB-INF/jspf/headerLogin.jspf" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -85,7 +86,7 @@
                 });
             });
         </script>
-
+        <%@include file="../../../WEB-INF/jspf/footerLogin.jspf" %>
 
 
 
@@ -102,18 +103,18 @@
                     <form role="form" data-toggle="validator">
                         <div class="modal-body">
 
-                            
-                                <div class="form-group">
-                                    <input type="text" pattern="^[a-zA-Z0-9]*$" class="form-control" id="codigo" data-error="Solo debe contener numeros y letras, no espacios" placeholder="Código">
-                                    <div class="help-block with-errors">Solo letras y numeros</div>
-                                    
-                                            
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" pattern="^[a-zA-Z\s]*$" class="form-control" id="nombre" data-error="Solo debe contener numeros y letras" placeholder="Nombre">
-                                    <div class="help-block with-errors">Solo letras y numeros</div>
-                                </div>
-                            
+
+                            <div class="form-group">
+                                <input type="text" pattern="^[a-zA-Z0-9]*$" class="form-control" id="codigo" data-error="Solo debe contener numeros y letras, no espacios" placeholder="Código">
+                                <div class="help-block with-errors">Solo letras y numeros</div>
+
+
+                            </div>
+                            <div class="form-group">
+                                <input type="text" pattern="^[a-zA-Z\s]*$" class="form-control" id="nombre" data-error="Solo debe contener numeros y letras" placeholder="Nombre">
+                                <div class="help-block with-errors">Solo letras y numeros</div>
+                            </div>
+
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
