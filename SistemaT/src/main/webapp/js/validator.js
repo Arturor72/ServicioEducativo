@@ -161,7 +161,7 @@ this.validate()
 if (this.isIncomplete() || this.hasErrors()) e.preventDefault()
 }
 Validator.prototype.toggleSubmit = function () {
-var $btn = this.$element.find('input[type="submit"], button[type="submit"]')
+var $btn = this.$element.find('input[type="submit"], button[type="submit"],button[id="guarda"]')
 $btn.toggleClass('disabled', this.isIncomplete() || this.hasErrors())
 .css({'pointer-events': 'all', 'cursor': 'pointer'})
 }
