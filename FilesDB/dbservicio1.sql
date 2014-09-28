@@ -268,6 +268,7 @@ DROP TABLE IF EXISTS `tbl_tipo_servicio`;
 CREATE TABLE `tbl_tipo_servicio` (
   `tip_serv_id` int(11) NOT NULL AUTO_INCREMENT,
   `tip_serv_den` varchar(15) NOT NULL,
+  `tip_serv_durac` int NOT NULL,
   PRIMARY KEY (`tip_serv_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -278,7 +279,7 @@ CREATE TABLE `tbl_tipo_servicio` (
 
 LOCK TABLES `tbl_tipo_servicio` WRITE;
 /*!40000 ALTER TABLE `tbl_tipo_servicio` DISABLE KEYS */;
-INSERT INTO `tbl_tipo_servicio` VALUES (1,'Taller'),(2,'Tutoria');
+INSERT INTO `tbl_tipo_servicio` VALUES (1,'Taller',2),(2,'Tutoria',1);
 /*!40000 ALTER TABLE `tbl_tipo_servicio` ENABLE KEYS */;
 UNLOCK TABLES;
 
