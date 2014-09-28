@@ -1,5 +1,12 @@
 <%-- any content can be specified here e.g.: --%>
+<%@page import="pe.unfv.fiei.sistemat.model.dto.Especialidad"%>
+<%@page import="pe.unfv.fiei.sistemat.model.dto.Usuario"%>
 <%@ page pageEncoding="UTF-8" %>
+<% 
+    Usuario user =(Usuario)request.getSession().getAttribute("usuario"); 
+    Especialidad esp =(Especialidad)request.getSession().getAttribute("especialidad"); 
+
+%>
 <header class="header">
     <a href="indexA.jsp" class="logo">
         SISED 
@@ -16,13 +23,13 @@
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="glyphicon glyphicon-user"></i>
-                        <span>[NOMBRE] <i class="caret"></i></span>
+                        <span><%= user.getUsr_nom() %> <i class="caret"></i></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li class="user-header bg-light-blue">
                             <p>
-                                [NOMBRE] - [FUNCION]
-                                <small>[ESPECIALIDAD]</small>
+                                <%= user.getUsr_nom() %>
+                                <small><%= esp.getEsp_nom() %></small>
                             </p>
                             <br><br>
                             <a onclick="logout('<%= request.getContextPath()%>')" class="btn btn-default btn-flat">Desconectar</a>

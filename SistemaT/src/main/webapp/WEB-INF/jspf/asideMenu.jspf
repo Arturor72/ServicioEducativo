@@ -6,7 +6,7 @@
             <div class="pull-left image">
             </div>
             <div class="pull-left info">
-                <p>[NOMBRE ADMIN]</p>
+                <p><%= user.getUsr_nom()  + " "+user.getUsr_apat()%></p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Conectado(a)</a>
             </div>
         </div>
