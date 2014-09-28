@@ -9,3 +9,4 @@
 <script src="<%= request.getContextPath()%>/js/AdminLTE/app.js" type="text/javascript"></script>
 <script src="<%= request.getContextPath()%>/js/AdminLTE/demo.js" type="text/javascript"></script>
 <script src="<%= request.getContextPath()%>/js/jstutor/main.js" type="text/javascript"></script>
+<script src="<%= request.getContextPath()%>/js/admin/main.js"></script>
