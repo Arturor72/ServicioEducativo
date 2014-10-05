@@ -37,7 +37,7 @@
                                     </div>
 
                                     <div class="col-md-2 col-xs-8" >
-                                        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"><img src="<%= request.getContextPath()%>/img/add3.png"/> Administrador</button>
+                                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal"><img src="<%= request.getContextPath()%>/img/add3.png"/> Administrador</button>
                                     </div>
 
                                 </div><!-- /.box-header -->
@@ -60,7 +60,9 @@
                                                     <td>${a.usr_cod}</td>
                                                     <td>${a.usr_nom} ${a.usr_apat} ${a.usr_amat}</td>
                                                     <td class="mrc"> <input type="checkbox" name="DEL" value="${a.usr_id}"> </td>
-                                                    <td class="mrc"> <input type="radio" name="UPD" value="${a.usr_id}"> </td>
+                                                    <td class="mrc"> <a href=""><img data-toggle="modal" data-target="#myModal" src="<%= request.getContextPath()%>/img/edit.png" /></a> </td>
+                                                    <!--<td class="mrc"> <input type="radio" name="UPD" value="${cu.cur_id}"> </td>-->
+                                                  
                                                 </tr>
                                             </c:forEach>
                                         </tbody>
@@ -194,7 +196,7 @@
 
                         </div><!-- /.modal-body -->
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                             <button type="submit" class="btn btn-primary">Guardar</button>
                         </div><!-- /.modal-footer -->
 
