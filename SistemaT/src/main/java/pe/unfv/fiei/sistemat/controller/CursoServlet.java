@@ -46,6 +46,7 @@ public class CursoServlet extends HttpServlet {
 
         DaoCurso daoCurso = new DaoCursoImpl();
         Usuario u = (Usuario) request.getSession().getAttribute("usuario");
+        Curso cursoget = null;
         if (operation != null) {
             log4j.info("The operation is: " + operation);
             if (operation.equalsIgnoreCase(OPERATION_QRY)) {
@@ -89,8 +90,8 @@ public class CursoServlet extends HttpServlet {
                 String cursoid = request.getParameter("cursoid");
                 if (cursoid != null) {
                     try {
-                        Curso curso = daoCurso.getCurso(Integer.parseInt(cursoid), u.getEsp_id());
-                        request.setAttribute("cursoget", curso);
+                        cursoget = daoCurso.getCurso(Integer.parseInt(cursoid), u.getEsp_id());
+                        request.setAttribute("cursoget", cursoget);
                     } catch (NumberFormatException e) {
                         message = "Formato de id Invalido";
                     }
@@ -99,7 +100,7 @@ public class CursoServlet extends HttpServlet {
                     message = "código invalido o vacio";
                 }
             } else if (operation.equalsIgnoreCase(OPERATION_DEL)) {
-                String ids = request.getParameter("ids");
+                String ids = request.getParameter("idsdel");
                 List<Integer> list = Util.toids(ids);
                 if (list != null) {
                     message = daoCurso.cursoDelete(list);
@@ -113,9 +114,11 @@ public class CursoServlet extends HttpServlet {
             } else if (operation.equalsIgnoreCase(OPERATION_UPD)) {
                 String codigo = request.getParameter("codigo");
                 String nombre = request.getParameter("nombre");
+                String id = request.getParameter("id");
                 if (codigo != null) {
                     if (nombre != null) {
                         Curso curso = new Curso();
+                        curso.setCur_id(Integer.parseInt(id));
                         curso.setCur_cod(codigo);
                         curso.setCur_nom(nombre);
                         curso.setEsp_id(u.getEsp_id());
@@ -147,6 +150,14 @@ public class CursoServlet extends HttpServlet {
                 out.close();
             } else if (operation.equalsIgnoreCase(SistemTConstants.CURSO_INS)) {
                 target = "CursoQry";
+                out.print(target);
+                out.close();
+            } else if (operation.equalsIgnoreCase(OPERATION_GET)) {
+                if (cursoget != null) {
+                    target = cursoget.getCur_id() + "#" + cursoget.getCur_cod() + "#" + cursoget.getCur_nom();
+                }else{
+                target = "null";
+                }
                 out.print(target);
                 out.close();
             } else {
