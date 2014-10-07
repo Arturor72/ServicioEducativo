@@ -72,7 +72,7 @@ public class DaoCursoImpl implements DaoCurso {
     public Curso getCurso(Integer cur_id, Integer esp_id) {
         log4j.info("+init GetCurso");
         Curso curso = null;
-        String sql = "";
+        String sql = SistemTConstants.CURSO_GET;
         Connection cn = db.getConnection();
         if (cn != null) {
             try {
@@ -179,7 +179,7 @@ public class DaoCursoImpl implements DaoCurso {
     @Override
     public String cursoDelete(List<Integer> lst) {
         log4j.info("+init cursoDelete");
-        String sql = "";
+        String sql = SistemTConstants.CURSO_DELETE;
         Connection cn = db.getConnection();
         String result = null;
         if (cn != null) {
