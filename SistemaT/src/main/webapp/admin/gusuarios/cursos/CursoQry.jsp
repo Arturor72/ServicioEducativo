@@ -49,8 +49,8 @@
                                             <tr>
                                                 <th>Código</th>
                                                 <th>Nombre </th>
-                                                <th class="mrc"> <a href=""><img src="<%= request.getContextPath()%>/img/delete.png" /></a> </th>
-                                                <th class="mrc"> <a href=""><img src="<%= request.getContextPath()%>/img/edit.png" /></a> </th>
+                                                <th class="mrc"> <img src="<%= request.getContextPath()%>/img/delete.png" onclick="cursoDel()"/></th>
+                                                <th class="mrc"> <img src="<%= request.getContextPath()%>/img/edit.png" onclick="cursoUpd()" /> </th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -59,8 +59,8 @@
                                                     <td>${cu.cur_cod}</td>
                                                     <td>${cu.cur_nom}</td>
                                                     <td class="mrc"> <input type="checkbox" name="DEL" value="${cu.cur_id}"> </td>
-                                                    <td class="mrc"> <a href=""><img data-toggle="modal" data-target="#myModal" src="<%= request.getContextPath()%>/img/edit.png" /></a> </td>
-                                                    <!--<td class="mrc"> <input type="radio" name="UPD" value="${cu.cur_id}"> </td>-->
+                                                    <!--                                                    <td class="mrc"> <a href=""><img data-toggle="modal" data-target="#myModal" src="/img/edit.png" /></a> </td>-->
+                                                    <td class="mrc"> <input type="radio" name="UPD" value="${cu.cur_id}"> </td>
                                                 </tr>
                                             </c:forEach>
                                         </tbody>
@@ -112,7 +112,7 @@
 
                             </div>
                             <div class="form-group">
-                                <input type="text" pattern="^[a-zA-Z\s]*$" class="form-control" id="nombre" data-error="Solo debe contener numeros y letras" placeholder="Nombre" required="true">
+                                <input type="text" pattern="^[a-zA-Z\s]*$" class="form-control" id="nombre" data-error="Solo debe contener numeros y letras" placeholder="Nombre" required="true" >
                                 <div class="help-block with-errors">Solo letras y numeros</div>
                             </div>
 
@@ -128,5 +128,42 @@
 
         <!--fin-->
 
+        <!--    mi modal upd-->
+
+
+        <div class="modal fade" id="myModalUpd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h3 class="modal-title" id="myModalLabel">Actualizar Curso</h3>
+                    </div>
+                    <form role="form" data-toggle="validator">
+                        <div class="modal-body">
+
+                            <input type="hidden"  id="idupd" value="${cursoget.cur_id}">
+                            <div class="form-group">
+                                <input type="text" pattern="^[a-zA-Z0-9]*$" class="form-control" id="codigoupd" data-error="Solo debe contener numeros y letras, no espacios" placeholder="Código" required="true" value="${cursoget.cur_cod}">
+                                <div class="help-block with-errors">Solo letras y numeros</div>
+
+
+                            </div>
+                            <div class="form-group">
+                                <input type="text" pattern="^[a-zA-Z\s]*$" class="form-control" id="nombreupd" data-error="Solo debe contener numeros y letras" placeholder="Nombre" required="true" value="${cursoget.cur_nom}">
+                                <div class="help-block with-errors">Solo letras y numeros</div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary" id="guarda" onclick="guardarCursoUpd()" >Guardar</button>
+                        </div>
+                    </form> <!-- /.form -->
+                </div><!-- /.modal content -->
+            </div><!-- /.modal dialog -->
+        </div><!-- /.modal -->
+
+        <!--fin-->
     </body>
 </html>
