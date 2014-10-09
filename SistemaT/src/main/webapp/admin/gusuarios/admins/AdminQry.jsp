@@ -50,8 +50,8 @@
                                             <tr>
                                                 <th>Código</th>
                                                 <th>Nombre Admin</th>
-                                                <th class="mrc"> <a href=""><img src="<%= request.getContextPath()%>/img/delete.png" /></a> </th>
-                                                <th class="mrc"> <a href=""><img src="<%= request.getContextPath()%>/img/edit.png" /></a> </th>
+                                                <th class="mrc"> <a href=""><img src="<%= request.getContextPath()%>/img/delete.png" onclick="usuarioDel()"/></a> </th>
+                                                <th class="mrc"> <a href=""><img src="<%= request.getContextPath()%>/img/edit.png" onclick="usuarioUpd()"/></a> </th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -60,9 +60,8 @@
                                                     <td>${a.usr_cod}</td>
                                                     <td>${a.usr_nom} ${a.usr_apat} ${a.usr_amat}</td>
                                                     <td class="mrc"> <input type="checkbox" name="DEL" value="${a.usr_id}"> </td>
-                                                    <td class="mrc"> <a href=""><img data-toggle="modal" data-target="#myModal" src="<%= request.getContextPath()%>/img/edit.png" /></a> </td>
-                                                    <!--<td class="mrc"> <input type="radio" name="UPD" value="${cu.cur_id}"> </td>-->
-                                                  
+                                                    <td class="mrc"> <input type="radio" name="UPD" value="${a.usr_id}"> </td>
+                                                    <!--<td class="mrc"> <a href=""><img data-toggle="modal" data-target="#myModal" src="<%= request.getContextPath()%>/img/edit.png" /></a> </td>-->
                                                 </tr>
                                             </c:forEach>
                                         </tbody>
@@ -96,26 +95,6 @@
         </script>
         <%@include file="../../../WEB-INF/jspf/footerLogin.jspf" %>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <!--Formulario-->
         <!--inicio-->
 
@@ -131,36 +110,41 @@
                     </div><!-- /.model-header -->
                     <form role="form" data-toggle="validator">
                         <div class="modal-body">
-
-
+                            <input type="hidden" id="tipUsrId" value="1">
                             <div class="row">
                                 <div class="col-md-6 col-xs-12">
                                     <fieldset>
                                         <legend><h4>Datos Personales</h4></legend>
                                         <div class="form-group">
-                                            <input type="text" pattern="^[a-zA-ZñÑ\s]*$" class="form-control" id="nombre" placeholder="Nombre" required>
+                                            <input type="text" pattern="^[a-zA-ZñÑ\s]*$" class="form-control" id="usrNom" placeholder="Nombre" required>
                                             <div class="help-block with-errors">Solo letras</div>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" pattern="^[a-zA-ZñÑ\s]*$" class="form-control" id="apellidoPat" placeholder="Apellido Paterno" required>
+                                            <input type="text" pattern="^[a-zA-ZñÑ\s]*$" class="form-control" id="usrApat" placeholder="Apellido Paterno" required>
                                             <div class="help-block with-errors">Solo letras</div>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" pattern="^[a-zA-ZñÑ\s]*$" class="form-control" id="apellidoMat" placeholder="Apellido Materno" required>
+                                            <input type="text" pattern="^[a-zA-ZñÑ\s]*$" class="form-control" id="usrAmat" placeholder="Apellido Materno" required>
                                             <div class="help-block with-errors">Solo letras</div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            Sexo &nbsp;&nbsp;
+                                            <input type="radio" id="usrGen_f" name="usrGen" required value="0"> Femenino
+                                            &nbsp;<input type="radio" id="usrGen_m" name="usrGen" required value="1"> Masculino
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="text" pattern="^[0-9]*$" maxlength="8" class="form-control" id="dni" placeholder="DNI" required>
+                                            <input type="text" pattern="^[0-9]*$" maxlength="8" class="form-control" id="usrDni" placeholder="DNI" required>
                                             <div class="help-block with-errors">Solo numeros</div>
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="email" class="form-control" id="email" placeholder="e-mail" required>
+                                            <input type="email" class="form-control" id="usrMail" placeholder="e-mail" required>
                                             <div class="help-block with-errors">Formato de email</div>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" pattern="^[0-9]*$" maxlength="9" class="form-control" id="celular" placeholder="celular" required>
+                                            <input type="text" pattern="^[0-9]*$" maxlength="9" class="form-control" id="usrCel" placeholder="celular" required>
                                             <div class="help-block with-errors">Solo numeros</div>
                                         </div>
 
@@ -172,21 +156,21 @@
                                         <legend><h4>Datos de Usuario</h4></legend>
 
                                         <div class="form-group">
-                                            <input type="text" pattern="^[a-zA-Z0-9]*$"class="form-control" id="codigo" data-error="Codigo no valido" maxlength="10" placeholder="Código" data-error="" required>
+                                            <input type="text" pattern="^[a-zA-Z0-9]*$"class="form-control" id="usrCod" data-error="Codigo no valido" maxlength="10" placeholder="Código" data-error="" required>
                                             <div class="help-block with-errors">Solo letras y numeros</div>
                                         </div>
 
 
                                         <div class="form-group">
-                                            <input type="text" pattern="^[a-zA-Z0-9]*$" class="form-control" id="usuario" placeholder="Usuario" required>
+                                            <input type="text" pattern="^[a-zA-Z0-9]*$" class="form-control" id="usrUser" placeholder="Usuario" required>
                                             <div class="help-block with-errors"></div>
                                         </div>
                                         <div class="form-group">
-                                            <input type="password"   class="form-control" id="password" placeholder="Contraseña" required>
+                                            <input type="password"   class="form-control" id="usrPass" placeholder="Contraseña" required>
                                             <div class="help-block with-errors">No estan permitidos caracteres especiales</div>
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control" id="passwordConf" data-match="#password" data-match-error="Upss,deben coincidir" placeholder="Repita Contraseña" required>
+                                            <input type="password" class="form-control" id="usrPassConf" data-match="#usrPass" data-match-error="Upss,deben coincidir" placeholder="Repita Contraseña" required>
                                             <div class="help-block with-errors"></div>
                                         </div>
 
@@ -197,7 +181,7 @@
                         </div><!-- /.modal-body -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <button type="button" class="btn btn-primary" id="guarda" onclick="guardarUsuario()">Guardar</button>
                         </div><!-- /.modal-footer -->
 
 

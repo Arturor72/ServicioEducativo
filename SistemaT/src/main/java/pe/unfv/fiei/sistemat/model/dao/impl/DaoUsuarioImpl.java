@@ -171,7 +171,7 @@ public class DaoUsuarioImpl implements DaoUsuario {
         log4j.info("- init usuario DELETE");
         String sql = SistemTConstants.USER_DELETE;
         log4j.info("Sentence" + sql);
-        String message = "";
+        String message = null;
         Connection cn = db.getConnection();
         if (cn != null) {
             try {

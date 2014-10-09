@@ -70,22 +70,18 @@ public class CursoServlet extends HttpServlet {
                         if (validaCurso(curso).equals("")) {
                             String result = daoCurso.cursoIns(curso);
                             if (result == null) {
-
                                 target = "/admin/gusuarios/cursos/CursoQry.jsp";
                                 request.setAttribute("mensaje", message);
                             } else {
                                 message = "No se insertó correctamente";
                             }
-
                         }
-
                     } else {
                         message = "nombre invalido o vacio";
                     }
                 } else {
                     message = "código invalido o vacio";
                 }
-
             } else if (operation.equalsIgnoreCase(OPERATION_GET)) {
                 String cursoid = request.getParameter("cursoid");
                 if (cursoid != null) {
@@ -109,7 +105,6 @@ public class CursoServlet extends HttpServlet {
                     } else {
                         message = "No se elimino correctamente";
                     }
-
                 }
             } else if (operation.equalsIgnoreCase(OPERATION_UPD)) {
                 String codigo = request.getParameter("codigo");
@@ -132,7 +127,6 @@ public class CursoServlet extends HttpServlet {
                                 message = "No se actualizó correctamente";
                             }
                         }
-
                     } else {
                         message = "nombre invalido o vacio";
                     }

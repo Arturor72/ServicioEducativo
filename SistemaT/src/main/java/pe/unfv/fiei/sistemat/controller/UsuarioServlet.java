@@ -15,15 +15,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
+import pe.unfv.fiei.sistemat.constants.SistemTConstants;
 import pe.unfv.fiei.sistemat.model.dao.DaoUsuario;
 import pe.unfv.fiei.sistemat.model.dao.impl.DaoUsuarioImpl;
 import pe.unfv.fiei.sistemat.model.dto.Usuario;
+import pe.unfv.fiei.sistemat.util.Util;
 
 /**
  *
  * @author JULIO
  */
-@WebServlet(name = "Usuario", urlPatterns = {"/UsuarioServlet"})
 public class UsuarioServlet extends HttpServlet {
 
     Logger log4j = Logger.getLogger(UsuarioServlet.class);
@@ -39,10 +40,6 @@ public class UsuarioServlet extends HttpServlet {
         String operation = request.getParameter("operation");
         String message = null;
         DaoUsuario daoUsuario = new DaoUsuarioImpl();
-
-        String tip_usr_id = request.getParameter("tip_usr_id");
-        Integer tip_usr_idx = Integer.valueOf(tip_usr_id);
-
         String target = "/admin/gusuarios/admins/AdminQry.jsp";
         Usuario u = (Usuario) request.getSession().getAttribute("usuario");
         if (operation != null) {
@@ -53,9 +50,9 @@ public class UsuarioServlet extends HttpServlet {
                     message = "Sin acceso a la base de datos";
                 } else {
                     request.setAttribute("list", list);
-                    if (tip_usr_idx == 1) {
+                    if (Integer.valueOf(request.getParameter("tip_usr_id")) == 1) {
                         target = "/admin/gusuarios/admins/AdminQry.jsp";
-                    } else if (tip_usr_idx == 2) {
+                    } else if (Integer.valueOf(request.getParameter("tip_usr_id")) == 2) {
                         target = "/admin/gusuarios/tutores/TutorQry.jsp";
                     }
                 }
@@ -63,7 +60,13 @@ public class UsuarioServlet extends HttpServlet {
                 Usuario usuario = new Usuario();
                 message = valida(request, usuario);
                 if (message == null) {
-                    message = daoUsuario.usuarioIns(usuario);
+                    String result = daoUsuario.usuarioIns(usuario);
+                    if (result == null) {
+                        target = "/admin/gusuarios/admins/AdminQry.jsp";
+                        request.setAttribute("mensaje", message);
+                    } else {
+                        message = "No se insertó correctamente";
+                    }
                 }
             } else if (operation.equalsIgnoreCase(OPERATION_GET)) {
                 String id = request.getParameter("id");
@@ -75,37 +78,45 @@ public class UsuarioServlet extends HttpServlet {
                     message = "No existe usuario de ID: " + id;
                 }
             } else if (operation.equalsIgnoreCase(OPERATION_DEL)) {
-                String ids = request.getParameter("ids");
-                String[] id = ids.split(",");
-                List<Integer> list = new LinkedList<Integer>();
-                for (String x : id) {
-                    list.add(Integer.valueOf(x));
+                String ids = request.getParameter("idsdel");
+                List<Integer> list = Util.toids(ids);
+                if (list != null) {
+                    message = daoUsuario.usuarioDel(list);
+                    if (message == null) {
+                        target = "/admin/gusuarios/admins/AdminQry.jsp";
+                    } else {
+                        message = "No se elimino correctamente";
+                    }
                 }
-                message = daoUsuario.usuarioDel(list);
             } else if (operation.equalsIgnoreCase(OPERATION_UPD)) {
             } else {
                 message = "Solicitud no reconocida.";
             }
+            response.setContentType("text/html;charset=UTF-8");
+            PrintWriter out = response.getWriter();
             if (message != null) {
                 request.setAttribute("msg", message);
-                target = "mensaje.jsp";
+                out.print("error");
+                out.close();
+            } else if (operation.equalsIgnoreCase(OPERATION_INS)) {
+                target = "AdminQry";
+                out.print(target);
+                out.close();
+            } else {
+                RequestDispatcher dispatcher = request.getRequestDispatcher(target);
+                dispatcher.forward(request, response);
             }
-            RequestDispatcher dispatcher = request.getRequestDispatcher(target);
-            dispatcher.forward(request, response);
         }
     }
 
     // Metodos de apoyo
     private String valida(HttpServletRequest request, Usuario usuario) {
 
-        Integer usrIdx = null;
         Integer tipUsrIdx = null;
         Integer usrGenx = null;
-        Integer usrEstx = null;
-        Integer usrEspIdx = null;
+        Usuario u = (Usuario) request.getSession().getAttribute("usuario");
 
         String error = null;
-        String usrId = request.getParameter("usrId");
         String usrCod = request.getParameter("usrCod");
         String tipUsrId = request.getParameter("tipUsrId");
         String usrNom = request.getParameter("usrNom");
@@ -117,16 +128,6 @@ public class UsuarioServlet extends HttpServlet {
         String usrMail = request.getParameter("usrMail");
         String usrUser = request.getParameter("usrUser");
         String usrPass = request.getParameter("usrPass");
-        String usrEst = request.getParameter("usrEst");
-        String usrEspId = request.getParameter("usrEspId");
-
-        if (usrId != null) {
-            try {
-                usrIdx = Integer.valueOf(usrId);
-            } catch (NumberFormatException e) {
-                error = "Valor errado para el id del usuario";
-            }
-        }
 
         if (error == null) {
             if (usrCod == null || usrCod.trim().length() == 0) {
@@ -198,37 +199,20 @@ public class UsuarioServlet extends HttpServlet {
             }
         }
 
-        if (usrEst != null) {
-            try {
-                usrEstx = Integer.valueOf(usrEst);
-            } catch (NumberFormatException e) {
-                error = "Valor errado para el estado de usuario";
-            }
-        }
-
-        if (usrEspId != null) {
-            try {
-                usrEspIdx = Integer.valueOf(usrEspId);
-            } catch (NumberFormatException e) {
-                error = "Valor errado para el id de especialidad de usuario";
-            }
-        }
-
         if (error == null) {
-            usuario.setUsr_id(usrIdx);
             usuario.setUsr_cod(usrCod);
             usuario.setTip_usr_id(tipUsrIdx);
             usuario.setUsr_nom(usrNom);
             usuario.setUsr_apat(usrApat);
-            usuario.setUsr_apat(usrAmat);
+            usuario.setUsr_amat(usrAmat);
             usuario.setUsr_dni(usrDni);
             usuario.setUsr_gen(usrGenx);
             usuario.setUsr_cel(usrCel);
             usuario.setUsr_mail(usrMail);
             usuario.setUsr_user(usrUser);
             usuario.setUsr_pass(usrPass);
-            usuario.setUsr_est(usrEstx);
-            usuario.setEsp_id(usrEspIdx);
+            usuario.setUsr_est(1);
+            usuario.setEsp_id(u.getEsp_id());
         }
 
         return error;
