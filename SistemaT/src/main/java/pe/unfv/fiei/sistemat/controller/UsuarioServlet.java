@@ -6,16 +6,13 @@ package pe.unfv.fiei.sistemat.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.LinkedList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
-import pe.unfv.fiei.sistemat.constants.SistemTConstants;
 import pe.unfv.fiei.sistemat.model.dao.DaoUsuario;
 import pe.unfv.fiei.sistemat.model.dao.impl.DaoUsuarioImpl;
 import pe.unfv.fiei.sistemat.model.dto.Usuario;
@@ -42,6 +39,7 @@ public class UsuarioServlet extends HttpServlet {
         DaoUsuario daoUsuario = new DaoUsuarioImpl();
         String target = "/admin/gusuarios/admins/AdminQry.jsp";
         Usuario u = (Usuario) request.getSession().getAttribute("usuario");
+        Usuario usuarioGET = null;
         if (operation != null) {
             log4j.info("The operation is: " + operation);
             if (operation.equalsIgnoreCase(OPERATION_QRY)) {
@@ -69,13 +67,15 @@ public class UsuarioServlet extends HttpServlet {
                     }
                 }
             } else if (operation.equalsIgnoreCase(OPERATION_GET)) {
-                String id = request.getParameter("id");
-                Usuario usuario = daoUsuario.usuarioGet(Integer.valueOf(id));
-                if (usuario != null) {
-                    request.setAttribute("usuario", usuario);
-                    target = "usuarioUpd.jsp";
+                String usrId = request.getParameter("usrId");
+                if (usrId != null) {
+                    try {
+                        usuarioGET = daoUsuario.usuarioGet(Integer.valueOf(usrId));
+                    } catch (Exception e) {
+                        message = "Formato de id Invalido";
+                    }
                 } else {
-                    message = "No existe usuario de ID: " + id;
+                    message = "código invalido o vacio";
                 }
             } else if (operation.equalsIgnoreCase(OPERATION_DEL)) {
                 String ids = request.getParameter("idsdel");
@@ -100,6 +100,28 @@ public class UsuarioServlet extends HttpServlet {
                 out.close();
             } else if (operation.equalsIgnoreCase(OPERATION_INS)) {
                 target = "AdminQry";
+                out.print(target);
+                out.close();
+            } else if (operation.equalsIgnoreCase(OPERATION_GET)) {
+                if (usuarioGET != null) {
+                    target = usuarioGET.getUsr_id() + "#"
+                            + usuarioGET.getTip_usr_id() + "#"
+                            + usuarioGET.getEsp_id() + "#"
+                            + usuarioGET.getEsp_id() + "#"
+                            + usuarioGET.getUsr_cod() + "#"
+                            + usuarioGET.getUsr_nom() + "#"
+                            + usuarioGET.getUsr_apat() + "#"
+                            + usuarioGET.getUsr_amat() + "#"
+                            + usuarioGET.getUsr_dni() + "#"
+                            + usuarioGET.getUsr_gen() + "#"
+                            + usuarioGET.getUsr_cel() + "#"
+                            + usuarioGET.getUsr_mail() + "#"
+                            + usuarioGET.getUsr_user() + "#"
+                            + usuarioGET.getUsr_pass() + "#"
+                            + usuarioGET.getUsr_est();
+                } else {
+                    target = "null";
+                }
                 out.print(target);
                 out.close();
             } else {

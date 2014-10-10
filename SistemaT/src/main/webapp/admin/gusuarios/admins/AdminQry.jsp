@@ -61,7 +61,6 @@
                                                     <td>${a.usr_nom} ${a.usr_apat} ${a.usr_amat}</td>
                                                     <td class="mrc"> <input type="checkbox" name="DEL" value="${a.usr_id}"> </td>
                                                     <td class="mrc"> <input type="radio" name="UPD" value="${a.usr_id}"> </td>
-                                                    <!--<td class="mrc"> <a href=""><img data-toggle="modal" data-target="#myModal" src="<%= request.getContextPath()%>/img/edit.png" /></a> </td>-->
                                                 </tr>
                                             </c:forEach>
                                         </tbody>
@@ -95,17 +94,14 @@
         </script>
         <%@include file="../../../WEB-INF/jspf/footerLogin.jspf" %>
 
-        <!--Formulario-->
+        <!-- Modal INS -->
+
         <!--inicio-->
-
-
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
             <div class="modal-dialog modal-lg" style="width:60%;">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-
                         <h3 class="modal-title" id="myModalLabel">Registro Administrador</h3>
                     </div><!-- /.model-header -->
                     <form role="form" data-toggle="validator">
@@ -127,7 +123,7 @@
                                             <input type="text" pattern="^[a-zA-ZñÑ\s]*$" class="form-control" id="usrAmat" placeholder="Apellido Materno" required>
                                             <div class="help-block with-errors">Solo letras</div>
                                         </div>
-                                        
+
                                         <div class="form-group">
                                             Sexo &nbsp;&nbsp;
                                             <input type="radio" id="usrGen_f" name="usrGen" required value="0"> Femenino
@@ -143,12 +139,11 @@
                                             <input type="email" class="form-control" id="usrMail" placeholder="e-mail" required>
                                             <div class="help-block with-errors">Formato de email</div>
                                         </div>
+
                                         <div class="form-group">
                                             <input type="text" pattern="^[0-9]*$" maxlength="9" class="form-control" id="usrCel" placeholder="celular" required>
                                             <div class="help-block with-errors">Solo numeros</div>
                                         </div>
-
-
                                     </fieldset> <!-- /.fieldset -->
                                 </div><!-- /.col -->
                                 <div class="col-md-6 col-xs-12">
@@ -160,15 +155,16 @@
                                             <div class="help-block with-errors">Solo letras y numeros</div>
                                         </div>
 
-
                                         <div class="form-group">
                                             <input type="text" pattern="^[a-zA-Z0-9]*$" class="form-control" id="usrUser" placeholder="Usuario" required>
                                             <div class="help-block with-errors"></div>
                                         </div>
+
                                         <div class="form-group">
                                             <input type="password"   class="form-control" id="usrPass" placeholder="Contraseña" required>
                                             <div class="help-block with-errors">No estan permitidos caracteres especiales</div>
                                         </div>
+
                                         <div class="form-group">
                                             <input type="password" class="form-control" id="usrPassConf" data-match="#usrPass" data-match-error="Upss,deben coincidir" placeholder="Repita Contraseña" required>
                                             <div class="help-block with-errors"></div>
@@ -183,21 +179,104 @@
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                             <button type="button" class="btn btn-primary" id="guarda" onclick="guardarUsuario()">Guardar</button>
                         </div><!-- /.modal-footer -->
-
-
                     </form><!-- /.form -->
                 </div><!-- /.model-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
         <!--fin-->
 
+        <!-- Modal UPD -->
 
+        <!-- Inicio -->
+        <div class="modal fade" id="myModalUpd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h3 class="modal-title" id="myModalLabel">Actualizar Administrador</h3>
+                    </div>
+                    <form role="form" data-toggle="validator">
+                        <div class="modal-body">
+                            <input type="hidden" id="usrIdUPD" value="${usuarioGET.usr_id}">
+                            <input type="hidden" id="tipUsrIdUPD" value="${usuarioGET.tip_usr_id}">
+                            <input type="hidden" id="usrEspUPD" value="${usuarioGET.esp_id}">
+                            <div class="row">
+                                <div class="col-md-6 col-xs-12">
+                                    <fieldset>
+                                        <legend><h4>Datos personales</h4></legend>
+                                        <div class="form-group">
+                                            <input type="text" pattern="^[a-zA-ZñÑ\s]*$" class="form-control" id="usrNomUPD" placeholder="Nombre" required>
+                                            <div class="help-block with-errors">Solo letras</div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" pattern="^[a-zA-ZñÑ\s]*$" class="form-control" id="usrApatUPD" placeholder="Apellido Paterno" required>
+                                            <div class="help-block with-errors">Solo letras</div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" pattern="^[a-zA-ZñÑ\s]*$" class="form-control" id="usrAmatUPD" placeholder="Apellido Materno" required>
+                                            <div class="help-block with-errors">Solo letras</div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            Sexo &nbsp;&nbsp;
+                                            <input type="radio" id="usrGen_fUPD" name="usrGenUPD" required value="0"> Femenino
+                                            &nbsp;<input type="radio" id="usrGen_mUPD" name="usrGenUPD" required value="1"> Masculino
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="text" pattern="^[0-9]*$" maxlength="8" class="form-control" id="usrDniUPD" placeholder="DNI" required>
+                                            <div class="help-block with-errors">Solo numeros</div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" id="usrMailUPD" placeholder="e-mail" required>
+                                            <div class="help-block with-errors">Formato de email</div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="text" pattern="^[0-9]*$" maxlength="9" class="form-control" id="usrCelUPD" placeholder="celular" required>
+                                            <div class="help-block with-errors">Solo numeros</div>
+                                        </div>
+                                    </fieldset> <!-- /.fieldset -->
+                                </div><!-- /.col -->
+                                <div class="col-md-6 col-xs-12">
+                                    <fieldset>
+                                        <legend><h4>Datos de usuario</h4></legend>
+
+                                        <div class="form-group">
+                                            <input type="text" pattern="^[a-zA-Z0-9]*$"class="form-control" id="usrCodUPD" data-error="Codigo no valido" maxlength="10" placeholder="Código" data-error="" required>
+                                            <div class="help-block with-errors">Solo letras y numeros</div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="text" pattern="^[a-zA-Z0-9]*$" class="form-control" id="usrUserUPD" placeholder="Usuario" required>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" id="usrPassUPD" placeholder="Contraseña" required>
+                                            <div class="help-block with-errors">No estan permitidos caracteres especiales</div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" id="usrPassConfUPD" data-match="#usrPassUPD" data-match-error="Upss,deben coincidir" placeholder="Repita Contraseña" required>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+
+                                    </fieldset><!-- /.fieldset -->
+                                </div><!-- /.col -->
+                            </div><!-- /.row -->
+
+                        </div><!-- /.modal-body -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary" id="guarda" onclick="guardarUsuarioUPD()">Guardar</button>
+                        </div><!-- /.modal-footer -->
+                    </form> <!-- /.form -->
+                </div><!-- /.modal content -->
+            </div><!-- /.modal dialog -->
+        </div><!-- /.modal -->
+        <!--fin-->
     </body>
-
-
-
-
-
-
 </html>

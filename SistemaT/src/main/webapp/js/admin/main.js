@@ -90,6 +90,46 @@ function usuarioDel() {
     }
 }
 
+function usuarioUpd() {
+    var usrId = $("input[name='UPD']:checked").val();
+    if (isNaN(usrId)) {
+        alert("Seleccione Fila para Actualizar Datos");
+    }
+    else {
+        alert(usrId);
+        $.ajax({
+            url: '/SistemaT/UsuarioServlet',
+            type: 'post',
+            data: {
+                operation: 'GET',
+                usrId: usrId
+            }, 
+            success: function(data) {
+                if (data === 'error') {
+                    alert(data);
+                } else {
+                    var u = data.split("#");
+                    $('#usrIdUPD').val(u[0]);
+                    $('#tipUsrIdUPD').val(u[1]);
+                    $('#usrEspUPD').val(u[2]);
+                    $('#usrCodUPD').val(u[3]);
+                    $('#usrNomUPD').val(u[4]);
+                    $('#usrApatUPD').val(u[5]);
+                    $('#usrAmatUPD').val(u[6]);
+                    $('#usrDniUPD').val(u[7]);
+                    $('#usrGenUPD').val(u[8]);
+                    $('#usrCelUPD').val(u[9]);
+                    $('#usrMailUPD').val(u[10]);
+                    $('#usrUserUPD').val(u[11]);
+                    $('#usrPassUPD').val(u[12]);
+                    $('#usrEstUPD').val(u[13]);
+                    $('#myModalUpd').modal('show');
+                }
+            }
+        });
+    }
+}
+
 function guardarCurso() {
 
     var codigo = $("#codigo").val();
