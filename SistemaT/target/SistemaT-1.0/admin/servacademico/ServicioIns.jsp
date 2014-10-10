@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="../../WEB-INF/jspf/headerLogin.jspf" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -197,6 +198,6 @@
             });
         </script>        
 
-
     </body>
 </html>
+<%@include file="../../WEB-INF/jspf/footerLogin.jspf" %>

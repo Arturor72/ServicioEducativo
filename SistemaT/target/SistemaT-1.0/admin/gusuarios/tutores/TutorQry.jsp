@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="../../../WEB-INF/jspf/headerLogin.jspf" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -36,7 +37,7 @@
 
 
                                     <div class="col-md-2 col-xs-8" >
-                                        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"><img src="<%= request.getContextPath()%>/img/add3.png"/> Tutor</button>
+                                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal"><img src="<%= request.getContextPath()%>/img/add3.png"/> Tutor</button>
                                     </div>
 
                                     
@@ -57,7 +58,8 @@
                                             <td>1</td>
                                             <td>Edward Flores</td>
                                             <td class="mrc"> <input type="checkbox"> </td>
-                                            <td class="mrc"> <input type="radio" name="ed"> </td>
+                                            <!--<td class="mrc"> <input type="radio" name="ed"> </td>-->
+                                            <td class="mrc"> <a href=""><img data-toggle="modal" data-target="#myModal" src="<%= request.getContextPath()%>/img/edit.png" /></a> </td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
@@ -111,7 +113,7 @@
                 });
             });
         </script>
-
+        <%@include file="../../../WEB-INF/jspf/footerLogin.jspf" %>
 
         
         
@@ -192,7 +194,7 @@
 
                         </div><!-- /.modal-body -->
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                             <button type="submit" class="btn btn-primary">Guardar</button>
                         </div><!-- /.modal-footer -->
 

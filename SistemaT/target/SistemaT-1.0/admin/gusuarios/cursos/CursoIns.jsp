@@ -9,14 +9,14 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <%@include file="../../../WEB-INF/jspf/title.jspf" %>
-        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-        <%@include file="../../../WEB-INF/jspf/links.jspf" %>
+        <%-- <%@include file="../../../WEB-INF/jspf/title.jspf" %>--%>
+        <!--        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>-->
+        <%-- <%@include file="../../../WEB-INF/jspf/links.jspf" %>--%>
     </head>
     <body class="skin-blue">
-        <%@include file="../../../WEB-INF/jspf/header.jspf" %>
+        <%--   <%@include file="../../../WEB-INF/jspf/header.jspf" %>--%>
         <div class="wrapper row-offcanvas row-offcanvas-left">
-            <%@include file="../../../WEB-INF/jspf/asideMenu.jspf" %>
+            <%--  <%@include file="../../../WEB-INF/jspf/asideMenu.jspf" %>--%>
 
             <aside class="right-side">
                 <section class="content-header">
@@ -63,20 +63,20 @@
 
             </aside>
         </div>
-        <%@include file="../../../WEB-INF/jspf/linksfooter.jspf" %>
-        <script type="text/javascript">
-            $(function() {
-                $("#example1").dataTable();
-                $('#example2').dataTable({
-                    "bPaginate": true,
-                    "bLengthChange": false,
-                    "bFilter": false,
-                    "bSort": true,
-                    "bInfo": true,
-                    "bAutoWidth": false
-                });
-            });
-        </script>
+        <%--<%@include file="../../../WEB-INF/jspf/linksfooter.jspf" %>--%>
+        <!--        <script type="text/javascript">
+                    $(function() {
+                        $("#example1").dataTable();
+                        $('#example2').dataTable({
+                            "bPaginate": true,
+                            "bLengthChange": false,
+                            "bFilter": false,
+                            "bSort": true,
+                            "bInfo": true,
+                            "bAutoWidth": false
+                        });
+                    });
+                </script>-->
 
 
     </body>

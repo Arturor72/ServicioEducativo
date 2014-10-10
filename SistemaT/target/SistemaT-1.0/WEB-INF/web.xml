@@ -20,6 +20,10 @@
         <servlet-name>CursoServlet</servlet-name>
         <url-pattern>/CursoServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UsuarioServlet</servlet-name>
+        <url-pattern>/UsuarioServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
