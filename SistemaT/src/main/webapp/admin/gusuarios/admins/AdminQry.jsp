@@ -206,7 +206,7 @@
                                     <fieldset>
                                         <legend><h4>Datos personales</h4></legend>
                                         <div class="form-group">
-                                            <input type="text" pattern="^[a-zA-ZñÑ\s]*$" class="form-control" id="usrNomUPD" placeholder="Nombre" required>
+                                            <input type="text" pattern="^[a-zA-ZñÑ\s]*$" class="form-control" id="usrNomUPD" required data-error="Solo debe contener numeros y letras, no espacios" placeholder="Nombre" required="true" value="${usuarioGET.usr_nom}">
                                             <div class="help-block with-errors">Solo letras</div>
                                         </div>
                                         <div class="form-group">
@@ -218,11 +218,11 @@
                                             <div class="help-block with-errors">Solo letras</div>
                                         </div>
 
-                                        <div class="form-group">
+                                        <!--<div class="form-group">
                                             Sexo &nbsp;&nbsp;
                                             <input type="radio" id="usrGen_fUPD" name="usrGenUPD" required value="0"> Femenino
                                             &nbsp;<input type="radio" id="usrGen_mUPD" name="usrGenUPD" required value="1"> Masculino
-                                        </div>
+                                        </div>-->
 
                                         <div class="form-group">
                                             <input type="text" pattern="^[0-9]*$" maxlength="8" class="form-control" id="usrDniUPD" placeholder="DNI" required>

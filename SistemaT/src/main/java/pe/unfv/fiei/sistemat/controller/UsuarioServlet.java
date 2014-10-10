@@ -71,6 +71,7 @@ public class UsuarioServlet extends HttpServlet {
                 if (usrId != null) {
                     try {
                         usuarioGET = daoUsuario.usuarioGet(Integer.valueOf(usrId));
+                        request.setAttribute("usuarioGET", usuarioGET);
                     } catch (Exception e) {
                         message = "Formato de id Invalido";
                     }
