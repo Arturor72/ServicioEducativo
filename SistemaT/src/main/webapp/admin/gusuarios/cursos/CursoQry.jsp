@@ -156,7 +156,8 @@
                                 <div class="form-group">
                                 <div id="mensaje"></div>
                                 </div>
-                        </div>
+                        </div
+                        >
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                             <button type="button" class="btn btn-primary" id="guarda" onclick="guardarCursoUpd()" >Guardar</button>

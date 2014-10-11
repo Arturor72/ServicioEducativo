@@ -23,7 +23,7 @@
             <aside class="right-side">
                 <section class="content-header">
                     <h1>
-                        Gestión de Administradores
+                        Gestión de administradores
                     </h1>
                 </section>
                 <section class="content">
@@ -42,16 +42,16 @@
 
                                 </div><!-- /.box-header -->
 
-
-
                                 <div class="box-body table-responsive">
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                                 <th>Código</th>
-                                                <th>Nombre Admin</th>
-                                                <th class="mrc"> <a href=""><img src="<%= request.getContextPath()%>/img/delete.png" onclick="usuarioDel()"/></a> </th>
-                                                <th class="mrc"> <a href=""><img src="<%= request.getContextPath()%>/img/edit.png" onclick="usuarioUpd()"/></a> </th>
+                                                <th>Apellidos y nombres</th>
+                                                <th>Correo electr&oacute;nico</th>
+                                                <th>M&oacute;vil</th>
+                                                <th class="mrc"> <img src="<%= request.getContextPath()%>/img/delete.png" onclick="mostrarMensajeEliminar()"/></th>
+                                                <th class="mrc"> <img src="<%= request.getContextPath()%>/img/edit.png" onclick="solicitarUsuarioId()"/></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -59,6 +59,8 @@
                                                 <tr>
                                                     <td>${a.usr_cod}</td>
                                                     <td>${a.usr_nom} ${a.usr_apat} ${a.usr_amat}</td>
+                                                    <td>${a.usr_mail}</td>
+                                                    <td>${a.usr_cel}</td>
                                                     <td class="mrc"> <input type="checkbox" name="DEL" value="${a.usr_id}"> </td>
                                                     <td class="mrc"> <input type="radio" name="UPD" value="${a.usr_id}"> </td>
                                                 </tr>
@@ -68,10 +70,8 @@
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
                         </div>
-
                     </div>
                 </section>
-
             </aside>
         </div>
 
@@ -102,7 +102,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h3 class="modal-title" id="myModalLabel">Registro Administrador</h3>
+                        <h3 class="modal-title" id="myModalLabel">Registro administrador</h3>
                     </div><!-- /.model-header -->
                     <form role="form" data-toggle="validator">
                         <div class="modal-body">
@@ -110,7 +110,7 @@
                             <div class="row">
                                 <div class="col-md-6 col-xs-12">
                                     <fieldset>
-                                        <legend><h4>Datos Personales</h4></legend>
+                                        <legend><h4>Datos personales</h4></legend>
                                         <div class="form-group">
                                             <input type="text" pattern="^[a-zA-ZñÑ\s]*$" class="form-control" id="usrNom" placeholder="Nombre" required>
                                             <div class="help-block with-errors">Solo letras</div>
@@ -148,7 +148,7 @@
                                 </div><!-- /.col -->
                                 <div class="col-md-6 col-xs-12">
                                     <fieldset>
-                                        <legend><h4>Datos de Usuario</h4></legend>
+                                        <legend><h4>Datos de usuario</h4></legend>
 
                                         <div class="form-group">
                                             <input type="text" pattern="^[a-zA-Z0-9]*$"class="form-control" id="usrCod" data-error="Codigo no valido" maxlength="10" placeholder="Código" data-error="" required>
@@ -173,7 +173,9 @@
                                     </fieldset><!-- /.fieldset -->
                                 </div><!-- /.col -->
                             </div><!-- /.row -->
-
+                            <div class="form-group">
+                                <div id="mensaje"></div>
+                            </div>
                         </div><!-- /.modal-body -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
@@ -194,7 +196,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h3 class="modal-title" id="myModalLabel">Actualizar Administrador</h3>
+                        <h3 class="modal-title" id="myModalLabel">Actualizar administrador</h3>
                     </div>
                     <form role="form" data-toggle="validator">
                         <div class="modal-body">
@@ -218,15 +220,15 @@
                                             <div class="help-block with-errors">Solo letras</div>
                                         </div>
 
-                                        <!--<div class="form-group">
-                                            Sexo &nbsp;&nbsp;
-                                            <input type="radio" id="usrGen_fUPD" name="usrGenUPD" required value="0"> Femenino
-                                            &nbsp;<input type="radio" id="usrGen_mUPD" name="usrGenUPD" required value="1"> Masculino
-                                        </div>-->
-
                                         <div class="form-group">
                                             <input type="text" pattern="^[0-9]*$" maxlength="8" class="form-control" id="usrDniUPD" placeholder="DNI" required>
                                             <div class="help-block with-errors">Solo numeros</div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            Sexo &nbsp;&nbsp;
+                                            <input type="radio" id="usrGen_fUPD" name="usrGenUPD" required> Femenino
+                                            &nbsp;<input type="radio" id="usrGen_mUPD" name="usrGenUPD" required> Masculino
                                         </div>
 
                                         <div class="form-group">
@@ -267,12 +269,63 @@
                                     </fieldset><!-- /.fieldset -->
                                 </div><!-- /.col -->
                             </div><!-- /.row -->
-
+                            <div class="form-group">
+                                <div id="mensaje"></div>
+                            </div>
                         </div><!-- /.modal-body -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary" id="guarda" onclick="guardarUsuarioUPD()">Guardar</button>
+                            <button type="button" class="btn btn-primary" id="guarda" onclick="actualizarUsuario()">Guardar</button>
                         </div><!-- /.modal-footer -->
+                    </form> <!-- /.form -->
+                </div><!-- /.modal content -->
+            </div><!-- /.modal dialog -->
+        </div><!-- /.modal -->
+        <!--fin-->
+
+        <!-- Modal MSG -->
+        <div class="modal fade" id="myModalMensaje" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h3 class="modal-title" id="myModalMensajeDel"></h3>
+                        <h3 class="modal-title" id="myModalMensajeUpd"></h3>
+                    </div>
+                    <form role="form" data-toggle="validator">
+                        <div class="modal-body">
+                            <div id="modal-mensaje">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                        </div>
+                    </form> <!-- /.form -->
+                </div><!-- /.modal content -->
+            </div><!-- /.modal dialog -->
+        </div><!-- /.modal -->
+
+        <!--fin-->
+
+        <!-- Modal DEL -->
+        <div class="modal fade" id="myModalDel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h3 class="modal-title" >Eliminar administrador</h3>
+                    </div>
+                    <form role="form" data-toggle="validator">
+                        <div class="modal-body">
+                            <div id="modal-mensaje-del"></div>
+                        </div>
+                        <div class="form-group">
+                            <div id="mensaje-del"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary" id="guarda" onclick="eliminarUsuario()" >Aceptar</button>
+                        </div>
                     </form> <!-- /.form -->
                 </div><!-- /.modal content -->
             </div><!-- /.modal dialog -->

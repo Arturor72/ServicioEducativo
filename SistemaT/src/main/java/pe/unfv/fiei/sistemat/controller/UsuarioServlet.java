@@ -108,7 +108,6 @@ public class UsuarioServlet extends HttpServlet {
                     target = usuarioGET.getUsr_id() + "#"
                             + usuarioGET.getTip_usr_id() + "#"
                             + usuarioGET.getEsp_id() + "#"
-                            + usuarioGET.getEsp_id() + "#"
                             + usuarioGET.getUsr_cod() + "#"
                             + usuarioGET.getUsr_nom() + "#"
                             + usuarioGET.getUsr_apat() + "#"

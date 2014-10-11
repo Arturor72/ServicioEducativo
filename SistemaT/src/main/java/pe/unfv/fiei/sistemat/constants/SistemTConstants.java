@@ -22,9 +22,9 @@ public class SistemTConstants {
     /* USUARIO Constants */
     public static final String USER_SELECT = "SELECT usr_id, usr_cod, tip_usr_id, usr_nom, usr_apat, usr_amat, usr_dni, usr_gen, usr_cel, usr_mail, usr_user, usr_pass, usr_est, esp_id FROM dbservicio.tbl_usuario WHERE tip_usr_id = ? AND esp_id = ? AND usr_est = 1";
     public static final String USER_INSERT = "INSERT INTO dbservicio.tbl_usuario (usr_cod, tip_usr_id, usr_nom, usr_apat, usr_amat, usr_dni, usr_gen, usr_cel, usr_mail, usr_user, usr_pass, usr_est, esp_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, AES_ENCRYPT(?,'F1O2R3114'), ?, ?)";
-    public static final String USER_DELETE = "UDPATE dbservicio.tbl_usuario SET usr_est = 0 WHERE usr_id = ?";
-    public static final String USER_GET = "SELECT usr_id, usr_cod, tip_usr_id, usr_nom, usr_apat, usr_amat, usr_dni, usr_gen, usr_cel, usr_mail, usr_user, usr_pass, usr_est, esp_id FROM dbservicio.tbl_usuario WHERE usr_id = ?";
-    public static final String USER_UPDATE = "UDPATE dbservicio.tbl_usuario SET usr_cod = ?, tip_usr_id = ?, usr_nom = ?, usr_apat = ?, usr_amat = ?, usr_dni = ?, usr_gen = ?, usr_cel = ?, usr_mail = ?, usr_user = ?, usr_pass = ?, usr_est = ?, esp_id = ? FROM dbservicio.tbl_usuario WHERE usr_id = ?";
+    public static final String USER_DELETE = "UPDATE dbservicio.tbl_usuario SET usr_est = 0 WHERE usr_id = ?";
+    public static final String USER_GET = "SELECT usr_id, usr_cod, tip_usr_id, usr_nom, usr_apat, usr_amat, usr_dni, usr_gen, usr_cel, usr_mail, usr_user, AES_DECRYPT(usr_pass, 'F1O2R3114'), usr_est, esp_id FROM dbservicio.tbl_usuario WHERE usr_id = ?";
+    public static final String USER_UPDATE = "UPDATE dbservicio.tbl_usuario SET usr_cod = ?, tip_usr_id = ?, usr_nom = ?, usr_apat = ?, usr_amat = ?, usr_dni = ?, usr_gen = ?, usr_cel = ?, usr_mail = ?, usr_user = ?, usr_pass = ?, usr_est = ?, esp_id = ? FROM dbservicio.tbl_usuario WHERE usr_id = ?";
 
     /* CURSO Constants */
     public static final String CURSO_SELECT = "SELECT cur_id, cur_cod, cur_nom, esp_id, cur_est FROM tbl_curso WHERE esp_id = ? AND cur_est=TRUE ";
