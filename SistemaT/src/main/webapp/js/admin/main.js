@@ -23,17 +23,17 @@ function guardarUsuario() {
     var usrApat = $("#usrApat").val();
     var usrAmat = $("#usrAmat").val();
     var usrDni = $("#usrDni").val();
-    if(document.getElementById('usrGen_m').checked){
-        usrGen = 0;  
+    if (document.getElementById('usrGen_m').checked) {
+        usrGen = 0;
     }
-    if(document.getElementById('usrGen_f').checked){
-        usrGen = 1;  
+    if (document.getElementById('usrGen_f').checked) {
+        usrGen = 1;
     }
     var usrCel = $("#usrCel").val();
     var usrMail = $("#usrMail").val();
     var usrUser = $("#usrUser").val();
     var usrPass = $("#usrPass").val();
-    
+
     $.ajax({
         url: '/SistemaT/UsuarioServlet',
         type: 'post',
@@ -50,7 +50,7 @@ function guardarUsuario() {
             usrMail: usrMail,
             usrUser: usrUser,
             usrPass: usrPass
-        }, 
+        },
         success: function(data) {
             if (data === 'error') {
                 $('#mensaje').html('No se pudo crear');
@@ -82,7 +82,7 @@ function mostrarMensajeEliminar() {
     }
 }
 
-function eliminarUsuario(){
+function eliminarUsuario() {
     var ids = [];
     $("input[name='DEL']:checked").each(function() {
         ids.push($(this).val());
@@ -93,7 +93,7 @@ function eliminarUsuario(){
         data: {
             operation: 'DEL',
             idsdel: ids.toString()
-        }, 
+        },
         success: function(data) {
             if (data === 'error') {
             } else {
@@ -108,7 +108,7 @@ function eliminarUsuario(){
 function solicitarUsuarioId() {
     var usrId = $("input[name='UPD']:checked").val();
     $('#myModalMensajeDel').html('');
-    $('#myModalMensajeUpd').html('Actualizar administrador'); 
+    $('#myModalMensajeUpd').html('Actualizar administrador');
     if (isNaN(usrId)) {
         $('#modal-mensaje').html('Seleccione fila para actualizar datos');
         $('#myModalMensaje').modal('show');
@@ -120,7 +120,7 @@ function solicitarUsuarioId() {
             data: {
                 operation: 'GET',
                 usrId: usrId
-            }, 
+            },
             success: function(data) {
                 if (data === 'error') {
                     alert(data);
@@ -134,10 +134,10 @@ function solicitarUsuarioId() {
                     $('#usrApatUPD').val(u[5]);
                     $('#usrAmatUPD').val(u[6]);
                     $('#usrDniUPD').val(u[7]);
-                    if(u[8] == "1"){
+                    if (u[8] == "1") {
                         $('#usrGen_fUPD').attr('checked', true);
                     }
-                    if(u[8] == "0"){
+                    if (u[8] == "0") {
                         $('#usrGen_mUPD').attr('checked', true);
                     }
                     $('#usrCelUPD').val(u[9]);
@@ -155,18 +155,18 @@ function solicitarUsuarioId() {
 
 function actualizarUsuario() {
     var usrGen;
-    var usrId = $("#usrIdUPD").val();    
+    var usrId = $("#usrIdUPD").val();
     var usrCod = $("#usrCodUPD").val();
     var tipUsrId = $("#tipUsrIdUPD").val();
     var usrNom = $("#usrNomUPD").val();
     var usrApat = $("#usrApatUPD").val();
     var usrAmat = $("#usrAmatUPD").val();
     var usrDni = $("#usrDniUPD").val();
-    if(document.getElementById('usrGen_mUPD').checked){
-        usrGen = 0;  
+    if (document.getElementById('usrGen_mUPD').checked) {
+        usrGen = 0;
     }
-    if(document.getElementById('usrGen_fUPD').checked){
-        usrGen = 1;  
+    if (document.getElementById('usrGen_fUPD').checked) {
+        usrGen = 1;
     }
     var usrCel = $("#usrCelUPD").val();
     var usrMail = $("#usrMailUPD").val();
@@ -189,7 +189,7 @@ function actualizarUsuario() {
             usrMail: usrMail,
             usrUser: usrUser,
             usrPass: usrPass
-        }, 
+        },
         success: function(data) {
             if (data === 'error') {
                 $('#mensaje').html('No se pudo actualizar');
@@ -220,7 +220,7 @@ function guardarCurso() {
             operation: 'INS',
             codigo: codigo,
             nombre: nombre
-        }, 
+        },
         success: function(data) {
             // alert(data);
             if (data === 'error') {
@@ -230,7 +230,13 @@ function guardarCurso() {
             } else {
                 $('#mensaje').html('Curso creado satisfactoriamente');
                 $('#mensaje').addClass('alert alert-success');
-                window.location = "/SistemaT/CursoServlet?operation=QRY";
+//                setTimeout(
+//                        window.location = "/SistemaT/CursoServlet?operation=QRY"
+//                        , 10000);
+                setTimeout(function() {
+                    url = "/SistemaT/CursoServlet?operation=QRY";
+                    $(location).attr('href', url);
+                }, 3000);
             }
         }
     });
@@ -240,15 +246,15 @@ function guardarCurso() {
 function cursoUpd() {
     var id = $("input[name='UPD']:checked").val();
     $('#myModalMensajeDel').html('');
-    $('#myModalMensajeUpd').html('Actualizar curso'); 
+    $('#myModalMensajeUpd').html('Actualizar curso');
     if (isNaN(id)) {
-             
+
         $('#modal-mensaje').html('Seleccione fila para actualizar datos');
         $('#myModalMensaje').modal('show');
-    //alert("Seleccione Fila para Actualizar Datos");
-       
-    // $('#mensaje').addClass('alert alert-success');
-        
+        //alert("Seleccione Fila para Actualizar Datos");
+
+        // $('#mensaje').addClass('alert alert-success');
+
     }
     else {
         //        window.location = "CursoServlet?accion=GET&cursoid=" + id;
@@ -258,7 +264,7 @@ function cursoUpd() {
             data: {
                 operation: 'GET',
                 cursoid: id
-            }, 
+            },
             success: function(data) {
                 if (data === 'error') {
                     alert(data);
@@ -267,7 +273,7 @@ function cursoUpd() {
                     $('#idupd').val(c[0]);
                     $('#codigoupd').val(c[1]);
                     $('#nombreupd').val(c[2]);
-                   
+
                     $('#myModalUpd').modal('show');
                 }
             }
@@ -279,13 +285,6 @@ function guardarCursoUpd() {
     var id = $("#idupd").val();
     var codigo = $("#codigoupd").val();
     var nombre = $("#nombreupd").val();
-    //   alert("abc");
-    //        var datos=$(this).serializeArray();
-    //        datos=[
-    //            {name:"codigo", value:codigo},
-    //            {name:"nombre", value:nombre}
-    //        ];
-
     $.ajax({
         url: '/SistemaT/CursoServlet',
         type: 'post',
@@ -294,7 +293,7 @@ function guardarCursoUpd() {
             codigo: codigo,
             nombre: nombre,
             id: id
-        }, 
+        },
         success: function(data) {
             //alert(data);
             if (data === 'error') {
@@ -305,9 +304,12 @@ function guardarCursoUpd() {
                 //alert("goaskdlakjsdl");
                 //alert(data);
                 //$('#mensaje').html('<h5 class="alert alert-success" role="alert">Curso actualizado satisfactoriamente</h5>');
-                $('#mensaje').html('Curso actualizado satisfactoriamente');
-                $('#mensaje').addClass('alert alert-success');
-                window.location = "/SistemaT/CursoServlet?operation=QRY";
+                $('#mensajeupd').html('Curso actualizado satisfactoriamente');
+                $('#mensajeupd').addClass('alert alert-success');
+                                setTimeout(function() {
+                    url = "/SistemaT/CursoServlet?operation=QRY";
+                    $(location).attr('href', url);
+                }, 3000);
             }
         }
     });
@@ -323,39 +325,35 @@ function cursoDel() {
         ids.push($(this).val());
     });
     if (ids.length === 0) {
-        
-        
         $('#modal-mensaje').html('Seleccione fila(s) a retirar');
         $('#myModalMensaje').modal('show');
-        
-    //alert("Seleccione fila(s) a Retirar");
     } else {
         $('#modal-mensaje-del').html('¿Estas seguro que quieres eliminar?');
         $('#myModalDel').modal('show');
-    //var val= confirm(0);
-    //alert(val);
-    //        if (val) {
-    //            alert(ids);
-    //            $.ajax({
-    //                url: '/SistemaT/CursoServlet',
-    //                type: 'post',
-    //                data: {
-    //                    operation: 'DEL',
-    //                    idsdel: ids.toString()
-    //                }, success: function(data) {
-    //                    //alert(data);
-    //                    if (data === 'error') {
-    //                        //alert(data)
-    //                    } else {
-    //                        window.location = "/SistemaT/CursoServlet?operation=QRY";
-    //                    }
-    //                }
-    //            });
-    //        }
+        //var val= confirm(0);
+        //alert(val);
+        //        if (val) {
+        //            alert(ids);
+        //            $.ajax({
+        //                url: '/SistemaT/CursoServlet',
+        //                type: 'post',
+        //                data: {
+        //                    operation: 'DEL',
+        //                    idsdel: ids.toString()
+        //                }, success: function(data) {
+        //                    //alert(data);
+        //                    if (data === 'error') {
+        //                        //alert(data)
+        //                    } else {
+        //                        window.location = "/SistemaT/CursoServlet?operation=QRY";
+        //                    }
+        //                }
+        //            });
+        //        }
     }
 }
 
-function confirm(){
+function confirm() {
     var ids = [];
 
     $("input[name='DEL']:checked").each(function() {
@@ -369,11 +367,11 @@ function confirm(){
         data: {
             operation: 'DEL',
             idsdel: ids.toString()
-        }, 
+        },
         success: function(data) {
             //alert(data);
             if (data === 'error') {
-            //alert(data)
+                //alert(data)
             } else {
                 $('#mensaje-del').html('Curso eliminado satisfactoriamente');
                 $('#mensaje-del').addClass('alert alert-success');
