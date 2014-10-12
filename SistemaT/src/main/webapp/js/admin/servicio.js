@@ -11,7 +11,7 @@
         var parametros = {
         operation : operation
       };
-     // alert(operation);
+      alert(operation);
       $.ajax({
         data: parametros,
         
@@ -22,7 +22,7 @@
           //$("#resultado").html("Procesando, espere por favor...");
         },
         success:  function (response) {
-          var Datos=JSON.parse(response);
+          //var Datos=JSON.parse(response);
           alert(response);
           //agregarFila(Datos);
         },
