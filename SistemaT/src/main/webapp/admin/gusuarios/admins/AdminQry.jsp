@@ -260,12 +260,6 @@
                                             <input type="password" class="form-control" id="usrPassUPD" placeholder="Contraseña" required>
                                             <div class="help-block with-errors">No estan permitidos caracteres especiales</div>
                                         </div>
-
-                                        <div class="form-group">
-                                            <input type="password" class="form-control" id="usrPassConfUPD" data-match="#usrPassUPD" data-match-error="Upss,deben coincidir" placeholder="Repita Contraseña" required>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-
                                     </fieldset><!-- /.fieldset -->
                                 </div><!-- /.col -->
                             </div><!-- /.row -->

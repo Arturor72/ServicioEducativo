@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import pe.unfv.fiei.sistemat.model.dao.DaoUsuario;
 import pe.unfv.fiei.sistemat.model.dao.impl.DaoUsuarioImpl;
+import pe.unfv.fiei.sistemat.model.dto.Curso;
 import pe.unfv.fiei.sistemat.model.dto.Usuario;
 import pe.unfv.fiei.sistemat.util.Util;
 
@@ -90,6 +91,17 @@ public class UsuarioServlet extends HttpServlet {
                     }
                 }
             } else if (operation.equalsIgnoreCase(OPERATION_UPD)) {
+                Usuario usuario = new Usuario();
+                message = valida(request, usuario);
+                if (message == null) {
+                    String result = daoUsuario.usuarioUpd(usuario);
+                    if (result == null) {
+                        target = "/admin/gusuarios/admins/AdminQry.jsp";
+                        request.setAttribute("mensaje", message);
+                    } else {
+                        message = "No se actualizó correctamente";
+                    }
+                }
             } else {
                 message = "Solicitud no reconocida.";
             }
@@ -134,11 +146,13 @@ public class UsuarioServlet extends HttpServlet {
     // Metodos de apoyo
     private String valida(HttpServletRequest request, Usuario usuario) {
 
+        Integer usrIdx = null;
         Integer tipUsrIdx = null;
         Integer usrGenx = null;
         Usuario u = (Usuario) request.getSession().getAttribute("usuario");
 
         String error = null;
+        String usrId = request.getParameter("usrId");
         String usrCod = request.getParameter("usrCod");
         String tipUsrId = request.getParameter("tipUsrId");
         String usrNom = request.getParameter("usrNom");
@@ -151,6 +165,14 @@ public class UsuarioServlet extends HttpServlet {
         String usrUser = request.getParameter("usrUser");
         String usrPass = request.getParameter("usrPass");
 
+        if (usrId != null) {
+            try {
+                usrIdx = Integer.valueOf(usrId);
+            } catch (NumberFormatException e) {
+                error = "Valor errado para el id de usuario";
+            }
+        }
+        
         if (error == null) {
             if (usrCod == null || usrCod.trim().length() == 0) {
                 error = "Debe ingresar un codigo para el usuario";
@@ -222,6 +244,7 @@ public class UsuarioServlet extends HttpServlet {
         }
 
         if (error == null) {
+            usuario.setUsr_id(usrIdx);
             usuario.setUsr_cod(usrCod);
             usuario.setTip_usr_id(tipUsrIdx);
             usuario.setUsr_nom(usrNom);

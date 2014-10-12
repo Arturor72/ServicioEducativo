@@ -254,7 +254,7 @@ public class DaoUsuarioImpl implements DaoUsuario {
         log4j.info("+init usuario UPD");
         String sql = SistemTConstants.USER_UPDATE;
         log4j.info("Sentence" + sql);
-        String message = "";
+        String message = null;
         Connection cn = db.getConnection();
         if (cn != null) {
             try {
@@ -266,12 +266,13 @@ public class DaoUsuarioImpl implements DaoUsuario {
                 preparedStatement.setString(5, usuario.getUsr_amat());
                 preparedStatement.setString(6, usuario.getUsr_dni());
                 preparedStatement.setInt(7, usuario.getUsr_gen());
-                preparedStatement.setString(8, usuario.getUsr_mail());
-                preparedStatement.setString(9, usuario.getUsr_user());
-                preparedStatement.setString(10, usuario.getUsr_pass());
-                preparedStatement.setInt(11, usuario.getUsr_est());
-                preparedStatement.setInt(12, usuario.getEsp_id());
-                preparedStatement.setInt(13, usuario.getUsr_id());
+                preparedStatement.setString(8, usuario.getUsr_cel());
+                preparedStatement.setString(9, usuario.getUsr_mail());
+                preparedStatement.setString(10, usuario.getUsr_user());
+                preparedStatement.setString(11, usuario.getUsr_pass());
+                preparedStatement.setInt(12, usuario.getUsr_est());
+                preparedStatement.setInt(13, usuario.getEsp_id());
+                preparedStatement.setInt(14, usuario.getUsr_id());
                 
                 int cuantos = preparedStatement.executeUpdate();
                 if(cuantos == 0){

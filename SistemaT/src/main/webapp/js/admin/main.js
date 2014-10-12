@@ -16,6 +16,7 @@ function curso_QRY(path) {
 }
 
 function guardarUsuario() {
+    alert("");
     var usrGen;
     var usrCod = $("#usrCod").val();
     var tipUsrId = $("#tipUsrId").val();
@@ -192,11 +193,11 @@ function actualizarUsuario() {
         }, 
         success: function(data) {
             if (data === 'error') {
-                $('#mensaje').html('No se pudo actualizar');
-                $('#mensaje').addClass('alert alert-danger');
+                $('#mensajeUPD').html('No se pudo actualizar');
+                $('#mensajeUPD').addClass('alert alert-danger');
             } else {
-                $('#mensaje').html('Actualizado satisfactoriamente');
-                $('#mensaje').addClass('alert alert-success');
+                $('#mensajeUPD').html('Actualizado satisfactoriamente');
+                $('#mensajeUPD').addClass('alert alert-success');
                 window.location = "/SistemaT/UsuarioServlet?operation=QRY&tip_usr_id=1";
             }
         }
