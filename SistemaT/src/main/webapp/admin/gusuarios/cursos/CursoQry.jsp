@@ -154,7 +154,7 @@
                                 <div class="help-block with-errors">Solo letras y numeros</div>
                             </div>
                                 <div class="form-group">
-                                <div id="mensaje"></div>
+                                <div id="mensajeupd"></div>
                                 </div>
                         </div
                         >
