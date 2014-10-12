@@ -150,7 +150,7 @@
 
                             </div>
                             <div class="form-group">
-                                <input type="text" pattern="^[a-zA-Z\s]*$" class="form-control" id="nombreupd" data-error="Solo debe contener numeros y letras" placeholder="Nombre" required="true" value="${cursoget.cur_nom}">
+                                <input type="text" pattern="^[a-zA-Z0-9\s]*$" class="form-control" id="nombreupd" data-error="Solo debe contener numeros y letras" placeholder="Nombre" required="true" value="${cursoget.cur_nom}">
                                 <div class="help-block with-errors">Solo letras y numeros</div>
                             </div>
                                 <div class="form-group">
