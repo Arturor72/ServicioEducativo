@@ -38,65 +38,9 @@
                         <div class="col-md-12">
                             <div class="panel-group" id="accordion">
                                 <div class="panel panel-default">
-                                    <ul class="timeline">
+                                    <ul class="timeline" id="servicio">
 
-                                        <!-- Por item se fabrican dos li 
-                                        uno pertenece a la fecha y el otro
-                                        pertenece al contenido del servicio
-                                        -->
-                                        <!-- timeline time label -->
-                                        <li class="time-label">
-                                            <span class="bg-red">
-                                                10 Feb. 2014
-                                            </span>
-                                        </li>
-                                        <!-- /.timeline-label -->
-
-                                        <!-- timeline item -->
-                                        <li>
-                                            <!-- timeline icon -->
-                                            <i class="fa fa-envelope bg-blue"></i>
-                                            <div class="timeline-item">
-                                                <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-
-                                                <h3 class="timeline-header panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#id1">Servicio 1</a> ...</h3>
-
-                                                <div class="timeline-body panel-collapse collapse in" id="id1">
-                                                    ...
-                                                    Content goes here
-                                                </div>
-
-                                                <div class='timeline-footer'>
-                                                    <a class="btn btn-primary btn-xs">...</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="time-label">
-                                            <span class="bg-red">
-                                                10 Feb. 2014 la fecha de mierda
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <!-- timeline icon -->
-                                            <i class="fa fa-envelope bg-blue"></i>
-                                            <div class="timeline-item">
-                                                <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-
-                                                <h3 class="timeline-header"><a data-toggle="collapse" data-parent="#accordion" href="#id2">Servicio 1</a> ...</h3>
-
-                                                <div  class="timeline-body panel-collapse collapse in" id="id2">
-                                                    ...
-                                                    Content goes here
-                                                </div>
-
-                                                <div class='timeline-footer'>
-                                                    <a class="btn btn-primary btn-xs">...</a>
-                                                </div>
-                                            </div>
-                                        </li>
-
-
-
+                                      <!--Contenido de los servicios-->
                                     </ul>
                                 </div>
                             </div>
@@ -125,5 +69,48 @@
 
     </body>
 </html>
+
 <%@include file="../WEB-INF/jspf/footerLogin.jspf" %>
 <script src="<%= request.getContextPath()%>/js/admin/servicio.js"></script>
+
+<!--Modal para editar-->
+
+ <!--    mi modal upd-->
+        <div class="modal fade" id="myModalUpd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h3 class="modal-title" id="myModalLabel">Actualizar Servicio</h3>
+                    </div>
+                    <form role="form" data-toggle="validator">
+                        <div class="modal-body">
+
+                            <input type="hidden"  id="idupd" value="${cursoget.cur_id}">
+                            <div class="form-group">
+                                <input type="text" pattern="^[a-zA-Z0-9]*$" class="form-control" id="codigoupd" data-error="Solo debe contener numeros y letras, no espacios" placeholder="Código" required="true" value="${cursoget.cur_cod}">
+                                <div class="help-block with-errors">Solo letras y numeros</div>
+
+
+                            </div>
+                            <div class="form-group">
+                                <input type="text" pattern="^[a-zA-Z0-9\s]*$" class="form-control" id="nombreupd" data-error="Solo debe contener numeros y letras" placeholder="Nombre" required="true" value="${cursoget.cur_nom}">
+                                <div class="help-block with-errors">Solo letras y numeros</div>
+                            </div>
+                                <div class="form-group">
+                                <div id="mensajeupd"></div>
+                                </div>
+                        </div
+                        >
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary" id="guarda" onclick="ActualizarServicio()" >Guardar</button>
+                        </div>
+                    </form> <!-- /.form -->
+                </div><!-- /.modal content -->
+            </div><!-- /.modal dialog -->
+        </div><!-- /.modal -->
+
+        <!--fin-->
+       
