@@ -126,3 +126,4 @@
     </body>
 </html>
 <%@include file="../WEB-INF/jspf/footerLogin.jspf" %>
+<script src="<%= request.getContextPath()%>/js/admin/servicio.js"></script>
