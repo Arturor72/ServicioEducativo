@@ -45,6 +45,7 @@ public class ServicioServlet extends HttpServlet {
         DaoServicio daoServicio = new DaoServicioImpl();
         Usuario u = (Usuario) request.getSession().getAttribute("usuario");
         JSONObject objall = new JSONObject();
+        String msg = "";
         if (operation != null) {
             log4j.info("The operation is: " + operation);
 
@@ -55,10 +56,10 @@ public class ServicioServlet extends HttpServlet {
                 } else {
                     request.setAttribute("listcursos", list);
 
-                    int i = 0;
+                    JSONObject obj = new JSONObject();
+
                     for (Servicio servicio : list) {
                         System.out.println("" + servicio.getSer_edu_id());
-                        JSONObject obj = new JSONObject();
                         obj.put("ser_edu_id", servicio.getSer_edu_id());
                         obj.put("ser_edu_fec", servicio.getSer_edu_fec());
                         obj.put("ser_edu_hin", servicio.getSer_edu_hin());
@@ -71,8 +72,11 @@ public class ServicioServlet extends HttpServlet {
                         obj.put("ser_edu_asist", servicio.getSer_edu_asist());
                         obj.put("ser_edu_desc", servicio.getSer_edu_desc());
                         obj.put("ser_edu_est", servicio.getSer_edu_est());
-                        objall.put("id-" + i, obj);
-                        i++;
+                        if (msg.equals("")) {
+                            msg = msg + obj.toJSONString();
+                        } else {
+                            msg = msg + "," + obj.toJSONString();
+                        }
                     }
                 }
             }
@@ -80,7 +84,7 @@ public class ServicioServlet extends HttpServlet {
                 out.print(message);
             } else {
                 if (operation.equalsIgnoreCase(OPERATION_QRY)) {
-                    out.print(objall);
+                    out.print(msg);
                 }
             }
         } else {
