@@ -3,7 +3,7 @@
 
 
 //Changes the color and the hovering properties of the navbar
-.navbar-variant(@color; @font-color: rgba(255, 255, 255, 0.8); @hover-color: #f6f6f6; @hover-bg: rgba(0, 0, 0, 0.1)) {
+/*.navbar-variant( @color; @font-color: rgba(255, 255, 255, 0.8); @hover-color: #f6f6f6; @hover-bg: rgba(0, 0, 0, 0.1)) {
     background-color: @color;
     //Navbar links
     .nav a {
@@ -31,7 +31,7 @@
     .sidebar-toggle:hover .icon-bar {
         background: @hover-color!important;
     }
-}
+}*/
 
 //Logo color variation
 .logo-variant(@color) {
@@ -103,25 +103,25 @@
 
 //Bootstrap mixins for progress bars. You can find original copies
 //with the bootstrap assets (www.getbootstrap.com)
-.progress-bar-variant(@color) {
+/*.progress-bar-variant(@color) {
     background-color: @color;
     .progress-striped & {
         #gradient > .striped();
     }
-}
+}*/
 // Animations
 .animation(@animation) {
     -webkit-animation: @animation;
     animation: @animation;
 }
-#gradient {
+/*#gradient {
     .striped(@color: rgba(255,255,255,.15); @angle: 45deg) {
         background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, @color), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, @color), color-stop(.75, @color), color-stop(.75, transparent), to(transparent));
         background-image: -webkit-linear-gradient(@angle, @color 25%, transparent 25%, transparent 50%, @color 50%, @color 75%, transparent 75%, transparent);
         background-image: -moz-linear-gradient(@angle, @color 25%, transparent 25%, transparent 50%, @color 50%, @color 75%, transparent 75%, transparent);
         background-image: linear-gradient(@angle, @color 25%, transparent 25%, transparent 50%, @color 50%, @color 75%, transparent 75%, transparent);
     }
-}
+}*/
 
 /*---------------------------------------------------
     LESS Elements 0.9
