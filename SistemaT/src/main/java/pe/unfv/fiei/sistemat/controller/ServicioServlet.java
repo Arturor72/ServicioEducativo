@@ -61,7 +61,7 @@ public class ServicioServlet extends HttpServlet {
                     for (Servicio servicio : list) {
                         System.out.println("" + servicio.getSer_edu_id());
                         obj.put("ser_edu_id", servicio.getSer_edu_id());
-                        obj.put("ser_edu_fec", servicio.getSer_edu_fec());
+                        obj.put("ser_edu_fec", servicio.getSer_edu_fec().toString());
                         obj.put("ser_edu_hin", servicio.getSer_edu_hin());
                         obj.put("cur_id", servicio.getCur_id().getCur_nom());
                         obj.put("amb_id", servicio.getAmb_id().getAmb_den());
@@ -84,7 +84,7 @@ public class ServicioServlet extends HttpServlet {
                 out.print(message);
             } else {
                 if (operation.equalsIgnoreCase(OPERATION_QRY)) {
-                    out.print(msg);
+                    out.print("["+msg+"]");
                 }
             }
         } else {
