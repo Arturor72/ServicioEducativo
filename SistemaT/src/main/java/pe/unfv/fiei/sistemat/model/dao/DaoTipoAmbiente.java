@@ -5,16 +5,14 @@
  */
 package pe.unfv.fiei.sistemat.model.dao;
 
-import java.util.List;
-import pe.unfv.fiei.sistemat.model.dto.Servicio;
+import pe.unfv.fiei.sistemat.model.dto.TipoAmbiente;
 
 /**
  *
  * @author Arturo
  */
-public interface DaoServicio {
+public interface DaoTipoAmbiente {
 
-    public List<Servicio> ServicioQry(Integer esp_id);
-    public String ServicioIns(Servicio servicio);
+    public TipoAmbiente getTipoAmbiente(Integer tipo_amb_id);
 
 }

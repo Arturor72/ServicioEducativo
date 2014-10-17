@@ -3,18 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package pe.unfv.fiei.sistemat.model.dao;
 
-import java.util.List;
-import pe.unfv.fiei.sistemat.model.dto.Servicio;
+import pe.unfv.fiei.sistemat.model.dto.TipoServicio;
 
 /**
  *
  * @author Arturo
  */
-public interface DaoServicio {
-
-    public List<Servicio> ServicioQry(Integer esp_id);
-    public String ServicioIns(Servicio servicio);
-
+public interface DaoTipoServicio {
+    public TipoServicio getTipoServicio(Integer tipo_servicio_id);
 }

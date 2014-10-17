@@ -5,16 +5,12 @@
  */
 package pe.unfv.fiei.sistemat.model.dao;
 
-import java.util.List;
-import pe.unfv.fiei.sistemat.model.dto.Servicio;
+import pe.unfv.fiei.sistemat.model.dto.Sede;
 
 /**
  *
  * @author Arturo
  */
-public interface DaoServicio {
-
-    public List<Servicio> ServicioQry(Integer esp_id);
-    public String ServicioIns(Servicio servicio);
-
+public interface DaoSede {
+    public Sede getSede(Integer sede_id);
 }
