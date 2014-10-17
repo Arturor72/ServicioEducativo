@@ -79,20 +79,31 @@ public class ServicioServlet extends HttpServlet {
                         }
                     }
                 }
+            } else if (operation.equals(OPERATION_INS)) {
+                
+
+            } else {
+                JSONObject obj = new JSONObject();
+                obj.put("error", "operación no reconocida");
+                message = obj.toJSONString();
             }
             if (message != null) {
                 out.print(message);
             } else {
-                if (operation.equalsIgnoreCase(OPERATION_QRY)) {
-                    out.print("["+msg+"]");
+                if (operation.equals(OPERATION_QRY)) {
+                    out.print("[" + msg + "]");
+                } else if (operation.equals(OPERATION_INS)) {
+
                 }
             }
+
         } else {
-            message = "error";
-        }
-        if (message != null) {
+            JSONObject obj = new JSONObject();
+            obj.put("error", "operación no reconocida");
+            message = obj.toJSONString();
             out.print(message);
         }
+
         out.close();
     }
 
