@@ -37,8 +37,8 @@ function agregarServicios(Datos) {
         var servicio_body = '<li>' +
                 '<i class="fa fa-envelope bg-blue"></i>' +
                 '<div class="timeline-item">' +
-                '<span class="time"><i class="fa fa-clock-o"></i>' + Datos[i].ser_edu_hin + '</span>' +
-                '<h3 class="timeline-header panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#' + Datos[i].ser_edu_id + '">Servicio 1</a> ...</h3>' +
+                '<span class="time"><i class="fa fa-clock-o"></i>' + Datos[i].ser_edu_hin +' - '+Datos[i].ser_edu_hin+ '</span>' +
+                '<h3 class="timeline-header panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#' + Datos[i].ser_edu_id + '">'+Datos[i].tip_serv_id +' - '+ Datos[i].cur_id+'</a> ...</h3>' +
                 '<div class="timeline-body panel-collapse collapse" id="' + Datos[i].ser_edu_id + '">' +
                 'Curso: ' + Datos[i].cur_id + '<br/>' +
                 'Ambiente: ' + Datos[i].amb_id + '<br/>' +
