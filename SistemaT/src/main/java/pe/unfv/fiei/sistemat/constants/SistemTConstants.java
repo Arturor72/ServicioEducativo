@@ -31,6 +31,7 @@ public class SistemTConstants {
     public static final String CURSO_UPDATE = "UPDATE tbl_curso SET cur_cod=?, cur_nom=?, esp_id=?, cur_est=? WHERE cur_id = ?";
     public static final String CURSO_DELETE = "UPDATE tbl_curso SET cur_est=FALSE WHERE cur_id = ?";
     public static final String CURSO_GET = "SELECT cur_id, cur_cod, cur_nom, esp_id, cur_est FROM tbl_curso WHERE esp_id = ? AND cur_id=?";
+    public static final String CURSO_GET_SERVICIO = "SELECT cur_id, cur_cod, cur_nom, esp_id, cur_est FROM tbl_curso WHERE cur_id=?";
     public static final String CURSO_INS = "INSERT INTO tbl_curso (cur_id, cur_cod, cur_nom, esp_id, cur_est) VALUES (DEFAULT, ?, ?, ?, ?)";
 
     /* ESPECIALIDAD Constants */
