@@ -89,10 +89,24 @@
 
                             <input type="hidden"  id="idupd" value="${cursoget.cur_id}">
                          
+                            
+                            
+                            
+                   <div class="form-group">
+                    <select name="anio" id="anio" class="form-control" required>
+                      <option value="0">Seleccione A&ntilde;o</option>
+                    </select>
+                  </div>
+                            
+                            
+                            
+                            
                             <div class="form-group">
                                 <input type="text" pattern="^[a-zA-Z0-9\s]*$" class="form-control" id="cur_id" data-error="Solo debe contener numeros y letras" placeholder="Nombre" required="true" value="">
                                 <div class="help-block with-errors">Solo letras y numeros</div>
                             </div>
+                            
+                            
                                 <div class="form-group">
                                 <div id="mensajeupd"></div>
                                 </div>
