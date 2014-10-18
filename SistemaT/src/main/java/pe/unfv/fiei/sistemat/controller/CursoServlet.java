@@ -14,12 +14,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
+import org.json.simple.JSONObject;
 import pe.unfv.fiei.sistemat.constants.SistemTConstants;
 import pe.unfv.fiei.sistemat.model.dao.DaoCurso;
 import pe.unfv.fiei.sistemat.model.dao.DaoUsuario;
 import pe.unfv.fiei.sistemat.model.dao.impl.DaoCursoImpl;
 import pe.unfv.fiei.sistemat.model.dao.impl.DaoUsuarioImpl;
 import pe.unfv.fiei.sistemat.model.dto.Curso;
+import pe.unfv.fiei.sistemat.model.dto.Servicio;
 import pe.unfv.fiei.sistemat.model.dto.Usuario;
 import pe.unfv.fiei.sistemat.util.Util;
 
@@ -31,6 +33,7 @@ public class CursoServlet extends HttpServlet {
 
     Logger log4j = Logger.getLogger(CursoServlet.class);
     private final static String OPERATION_QRY = "QRY";
+    private final static String OPERATION_QRY_JSON = "QRYJSON";
     private final static String OPERATION_INS = "INS";
     private final static String OPERATION_DEL = "DEL";
     private final static String OPERATION_GET = "GET";
@@ -41,9 +44,8 @@ public class CursoServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String operation = request.getParameter("operation");
         String message = null;
-
+        String msg = "";
         String target = "/admin/gusuarios/cursos/CursoQry.jsp";
-
         DaoCurso daoCurso = new DaoCursoImpl();
         Usuario u = (Usuario) request.getSession().getAttribute("usuario");
         Curso cursoget = null;
@@ -56,6 +58,27 @@ public class CursoServlet extends HttpServlet {
                 } else {
                     request.setAttribute("listcursos", list);
                     target = "/admin/gusuarios/cursos/CursoQry.jsp";
+                }
+            } else if (operation.equalsIgnoreCase(OPERATION_QRY_JSON)) {
+                List<Curso> list = daoCurso.cursoQry(u.getEsp_id());
+                if (list == null) {
+                    message = "Sin acceso a la base de datos";
+                } else {
+                    JSONObject obj = new JSONObject();
+                    for (Curso curso : list) {
+
+                        obj.put("cur_id", curso.getCur_id());
+                        obj.put("cur_nom", curso.getCur_cod());
+                        obj.put("cur_nom", curso.getCur_nom());
+                        obj.put("esp_id", curso.getEsp_id());
+                        obj.put("cur_est", curso.isCur_est());
+
+                        if (msg.equals("")) {
+                            msg = msg + obj.toJSONString();
+                        } else {
+                            msg = msg + "," + obj.toJSONString();
+                        }
+                    }
                 }
             } else if (operation.equalsIgnoreCase(OPERATION_INS)) {
                 String codigo = request.getParameter("codigo");
@@ -149,11 +172,13 @@ public class CursoServlet extends HttpServlet {
             } else if (operation.equalsIgnoreCase(OPERATION_GET)) {
                 if (cursoget != null) {
                     target = cursoget.getCur_id() + "#" + cursoget.getCur_cod() + "#" + cursoget.getCur_nom();
-                }else{
-                target = "null";
+                } else {
+                    target = "null";
                 }
                 out.print(target);
                 out.close();
+            } else if (operation.equalsIgnoreCase(OPERATION_QRY_JSON)) {
+                out.print("[" + msg + "]");
             } else {
                 RequestDispatcher dispatcher = request.getRequestDispatcher(target);
                 dispatcher.forward(request, response);
