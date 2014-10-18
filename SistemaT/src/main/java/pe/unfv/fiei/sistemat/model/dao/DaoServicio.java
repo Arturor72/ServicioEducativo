@@ -15,6 +15,12 @@ import pe.unfv.fiei.sistemat.model.dto.Servicio;
 public interface DaoServicio {
 
     public List<Servicio> ServicioQry(Integer esp_id);
+
     public String ServicioIns(Servicio servicio);
 
+    public Servicio ServicioGet(Integer serv_id);
+
+    public String ServicioUpd(Servicio servicio);
+
+    public String ServicioDel(List<Integer> ids);
 }

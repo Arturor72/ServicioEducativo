@@ -63,10 +63,10 @@ public class ServicioServlet extends HttpServlet {
                         obj.put("ser_edu_id", servicio.getSer_edu_id());
                         obj.put("ser_edu_fec", servicio.getSer_edu_fec().toString());
                         obj.put("ser_edu_hin", servicio.getSer_edu_hin());
-                        obj.put("cur_id", servicio.getCur_id().getCur_nom());
-                        obj.put("amb_id", servicio.getAmb_id().getAmb_den());
-                        obj.put("sed_id", servicio.getSed_id().getSed_desc());
-                        obj.put("tip_serv_id", servicio.getTip_serv_id().getTip_ser_den());
+                        obj.put("cur_id", servicio.getCur_id().getCur_id());
+                        obj.put("amb_id", servicio.getAmb_id().getAmd_id());
+                        obj.put("sed_id", servicio.getSed_id().getSed_id());
+                        obj.put("tip_serv_id", servicio.getTip_serv_id().getTip_ser_id());
                         obj.put("usr_adm_id", servicio.getUsr_adm_id().getUsr_user());
                         obj.put("usr_tut_id", servicio.getUsr_tut_id().getUsr_user());
                         obj.put("ser_edu_asist", servicio.getSer_edu_asist());
