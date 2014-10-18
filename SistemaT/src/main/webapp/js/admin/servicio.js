@@ -44,6 +44,11 @@ function agregarServicios(Datos) {
                 //el dia la fecha la hora..., el curso... el ambiente...profesor..id...
                 
                 '<input type="hidden" id="' + Datos[i].ser_edu_id + '-cur_id" value="'+Datos[i].cur_id +'" />'+
+                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-amb_id" value="'+Datos[i].amb_id +'" />'+
+                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-sed_id" value="'+Datos[i].sed_id +'" />'+
+                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-cur_id" value="'+Datos[i].cur_id +'" />'+
+                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-cur_id" value="'+Datos[i].cur_id +'" />'+
+                
                 'Curso: ' + Datos[i].cur_id + '<br/>' +
                 'Ambiente: ' + Datos[i].amb_id + '<br/>' +
                 'Sede: ' + Datos[i].sed_id + '<br/>' +
@@ -66,12 +71,14 @@ function agregarServicios(Datos) {
 
 }
 
-
+//amb_den, sed_desc
 function editarServicio(id){
     
-    var x =$('#'+id+'-cur_id').val();
+    var cur_id =$('#'+id+'-cur_id').val();
     
-    alert(x);
+    $('#cur_id').val(x);
+    $('#myModalUpd').modal('show');
+    
     
     
 }
