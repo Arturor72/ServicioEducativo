@@ -40,6 +40,10 @@ function agregarServicios(Datos) {
                 '<span class="time"><i class="fa fa-clock-o"></i>' + Datos[i].ser_edu_hin +' - '+Datos[i].ser_edu_hin+ '</span>' +
                 '<h3 class="timeline-header panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#' + Datos[i].ser_edu_id + '">'+Datos[i].tip_serv_id +' - '+ Datos[i].cur_id+'</a> ...</h3>' +
                 '<div class="timeline-body panel-collapse collapse" id="' + Datos[i].ser_edu_id + '">' +
+                
+                //el dia la fecha la hora..., el curso... el ambiente...profesor..id...
+                
+                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-cur_id" value="'+Datos[i].cur_id +'" />'+
                 'Curso: ' + Datos[i].cur_id + '<br/>' +
                 'Ambiente: ' + Datos[i].amb_id + '<br/>' +
                 'Sede: ' + Datos[i].sed_id + '<br/>' +
@@ -52,7 +56,7 @@ function agregarServicios(Datos) {
                 'servicio estado: ' + Datos[i].ser_edu_est + '<br/>' +
                 '</div>' +
                 '<div class="timeline-footer">' +
-                '<a class="btn btn-primary btn-xs">Editar</a>' +
+                '<a class="btn btn-primary btn-xs" onclick="editarServicio('+ Datos[i].ser_edu_id +')"  >Editar</a>' +
                 '</div>' +
                 '</div>' +
                 '</li>';
@@ -65,6 +69,9 @@ function agregarServicios(Datos) {
 
 function editarServicio(id){
     
+    var x =$('#'+id+'-cur_id').val();
+    
+    alert(x);
     
     
 }
