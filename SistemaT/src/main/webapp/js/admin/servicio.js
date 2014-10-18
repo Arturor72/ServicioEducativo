@@ -46,18 +46,22 @@ function agregarServicios(Datos) {
                 '<input type="hidden" id="' + Datos[i].ser_edu_id + '-cur_id" value="'+Datos[i].cur_id +'" />'+
                 '<input type="hidden" id="' + Datos[i].ser_edu_id + '-amb_id" value="'+Datos[i].amb_id +'" />'+
                 '<input type="hidden" id="' + Datos[i].ser_edu_id + '-sed_id" value="'+Datos[i].sed_id +'" />'+
-                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-cur_id" value="'+Datos[i].cur_id +'" />'+
-                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-cur_id" value="'+Datos[i].cur_id +'" />'+
+                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-tip_serv_id" value="'+Datos[i].tip_serv_id +'" />'+
+                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-ser_edu_desc" value="'+Datos[i].ser_edu_desc +'" />'+
+                
+                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-usr_tut_id" value="'+Datos[i].usr_tut_id +'" />'+
+                
                 
                 'Curso: ' + Datos[i].cur_id + '<br/>' +
                 'Ambiente: ' + Datos[i].amb_id + '<br/>' +
                 'Sede: ' + Datos[i].sed_id + '<br/>' +
                 'Tipo de servicio: ' + Datos[i].tip_serv_id + '<br/>' +
+                
                 'Descripcion: ' + Datos[i].ser_edu_desc + '<br/>' +
                 'User Admin id : ' + Datos[i].usr_adm_id + '<br/>' +
                 'Tutor id: ' + Datos[i].usr_tut_id + '<br/>' +
-                'servicio asistencia: ' + Datos[i].usr_tut_id + '<br/>' +
-                'servicio estado: ' + Datos[i].usr_tut_id + '<br/>' +
+             
+               
                 'servicio estado: ' + Datos[i].ser_edu_est + '<br/>' +
                 '</div>' +
                 '<div class="timeline-footer">' +
@@ -76,12 +80,48 @@ function editarServicio(id){
     
     var cur_id =$('#'+id+'-cur_id').val();
     
-    $('#cur_id').val(x);
+    $('#cur_id').val(cur_id);
     $('#myModalUpd').modal('show');
     
     
     
 }
+
+$(function () {
+      var operation="QRYJSON";
+
+      var selectCurso =  $('#select_cur');
+
+   
+        var parametros = {
+          operation : operation,
+      
+        };
+
+        $.ajax({
+          data:  parametros,
+          url:  '/SistemaT/CursoServlet',
+          type:  'post',
+          beforeSend: function () {
+            // Nothing To do
+          },
+          success:  function (response) {
+            var Datos=JSON.parse(response);
+          
+            
+              /*selectCurso.options.length = 1;
+              for(var i=1; i<=anio; i++){
+                selectCurso.options[selectCurso.options.length] = new Option(i, i);
+              }*/
+            
+          },
+          error: function (result,f) {
+            alert('ERROR ' + result.status + ' ' + result.statusText+' '+f);
+          }
+        });
+     
+    });
+
 
 
                     
