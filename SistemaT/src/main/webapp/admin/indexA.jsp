@@ -88,14 +88,9 @@
                         <div class="modal-body">
 
                             <input type="hidden"  id="idupd" value="${cursoget.cur_id}">
+                         
                             <div class="form-group">
-                                <input type="text" pattern="^[a-zA-Z0-9]*$" class="form-control" id="codigoupd" data-error="Solo debe contener numeros y letras, no espacios" placeholder="Código" required="true" value="${cursoget.cur_cod}">
-                                <div class="help-block with-errors">Solo letras y numeros</div>
-
-
-                            </div>
-                            <div class="form-group">
-                                <input type="text" pattern="^[a-zA-Z0-9\s]*$" class="form-control" id="nombreupd" data-error="Solo debe contener numeros y letras" placeholder="Nombre" required="true" value="${cursoget.cur_nom}">
+                                <input type="text" pattern="^[a-zA-Z0-9\s]*$" class="form-control" id="cur_id" data-error="Solo debe contener numeros y letras" placeholder="Nombre" required="true" value="">
                                 <div class="help-block with-errors">Solo letras y numeros</div>
                             </div>
                                 <div class="form-group">
