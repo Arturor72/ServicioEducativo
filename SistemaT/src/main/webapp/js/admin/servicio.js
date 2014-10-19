@@ -5,7 +5,7 @@
  */
 
 
-$(function() {
+$(function () {
     var operation = 'QRY';
 
     var parametros = {
@@ -16,15 +16,16 @@ $(function() {
         data: parametros,
         url: '/SistemaT/ServicioServlet',
         type: 'post',
-        beforeSend: function() {
+        beforeSend: function () {
             //$("#resultado").html("Procesando, espere por favor...");
         },
-        success: function(response) {
+        success: function (response) {
+            console.log(response);
             var Datos = JSON.parse(response);
             agregarServicios(Datos);
 
         },
-        error: function(result, f) {
+        error: function (result, f) {
             alert('ERROR ' + result.status + ' ' + result.statusText + ' ' + f);
         }
     });
@@ -32,40 +33,53 @@ $(function() {
 
 function agregarServicios(Datos) {
 
+            
+
     for (i in Datos) {
-        var servicio_head = '<li class="time-label"><span class="bg-red">' + Datos[i].ser_edu_fec + '</span></li>';
+        var servicio_head = '<li class="time-label"><span class="bg-red">' + moment(Datos[i].ser_edu_fec).lang("es").format('ll') + '</span></li>';
         var servicio_body = '<li>' +
                 '<i class="fa fa-envelope bg-blue"></i>' +
                 '<div class="timeline-item">' +
-                '<span class="time"><i class="fa fa-clock-o"></i>' + Datos[i].ser_edu_hin +' - '+Datos[i].ser_edu_hin+ '</span>' +
-                '<h3 class="timeline-header panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#' + Datos[i].ser_edu_id + '">'+Datos[i].tip_serv_id +' - '+ Datos[i].cur_id+'</a> ...</h3>' +
+                '<span class="time"><i class="fa fa-clock-o"></i>' + Datos[i].ser_edu_hin + ' - ' + Datos[i].ser_edu_hin + '</span>' +
+                '<h3 class="timeline-header panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#' + Datos[i].ser_edu_id + '">' + Datos[i].tip_serv_den + ' - ' + Datos[i].cur_nom + '</a> ...</h3>' +
                 '<div class="timeline-body panel-collapse collapse" id="' + Datos[i].ser_edu_id + '">' +
+                //curso, tipo de servicio, fecha y hora .... tutor, sede, tipo de ambiente, ambiente
+                //texarea
+
+                //enviar codigo de sede, fecha, y la hora codigo tipo amb
+                //aula 1 , laboratorio 2
+
+
+                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-cur_id" value="' + Datos[i].cur_id + '" />' +
+                     
+                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-tip_serv_id" value="' + Datos[i].tip_serv_id + '" />' +
                 
-                //el dia la fecha la hora..., el curso... el ambiente...profesor..id...
+                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-ser_edu_fec" value="' + Datos[i].ser_edu_fec + '" />' +
+                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-ser_edu_hin" value="' + Datos[i].ser_edu_hin + '" />' +
                 
-                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-cur_id" value="'+Datos[i].cur_id +'" />'+
-                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-amb_id" value="'+Datos[i].amb_id +'" />'+
-                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-sed_id" value="'+Datos[i].sed_id +'" />'+
-                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-tip_serv_id" value="'+Datos[i].tip_serv_id +'" />'+
-                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-ser_edu_desc" value="'+Datos[i].ser_edu_desc +'" />'+
+                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-usr_tut_id" value="' + Datos[i].usr_tut_id + '" />' +
                 
-                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-usr_tut_id" value="'+Datos[i].usr_tut_id +'" />'+
                 
+                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-sed_id" value="' + Datos[i].sed_id + '" />' +
+                
+                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-sed_desc" value="' + Datos[i].sed_desc + '" />' +
+                
+                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-amb_id" value="' + Datos[i].amb_id + '" />' +
+                
+                
+                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-ser_edu_desc" value="' + Datos[i].ser_edu_desc + '" />' +
                 
                 'Curso: ' + Datos[i].cur_id + '<br/>' +
                 'Ambiente: ' + Datos[i].amb_id + '<br/>' +
                 'Sede: ' + Datos[i].sed_id + '<br/>' +
                 'Tipo de servicio: ' + Datos[i].tip_serv_id + '<br/>' +
-                
                 'Descripcion: ' + Datos[i].ser_edu_desc + '<br/>' +
                 'User Admin id : ' + Datos[i].usr_adm_id + '<br/>' +
                 'Tutor id: ' + Datos[i].usr_tut_id + '<br/>' +
-             
-               
                 'servicio estado: ' + Datos[i].ser_edu_est + '<br/>' +
                 '</div>' +
                 '<div class="timeline-footer">' +
-                '<a class="btn btn-primary btn-xs" onclick="editarServicio('+ Datos[i].ser_edu_id +')"  >Editar</a>' +
+                '<a class="btn btn-primary btn-xs" onclick="editarServicio(' + Datos[i].ser_edu_id + ')"  >Editar</a>' +
                 '</div>' +
                 '</div>' +
                 '</li>';
@@ -75,53 +89,109 @@ function agregarServicios(Datos) {
 
 }
 
+
+  $(function () {
+   $('#datetimepicker1').datetimepicker({
+         pick12HourFormat: false,
+         minuteStepping:15,
+         language:'es'
+    });
+
+
+ //$('#datetimepicker1').data("DateTimePicker").setTime(new Time());
+  //$('#datetimepicker1').data("DateTimePicker").setMinDate(new Date("june 12, 2014"));
+
+});     
+
+
 //amb_den, sed_desc
-function editarServicio(id){
+function editarServicio(id) {
+
+    //seteando valores en el formulario
+    //enviar codigo de sede, fecha, y la hora codigo tipo amb
+    var cur_id = $('#' + id + '-cur_id').val();
     
-    var cur_id =$('#'+id+'-cur_id').val();
+    var tip_serv_id = $('#' + id + '-tip_serv_id').val();
     
-    $('#cur_id').val(cur_id);
+    var ser_edu_fec = $('#' + id + '-ser_edu_fec').val();
+    var ser_edu_hin = $('#' + id + '-ser_edu_hin').val();
+    
+    var momentDate = moment(ser_edu_fec+" "+ser_edu_hin);
+    var sed_id = $('#' + id + '-sed_id').val();
+    
+    var usr_tut_id = $('#' + id + '-usr_tut_id').val();
+    
+    
+    //curso, tipo , fecha y hora .... tutor, sede, tipo de ambiente, ambiente
+
+    $('#select_cur').val(cur_id);
+    $('#select_tip_serv').val(tip_serv_id);
+    
+    $('#select_usr_tut').val(usr_tut_id);
+    
+    $('#datetimepicker1').data("DateTimePicker").setDate(new Date(momentDate));
+    
+    
     $('#myModalUpd').modal('show');
+
+
+
+
+}
+function actualizarServicio(){
     
+ alert( $('#select_cur').val() +" "+ $('#select_tip_serv').val() +" "+ $('#select_usr_tut').val());
     
     
 }
 
+
 $(function () {
-      var operation="QRYJSON";
+    var operation = "QRYJSON";
 
-      var selectCurso =  $('#select_cur');
+    var selectCurso = $('#select_cur');
 
-   
-        var parametros = {
-          operation : operation,
-      
-        };
 
-        $.ajax({
-          data:  parametros,
-          url:  '/SistemaT/CursoServlet',
-          type:  'post',
-          beforeSend: function () {
+    var parametros = {
+        operation: operation,
+    };
+
+    $.ajax({
+        data: parametros,
+        url: '/SistemaT/CursoServlet',
+        type: 'post',
+        beforeSend: function () {
             // Nothing To do
-          },
-          success:  function (response) {
-            var Datos=JSON.parse(response);
-          
-            
-              /*selectCurso.options.length = 1;
-              for(var i=1; i<=anio; i++){
-                selectCurso.options[selectCurso.options.length] = new Option(i, i);
-              }*/
-            
-          },
-          error: function (result,f) {
-            alert('ERROR ' + result.status + ' ' + result.statusText+' '+f);
-          }
-        });
-     
+        },
+        success: function (response) {
+
+
+            var Datos = JSON.parse(response);
+
+            for (i in Datos) {
+                selectCurso.append('<option value="' + Datos[i].cur_id + '">' + Datos[i].cur_nom + '</option>');
+
+            }
+
+        },
+        error: function (result, f) {
+            alert('ERROR ' + result.status + ' ' + result.statusText + ' ' + f);
+        }
     });
 
+});
 
 
-                    
+
+
+//$(function () {
+//
+//
+//    //Timepicker
+//    $(".timepicker").timepicker({
+//        showInputs: false,
+//        showMeridian: false
+//    });
+//
+//});
+
