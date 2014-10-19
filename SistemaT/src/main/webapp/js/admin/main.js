@@ -11,12 +11,7 @@ function tutor_QRY(path) {
     window.location = path + "/UsuarioServlet?operation=QRY&tip_usr_id=2";
 }
 
-function curso_QRY(path) {
-    window.location = path + "/CursoServlet?operation=QRY";
-}
-
-function guardarUsuario() {
-    alert("");
+function guardarAdmin() {
     var usrGen;
     var usrCod = $("#usrCod").val();
     var tipUsrId = $("#tipUsrId").val();
@@ -65,9 +60,58 @@ function guardarUsuario() {
     });
 }
 
+function guardarTutor() {
+    var usrGen;
+    var usrCod = $("#usrCod").val();
+    var tipUsrId = $("#tipUsrId").val();
+    var usrNom = $("#usrNom").val();
+    var usrApat = $("#usrApat").val();
+    var usrAmat = $("#usrAmat").val();
+    var usrDni = $("#usrDni").val();
+    if (document.getElementById('usrGen_m').checked) {
+        usrGen = 0;
+    }
+    if (document.getElementById('usrGen_f').checked) {
+        usrGen = 1;
+    }
+    var usrCel = $("#usrCel").val();
+    var usrMail = $("#usrMail").val();
+    var usrUser = $("#usrUser").val();
+    var usrPass = $("#usrPass").val();
+
+    $.ajax({
+        url: '/SistemaT/UsuarioServlet',
+        type: 'post',
+        data: {
+            operation: 'INS',
+            usrCod: usrCod,
+            tipUsrId: tipUsrId,
+            usrNom: usrNom,
+            usrApat: usrApat,
+            usrAmat: usrAmat,
+            usrDni: usrDni,
+            usrGen: usrGen,
+            usrCel: usrCel,
+            usrMail: usrMail,
+            usrUser: usrUser,
+            usrPass: usrPass
+        },
+        success: function(data) {
+            if (data === 'error') {
+                $('#mensaje').html('No se pudo crear');
+                $('#mensaje').addClass('alert alert-danger');
+            } else {
+                $('#mensaje').html('Creado satisfactoriamente');
+                $('#mensaje').addClass('alert alert-success');
+                window.location = "/SistemaT/UsuarioServlet?operation=QRY&tip_usr_id=2";
+            }
+        }
+    });
+}
+
 function mostrarMensajeEliminar() {
     var ids = [];
-    $('#myModalMensajeDel').html('Eliminar administrador');
+    $('#myModalMensajeDel').html('Eliminar');
     $('#myModalMensajeUpd').html('');
 
     $("input[name='DEL']:checked").each(function() {
@@ -83,7 +127,7 @@ function mostrarMensajeEliminar() {
     }
 }
 
-function eliminarUsuario() {
+function eliminarAdmin() {
     var ids = [];
     $("input[name='DEL']:checked").each(function() {
         ids.push($(this).val());
@@ -106,10 +150,33 @@ function eliminarUsuario() {
     });
 }
 
+function eliminarTutor() {
+    var ids = [];
+    $("input[name='DEL']:checked").each(function() {
+        ids.push($(this).val());
+    });
+    $.ajax({
+        url: '/SistemaT/UsuarioServlet',
+        type: 'post',
+        data: {
+            operation: 'DEL',
+            idsdel: ids.toString()
+        },
+        success: function(data) {
+            if (data === 'error') {
+            } else {
+                $('#mensaje-del').html('administrador eliminado satisfactoriamente');
+                $('#mensaje-del').addClass('alert alert-success');
+                window.location = "/SistemaT/UsuarioServlet?operation=QRY&tip_usr_id=2";
+            }
+        }
+    });
+}
+
 function solicitarUsuarioId() {
     var usrId = $("input[name='UPD']:checked").val();
     $('#myModalMensajeDel').html('');
-    $('#myModalMensajeUpd').html('Actualizar administrador');
+    $('#myModalMensajeUpd').html('Actualizar');
     if (isNaN(usrId)) {
         $('#modal-mensaje').html('Seleccione fila para actualizar datos');
         $('#myModalMensaje').modal('show');
@@ -145,7 +212,6 @@ function solicitarUsuarioId() {
                     $('#usrMailUPD').val(u[10]);
                     $('#usrUserUPD').val(u[11]);
                     $('#usrPassUPD').val(u[12]);
-                    $('#usrPassConfUPD').val(u[12]);
                     $('#usrEstUPD').val(u[13]);
                     $('#myModalUpd').modal('show');
                 }
@@ -154,7 +220,7 @@ function solicitarUsuarioId() {
     }
 }
 
-function actualizarUsuario() {
+function actualizarAdmin() {
     var usrGen;
     var usrId = $("#usrIdUPD").val();
     var usrCod = $("#usrCodUPD").val();
@@ -204,155 +270,57 @@ function actualizarUsuario() {
     });
 }
 
-function guardarCurso() {
-
-    var codigo = $("#codigo").val();
-    var nombre = $("#nombre").val();
-    //        var datos=$(this).serializeArray();
-    //        datos=[
-    //            {name:"codigo", value:codigo},
-    //            {name:"nombre", value:nombre}
-    //        ];
-
-    $.ajax({
-        url: '/SistemaT/CursoServlet',
-        type: 'post',
-        data: {
-            operation: 'INS',
-            codigo: codigo,
-            nombre: nombre
-        },
-        success: function(data) {
-            // alert(data);
-            if (data === 'error') {
-                //alert(data)
-                $('#mensaje').html('No se pudo crear');
-                $('#mensaje').addClass('alert alert-danger');
-            } else {
-                $('#mensaje').html('Curso creado satisfactoriamente');
-                $('#mensaje').addClass('alert alert-success');
-//                setTimeout(
-//                        window.location = "/SistemaT/CursoServlet?operation=QRY"
-//                        , 10000);
-                setTimeout(function() {
-                    url = "/SistemaT/CursoServlet?operation=QRY";
-                    $(location).attr('href', url);
-                }, 3000);
-            }
-        }
-    });
-
-}
-
-function cursoUpd() {
-    var id = $("input[name='UPD']:checked").val();
-    $('#myModalMensajeDel').html('');
-    $('#myModalMensajeUpd').html('Actualizar curso');
-    if (isNaN(id)) {
-
-        $('#modal-mensaje').html('Seleccione fila para actualizar datos');
-        $('#myModalMensaje').modal('show');
-        //alert("Seleccione Fila para Actualizar Datos");
-
-        // $('#mensaje').addClass('alert alert-success');
-
+function actualizarTutor() {
+    var usrGen;
+    var usrId = $("#usrIdUPD").val();
+    var usrCod = $("#usrCodUPD").val();
+    var tipUsrId = $("#tipUsrIdUPD").val();
+    var usrNom = $("#usrNomUPD").val();
+    var usrApat = $("#usrApatUPD").val();
+    var usrAmat = $("#usrAmatUPD").val();
+    var usrDni = $("#usrDniUPD").val();
+    if (document.getElementById('usrGen_mUPD').checked) {
+        usrGen = 0;
     }
-    else {
-        //        window.location = "CursoServlet?accion=GET&cursoid=" + id;
-        $.ajax({
-            url: '/SistemaT/CursoServlet',
-            type: 'post',
-            data: {
-                operation: 'GET',
-                cursoid: id
-            },
-            success: function(data) {
-                if (data === 'error') {
-                    alert(data);
-                } else {
-                    var c = data.split("#");
-                    $('#idupd').val(c[0]);
-                    $('#codigoupd').val(c[1]);
-                    $('#nombreupd').val(c[2]);
-
-                    $('#myModalUpd').modal('show');
-                }
-            }
-        });
+    if (document.getElementById('usrGen_fUPD').checked) {
+        usrGen = 1;
     }
-}
-
-function guardarCursoUpd() {
-    var id = $("#idupd").val();
-    var codigo = $("#codigoupd").val();
-    var nombre = $("#nombreupd").val();
+    var usrCel = $("#usrCelUPD").val();
+    var usrMail = $("#usrMailUPD").val();
+    var usrUser = $("#usrUserUPD").val();
+    var usrPass = $("#usrPassUPD").val();
     $.ajax({
-        url: '/SistemaT/CursoServlet',
+        url: '/SistemaT/UsuarioServlet',
         type: 'post',
         data: {
             operation: 'UPD',
-            codigo: codigo,
-            nombre: nombre,
-            id: id
+            usrId: usrId,
+            usrCod: usrCod,
+            tipUsrId: tipUsrId,
+            usrNom: usrNom,
+            usrApat: usrApat,
+            usrAmat: usrAmat,
+            usrDni: usrDni,
+            usrGen: usrGen,
+            usrCel: usrCel,
+            usrMail: usrMail,
+            usrUser: usrUser,
+            usrPass: usrPass
         },
         success: function(data) {
-            //alert(data);
             if (data === 'error') {
-                //alert(data);
-                $('#mensaje').html('No se pudo actualizar');
-                $('#mensaje').addClass('alert alert-danger');
+                $('#mensajeUPD').html('No se pudo actualizar');
+                $('#mensajeUPD').addClass('alert alert-danger');
             } else {
-                //alert("goaskdlakjsdl");
-                //alert(data);
-                //$('#mensaje').html('<h5 class="alert alert-success" role="alert">Curso actualizado satisfactoriamente</h5>');
-                $('#mensajeupd').html('Curso actualizado satisfactoriamente');
-                $('#mensajeupd').addClass('alert alert-success');
-                                setTimeout(function() {
-                    url = "/SistemaT/CursoServlet?operation=QRY";
-                    $(location).attr('href', url);
-                }, 3000);
+                $('#mensajeUPD').html('Actualizado satisfactoriamente');
+                $('#mensajeUPD').addClass('alert alert-success');
+                window.location = "/SistemaT/UsuarioServlet?operation=QRY&tip_usr_id=2";
             }
         }
     });
-
 }
 
-function cursoDel() {
-    var ids = [];
-    $('#myModalMensajeDel').html('Elimimar curso');
-    $('#myModalMensajeUpd').html('');
 
-    $("input[name='DEL']:checked").each(function() {
-        ids.push($(this).val());
-    });
-    if (ids.length === 0) {
-        $('#modal-mensaje').html('Seleccione fila(s) a retirar');
-        $('#myModalMensaje').modal('show');
-    } else {
-        $('#modal-mensaje-del').html('¿Estas seguro que quieres eliminar?');
-        $('#myModalDel').modal('show');
-        //var val= confirm(0);
-        //alert(val);
-        //        if (val) {
-        //            alert(ids);
-        //            $.ajax({
-        //                url: '/SistemaT/CursoServlet',
-        //                type: 'post',
-        //                data: {
-        //                    operation: 'DEL',
-        //                    idsdel: ids.toString()
-        //                }, success: function(data) {
-        //                    //alert(data);
-        //                    if (data === 'error') {
-        //                        //alert(data)
-        //                    } else {
-        //                        window.location = "/SistemaT/CursoServlet?operation=QRY";
-        //                    }
-        //                }
-        //            });
-        //        }
-    }
-}
 
 function confirm() {
     var ids = [];
@@ -370,7 +338,6 @@ function confirm() {
             idsdel: ids.toString()
         },
         success: function(data) {
-            //alert(data);
             if (data === 'error') {
                 //alert(data)
             } else {
