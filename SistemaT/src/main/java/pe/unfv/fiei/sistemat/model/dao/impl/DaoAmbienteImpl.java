@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import org.apache.log4j.Logger;
 import pe.unfv.fiei.sistemat.constants.SistemTConstants;
 import pe.unfv.fiei.sistemat.model.connection.StConnection;
@@ -20,14 +21,14 @@ import pe.unfv.fiei.sistemat.model.dto.Ambiente;
  * @author Arturo
  */
 public class DaoAmbienteImpl implements DaoAmbiente {
-    
+
     Logger log4j = Logger.getLogger(DaoAmbienteImpl.class);
     StConnection db;
-    
+
     public DaoAmbienteImpl() {
         db = new StConnection();
     }
-    
+
     @Override
     public Ambiente getAmbiente(Integer amb_id) {
         log4j.info("+init getAmbiente");
@@ -56,9 +57,22 @@ public class DaoAmbienteImpl implements DaoAmbiente {
                 }
             }
         }
-        
+
         log4j.info("-finish getAmbiente");
         return ambiente;
     }
-    
+
+    @Override
+    public List<Ambiente> ambienteQry(Integer sede_id, String fec, String hora) {
+        log4j.info("+init ambienteQry");
+        List<Ambiente> list = null;
+        String sql = "";
+        Connection cn = db.getConnection();
+        if (cn != null) {
+
+        }
+        log4j.info("-finish ambienteQry");
+        return list;
+    }
+
 }
