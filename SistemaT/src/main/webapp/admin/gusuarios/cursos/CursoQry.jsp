@@ -238,3 +238,4 @@
 
     </body>
 </html>
+<script src="<%= request.getContextPath()%>/js/curso.js"></script>
