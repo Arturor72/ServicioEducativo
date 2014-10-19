@@ -37,7 +37,7 @@
                                     </div>
 
                                     <div class="col-md-2 col-xs-8" >
-                                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal"><img src="<%= request.getContextPath()%>/img/add3.png"/> Administrador</button>
+                                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal"><img src="<%= request.getContextPath()%>/img/add3.png"/>Administrador</button>
                                     </div>
 
                                 </div><!-- /.box-header -->
@@ -179,7 +179,7 @@
                         </div><!-- /.modal-body -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary" id="guarda" onclick="guardarUsuario()">Guardar</button>
+                            <button type="button" class="btn btn-primary" id="guarda" onclick="guardarAdmin()">Guardar</button>
                         </div><!-- /.modal-footer -->
                     </form><!-- /.form -->
                 </div><!-- /.model-content -->
@@ -269,7 +269,7 @@
                         </div><!-- /.modal-body -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary" id="guarda" onclick="actualizarUsuario()">Guardar</button>
+                            <button type="button" class="btn btn-primary" id="guarda" onclick="actualizarAdmin()">Guardar</button>
                         </div><!-- /.modal-footer -->
                     </form> <!-- /.form -->
                 </div><!-- /.modal content -->
@@ -318,7 +318,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary" id="guarda" onclick="eliminarUsuario()" >Aceptar</button>
+                            <button type="button" class="btn btn-primary" id="guarda" onclick="eliminarAdmin()" >Aceptar</button>
                         </div>
                     </form> <!-- /.form -->
                 </div><!-- /.modal content -->

@@ -122,6 +122,7 @@ public class DaoUsuarioImpl implements DaoUsuario {
         log4j.info("- finish usuario QRY");
         return list;
     }
+
     @Override
     public String usuarioIns(Usuario usuario) {
         log4j.info("- init usuario INSERT");
@@ -273,13 +274,13 @@ public class DaoUsuarioImpl implements DaoUsuario {
                 preparedStatement.setInt(12, usuario.getUsr_est());
                 preparedStatement.setInt(13, usuario.getEsp_id());
                 preparedStatement.setInt(14, usuario.getUsr_id());
-                
+
                 int cuantos = preparedStatement.executeUpdate();
-                if(cuantos == 0){
+                if (cuantos == 0) {
                     message = "0 filas actualizadas";
                     log4j.error(message);
                 }
-                
+
             } catch (SQLException e) {
                 log4j.error(e.getMessage());
                 message = "[ERROR] " + e.getMessage();
