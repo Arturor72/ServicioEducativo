@@ -10,4 +10,5 @@
 <script src="<%= request.getContextPath()%>/js/AdminLTE/demo.js" type="text/javascript"></script>
 <script src="<%= request.getContextPath()%>/js/jstutor/main.js" type="text/javascript"></script>
 <script src="<%= request.getContextPath()%>/js/admin/main.js"></script>
+<script src="<%= request.getContextPath()%>/js/admin/curso.js"></script>
 <script src="<%= request.getContextPath()%>/js/main.js"></script>
