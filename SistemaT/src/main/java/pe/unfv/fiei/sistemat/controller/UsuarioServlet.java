@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import pe.unfv.fiei.sistemat.model.dao.DaoUsuario;
 import pe.unfv.fiei.sistemat.model.dao.impl.DaoUsuarioImpl;
-import pe.unfv.fiei.sistemat.model.dto.Curso;
 import pe.unfv.fiei.sistemat.model.dto.Usuario;
 import pe.unfv.fiei.sistemat.util.Util;
 
@@ -44,7 +43,9 @@ public class UsuarioServlet extends HttpServlet {
         if (operation != null) {
             log4j.info("The operation is: " + operation);
             if (operation.equalsIgnoreCase(OPERATION_QRY)) {
-                List<Usuario> list = daoUsuario.usuarioQry(u.getTip_usr_id(), u.getEsp_id());
+                String tip_usr_id = request.getParameter("tip_usr_id");
+                Integer tip_usr_idx = Integer.valueOf(tip_usr_id);
+                List<Usuario> list = daoUsuario.usuarioQry(tip_usr_idx, u.getEsp_id());
                 if (list == null) {
                     message = "Sin acceso a la base de datos";
                 } else {
