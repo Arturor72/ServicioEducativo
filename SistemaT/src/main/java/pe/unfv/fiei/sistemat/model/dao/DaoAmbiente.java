@@ -5,6 +5,7 @@
  */
 package pe.unfv.fiei.sistemat.model.dao;
 
+import java.util.List;
 import pe.unfv.fiei.sistemat.model.dto.Ambiente;
 
 /**
@@ -14,4 +15,7 @@ import pe.unfv.fiei.sistemat.model.dto.Ambiente;
 public interface DaoAmbiente {
 
     public Ambiente getAmbiente(Integer amb_id);
+
+    public List<Ambiente> dispAmbienteQry(String fecha, String hora, Integer serv_id, Integer sed_id);
+
 }
