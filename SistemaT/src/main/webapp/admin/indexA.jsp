@@ -13,6 +13,7 @@
         <%@include file="../WEB-INF/jspf/title.jspf" %>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <%@include file="../WEB-INF/jspf/links.jspf" %>
+
     </head>
     <body class="skin-blue">
         <%@include file="../WEB-INF/jspf/header.jspf" %>
@@ -29,18 +30,13 @@
                 <section class="content">
 
 
-
-
-
-
-
                     <div class="row">
                         <div class="col-md-12">
                             <div class="panel-group" id="accordion">
                                 <div class="panel panel-default">
                                     <ul class="timeline" id="servicio">
 
-                                      <!--Contenido de los servicios-->
+                                        <!--Contenido de los servicios-->
                                     </ul>
                                 </div>
                             </div>
@@ -53,7 +49,7 @@
         </div>
         <%@include file="../WEB-INF/jspf/linksfooter.jspf" %>
         <script type="text/javascript">
-            $(function() {
+            $(function () {
                 $("#example1").dataTable();
                 $('#example2').dataTable({
                     "bPaginate": true,
@@ -71,55 +67,127 @@
 </html>
 
 <%@include file="../WEB-INF/jspf/footerLogin.jspf" %>
+
+
+
+
 <script src="<%= request.getContextPath()%>/js/admin/servicio.js"></script>
+
+
 
 <!--Modal para editar-->
 
- <!--    mi modal upd-->
-        <div class="modal fade" id="myModalUpd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!--    mi modal upd-->
+<div class="modal fade" id="myModalUpd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h3 class="modal-title" id="myModalLabel">Actualizar Servicio</h3>
-                    </div>
-                    <form role="form" data-toggle="validator">
-                        <div class="modal-body">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h3 class="modal-title" id="myModalLabel">Actualizar Servicio</h3>
+            </div>
+            <form role="form" data-toggle="validator">
+                <div class="modal-body">
 
-                            <input type="hidden"  id="idupd" value="${cursoget.cur_id}">
-                         
-                            
-                            
-                            
-                   <div class="form-group">
-                    <select name="anio" id="anio" class="form-control" required>
-                      <option value="0">Seleccione A&ntilde;o</option>
-                    </select>
-                  </div>
-                            
-                            
-                            
-                            
-                            <div class="form-group">
-                                <input type="text" pattern="^[a-zA-Z0-9\s]*$" class="form-control" id="cur_id" data-error="Solo debe contener numeros y letras" placeholder="Nombre" required="true" value="">
-                                <div class="help-block with-errors">Solo letras y numeros</div>
-                            </div>
-                            
-                            
-                                <div class="form-group">
-                                <div id="mensajeupd"></div>
-                                </div>
-                        </div
-                        >
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary" id="guarda" onclick="ActualizarServicio()" >Guardar</button>
+                    <input type="hidden"  id="idupd" value="${cursoget.cur_id}">
+
+
+
+
+
+
+
+
+                    <!-- Date -->
+                    <div class="form-group">
+                        <div class='input-group date' id='datetimepicker1'>
+                            <input type='text' class="form-control" data-date-format="DD/MM/YYYY HH:mm"/>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                            </span>
                         </div>
-                    </form> <!-- /.form -->
-                </div><!-- /.modal content -->
-            </div><!-- /.modal dialog -->
-        </div><!-- /.modal -->
+                    </div>
 
-        <!--fin-->
-       
+                    <!-- time Picker -->
+                    <!--<div class="bootstrap-timepicker">
+                        <div class="form-group">
+                            <label>Hora:</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control timepicker" id="ser_edu_hin" />
+                                <div class="input-group-addon">
+                                    <i class="fa fa-clock-o"></i>
+                                </div>
+                            </div><!-- /.input group -->
+                    <!-- </div><!-- /.form group -->
+                    <!-- </div> -->
+
+
+
+
+
+
+
+                    <!-- select -->
+                    <div class="form-group">
+                        <label>Curso</label>
+                        <select name="cur_id" id="select_cur" class="form-control">
+                        </select>
+                    </div>
+
+                    <!-- select -->
+                    <div class="form-group">
+                        <label>Tipo de servicio</label>
+                        <select name="select_tip_serv" id="select_tip_serv" class="form-control">
+                            <option value="1">Taller</option>
+                            <option value="2">Tutoria</option>
+                        </select>
+                    </div>
+
+                    <!-- select -->
+                    <div class="form-group">
+                        <label>Tipo de ambiente</label>
+                        <select name="select_amb" id="select_amb" class="form-control">
+                            <option value="1">Aula</option>
+                            <option value="2">Laboratorio</option>
+                        </select>
+                    </div>
+
+
+
+
+                    <!-- select -->
+                    <div class="form-group">
+                        <label>Tutor</label>
+                        <select name="select_usr_tut" id="select_usr_tut" class="form-control">
+                         
+                        </select>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <div id="mensajeupd"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="guarda" onclick="actualizarServicio()" >Guardar</button>
+                </div>
+            </form> <!-- /.form -->
+        </div><!-- /.modal content -->
+    </div><!-- /.modal dialog -->
+</div><!-- /.modal -->
+
+<!--fin-->
+
+
+<!-- <div class="input-group-btn">
+                                   <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">Action <span class="fa fa-caret-down"></span></button>
+                                   <ul class="dropdown-menu">
+                                       <li><a href="#">Action</a></li>
+                                       <li><a href="#">Another action</a></li>
+                                       <li><a href="#">Something else here</a></li>
+                                       <li class="divider"></li>
+                                       <li><a href="#">Separated link</a></li>
+                                   </ul>
+                               </div><!-- /btn-group -->
+

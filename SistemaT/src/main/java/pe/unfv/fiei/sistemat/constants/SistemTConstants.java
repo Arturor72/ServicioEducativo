@@ -12,14 +12,12 @@ public class SistemTConstants {
     public static final String SISTEMAT_DRIVER = "com.mysql.jdbc.Driver";
     public static final String SISTEMAT_USER = "root";
     public static final String SISTEMAT_PASSWORD = "root";
-    
     /*Errors for unique field*/
     public static final String ERROR_UNIQUE_FIELD="1062";
     
     /* Admin and Tutor Type Constants */
     public static final Integer TYPE_ADMIN = 1;
     public static final Integer TYPE_TUTOR = 2;
-    
 
     /* LOGIN Constants */
     public static final String LOGIN_SELECT = "SELECT usr_id, usr_cod, tip_usr_id, usr_nom, usr_apat, usr_amat, usr_dni, usr_gen, usr_cel, usr_mail, usr_user, AES_DECRYPT(usr_pass, 'F1O2R3114'), usr_est, esp_id FROM tbl_usuario WHERE (usr_user=?) and (AES_DECRYPT(usr_pass,'F1O2R3114') = ?)";
@@ -47,7 +45,6 @@ public class SistemTConstants {
 
     /* AMBIENTE Constants */
     public static final String AMBIENTE_GET = "SELECT amb_id, sed_id, amb_den, tip_amb_id FROM tbl_ambiente WHERE amb_id = ?";
-    public static final String AMBIENTE_QRY = "SELECT amb_id, sed_id, amb_den, tip_amb_id FROM tbl_ambiente WHERE amb_id = ?";
 
     /* TIPO AMBIENTE Constants */
     public static final String TIPO_AMBIENTE_GET = "SELECT tip_amb_id, tip_amb_den FROM tbl_tipo_ambiente WHERE tip_amb_id = ?";

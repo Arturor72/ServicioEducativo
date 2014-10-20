@@ -167,7 +167,7 @@ public class DaoCursoImpl implements DaoCurso {
                     cn.close();
                 } catch (SQLException e) {
                     log4j.error(e.getMessage());
-                    result = String.valueOf(e.getErrorCode());
+                    result = "Error: " + e.getMessage();
 
                 }
             }

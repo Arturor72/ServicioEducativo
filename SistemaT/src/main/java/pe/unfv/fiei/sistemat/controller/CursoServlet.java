@@ -194,7 +194,7 @@ public class CursoServlet extends HttpServlet {
         if ((Util.validaLetrasyNumeros(curso.getCur_cod()) != null) || curso.getCur_cod().trim().equalsIgnoreCase("")) {
             result += "*  Codigo de curso inválido\n";
         }
-        if ((Util.validaLetrasyNumeros(curso.getCur_nom()) != null)|| curso.getCur_cod().trim().equalsIgnoreCase("")) {
+        if ((Util.validaLetrasyNumeros(curso.getCur_nom()) != null)) {
             result += "*  Nombre de curso inválido\n";
         }
         if ((Util.validaNum(String.valueOf(curso.getEsp_id())) != null)) {

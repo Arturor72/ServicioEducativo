@@ -122,7 +122,7 @@ function mostrarMensajeEliminar() {
         $('#myModalMensaje').modal('show');
 
     } else {
-        $('#modal-mensaje-del').html('¿Estas seguro que quieres eliminar?');
+        $('#modal-mensaje-del').html('Â¿Estas seguro que quieres eliminar?');
         $('#myModalDel').modal('show');
     }
 }
