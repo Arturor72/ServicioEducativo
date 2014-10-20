@@ -48,14 +48,13 @@ function guardarAdmin() {
             usrPass: usrPass
         },
         success: function(data) {
-            var e = data.split("#");
-            if (e[0] === 'error') {
-                $('#mensaje').html(e[1]);
+            if (data === 'error') {
+                $('#mensaje').html('No se pudo crear');
                 $('#mensaje').addClass('alert alert-danger');
             } else {
                 $('#mensaje').html('Creado satisfactoriamente');
                 $('#mensaje').addClass('alert alert-success');
-                setTimeout( function() { url = "/SistemaT/UsuarioServlet?operation=QRY&tip_usr_id=1"; $(location).attr('href', url);}, 2000);
+                window.location = "/SistemaT/UsuarioServlet?operation=QRY&tip_usr_id=1";
             }
         }
     });
@@ -98,14 +97,13 @@ function guardarTutor() {
             usrPass: usrPass
         },
         success: function(data) {
-            var e = data.split("#");
-            if (e[0] === 'error') {
-                $('#mensaje').html(e[1]);
+            if (data === 'error') {
+                $('#mensaje').html('No se pudo crear');
                 $('#mensaje').addClass('alert alert-danger');
             } else {
                 $('#mensaje').html('Creado satisfactoriamente');
                 $('#mensaje').addClass('alert alert-success');
-                setTimeout( function() { url = "/SistemaT/UsuarioServlet?operation=QRY&tip_usr_id=2"; $(location).attr('href', url);}, 2000);
+                window.location = "/SistemaT/UsuarioServlet?operation=QRY&tip_usr_id=2";
             }
         }
     });
@@ -144,9 +142,9 @@ function eliminarAdmin() {
         success: function(data) {
             if (data === 'error') {
             } else {
-                $('#mensaje-del').html('Administrador eliminado satisfactoriamente');
+                $('#mensaje-del').html('administrador eliminado satisfactoriamente');
                 $('#mensaje-del').addClass('alert alert-success');
-                setTimeout( function() { url = "/SistemaT/UsuarioServlet?operation=QRY&tip_usr_id=1"; $(location).attr('href', url);}, 2000);
+                window.location = "/SistemaT/UsuarioServlet?operation=QRY&tip_usr_id=1";
             }
         }
     });
@@ -169,7 +167,7 @@ function eliminarTutor() {
             } else {
                 $('#mensaje-del').html('administrador eliminado satisfactoriamente');
                 $('#mensaje-del').addClass('alert alert-success');
-                setTimeout( function() { url = "/SistemaT/UsuarioServlet?operation=QRY&tip_usr_id=2"; $(location).attr('href', url);}, 2000);
+                window.location = "/SistemaT/UsuarioServlet?operation=QRY&tip_usr_id=2";
             }
         }
     });
@@ -260,14 +258,13 @@ function actualizarAdmin() {
             usrPass: usrPass
         },
         success: function(data) {
-            var e = data.split("#");
-            if (e[0] === 'error') {
-                $('#mensajeUPD').html(e[1]);
+            if (data === 'error') {
+                $('#mensajeUPD').html('No se pudo actualizar');
                 $('#mensajeUPD').addClass('alert alert-danger');
             } else {
                 $('#mensajeUPD').html('Actualizado satisfactoriamente');
                 $('#mensajeUPD').addClass('alert alert-success');
-                setTimeout( function() { url = "/SistemaT/UsuarioServlet?operation=QRY&tip_usr_id=1"; $(location).attr('href', url);}, 2000);
+                window.location = "/SistemaT/UsuarioServlet?operation=QRY&tip_usr_id=1";
             }
         }
     });
@@ -311,18 +308,19 @@ function actualizarTutor() {
             usrPass: usrPass
         },
         success: function(data) {
-            var e = data.split("#");
-            if (e[0] === 'error') {
-                $('#mensajeUPD').html(e[1]);
+            if (data === 'error') {
+                $('#mensajeUPD').html('No se pudo actualizar');
                 $('#mensajeUPD').addClass('alert alert-danger');
             } else {
                 $('#mensajeUPD').html('Actualizado satisfactoriamente');
                 $('#mensajeUPD').addClass('alert alert-success');
-                setTimeout( function() { url = "/SistemaT/UsuarioServlet?operation=QRY&tip_usr_id=2"; $(location).attr('href', url);}, 2000);
+                window.location = "/SistemaT/UsuarioServlet?operation=QRY&tip_usr_id=2";
             }
         }
     });
 }
+
+
 
 function confirm() {
     var ids = [];
@@ -330,6 +328,8 @@ function confirm() {
     $("input[name='DEL']:checked").each(function() {
         ids.push($(this).val());
     });
+    // if (valor==true) {
+    //  alert(ids);
     $.ajax({
         url: '/SistemaT/CursoServlet',
         type: 'post',
@@ -339,6 +339,7 @@ function confirm() {
         },
         success: function(data) {
             if (data === 'error') {
+                //alert(data)
             } else {
                 $('#mensaje-del').html('Curso eliminado satisfactoriamente');
                 $('#mensaje-del').addClass('alert alert-success');
@@ -346,6 +347,7 @@ function confirm() {
             }
         }
     });
+// }
 }
 
 
@@ -368,3 +370,139 @@ function confirm() {
 
 
 
+//function guardarCurso() {
+//
+//    var codigo = $("#codigo").val();
+//    var nombre = $("#nombre").val();
+//    //        var datos=$(this).serializeArray();
+//    //        datos=[
+//    //            {name:"codigo", value:codigo},
+//    //            {name:"nombre", value:nombre}
+//    //        ];
+//
+//    $.ajax({
+//        url: '/SistemaT/CursoServlet',
+//        type: 'post',
+//        data: {
+//            operation: 'INS',
+//            codigo: codigo,
+//            nombre: nombre
+//        }, 
+//        success: function(data) {
+//            //alert(data);
+//            if (data === 'error') {
+//              //  alert(data)
+//              $('#mensaje').html('No se pudo crear');
+//                $('#mensaje').addClass('alert alert-danger');
+//            } else {
+//                $('#mensaje').html('Curso creado satisfactoriamente');
+//                $('#mensaje').addClass('alert alert-success');
+//                window.location = "/SistemaT/CursoServlet?operation=QRY";
+//            }
+//        }
+//    });
+//
+//}
+//
+//function cursoUpd() {
+//    var id = $("input[name='UPD']:checked").val();
+//     $('#myModalMensajeDel').html('');
+//     $('#myModalMensajeUpd').html('Actualizar curso'); 
+//    if (isNaN(id)) {
+//        
+//        $('#modal-mensaje').html('Seleccione fila para actualizar datos');
+//        $('#myModalMensaje').modal('show');
+//        //alert("Seleccione Fila para Actualizar Datos");
+//    }
+//    else {
+//        //        window.location = "CursoServlet?accion=GET&cursoid=" + id;
+//        $.ajax({
+//            url: '/SistemaT/CursoServlet',
+//            type: 'post',
+//            data: {
+//                operation: 'GET',
+//                cursoid: id
+//            }, 
+//            success: function(data) {
+//                if (data === 'error') {
+//                   // alert(data);
+//                } else {
+//                    var c = data.split("#");
+//                    $('#idupd').val(c[0]);
+//                    $('#codigoupd').val(c[1]);
+//                    $('#nombreupd').val(c[2]);
+//
+//                    $('#myModalUpd').modal('show');
+//                }
+//            }
+//        });
+//    }
+//}
+//
+//function guardarCursoUpd() {
+//    var id = $("#idupd").val();
+//    var codigo = $("#codigoupd").val();
+//    var nombre = $("#nombreupd").val();
+//   // alert("abc");
+//    //        var datos=$(this).serializeArray();
+//    //        datos=[
+//    //            {name:"codigo", value:codigo},
+//    //            {name:"nombre", value:nombre}
+//    //        ];
+//
+//    $.ajax({
+//        url: '/SistemaT/CursoServlet',
+//        type: 'post',
+//        data: {
+//            operation: 'UPD',
+//            codigo: codigo,
+//            nombre: nombre,
+//            id: id
+//        }, 
+//        success: function(data) {
+//            alert(data);
+//            if (data === 'error') {
+//                //alert(data)
+//                $('#mensaje').html('No se pudo actualizar');
+//                $('#mensaje').addClass('alert alert-danger');
+//            } else {
+//                $('#mensaje').html('Curso actualizado satisfactoriamente');
+//                $('#mensaje').addClass('alert alert-success');
+//                window.location = "/SistemaT/CursoServlet?operation=QRY";
+//            }
+//        }
+//    });
+//
+//}
+//
+//function cursoDel() {
+//    var ids = [];
+//$('#myModalMensajeDel').html('Elimimar curso');
+//$('#myModalMensajeUpd').html('');
+//    $("input[name='DEL']:checked").each(function() {
+//        ids.push($(this).val());
+//    });
+//    if (ids.length === 0) {
+//        alert("Seleccione fila(s) a Retirar");
+//    } else {
+////        if (confirm("Retirar fila(s)?")) {
+////            alert(ids);
+////            $.ajax({
+////                url: '/SistemaT/CursoServlet',
+////                type: 'post',
+////                data: {
+////                    operation: 'DEL',
+////                    idsdel: ids.toString()
+////                }, 
+////                success: function(data) {
+////                    alert(data);
+////                    if (data === 'error') {
+////                        alert(data)
+////                    } else {
+////                        window.location = "/SistemaT/CursoServlet?operation=QRY";
+////                    }
+////                }
+////            });
+////        }
+//    }
+//}

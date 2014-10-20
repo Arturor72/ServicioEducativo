@@ -46,11 +46,10 @@
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th class="mrc">Apellidos y nombres</th>
-                                                <th class="mrc">C&oacute;digo</th>
-                                                <th class="mrc">Alias</th>
-                                                <th class="mrc">Correo electr&oacute;nico</th>
-                                                <th class="mrc">M&oacute;vil</th>
+                                                <th>Código</th>
+                                                <th>Apellidos y nombres</th>
+                                                <th>Correo electr&oacute;nico</th>
+                                                <th>M&oacute;vil</th>
                                                 <th class="mrc"> <img src="<%= request.getContextPath()%>/img/delete.png" onclick="mostrarMensajeEliminar()"/></th>
                                                 <th class="mrc"> <img src="<%= request.getContextPath()%>/img/edit.png" onclick="solicitarUsuarioId()"/></th>
                                             </tr>
@@ -58,11 +57,10 @@
                                         <tbody>
                                             <c:forEach var="a" items="${list}">
                                                 <tr>
+                                                    <td>${a.usr_cod}</td>
                                                     <td>${a.usr_nom} ${a.usr_apat} ${a.usr_amat}</td>
-                                                    <td class="mrc">${a.usr_cod}</td>
-                                                    <td class="mrc">${a.usr_user}</td>
                                                     <td>${a.usr_mail}</td>
-                                                    <td class="mrc">${a.usr_cel}</td>
+                                                    <td>${a.usr_cel}</td>
                                                     <td class="mrc"> <input type="checkbox" name="DEL" value="${a.usr_id}"> </td>
                                                     <td class="mrc"> <input type="radio" name="UPD" value="${a.usr_id}"> </td>
                                                 </tr>
@@ -104,7 +102,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h3 class="modal-title" id="myModalLabel">Nuevo tutor</h3>
+                        <h3 class="modal-title" id="myModalLabel">Registro tutor</h3>
                     </div><!-- /.model-header -->
                     <form role="form" data-toggle="validator">
                         <div class="modal-body">
@@ -150,7 +148,7 @@
                                 </div><!-- /.col -->
                                 <div class="col-md-6 col-xs-12">
                                     <fieldset>
-                                        <legend><h4>Datos de la cuenta de usuario</h4></legend>
+                                        <legend><h4>Datos de usuario</h4></legend>
 
                                         <div class="form-group">
                                             <input type="text" pattern="^[a-zA-Z0-9]*$"class="form-control" id="usrCod" data-error="Codigo no valido" maxlength="10" placeholder="Código" data-error="" required>
@@ -266,7 +264,7 @@
                                 </div><!-- /.col -->
                             </div><!-- /.row -->
                             <div class="form-group">
-                                <div id="mensajeUPD"></div>
+                                <div id="mensaje"></div>
                             </div>
                         </div><!-- /.modal-body -->
                         <div class="modal-footer">
@@ -278,7 +276,6 @@
             </div><!-- /.modal dialog -->
         </div><!-- /.modal -->
         <!--fin-->
-        
 
         <!-- Modal MSG -->
         <div class="modal fade" id="myModalMensaje" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
