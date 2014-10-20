@@ -11,7 +11,12 @@ function tutor_QRY(path) {
     window.location = path + "/UsuarioServlet?operation=QRY&tip_usr_id=2";
 }
 
-function guardarAdmin() {
+function curso_QRY(path) {
+    window.location = path + "/CursoServlet?operation=QRY";
+}
+
+function guardarUsuario() {
+    alert("");
     var usrGen;
     var usrCod = $("#usrCod").val();
     var tipUsrId = $("#tipUsrId").val();
@@ -199,56 +204,7 @@ function actualizarUsuario() {
     });
 }
 
-function actualizarTutor() {
-    var usrGen;
-    var usrId = $("#usrIdUPD").val();
-    var usrCod = $("#usrCodUPD").val();
-    var tipUsrId = $("#tipUsrIdUPD").val();
-    var usrNom = $("#usrNomUPD").val();
-    var usrApat = $("#usrApatUPD").val();
-    var usrAmat = $("#usrAmatUPD").val();
-    var usrDni = $("#usrDniUPD").val();
-    if (document.getElementById('usrGen_mUPD').checked) {
-        usrGen = 0;
-    }
-    if (document.getElementById('usrGen_fUPD').checked) {
-        usrGen = 1;
-    }
-    var usrCel = $("#usrCelUPD").val();
-    var usrMail = $("#usrMailUPD").val();
-    var usrUser = $("#usrUserUPD").val();
-    var usrPass = $("#usrPassUPD").val();
-    $.ajax({
-        url: '/SistemaT/UsuarioServlet',
-        type: 'post',
-        data: {
-            operation: 'UPD',
-            usrId: usrId,
-            usrCod: usrCod,
-            tipUsrId: tipUsrId,
-            usrNom: usrNom,
-            usrApat: usrApat,
-            usrAmat: usrAmat,
-            usrDni: usrDni,
-            usrGen: usrGen,
-            usrCel: usrCel,
-            usrMail: usrMail,
-            usrUser: usrUser,
-            usrPass: usrPass
-        },
-        success: function(data) {
-            if (data === 'error') {
-                $('#mensajeUPD').html('No se pudo actualizar');
-                $('#mensajeUPD').addClass('alert alert-danger');
-            } else {
-                $('#mensajeUPD').html('Actualizado satisfactoriamente');
-                $('#mensajeUPD').addClass('alert alert-success');
-                window.location = "/SistemaT/UsuarioServlet?operation=QRY&tip_usr_id=2";
-            }
-        }
-    });
-}
-
+function guardarCurso() {
 
 
 function confirm() {
