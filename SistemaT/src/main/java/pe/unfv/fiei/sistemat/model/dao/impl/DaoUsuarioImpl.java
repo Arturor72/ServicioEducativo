@@ -122,6 +122,7 @@ public class DaoUsuarioImpl implements DaoUsuario {
         log4j.info("- finish usuario QRY");
         return list;
     }
+
     @Override
     public String usuarioIns(Usuario usuario) {
         log4j.info("- init usuario INSERT");
@@ -152,13 +153,31 @@ public class DaoUsuarioImpl implements DaoUsuario {
                 }
             } catch (SQLException e) {
                 log4j.error(e.getMessage());
-                message = "[ERROR] " + e.getMessage();
+                if (e.getErrorCode() == 1062) {
+                    if (e.getMessage().contains("usr_cod")) {
+                        message = "El codigo de usuario ingresado ya existe";
+                    }
+                    if (e.getMessage().contains("usr_dni")) {
+                        message = "El DNI ingresado ya existe";
+                    }
+                    if (e.getMessage().contains("usr_cel")) {
+                        message = "El celular ingresado ya existe";
+                    }
+                    if (e.getMessage().contains("usr_mail")) {
+                        message = "El correo ingresado ya existe";
+                    }
+                    if (e.getMessage().contains("usr_user")) {
+                        message = "El usuario ingresado ya existe";
+                    }
+                } else {
+                    message = "El usuario no pudo crearse";
+                }
             } finally {
                 try {
                     cn.close();
                 } catch (SQLException e) {
                     log4j.error(e.getMessage());
-                    message = "[ERROR] " + e.getMessage();
+                    message = "Problema con el cierre de la conexion";
                 }
             }
         }
@@ -273,22 +292,40 @@ public class DaoUsuarioImpl implements DaoUsuario {
                 preparedStatement.setInt(12, usuario.getUsr_est());
                 preparedStatement.setInt(13, usuario.getEsp_id());
                 preparedStatement.setInt(14, usuario.getUsr_id());
-                
+
                 int cuantos = preparedStatement.executeUpdate();
-                if(cuantos == 0){
+                if (cuantos == 0) {
                     message = "0 filas actualizadas";
                     log4j.error(message);
                 }
-                
+
             } catch (SQLException e) {
                 log4j.error(e.getMessage());
-                message = "[ERROR] " + e.getMessage();
+                if (e.getErrorCode() == 1062) {
+                    if (e.getMessage().contains("usr_cod")) {
+                        message = "El codigo de usuario ingresado ya existe";
+                    }
+                    if (e.getMessage().contains("usr_dni")) {
+                        message = "El DNI ingresado ya existe";
+                    }
+                    if (e.getMessage().contains("usr_cel")) {
+                        message = "El celular ingresado ya existe";
+                    }
+                    if (e.getMessage().contains("usr_mail")) {
+                        message = "El correo ingresado ya existe";
+                    }
+                    if (e.getMessage().contains("usr_user")) {
+                        message = "El usuario ingresado ya existe";
+                    }
+                } else {
+                    message = "El usuario no pudo crearse";
+                }
             } finally {
                 try {
                     cn.close();
                 } catch (SQLException e) {
                     log4j.error(e.getMessage());
-                    message = "[ERROR] " + e.getMessage();
+                    message = "Problema con el cierre de la conexion";
                 }
             }
 
