@@ -66,13 +66,11 @@ public class CursoServlet extends HttpServlet {
                 } else {
                     JSONObject obj = new JSONObject();
                     for (Curso curso : list) {
-
                         obj.put("cur_id", curso.getCur_id());
                         obj.put("cur_nom", curso.getCur_cod());
                         obj.put("cur_nom", curso.getCur_nom());
                         obj.put("esp_id", curso.getEsp_id());
                         obj.put("cur_est", curso.isCur_est());
-
                         if (msg.equals("")) {
                             msg = msg + obj.toJSONString();
                         } else {
@@ -95,10 +93,15 @@ public class CursoServlet extends HttpServlet {
                             if (result == null) {
                                 target = "/admin/gusuarios/cursos/CursoQry.jsp";
                                 request.setAttribute("mensaje", message);
+                            }else if (result.equalsIgnoreCase(SistemTConstants.ERROR_UNIQUE_FIELD)) {
+                                message = "El código ya existe";
                             } else {
                                 message = "No se insertó correctamente";
                             }
+                        } else {
+                            message = validaCurso(curso);
                         }
+
                     } else {
                         message = "nombre invalido o vacio";
                     }
@@ -159,11 +162,10 @@ public class CursoServlet extends HttpServlet {
             } else {
                 message = "Solicitud no reconocida.";
             }
-            response.setContentType("text/html;charset=UTF-8");
             PrintWriter out = response.getWriter();
             if (message != null) {
                 request.setAttribute("msg", message);
-                out.print("error");
+                out.print("error#" + message);
                 out.close();
             } else if (operation.equalsIgnoreCase(SistemTConstants.CURSO_INS)) {
                 target = "CursoQry";
@@ -189,14 +191,14 @@ public class CursoServlet extends HttpServlet {
 
     public String validaCurso(Curso curso) {
         String result = "";
-        if ((Util.validaLetrasyNumeros(curso.getCur_cod()) != null)) {
-            result += " * Codigo de curso inválido";
+        if ((Util.validaLetrasyNumeros(curso.getCur_cod()) != null) || curso.getCur_cod().trim().equalsIgnoreCase("")) {
+            result += "*  Codigo de curso inválido\n";
         }
-        if ((Util.validaLetras(curso.getCur_nom()) != null)) {
-            result += " * Nombre de curso inválido";
+        if ((Util.validaLetrasyNumeros(curso.getCur_nom()) != null)) {
+            result += "*  Nombre de curso inválido\n";
         }
         if ((Util.validaNum(String.valueOf(curso.getEsp_id())) != null)) {
-            result += " * Id de especialidad inválido";
+            result += "*  Id de especialidad inválido\n";
         }
         return result;
     }
