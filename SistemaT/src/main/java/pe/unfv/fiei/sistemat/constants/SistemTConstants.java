@@ -12,6 +12,9 @@ public class SistemTConstants {
     public static final String SISTEMAT_DRIVER = "com.mysql.jdbc.Driver";
     public static final String SISTEMAT_USER = "root";
     public static final String SISTEMAT_PASSWORD = "root";
+    /*Errors for unique field*/
+    public static final String ERROR_UNIQUE_FIELD="1062";
+    
     /* Admin and Tutor Type Constants */
     public static final Integer TYPE_ADMIN = 1;
     public static final Integer TYPE_TUTOR = 2;
