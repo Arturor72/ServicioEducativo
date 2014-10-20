@@ -45,6 +45,7 @@ public class SistemTConstants {
 
     /* AMBIENTE Constants */
     public static final String AMBIENTE_GET = "SELECT amb_id, sed_id, amb_den, tip_amb_id FROM tbl_ambiente WHERE amb_id = ?";
+    public static final String AMBIENTE_GET_LIST_DISPONIBLE = "{call ambientesDisp(?,?,?,?)}";
 
     /* TIPO AMBIENTE Constants */
     public static final String TIPO_AMBIENTE_GET = "SELECT tip_amb_id, tip_amb_den FROM tbl_tipo_ambiente WHERE tip_amb_id = ?";
