@@ -181,7 +181,7 @@
                         </div><!-- /.modal-body -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary" id="guarda" onclick="guardarUsuario()">Guardar</button>
+                            <button type="button" class="btn btn-primary" id="guarda" onclick="guardarAdmin()">Guardar</button>
                         </div><!-- /.modal-footer -->
                     </form><!-- /.form -->
                 </div><!-- /.model-content -->
@@ -271,7 +271,7 @@
                         </div><!-- /.modal-body -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary" id="guarda" onclick="actualizarUsuario()">Guardar</button>
+                            <button type="button" class="btn btn-primary" id="guarda" onclick="actualizarAdmin()">Guardar</button>
                         </div><!-- /.modal-footer -->
                     </form> <!-- /.form -->
                 </div><!-- /.modal content -->
@@ -320,7 +320,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary" id="guarda" onclick="eliminarUsuario()" >Aceptar</button>
+                            <button type="button" class="btn btn-primary" id="guarda" onclick="eliminarAdmin()" >Aceptar</button>
                         </div>
                     </form> <!-- /.form -->
                 </div><!-- /.modal content -->
