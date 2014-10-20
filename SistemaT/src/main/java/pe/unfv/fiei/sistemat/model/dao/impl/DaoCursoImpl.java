@@ -139,8 +139,7 @@ public class DaoCursoImpl implements DaoCurso {
         return result;
     }
 
-    
-     @Override
+    @Override
     public String cursoIns(Curso curso) {
         log4j.info("+init cursoIns");
         String sql = SistemTConstants.CURSO_INS;
@@ -160,8 +159,9 @@ public class DaoCursoImpl implements DaoCurso {
                 }
 
             } catch (SQLException e) {
-                log4j.error(e.getMessage());
-                result = "Error: " + e.getMessage();
+                log4j.error(e.getMessage() + " ERROR: " + e.getErrorCode());
+                result = String.valueOf(e.getErrorCode());
+
             } finally {
                 try {
                     cn.close();
@@ -175,7 +175,7 @@ public class DaoCursoImpl implements DaoCurso {
         log4j.info("-finish cursoIns");
         return result;
     }
-    
+
     @Override
     public String cursoDelete(List<Integer> lst) {
         log4j.info("+init cursoDelete");
