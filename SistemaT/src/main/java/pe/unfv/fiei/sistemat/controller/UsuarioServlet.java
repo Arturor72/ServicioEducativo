@@ -66,7 +66,7 @@ public class UsuarioServlet extends HttpServlet {
                         target = "/admin/gusuarios/admins/AdminQry.jsp";
                         request.setAttribute("mensaje", message);
                     } else {
-                        message = "No se insertó correctamente";
+                        message = result;
                     }
                 }
             } else if (operation.equalsIgnoreCase(OPERATION_GET)) {
@@ -101,7 +101,7 @@ public class UsuarioServlet extends HttpServlet {
                         target = "/admin/gusuarios/admins/AdminQry.jsp";
                         request.setAttribute("mensaje", message);
                     } else {
-                        message = "No se actualizó correctamente";
+                        message = result;
                     }
                 }
             } else {
@@ -111,7 +111,7 @@ public class UsuarioServlet extends HttpServlet {
             PrintWriter out = response.getWriter();
             if (message != null) {
                 request.setAttribute("msg", message);
-                out.print("error");
+                out.print("error#" + message);
                 out.close();
             } else if (operation.equalsIgnoreCase(OPERATION_INS)) {
                 target = "AdminQry";
@@ -175,12 +175,6 @@ public class UsuarioServlet extends HttpServlet {
             }
         }
 
-        if (error == null) {
-            if (usrCod == null || usrCod.trim().length() == 0) {
-                error = "Debe ingresar un codigo para el usuario";
-            }
-        }
-
         if (tipUsrId != null) {
             try {
                 tipUsrIdx = Integer.valueOf(tipUsrId);
@@ -191,39 +185,45 @@ public class UsuarioServlet extends HttpServlet {
 
         if (error == null) {
             if (usrNom == null || usrNom.trim().length() == 0) {
-                error = "Debe ingresar un nombre para el usuario";
+                error = "Debe ingresar un nombre para el usuario.";
+            } else if (Util.validaLetras(usrNom) != null) {
+                error = "El nombre solo debe contener letras.";
             }
         }
 
         if (error == null) {
             if (usrApat == null || usrApat.trim().length() == 0) {
                 error = "Debe ingresar el apellido paterno para el usuario";
+            } else if (Util.validaLetras(usrApat) != null) {
+                error = "El apellido paterno solo debe contener letras.";
             }
         }
 
         if (error == null) {
             if (usrAmat == null || usrAmat.trim().length() == 0) {
                 error = "Debe ingresar el apellido materno para el usuario";
+            } else if (Util.validaLetras(usrAmat) != null) {
+                error = "El apellido materno solo debe contener letras.";
             }
         }
 
         if (error == null) {
-            if (usrCel == null || usrCel.trim().length() == 0) {
-                error = "Debe ingresar el celular para el usuario";
+            if (usrGen != null) {
+                try {
+                    usrGenx = Integer.valueOf(usrGen);
+                } catch (NumberFormatException e) {
+                    error = "Valor errado para el genero de usuario";
+                }
+            } else {
+                error = "Debe ingresar el genero del usuario.";
             }
         }
 
         if (error == null) {
             if (usrDni == null || usrDni.trim().length() == 0) {
                 error = "Debe ingresar el DNI para el usuario";
-            }
-        }
-
-        if (usrGen != null) {
-            try {
-                usrGenx = Integer.valueOf(usrGen);
-            } catch (NumberFormatException e) {
-                error = "Valor errado para el genero de usuario";
+            } else if (Util.validaNum(usrDni) != null) {
+                error = "El DNI solo debe contener valores numericos.";
             }
         }
 
@@ -234,8 +234,24 @@ public class UsuarioServlet extends HttpServlet {
         }
 
         if (error == null) {
+            if (usrCel == null || usrCel.trim().length() == 0) {
+                error = "Debe ingresar el celular para el usuario";
+            } else if (Util.validaNum(usrCel) != null) {
+                error = "El celular solo debe contener valores numericos.";
+            }
+        }
+
+        if (error == null) {
+            if (usrCod == null || usrCod.trim().length() == 0) {
+                error = "Debe ingresar un codigo de usuario";
+            } else if (Util.validaLetrasyNumeros(usrCod) != null) {
+                error = "El codigo de usuario solo debe contener letras y numeros.";
+            }
+        }
+
+        if (error == null) {
             if (usrUser == null || usrUser.trim().length() == 0) {
-                error = "Debe ingresar el usuario para el usuario";
+                error = "Debe ingresar el alias para el usuario";
             }
         }
 
