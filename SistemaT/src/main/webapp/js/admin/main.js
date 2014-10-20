@@ -60,58 +60,9 @@ function guardarAdmin() {
     });
 }
 
-function guardarTutor() {
-    var usrGen;
-    var usrCod = $("#usrCod").val();
-    var tipUsrId = $("#tipUsrId").val();
-    var usrNom = $("#usrNom").val();
-    var usrApat = $("#usrApat").val();
-    var usrAmat = $("#usrAmat").val();
-    var usrDni = $("#usrDni").val();
-    if (document.getElementById('usrGen_m').checked) {
-        usrGen = 0;
-    }
-    if (document.getElementById('usrGen_f').checked) {
-        usrGen = 1;
-    }
-    var usrCel = $("#usrCel").val();
-    var usrMail = $("#usrMail").val();
-    var usrUser = $("#usrUser").val();
-    var usrPass = $("#usrPass").val();
-
-    $.ajax({
-        url: '/SistemaT/UsuarioServlet',
-        type: 'post',
-        data: {
-            operation: 'INS',
-            usrCod: usrCod,
-            tipUsrId: tipUsrId,
-            usrNom: usrNom,
-            usrApat: usrApat,
-            usrAmat: usrAmat,
-            usrDni: usrDni,
-            usrGen: usrGen,
-            usrCel: usrCel,
-            usrMail: usrMail,
-            usrUser: usrUser,
-            usrPass: usrPass
-        },
-        success: function(data) {
-            if (data === 'error') {
-                $('#mensaje').html('No se pudo crear');
-                $('#mensaje').addClass('alert alert-danger');
-            } else {
-                $('#mensaje').html('Creado satisfactoriamente');
-                $('#mensaje').addClass('alert alert-success');
-                window.location = "/SistemaT/UsuarioServlet?operation=QRY&tip_usr_id=2";
-            }
-        }
-    });
-}
-
 function mostrarMensajeEliminar() {
     var ids = [];
-    $('#myModalMensajeDel').html('Eliminar');
+    $('#myModalMensajeDel').html('Eliminar administrador');
     $('#myModalMensajeUpd').html('');
 
     $("input[name='DEL']:checked").each(function() {
@@ -127,7 +78,7 @@ function mostrarMensajeEliminar() {
     }
 }
 
-function eliminarAdmin() {
+function eliminarUsuario() {
     var ids = [];
     $("input[name='DEL']:checked").each(function() {
         ids.push($(this).val());
@@ -150,33 +101,10 @@ function eliminarAdmin() {
     });
 }
 
-function eliminarTutor() {
-    var ids = [];
-    $("input[name='DEL']:checked").each(function() {
-        ids.push($(this).val());
-    });
-    $.ajax({
-        url: '/SistemaT/UsuarioServlet',
-        type: 'post',
-        data: {
-            operation: 'DEL',
-            idsdel: ids.toString()
-        },
-        success: function(data) {
-            if (data === 'error') {
-            } else {
-                $('#mensaje-del').html('administrador eliminado satisfactoriamente');
-                $('#mensaje-del').addClass('alert alert-success');
-                window.location = "/SistemaT/UsuarioServlet?operation=QRY&tip_usr_id=2";
-            }
-        }
-    });
-}
-
 function solicitarUsuarioId() {
     var usrId = $("input[name='UPD']:checked").val();
     $('#myModalMensajeDel').html('');
-    $('#myModalMensajeUpd').html('Actualizar');
+    $('#myModalMensajeUpd').html('Actualizar administrador');
     if (isNaN(usrId)) {
         $('#modal-mensaje').html('Seleccione fila para actualizar datos');
         $('#myModalMensaje').modal('show');
@@ -212,6 +140,7 @@ function solicitarUsuarioId() {
                     $('#usrMailUPD').val(u[10]);
                     $('#usrUserUPD').val(u[11]);
                     $('#usrPassUPD').val(u[12]);
+                    $('#usrPassConfUPD').val(u[12]);
                     $('#usrEstUPD').val(u[13]);
                     $('#myModalUpd').modal('show');
                 }
@@ -220,7 +149,7 @@ function solicitarUsuarioId() {
     }
 }
 
-function actualizarAdmin() {
+function actualizarUsuario() {
     var usrGen;
     var usrId = $("#usrIdUPD").val();
     var usrCod = $("#usrCodUPD").val();
@@ -338,6 +267,7 @@ function confirm() {
             idsdel: ids.toString()
         },
         success: function(data) {
+            //alert(data);
             if (data === 'error') {
                 //alert(data)
             } else {
