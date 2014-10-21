@@ -31,16 +31,18 @@
                         <div class="col-xs-12">
                             <div class="box">
                                 <div class="box-header">
-                                    <div class="col-md-10 col-xs-4">
-                                        <h3 class="box-title">Cursos</h3>
+                                    <div class="row">
+                                        <div class="col-md-10 col-xs-6">
+                                            <h3 class="box-title">Cursos</h3>
+                                        </div>
+
+
+                                        <div class="col-md-2 col-xs-6" >
+                                            <div class="box-footer">
+                                                <button class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#myModal"><img src="<%= request.getContextPath()%>/img/add3.png"/> Curso</button>
+                                            </div>
+                                        </div>
                                     </div>
-
-
-                                    <div class="col-md-2 col-xs-8" >
-                                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal"><img src="<%= request.getContextPath()%>/img/add3.png"/> Curso</button>
-                                    </div>
-
-
 
                                 </div><!-- /.box-header -->
                                 <div class="box-body table-responsive">
@@ -75,7 +77,7 @@
         </div>
         <%@include file="../../../WEB-INF/jspf/linksfooter.jspf" %>
         <script type="text/javascript">
-            $(function() {
+            $(function () {
                 $("#example1").dataTable();
                 $('#example2').dataTable({
                     "bPaginate": true,
@@ -115,9 +117,9 @@
                                 <input type="text" pattern="^[a-zA-Z0-9\s]*$" class="form-control" id="nombre" data-error="Solo debe contener numeros y letras" placeholder="Nombre" required="true" >
                                 <div class="help-block with-errors">Solo letras y numeros</div>
                             </div>
-                                <div class="form-group">
+                            <div class="form-group">
                                 <div id="mensaje"></div>
-                                </div>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
@@ -153,9 +155,9 @@
                                 <input type="text" pattern="^[a-zA-Z0-9\s]*$" class="form-control" id="nombreupd" data-error="Solo debe contener numeros y letras" placeholder="Nombre" required="true" value="${cursoget.cur_nom}">
                                 <div class="help-block with-errors">Solo letras y numeros</div>
                             </div>
-                                <div class="form-group">
+                            <div class="form-group">
                                 <div id="mensajeupd"></div>
-                                </div>
+                            </div>
                         </div
                         >
                         <div class="modal-footer">
@@ -168,29 +170,29 @@
         </div><!-- /.modal -->
 
         <!--fin-->
-        
-        
 
-        
-                <!--    mi modal upd-->
+
+
+
+        <!--    mi modal upd-->
         <div class="modal fade" id="myModalMensaje" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        
+
                         <h3 class="modal-title" id="myModalMensajeDel"></h3>
                         <h3 class="modal-title" id="myModalMensajeUpd"></h3>
                     </div>
                     <form role="form" data-toggle="validator">
                         <div class="modal-body">
 
-                      <div id="modal-mensaje">
-                                
+                            <div id="modal-mensaje">
+
                             </div>
                         </div>
-                        
+
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
                         </div>
@@ -201,14 +203,14 @@
 
         <!--fin-->
 
-        
-        
-        
-        
-        
-        
-        
-                <!--    mi modal del-->
+
+
+
+
+
+
+
+        <!--    mi modal del-->
         <div class="modal fade" id="myModalDel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
             <div class="modal-dialog">
@@ -220,11 +222,11 @@
                     <form role="form" data-toggle="validator">
                         <div class="modal-body">
 
-                      <div id="modal-mensaje-del"></div>
+                            <div id="modal-mensaje-del"></div>
                         </div>
-                            <div class="form-group">
-                                <div id="mensaje-del"></div>
-                                </div>
+                        <div class="form-group">
+                            <div id="mensaje-del"></div>
+                        </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                             <button type="button" class="btn btn-primary" id="guarda" onclick="confirm()" >Aceptar</button>
