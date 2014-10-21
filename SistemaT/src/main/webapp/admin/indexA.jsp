@@ -28,10 +28,19 @@
 
                 </section>
                 <section class="content">
-
-
+                    <div class="row">
+                        <div class="col-md-10">
+                        
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                        <button class="btn btn-primary btn-lg btn-block" onclick="crearServicio()">Agregar Servicio</button>
+                        </div>
+                       </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-12">
+                            
                             <div class="panel-group" id="accordion">
                                 <div class="panel panel-default">
                                     <ul class="timeline" id="servicio">
@@ -107,25 +116,7 @@
                         </div>
                     </div>
 
-                    <!-- time Picker -->
-                    <!--<div class="bootstrap-timepicker">
-                        <div class="form-group">
-                            <label>Hora:</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control timepicker" id="ser_edu_hin" />
-                                <div class="input-group-addon">
-                                    <i class="fa fa-clock-o"></i>
-                                </div>
-                            </div><!-- /.input group -->
-                    <!-- </div><!-- /.form group -->
-                    <!-- </div> -->
-
-
-
-
-
-
-
+                 
                     <!-- select -->
                     <div class="form-group">
                         <label>Curso</label>
@@ -191,3 +182,80 @@
                                    </ul>
                                </div><!-- /btn-group -->
 
+
+
+<!--    mi modal upd-->
+<div class="modal fade" id="myModalIns" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h3 class="modal-title" id="myModalLabel">Crear Servicio</h3>
+            </div>
+            <form role="form" data-toggle="validator">
+                <div class="modal-body">
+
+            
+                    <!-- Date -->
+                    <div class="form-group">
+                        <div class="input-group date" id="fecha_hora_ins">
+                            <input type='text' class="form-control" data-date-format="DD/MM/YYYY HH:mm"/>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+
+               
+                    <!-- select -->
+                    <div class="form-group">
+                        <label>Curso</label>
+                        <select name="curso_ins" id="curso_ins" class="form-control">
+                        </select>
+                    </div>
+
+                    <!-- select -->
+                    <div class="form-group">
+                        <label>Tipo de servicio</label>
+                        <select name="servicio_ins" id="servicio_ins" class="form-control">
+                            <option value="1">Taller</option>
+                            <option value="2">Tutoria</option>
+                        </select>
+                    </div>
+
+                    <!-- select -->
+                    <div class="form-group">
+                        <label>Tipo de ambiente</label>
+                        <select name="ambiente_ins" id="ambiente_ins" class="form-control">
+                            <option value="1">Aula</option>
+                            <option value="2">Laboratorio</option>
+                        </select>
+                    </div>
+
+
+
+
+                    <!-- select -->
+                    <div class="form-group">
+                        <label>Tutor</label>
+                        <select name="tutor_ins" id="tutor_ins" class="form-control">
+                         
+                        </select>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <div id="mensajeupd"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="guarda" onclick="" >Guardar</button>
+                </div>
+            </form> <!-- /.form -->
+        </div><!-- /.modal content -->
+    </div><!-- /.modal dialog -->
+</div><!-- /.modal -->
+
+<!--fin-->
