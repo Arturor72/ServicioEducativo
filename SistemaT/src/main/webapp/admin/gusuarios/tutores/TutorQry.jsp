@@ -32,14 +32,17 @@
                             <div class="box">
                                 <div class="box-header">
 
-                                    <div class="col-md-10 col-xs-6">
-                                        <h3 class="box-title">Tutores</h3>
-                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10 col-xs-6">
+                                            <h3 class="box-title">Tutores</h3>
+                                        </div>
 
-                                    <div class="col-md-2 col-xs-8" >
-                                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal"><img src="<%= request.getContextPath()%>/img/add3.png"/> Tutor</button>
+                                        <div class="col-md-2 col-xs-6" >
+                                            <div class="box-footer">
+                                                <button class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#myModal"><img src="<%= request.getContextPath()%>/img/add3.png"/> Tutor</button>
+                                            </div>
+                                        </div>
                                     </div>
-
                                 </div><!-- /.box-header -->
 
                                 <div class="box-body table-responsive">
@@ -82,7 +85,7 @@
         <%@include file="../../../WEB-INF/jspf/linksfooter.jspf" %>
         <!-- page script -->
         <script type="text/javascript">
-            $(function() {
+            $(function () {
                 $("#example1").dataTable();
                 $('#example2').dataTable({
                     "bPaginate": true,
@@ -278,7 +281,7 @@
             </div><!-- /.modal dialog -->
         </div><!-- /.modal -->
         <!--fin-->
-        
+
 
         <!-- Modal MSG -->
         <div class="modal fade" id="myModalMensaje" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
