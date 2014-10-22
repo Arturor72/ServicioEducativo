@@ -25,4 +25,6 @@ public interface DaoUsuario {
     public Usuario usuarioGet(Integer idUsuario);
 
     public String usuarioUpd(Usuario usuario);
+    
+    public List<Usuario> dispUsuarioQry(String fecha, String hora, Integer tip_serv_id, Integer tip_user_id, Integer esp_id);
 }
