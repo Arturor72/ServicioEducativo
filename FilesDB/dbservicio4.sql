@@ -441,6 +441,45 @@ END //
 
 -- FINISH PROCEDURE AMBIENTES DISPONIBLES
 
+-- CREATE PROCEDURE TUTORES DISPONIBLES
+DELIMITER //
+CREATE DEFINER=`root`@`localhost` PROCEDURE `tutoresDisp`(IN fec DATE, h TIME, typese INTEGER, userid INTEGER, espid INTEGER)
+BEGIN
+
+SELECT tu.usr_id,tu.usr_cod ,tu.usr_nom , tu.usr_apat , tu.usr_amat , ts.ser_edu_id, ts.ser_edu_hin
+FROM  tbl_usuario tu left JOIN tbl_servicio_educativo ts
+ON tu.usr_id =ts.usr_tut_id
+and
+ts.ser_edu_fec=fec
+and 
+(
 
 
+	time( 
+		time(ts.ser_edu_hin)
+			+
+		time(
+			(SELECT tss.tip_serv_durac FROM tbl_tipo_servicio tss 
+			INNER JOIN tbl_servicio_educativo se
+			ON tss.tip_serv_id=se.tip_serv_id where
+			se.ser_edu_id=ts.ser_edu_id)*10000
+			)
+		)>=time(h)
+
+and
+	time(
+		time(ts.ser_edu_hin) -
+		time(
+			(SELECT tss.tip_serv_durac 
+			FROM tbl_tipo_servicio tss where tss.tip_serv_id=typese )*10000
+			)
+	)<time(h)
+
+
+)
+inner join tbl_tipo_usuario tipou on tipou.tip_usr_id =tu.tip_usr_id and tu.tip_usr_id =userid
+inner join tbl_especialidad esp on esp.esp_id = tu.esp_id and tu.esp_id =espid;
+END //
+
+-- FINISH PROCEDURE TUTORES DISPONIBLES
 
