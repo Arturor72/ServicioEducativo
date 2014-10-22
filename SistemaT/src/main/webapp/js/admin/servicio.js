@@ -47,7 +47,7 @@ $(function () {
 
 
     var parametros = {
-        operation: operation,
+        operation: operation
     };
 
     $.ajax({
@@ -127,7 +127,7 @@ function agregarServicios(Datos) {
                 '</div>' +
                  '</div>' +
                 '<div class="timeline-footer">' +
-                '<a class="btn btn-primary btn-xs" onclick="editarServicio(' + Datos[i].ser_edu_id + ')"  >Editar</a>' +
+                '<a class="btn btn-primary btn-xs" onclick="editarFormServicio(' + Datos[i].ser_edu_id + ')"  >Editar</a>' +
                 '</div>' +
                 '</div>' +
                 
@@ -161,7 +161,7 @@ function agregarServicios(Datos) {
 
 
 //amb_den, sed_desc
-function editarServicio(id) {
+function editarFormServicio(id) {
 
     //seteando valores en el formulario
     //enviar codigo de sede, fecha, y la hora codigo tipo amb
@@ -202,25 +202,57 @@ function actualizarServicio(){
 }
 
 
-function crearServicio(){
+
+
+function crearFormServicio(){
      $('#myModalIns').modal('show');
 
     
 }
 
 
+function crearServicio(){
 
+  var cur_id =$('#curso_ins').val();  
+  var  tip_serv_id=$('#servicio_ins').val();
+  
+  var total_fecha=$('#fecha_hora_ins').data("DateTimePicker").getDate();
+  var fecha=moment(total_fecha).format('YYYY-MM-DD');
+  var hora=moment(total_fecha).format('HH:mm:ss');
+  
+  var  amb_id=$('#ambiente_ins').val(); 
+ 
+   console.log( fecha +" "+ hora +" "+ cur_id+" "+tip_serv_id +" "+amb_id );
+    
+    
+      var parametros = {
+        operation: operation,
+        fecha:fecha,
+        hora:hora,
+        tip_serv_id:tip_serv_id,
+        
+    };
 
+    $.ajax({
+        data: parametros,
+        url: '/SistemaT/CursoServlet',
+        type: 'post',
+        beforeSend: function () {
+       
+        },
+        success: function (response) {
+         //  alert(response);
+            console.log(response);
 
+            var Datos = JSON.parse(response);
 
-//$(function () {
-//
-//
-//    //Timepicker
-//    $(".timepicker").timepicker({
-//        showInputs: false,
-//        showMeridian: false
-//    });
-//
-//});
+        },
+        error: function (result, f) {
+            alert('ERROR ' + result.status + ' ' + result.statusText + ' ' + f);
+        }
+    });
+    
+    
+}
+
 
