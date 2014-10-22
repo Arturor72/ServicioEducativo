@@ -212,8 +212,10 @@ function crearFormServicio(){
 
 
 function crearServicio(){
-
-  var cur_id =$('#curso_ins').val();  
+//QRYJSON
+  
+ var operation="QRYJSON";
+    var cur_id =$('#curso_ins').val();  
   var  tip_serv_id=$('#servicio_ins').val();
   
   var total_fecha=$('#fecha_hora_ins').data("DateTimePicker").getDate();
@@ -222,17 +224,17 @@ function crearServicio(){
   
   var  amb_id=$('#ambiente_ins').val(); 
  
-   console.log( fecha +" "+ hora +" "+ cur_id+" "+tip_serv_id +" "+amb_id );
+   //console.log( fecha +" "+ hora +" "+ cur_id+" "+tip_serv_id +" "+amb_id );
     
     
-      var parametros = {
+   /*   var parametros = {
         operation: operation,
         fecha:fecha,
         hora:hora,
-        tip_serv_id:tip_serv_id,
+        tip_serv_id:tip_serv_id
         
-    };
-
+    };*/
+/*
     $.ajax({
         data: parametros,
         url: '/SistemaT/CursoServlet',
@@ -251,7 +253,7 @@ function crearServicio(){
             alert('ERROR ' + result.status + ' ' + result.statusText + ' ' + f);
         }
     });
-    
+    */
     
 }
 
