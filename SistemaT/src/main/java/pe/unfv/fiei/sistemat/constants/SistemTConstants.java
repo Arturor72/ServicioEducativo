@@ -42,6 +42,7 @@ public class SistemTConstants {
 
     /* SEDE Constants */
     public static final String SEDE_GET = "SELECT sed_id, sed_desc FROM tbl_sede WHERE sed_id = ?";
+    public static final String SEDE_QRY = "SELECT sed_id, sed_desc FROM tbl_sede ";
 
     /* AMBIENTE Constants */
     public static final String AMBIENTE_GET = "SELECT amb_id, sed_id, amb_den, tip_amb_id FROM tbl_ambiente WHERE amb_id = ?";
