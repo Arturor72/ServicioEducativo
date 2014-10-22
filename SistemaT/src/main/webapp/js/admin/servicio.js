@@ -233,9 +233,20 @@ function crearFormServicio() {
 
     // var cur_id = $('#curso_ins:disabled');
     $('#servicio_ins').prop('disabled', true);
+    $('#servicio_ins').val(0);
+    
     $('#fecha_hora_ins').data("DateTimePicker").disable();
+    $('#fecha_hora_ins').data("DateTimePicker").setDate(new Date());
+    
     $('#sede_ins').prop('disabled', true);
+    $('#sede_ins').val(0);
+    
     $('#ambiente_ins').prop('disabled', true);
+    $('#ambiente_ins').val(0);
+    
+    $('#tutor_ins').prop('disabled', true);
+    $('#tutor_ins').val(0);
+    
     $('#myModalIns').modal('show');
 
 
@@ -247,41 +258,44 @@ function selectCurso() {
     if (cur_id > 0) {
         $('#servicio_ins').prop('disabled', false);
     }
-    
-    else{
-       $('#servicio_ins').prop('disabled', true);
-       $('#fecha_hora_ins').data("DateTimePicker").disable();
-    $('#sede_ins').prop('disabled', true);
-    $('#ambiente_ins').prop('disabled', true);
+
+    else {
+        $('#servicio_ins').prop('disabled', true);
+        $('#servicio_ins').val(0);
+
+        $('#fecha_hora_ins').data("DateTimePicker").disable();
+        $('#fecha_hora_ins').data("DateTimePicker").setDate(new Date());
+
+        $('#sede_ins').prop('disabled', true);
+        $('#sede_ins').val(0);
+
+        $('#ambiente_ins').prop('disabled', true);
+        $('#ambiente_ins').val(0);
         
+            $('#tutor_ins').prop('disabled', true);
+         $('#tutor_ins').val(0);
     }
 }
 
 function selectServicio() {
     var serv_id = $('#servicio_ins').val();
     if (serv_id > 0) {
-         $('#fecha_hora_ins').data("DateTimePicker").enable();
+        $('#fecha_hora_ins').data("DateTimePicker").enable();
+        $('#sede_ins').prop('disabled', false);
     }
-    else{
-    $('#fecha_hora_ins').data("DateTimePicker").disable();
-    $('#sede_ins').prop('disabled', true);
-    $('#ambiente_ins').prop('disabled', true); 
-    }
-}
+    else {
+        $('#fecha_hora_ins').data("DateTimePicker").disable();
+        $('#fecha_hora_ins').data("DateTimePicker").setDate(new Date());
 
-function inputFechaHora() {
-    var total_fecha =  $('#fecha_hora_ins').data("DateTimePicker").getDate();
-    var fec=moment(total_fecha).format('DD/MM/YYYY HH:mm');
-    console.log(fec.length);
-    if (fec.length===16) {
-         $('#sede_ins').prop('disabled', false);
+        $('#sede_ins').prop('disabled', true);
+        $('#sede_ins').val(0);
+
+        $('#ambiente_ins').prop('disabled', true);
+        $('#ambiente_ins').val(0);
          
+        $('#tutor_ins').prop('disabled', true);
+         $('#tutor_ins').val(0);
     }
-    else{
-       $('#sede_ins').prop('disabled', true);
-        $('#ambiente_ins').prop('disabled', true);  
-    }
-   
 }
 
 
@@ -326,7 +340,7 @@ function selectSede() {
 
             },
             success: function (response) {
-                //  alert(response);
+             //alert(response);
                 console.log(response);
 
                 var Datos = JSON.parse(response);
@@ -350,7 +364,80 @@ function selectSede() {
     if (sed_id <= 0) {
         ambiente_ins.empty();
         ambiente_ins.append('<option value="0">Seleccione</option>');
-         ambiente_ins.prop('disabled', true);    
+
+        ambiente_ins.prop('disabled', true);
+        ambiente_ins.val(0);
+        
+        $('#tutor_ins').prop('disabled', true);
+        $('#tutor_ins').val(0);
+    }
+}
+
+function selectAmbiente(){
+    
+var operation = "QRY_DISP";
+  
+    var tip_serv_id = $('#servicio_ins').val();
+
+    var total_fecha = $('#fecha_hora_ins').data("DateTimePicker").getDate();
+    var fecha = moment(total_fecha).format('YYYY-MM-DD');
+    var hora = moment(total_fecha).format('HH:mm:ss');
+    var sed_id = $('#sede_ins').val();
+     var amb_id = $('#ambiente_ins').val();
+    var tutor_ins= $('#tutor_ins');
+     var tip_user_id=2;
+
+
+    console.log(fecha + " " + hora + " " +  " tipo serv: "+tip_serv_id + " aamb " +amb_id);
+
+
+    var parametros = {
+        operation: operation,
+        fecha: fecha,
+        hora: hora,
+       tip_serv_id: tip_serv_id,
+        tip_user_id:tip_user_id
+
+
+    };
+
+    if (fecha.length > 0 && hora.length > 0 && tip_serv_id >  0 && amb_id > 0) {
+tutor_ins.prop('disabled', false);
+        $.ajax({
+            data: parametros,
+            url: '/SistemaT/UsuarioServlet',
+            type: 'post',
+            beforeSend: function () {
+
+            },
+            success: function (response) {
+               alert(response);
+                console.log(response);
+
+                var Datos = JSON.parse(response);
+                tutor_ins.empty();
+                tutor_ins.append('<option value="0">Seleccione</option>');
+                tutor_ins.prop('disabled', false);
+                for (i in Datos) {
+                    tutor_ins.append('<option value="' + Datos[i].usr_id + '">' + Datos[i].usr_nom +' '+ Datos[i].usr_apat +' '+ Datos[i].usr_amat + '</option>');
+                    //curso_ins.append('<option value="' + Datos[i].cur_id + '">' + Datos[i].cur_nom + '</option>');
+
+                }
+
+
+            },
+            error: function (result, f) {
+                alert('ERROR ' + result.status + ' ' + result.statusText + ' ' + f);
+            }
+        });
+
+    }
+    if (amb_id <= 0) {
+       tutor_ins.empty();
+        tutor_ins.append('<option value="0">Seleccione</option>');
+
+        tutor_ins.prop('disabled', true);
+        tutor_ins.val(0);
     }
 }
 
