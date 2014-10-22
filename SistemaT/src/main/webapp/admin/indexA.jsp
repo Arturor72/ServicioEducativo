@@ -30,17 +30,17 @@
                 <section class="content">
                     <div class="row">
                         <div class="col-md-10">
-                        
+
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
-                        <button class="btn btn-primary btn-lg btn-block" onclick="crearServicio()">Agregar Servicio</button>
+                                <button class="btn btn-primary btn-lg btn-block" onclick="crearFormServicio()">Agregar Servicio</button>
+                            </div>
                         </div>
-                       </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            
+
                             <div class="panel-group" id="accordion">
                                 <div class="panel panel-default">
                                     <ul class="timeline" id="servicio">
@@ -102,21 +102,6 @@
 
 
 
-
-
-
-
-
-                    <!-- Date -->
-                    <div class="form-group">
-                        <div class='input-group date' id='datetimepicker1'>
-                            <input type='text' class="form-control" data-date-format="DD/MM/YYYY HH:mm"/>
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                        </div>
-                    </div>
-
-                 
                     <!-- select -->
                     <div class="form-group">
                         <label>Curso</label>
@@ -132,6 +117,22 @@
                             <option value="2">Tutoria</option>
                         </select>
                     </div>
+
+
+
+
+                    <!-- Date -->
+                    <div class="form-group">
+                        <label>Fecha y Hora</label>
+                        <div class='input-group date' id='datetimepicker1'>
+                            <input type='text' class="form-control" data-date-format="DD/MM/YYYY HH:mm"/>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+
+
+
 
                     <!-- select -->
                     <div class="form-group">
@@ -149,7 +150,7 @@
                     <div class="form-group">
                         <label>Tutor</label>
                         <select name="select_usr_tut" id="select_usr_tut" class="form-control">
-                         
+
                         </select>
                     </div>
 
@@ -196,17 +197,7 @@
             <form role="form" data-toggle="validator">
                 <div class="modal-body">
 
-            
-                    <!-- Date -->
-                    <div class="form-group">
-                        <div class="input-group date" id="fecha_hora_ins">
-                            <input type='text' class="form-control" data-date-format="DD/MM/YYYY HH:mm"/>
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                        </div>
-                    </div>
 
-               
                     <!-- select -->
                     <div class="form-group">
                         <label>Curso</label>
@@ -222,6 +213,20 @@
                             <option value="2">Tutoria</option>
                         </select>
                     </div>
+
+
+                    <!-- Date -->
+                    <div class="form-group">
+                          <label>Fecha y hora</label>
+                        <div class="input-group date" id="fecha_hora_ins">
+                            <input type='text' class="form-control" data-date-format="DD/MM/YYYY HH:mm"/>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+
+
+
 
                     <!-- select -->
                     <div class="form-group">
@@ -239,7 +244,7 @@
                     <div class="form-group">
                         <label>Tutor</label>
                         <select name="tutor_ins" id="tutor_ins" class="form-control">
-                         
+
                         </select>
                     </div>
 
@@ -251,7 +256,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" id="guarda" onclick="" >Guardar</button>
+                    <button type="button" class="btn btn-primary"  onclick="crearServicio()" >Guardar</button>
                 </div>
             </form> <!-- /.form -->
         </div><!-- /.modal content -->
