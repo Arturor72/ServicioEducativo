@@ -13,8 +13,8 @@ public class SistemTConstants {
     public static final String SISTEMAT_USER = "root";
     public static final String SISTEMAT_PASSWORD = "root";
     /*Errors for unique field*/
-    public static final String ERROR_UNIQUE_FIELD="1062";
-    
+    public static final String ERROR_UNIQUE_FIELD = "1062";
+
     /* Admin and Tutor Type Constants */
     public static final Integer TYPE_ADMIN = 1;
     public static final Integer TYPE_TUTOR = 2;
@@ -28,6 +28,7 @@ public class SistemTConstants {
     public static final String USER_DELETE = "UPDATE dbservicio.tbl_usuario SET usr_est = 0 WHERE usr_id = ?";
     public static final String USER_GET = "SELECT usr_id, usr_cod, tip_usr_id, usr_nom, usr_apat, usr_amat, usr_dni, usr_gen, usr_cel, usr_mail, usr_user, AES_DECRYPT(usr_pass, 'F1O2R3114'), usr_est, esp_id FROM dbservicio.tbl_usuario WHERE usr_id = ?";
     public static final String USER_UPDATE = "UPDATE dbservicio.tbl_usuario SET usr_cod = ?, tip_usr_id = ?, usr_nom = ?, usr_apat = ?, usr_amat = ?, usr_dni = ?, usr_gen = ?, usr_cel = ?, usr_mail = ?, usr_user = ?, usr_pass = AES_ENCRYPT(?,'F1O2R3114'), usr_est = ?, esp_id = ? WHERE usr_id = ?";
+    public static final String USER_GET_LIST_DISPONIBLE = "{call tutoresDisp(?,?,?,?,?)}";
 
     /* CURSO Constants */
     public static final String CURSO_SELECT = "SELECT cur_id, cur_cod, cur_nom, esp_id, cur_est FROM tbl_curso WHERE esp_id = ? AND cur_est=TRUE ";
@@ -56,7 +57,7 @@ public class SistemTConstants {
 
     /* SERVICIO Constants */
     public static final String SERVICIO_SELECT = "SELECT ser_edu_id, ser_edu_fec, ser_edu_hin, cur_id, amb_id, sed_id, tip_serv_id, usr_adm_id, usr_tut_id, ser_edu_asist, ser_edu_desc, ser_edu_est FROM dbservicio.tbl_servicio_educativo se, dbservicio.tbl_usuario u WHERE se.usr_adm_id=u.usr_id AND u.esp_id=? AND  se.ser_edu_est= 1 ORDER BY (ser_edu_fec) ASC";
-    
+
     public static final String SERVICIO_INSERT = "INSERT INTO dbservicio.tbl_servicio_educativo (ser_edu_id, ser_edu_fec, ser_edu_hin, cur_id, amb_id, sed_id, tip_serv_id, usr_adm_id, usr_tut_id, ser_edu_asist, ser_edu_desc, ser_edu_est) VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     public static final String SERVICIO_DELETE = "UDPATE dbservicio.tbl_servicio_educativo SET ser_edu_est = 0 WHERE ser_edu_id = ?";
     public static final String SERVICIO_GET = "SELECT ser_edu_id, ser_edu_fec, ser_edu_hin, cur_id, amb_id, sed_id, tip_serv_id, usr_adm_id, usr_tut_id, ser_edu_asist, ser_edu_desc, ser_edu_est FROM dbservicio.tbl_servicio_educativo WHERE ser_edu_id=?  AND ser_edu_est= 1";
