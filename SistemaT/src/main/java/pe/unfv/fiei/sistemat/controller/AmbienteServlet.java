@@ -40,12 +40,12 @@ public class AmbienteServlet extends HttpServlet {
             if (operation.equalsIgnoreCase(OPERATION_QRY_DISP)) {
                 String fecha = request.getParameter("fecha");
                 String hora = request.getParameter("hora");
-                String serv_id = request.getParameter("serv_id");
+                String tip_serv_id = request.getParameter("tip_serv_id");
                 String sed_id = request.getParameter("sed_id");
                 if (fecha != null) {
                     if (hora != null) {
-                        if (serv_id != null && sed_id != null) {
-                            List<Ambiente> list = daoAmbiente.dispAmbienteQry(fecha, hora, Integer.parseInt(serv_id), Integer.parseInt(sed_id));
+                        if (tip_serv_id != null && sed_id != null) {
+                            List<Ambiente> list = daoAmbiente.dispAmbienteQry(fecha, hora, Integer.parseInt(tip_serv_id), Integer.parseInt(sed_id));
                             if (list == null) {
                                 message = "error#Sin acceso a la base de datos";
                             } else {
