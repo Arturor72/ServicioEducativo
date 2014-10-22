@@ -5,6 +5,7 @@
  */
 package pe.unfv.fiei.sistemat.model.dao;
 
+import java.util.List;
 import pe.unfv.fiei.sistemat.model.dto.Sede;
 
 /**
@@ -12,5 +13,8 @@ import pe.unfv.fiei.sistemat.model.dto.Sede;
  * @author Arturo
  */
 public interface DaoSede {
+
     public Sede getSede(Integer sede_id);
+
+    public List<Sede> SedeQry();
 }
