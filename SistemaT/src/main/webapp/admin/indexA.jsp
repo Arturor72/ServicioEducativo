@@ -222,7 +222,7 @@
                           <label>Fecha y hora</label>
                         <div class="input-group date" id="fecha_hora_ins">
                             <input  type="text" class="form-control" data-date-format="DD/MM/YYYY HH:mm" />
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" onclick="inputFechaHora()"></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
                             </span>
                         </div>
                     </div>
@@ -244,7 +244,7 @@
                     <!-- select -->
                     <div class="form-group">
                         <label>Ambiente</label>
-                        <select name="ambiente_ins" id="ambiente_ins" class="form-control">
+                        <select name="ambiente_ins" id="ambiente_ins" class="form-control" onchange="selectAmbiente()">
                             <option value="0" selected>Seleccione</option>
                           
                         </select>
@@ -256,8 +256,8 @@
                     <!-- select -->
                     <div class="form-group">
                         <label>Tutor</label>
-                        <select name="tutor_ins" id="tutor_ins" class="form-control">
-
+                        <select name="tutor_ins" id="tutor_ins" class="form-control" >
+                         <option value="0" selected>Seleccione</option>       
                         </select>
                     </div>
 
