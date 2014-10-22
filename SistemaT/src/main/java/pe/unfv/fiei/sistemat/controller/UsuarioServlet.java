@@ -13,8 +13,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
+import org.json.simple.JSONObject;
 import pe.unfv.fiei.sistemat.model.dao.DaoUsuario;
 import pe.unfv.fiei.sistemat.model.dao.impl.DaoUsuarioImpl;
+import pe.unfv.fiei.sistemat.model.dto.Ambiente;
 import pe.unfv.fiei.sistemat.model.dto.Usuario;
 import pe.unfv.fiei.sistemat.util.Util;
 
@@ -30,6 +32,7 @@ public class UsuarioServlet extends HttpServlet {
     private final static String OPERATION_DEL = "DEL";
     private final static String OPERATION_GET = "GET";
     private final static String OPERATION_UPD = "UPD";
+    private final static String OPERATION_QRY_DISP_JSON = "QRY_DISP";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -40,6 +43,7 @@ public class UsuarioServlet extends HttpServlet {
         String target = "/admin/gusuarios/admins/AdminQry.jsp";
         Usuario u = (Usuario) request.getSession().getAttribute("usuario");
         Usuario usuarioGET = null;
+        String msg = "";
         if (operation != null) {
             log4j.info("The operation is: " + operation);
             if (operation.equalsIgnoreCase(OPERATION_QRY)) {
@@ -103,6 +107,41 @@ public class UsuarioServlet extends HttpServlet {
                         message = result;
                     }
                 }
+            } else if (operation.equalsIgnoreCase(OPERATION_QRY_DISP_JSON)) {
+                String fecha = request.getParameter("fecha");
+                String hora = request.getParameter("hora");
+                String tip_serv_id = request.getParameter("tip_serv_id");
+                String tip_user_id = request.getParameter("tip_user_id");
+                if (fecha != null) {
+                    if (hora != null) {
+                        if (tip_serv_id != null && tip_user_id != null) {
+                            List<Usuario> list = daoUsuario.dispUsuarioQry(fecha, hora, Integer.parseInt(tip_serv_id), Integer.parseInt(tip_user_id), u.getEsp_id());
+                            if (list == null) {
+                                message = "error#Sin acceso a la base de datos";
+                            } else {
+                                JSONObject obj = new JSONObject();
+                                for (Usuario tutores : list) {
+                                    obj.put("usr_id", tutores.getUsr_id());
+                                    obj.put("usr_cod", tutores.getUsr_cod());
+                                    obj.put("usr_nom", tutores.getUsr_nom());
+                                    obj.put("usr_apat", tutores.getUsr_apat());
+                                    obj.put("usr_amat", tutores.getUsr_amat());
+                                    if (msg.equals("")) {
+                                        msg = msg + obj.toJSONString();
+                                    } else {
+                                        msg = msg + "," + obj.toJSONString();
+                                    }
+                                }
+                            }
+                        } else {
+                            message = "Tipo Usuario y/o Tipo Servicio inválidos";
+                        }
+                    } else {
+                        message = "Hora inválida";
+                    }
+                } else {
+                    message = "Fecha inválida";
+                }
             } else {
                 message = "Solicitud no reconocida.";
             }
@@ -136,6 +175,9 @@ public class UsuarioServlet extends HttpServlet {
                     target = "null";
                 }
                 out.print(target);
+                out.close();
+            } else if (operation.equalsIgnoreCase(OPERATION_QRY_DISP_JSON)) {
+                out.print("[" + msg + "]");
                 out.close();
             } else {
                 RequestDispatcher dispatcher = request.getRequestDispatcher(target);
@@ -282,8 +324,7 @@ public class UsuarioServlet extends HttpServlet {
 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP
-     * <code>GET</code> method.
+     * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -297,8 +338,7 @@ public class UsuarioServlet extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP
-     * <code>POST</code> method.
+     * Handles the HTTP <code>POST</code> method.
      *
      * @param request servlet request
      * @param response servlet response
