@@ -201,7 +201,7 @@
                     <!-- select -->
                     <div class="form-group">
                         <label>Curso</label>
-                        <select name="curso_ins" id="curso_ins" class="form-control">
+                        <select name="curso_ins" id="curso_ins" class="form-control" onchange="selectCurso()">
                             <option value="0" selected>Seleccione</option>
                         </select>
                     </div>
@@ -209,7 +209,7 @@
                     <!-- select -->
                     <div class="form-group">
                         <label>Tipo de servicio</label>
-                        <select name="servicio_ins" id="servicio_ins" class="form-control">
+                        <select name="servicio_ins" id="servicio_ins" class="form-control" onchange="selectServicio()">
                             <option value="0" selected>Seleccione</option>
                             <option value="1">Taller</option>
                             <option value="2">Tutoria</option>
@@ -221,22 +221,32 @@
                     <div class="form-group">
                           <label>Fecha y hora</label>
                         <div class="input-group date" id="fecha_hora_ins">
-                            <input  type="text" class="form-control" data-date-format="DD/MM/YYYY HH:mm"/>
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                            <input  type="text" class="form-control" data-date-format="DD/MM/YYYY HH:mm" />
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" onclick="inputFechaHora()"></span>
                             </span>
                         </div>
                     </div>
 
 
 
+                    
+                    
+                     <!-- select -->
+                    <div class="form-group">
+                        <label>Sede</label>
+                        <select name="sede_ins" id="sede_ins" class="form-control" onchange="selectSede()">
+                            <option value="0" selected>Seleccione</option>
+                       
+                        </select>
+                    </div>
+
 
                     <!-- select -->
                     <div class="form-group">
-                        <label>Tipo de ambiente</label>
+                        <label>Ambiente</label>
                         <select name="ambiente_ins" id="ambiente_ins" class="form-control">
                             <option value="0" selected>Seleccione</option>
-                            <option value="1">Aula</option>
-                            <option value="2">Laboratorio</option>
+                          
                         </select>
                     </div>
 
