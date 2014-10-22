@@ -5,6 +5,7 @@
  */
 package pe.unfv.fiei.sistemat.model.dao.impl;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,6 +16,7 @@ import org.apache.log4j.Logger;
 import pe.unfv.fiei.sistemat.constants.SistemTConstants;
 import pe.unfv.fiei.sistemat.model.connection.StConnection;
 import pe.unfv.fiei.sistemat.model.dao.DaoUsuario;
+import pe.unfv.fiei.sistemat.model.dto.Ambiente;
 import pe.unfv.fiei.sistemat.model.dto.Usuario;
 
 /**
@@ -333,4 +335,49 @@ public class DaoUsuarioImpl implements DaoUsuario {
         log4j.info("+init usuario UPD");
         return message;
     }
+
+    @Override
+    public List<Usuario> dispUsuarioQry(String fecha, String hora, Integer tip_serv_id, Integer tip_user_id, Integer esp_id) {
+        log4j.info("+init dispUsuarioQry");
+        List<Usuario> list = null;
+        Connection cn = db.getConnection();
+        String sql = SistemTConstants.USER_GET_LIST_DISPONIBLE;
+        if (cn != null) {
+            try {
+                CallableStatement cs = cn.prepareCall(sql);
+                cs.setString(1, fecha);
+                cs.setString(2, hora);
+                cs.setInt(3, tip_serv_id);
+                cs.setInt(4, tip_user_id);
+                cs.setInt(4, esp_id);
+                ResultSet rs = cs.executeQuery();
+                list = new LinkedList<Usuario>();
+                while (rs.next()) {
+                    if (rs.getTime(7) == null) {
+                        Usuario usuario = new Usuario();
+                        usuario.setUsr_id(rs.getInt(1));
+                        usuario.setUsr_cod(rs.getString(2));
+                        usuario.setUsr_nom(rs.getString(3));
+                        usuario.setUsr_apat(rs.getString(4));
+                        usuario.setUsr_amat(rs.getString(5));
+                        list.add(usuario);
+                    }
+
+                }
+            } catch (SQLException e) {
+                log4j.error(e.getMessage());
+            } finally {
+                try {
+                    cn.close();
+                } catch (SQLException e) {
+                    log4j.error(e.getMessage());
+                }
+            }
+
+        }
+
+        log4j.info("-finish dispUsuarioQry");
+        return list;
+    }
+
 }
