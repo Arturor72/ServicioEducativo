@@ -12,6 +12,11 @@ public class SistemTConstants {
     public static final String SISTEMAT_DRIVER = "com.mysql.jdbc.Driver";
     public static final String SISTEMAT_USER = "root";
     public static final String SISTEMAT_PASSWORD = "root";
+
+    /*State for active and inactive registers */
+    public static final String STATE_ON = "1";
+    public static final String STATE_OFF = "0";
+
     /*Errors for unique field*/
     public static final String ERROR_UNIQUE_FIELD = "1062";
 
