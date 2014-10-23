@@ -34,7 +34,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
-                                <button class="btn btn-primary btn-lg btn-block" onclick="crearFormServicio()">Agregar Servicio</button>
+                                <button class="btn btn-primary btn-lg btn-block" onclick="guardarFormServicio()">Agregar Servicio</button>
                             </div>
                         </div>
                     </div>
@@ -219,7 +219,7 @@
 
                     <!-- Date -->
                     <div class="form-group">
-                          <label>Fecha y hora</label>
+                        <label>Fecha y hora</label>
                         <div class="input-group date" id="fecha_hora_ins">
                             <input  type="text" class="form-control" data-date-format="DD/MM/YYYY HH:mm" />
                             <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
@@ -229,14 +229,14 @@
 
 
 
-                    
-                    
-                     <!-- select -->
+
+
+                    <!-- select -->
                     <div class="form-group">
                         <label>Sede</label>
                         <select name="sede_ins" id="sede_ins" class="form-control" onchange="selectSede()">
                             <option value="0" selected>Seleccione</option>
-                       
+
                         </select>
                     </div>
 
@@ -246,7 +246,7 @@
                         <label>Ambiente</label>
                         <select name="ambiente_ins" id="ambiente_ins" class="form-control" onchange="selectAmbiente()">
                             <option value="0" selected>Seleccione</option>
-                          
+
                         </select>
                     </div>
 
@@ -257,8 +257,14 @@
                     <div class="form-group">
                         <label>Tutor</label>
                         <select name="tutor_ins" id="tutor_ins" class="form-control" >
-                         <option value="0" selected>Seleccione</option>       
+                            <option value="0" selected>Seleccione</option>       
                         </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Descripción</label>
+                        <textarea class="form-control" rows="3" placeholder="...." id="descripcion_ins"></textarea>
                     </div>
 
 
@@ -269,7 +275,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary"  onclick="crearServicio()" >Guardar</button>
+                    <button type="button" class="btn btn-primary"  onclick="guardarServicio()" >Guardar</button>
                 </div>
             </form> <!-- /.form -->
         </div><!-- /.modal content -->
