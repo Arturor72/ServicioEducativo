@@ -5,8 +5,12 @@
  */
 package pe.unfv.fiei.sistemat.util;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  *
@@ -28,7 +32,7 @@ public class Util {
         String result = null;
         for (int i = 0; i < cadena.length(); i++) {
             char t = cadena.charAt(i);
-            if (!((t >= 97 && t <= 122) || (t >= 65 && t <= 90) || (t == 209 || t == 241) || (t == 225) || (t == 233) || (t == 237) || (t == 243) || (t == 250) || (t==' '))) {
+            if (!((t >= 97 && t <= 122) || (t >= 65 && t <= 90) || (t == 209 || t == 241) || (t == 225) || (t == 233) || (t == 237) || (t == 243) || (t == 250) || (t == ' '))) {
                 result = "error";
             }
         }
@@ -104,4 +108,21 @@ public class Util {
         return lst;
     }
 
+    public static String getAnyNull(HashMap hm) {
+        String result = null;
+        Set set = hm.entrySet();
+        Iterator i = set.iterator();
+        while (i.hasNext()) {
+            Map.Entry me = (Map.Entry) i.next();
+            if (me.getValue() == null) {
+                if (result != null) {
+                    result += me.getKey() + " es nulo\n";
+                } else {
+                    result = me.getKey() + " es nulo\n";
+                }
+
+            }
+        }
+        return result;
+    }
 }
