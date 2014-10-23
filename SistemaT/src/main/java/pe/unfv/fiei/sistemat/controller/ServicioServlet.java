@@ -155,6 +155,9 @@ public class ServicioServlet extends HttpServlet {
                         servicio.setSer_edu_desc(ser_edu_desc);
 
                         servicio.setSer_edu_est(ser_edu_est);
+                        
+                        servicio.setSer_edu_asist(0);
+                        
                     } catch (Exception e) {
                         log4j.error(e.getMessage());
                     }
