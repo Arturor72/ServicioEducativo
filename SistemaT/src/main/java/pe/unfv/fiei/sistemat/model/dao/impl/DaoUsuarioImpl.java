@@ -349,7 +349,7 @@ public class DaoUsuarioImpl implements DaoUsuario {
                 cs.setString(2, hora);
                 cs.setInt(3, tip_serv_id);
                 cs.setInt(4, tip_user_id);
-                cs.setInt(4, esp_id);
+                cs.setInt(5, esp_id);
                 ResultSet rs = cs.executeQuery();
                 list = new LinkedList<Usuario>();
                 while (rs.next()) {
