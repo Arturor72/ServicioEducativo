@@ -104,9 +104,10 @@ function guardarCursoUpd() {
             id: id
         },
         success: function(data) {
-            if (data[0] === 'error') {
-                $('#mensaje').html(data[1]);
-                $('#mensaje').addClass('alert alert-danger');
+            var ds = data.split('#');
+            if (ds[0] === 'error') {
+                $('#mensajeupd').html(ds[1]);
+                $('#mensajeupd').addClass('alert alert-danger');
             } else {
                 $('#mensajeupd').html('Curso actualizado satisfactoriamente');
                 $('#mensajeupd').addClass('alert alert-success');
