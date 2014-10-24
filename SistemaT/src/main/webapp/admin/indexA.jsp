@@ -105,14 +105,16 @@
                     <!-- select -->
                     <div class="form-group">
                         <label>Curso</label>
-                        <select name="cur_id" id="select_cur" class="form-control">
+                        <select name="curso_upd" id="curso_upd" class="form-control">
+                            <option value="0" selected>Seleccione</option>
                         </select>
                     </div>
 
                     <!-- select -->
                     <div class="form-group">
                         <label>Tipo de servicio</label>
-                        <select name="select_tip_serv" id="select_tip_serv" class="form-control">
+                        <select name="servicio_upd" id="servicio_upd" class="form-control">
+                            <option value="0" selected>Seleccione</option>
                             <option value="1">Taller</option>
                             <option value="2">Tutoria</option>
                         </select>
@@ -124,7 +126,7 @@
                     <!-- Date -->
                     <div class="form-group">
                         <label>Fecha y Hora</label>
-                        <div class='input-group date' id='datetimepicker1'>
+                        <div class="input-group date" id="fecha_hora_upd">
                             <input type='text' class="form-control" data-date-format="DD/MM/YYYY HH:mm"/>
                             <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
                             </span>
@@ -134,12 +136,22 @@
 
 
 
+
                     <!-- select -->
                     <div class="form-group">
-                        <label>Tipo de ambiente</label>
-                        <select name="select_amb" id="select_amb" class="form-control">
-                            <option value="1">Aula</option>
-                            <option value="2">Laboratorio</option>
+                        <label>Sede</label>
+                        <select name="sede_upd" id="sede_upd" class="form-control">
+                            <option value="0" selected>Seleccione</option>
+                        </select>
+                    </div>
+
+
+
+                    <!-- select -->
+                    <div class="form-group">
+                        <label>Ambiente</label>
+                        <select name="ambiente_upd" id="ambiente_upd" class="form-control">
+                            <option value="0" selected>Seleccione</option>
                         </select>
                     </div>
 
@@ -149,15 +161,19 @@
                     <!-- select -->
                     <div class="form-group">
                         <label>Tutor</label>
-                        <select name="select_usr_tut" id="select_usr_tut" class="form-control">
-
+                        <select name="tutor_upd" id="tutor_upd" class="form-control">
+                            <option value="0" selected>Seleccione</option>
                         </select>
                     </div>
 
 
+                    <div class="form-group">
+                        <label>Descripción</label>
+                        <textarea class="form-control" rows="3" placeholder="...." id="descripcion_upd"></textarea>
+                    </div>
 
                     <div class="form-group">
-                        <div id="mensajeupd"></div>
+                        <div id="mensaje_upd"></div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -198,7 +214,7 @@
                 <div class="modal-body">
 
 
-                    <!-- select -->
+                    <!-- select curso-->
                     <div class="form-group">
                         <label>Curso</label>
                         <select name="curso_ins" id="curso_ins" class="form-control" onchange="selectCurso()">
@@ -206,7 +222,7 @@
                         </select>
                     </div>
 
-                    <!-- select -->
+                    <!-- select servicio tipo-->
                     <div class="form-group">
                         <label>Tipo de servicio</label>
                         <select name="servicio_ins" id="servicio_ins" class="form-control" onchange="selectServicio()">
@@ -217,7 +233,7 @@
                     </div>
 
 
-                    <!-- Date -->
+                    <!-- select fecha y hora-->
                     <div class="form-group">
                         <label>Fecha y hora</label>
                         <div class="input-group date" id="fecha_hora_ins">
@@ -231,7 +247,7 @@
 
 
 
-                    <!-- select -->
+                    <!-- select sede -->
                     <div class="form-group">
                         <label>Sede</label>
                         <select name="sede_ins" id="sede_ins" class="form-control" onchange="selectSede()">
@@ -270,7 +286,7 @@
 
 
                     <div class="form-group">
-                        <div id="mensajeupd"></div>
+                        <div id="mensaje_ins"></div>
                     </div>
                 </div>
                 <div class="modal-footer">
