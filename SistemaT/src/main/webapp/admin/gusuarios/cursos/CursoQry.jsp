@@ -39,7 +39,7 @@
 
                                         <div class="col-md-2 col-xs-6" >
                                             <div class="box-footer">
-                                                <button class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#myModal"><img src="<%= request.getContextPath()%>/img/add3.png"/> Curso</button>
+                                                <button class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#myModal"><img class="btn-curso" src="<%= request.getContextPath()%>/img/curso.png"/> Curso</button>
                                             </div>
                                         </div>
                                     </div>
