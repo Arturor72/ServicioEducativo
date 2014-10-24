@@ -38,7 +38,7 @@
 
                                         <div class="col-md-2 col-xs-6" >
                                             <div class="box-footer">
-                                            <button class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#myModal"><img src="<%= request.getContextPath()%>/img/add3.png"/> Administrador</button>
+                                            <button class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#myModal"><img class="btn-admin" src="<%= request.getContextPath()%>/img/admin.png"/> Administrador</button>
                                             </div>
                                         </div>
                                     </div>
@@ -60,7 +60,7 @@
                                         <tbody>
                                             <c:forEach var="a" items="${list}">
                                                 <tr>
-                                                    <td>${a.usr_nom} ${a.usr_apat} ${a.usr_amat}</td>
+                                                    <td>${a.usr_apat} ${a.usr_amat}, ${a.usr_nom} </td>
                                                     <td class="mrc">${a.usr_cod}</td>
                                                     <td class="mrc">${a.usr_user}</td>
                                                     <td>${a.usr_mail}</td>
