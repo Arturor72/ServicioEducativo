@@ -93,7 +93,7 @@ public class CursoServlet extends HttpServlet {
                             if (result == null) {
                                 target = "/admin/gusuarios/cursos/CursoQry.jsp";
                                 request.setAttribute("mensaje", message);
-                            }else if (result.equalsIgnoreCase(SistemTConstants.ERROR_UNIQUE_FIELD)) {
+                            } else if (result.equalsIgnoreCase(SistemTConstants.ERROR_UNIQUE_FIELD)) {
                                 message = "El código ya existe";
                             } else {
                                 message = "No se insertó correctamente";
@@ -152,6 +152,8 @@ public class CursoServlet extends HttpServlet {
                             } else {
                                 message = "No se actualizó correctamente";
                             }
+                        } else {
+                            message = validaCurso(curso);
                         }
                     } else {
                         message = "nombre invalido o vacio";
@@ -167,7 +169,7 @@ public class CursoServlet extends HttpServlet {
                 request.setAttribute("msg", message);
                 out.print("error#" + message);
                 out.close();
-            } else if (operation.equalsIgnoreCase(SistemTConstants.CURSO_INS)) {
+            } else if (operation.equalsIgnoreCase(SistemTConstants.CURSO_INS) || operation.equalsIgnoreCase(SistemTConstants.USER_UPDATE)) {
                 target = "CursoQry";
                 out.print(target);
                 out.close();
@@ -192,13 +194,13 @@ public class CursoServlet extends HttpServlet {
     public String validaCurso(Curso curso) {
         String result = "";
         if ((Util.validaLetrasyNumeros(curso.getCur_cod()) != null) || curso.getCur_cod().trim().equalsIgnoreCase("")) {
-            result += "*  Codigo de curso inválido\n";
+            result += "  Codigo de curso inválido\n";
         }
-        if ((Util.validaLetrasyNumeros(curso.getCur_nom()) != null)) {
-            result += "*  Nombre de curso inválido\n";
+        if ((Util.validaLetrasyNumeros(curso.getCur_nom()) != null) || curso.getCur_nom().trim().equalsIgnoreCase("")) {
+            result += "  Nombre de curso inválido\n";
         }
         if ((Util.validaNum(String.valueOf(curso.getEsp_id())) != null)) {
-            result += "*  Id de especialidad inválido\n";
+            result += "  Id de especialidad inválido\n";
         }
         return result;
     }
