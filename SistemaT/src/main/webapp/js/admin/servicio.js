@@ -23,7 +23,7 @@ $(function () {
             // $('#servicio').html('<img src="'+path+'/SistemaT/img/cargando.GIF"/>'); 
         },
         success: function (response) {
-            console.log(response);
+            //console.log(response);
 
             var Datos = JSON.parse(response);
             agregarServicios(Datos);
@@ -120,7 +120,7 @@ $(function () {
 function agregarServicios(Datos) {
 
 
-
+$('#servicio').empty();
     for (i in Datos) {
         var servicio_head = '<li class="time-label"><span class="bg-red">' + moment(Datos[i].ser_edu_fec).lang("es").format('ll') + '</span></li>';
         var duracion='';
@@ -189,6 +189,16 @@ $(function () {
     });
 
 
+$('#fecha_hora_srch').datetimepicker({
+        pick12HourFormat: false,
+        minuteStepping: 1,
+        language: 'es',
+        pickTime: false,
+        
+        useCurrent: false,               //when true, picker will set the value to the current date/time     
+
+    showToday: true
+    });
 
 
 });
@@ -206,6 +216,10 @@ function guardarFormServicio() {
 
     $('#fecha_hora_ins').data("DateTimePicker").disable();
     $('#fecha_hora_ins').data("DateTimePicker").setDate(new Date());
+    
+    $('#fecha_hora_ins').data("DateTimePicker").setMinDate(new Date());
+    
+    
 
     $('#sede_ins').prop('disabled', true);
     $('#sede_ins').val(0);
@@ -557,4 +571,109 @@ function buscarSede(operation,fecha,hora,tip_serv_id,sed_id,ambiente_select,tuto
         tutor_select.prop('disabled', true);
         tutor_select.val(0);
     }
+}
+
+
+function buscarServicio(){
+    
+    var total_fecha = $('#fecha_hora_srch').data("DateTimePicker").getDate();
+    var fecha = moment(total_fecha).format('YYYY-MM-DD');
+ 
+ var operation = 'QRY';
+
+    var parametros = {
+        operation: operation
+    };
+
+
+    $.ajax({
+        data: parametros,
+        url: '/SistemaT/ServicioServlet',
+        type: 'post',
+        beforeSend: function () {
+            var path = window.location.host;
+            //$("#servicio").html("Procesando, espere por favor...");
+            // $('#servicio').append('<div class="loading-img"></div>'); 
+           // $('#servicio').html('<img src="'+path+'/SistemaT/img/cargando.GIF"/>'); 
+        },
+        success: function (response) {
+            //console.log(response);
+
+            var Datos = JSON.parse(response);
+           
+           console.log(moment(fecha,"YYYY-MM-DD").isValid());
+           console.log(fecha);
+         
+           
+           if(moment(fecha,"YYYY-MM-DD").isValid() ){
+            buscarFecServicios(Datos,fecha);
+                }
+                else{ 
+                    agregarServicios(Datos);
+                }
+        },
+        error: function (result, f) {
+            alert('ERROR ' + result.status + ' ' + result.statusText + ' ' + f);
+        }
+    });
+    
+
+
+}
+
+
+
+
+
+function buscarFecServicios(Datos,fecha) {
+
+
+     $('#servicio').empty();
+    for (i in Datos) {
+        
+        if(Datos[i].ser_edu_fec===fecha){
+        var servicio_head = '<li class="time-label"><span class="bg-red">' + moment(Datos[i].ser_edu_fec).lang("es").format('ll') + '</span></li>';
+        var duracion='';
+        if(Datos[i].tip_serv_id===1){
+            duracion='<span class="time"><i class="fa fa-clock-o"></i>' + moment(Datos[i].ser_edu_fec+' '+Datos[i].ser_edu_hin).format('HH:mm')+ ' a ' + moment(Datos[i].ser_edu_fec+' '+Datos[i].ser_edu_hin).add(2,'hours').format('HH:mm')+ '</span>';
+            
+        }
+        else{
+                        duracion='<span class="time"><i class="fa fa-clock-o"></i>' + moment(Datos[i].ser_edu_fec+' '+Datos[i].ser_edu_hin).format('HH:mm')+ ' a ' + moment(Datos[i].ser_edu_fec+' '+Datos[i].ser_edu_hin).add(1,'hours').format('HH:mm')+ '</span>';
+
+        }
+        
+        var servicio_body = '<li>' +
+                '<i class="fa fa-envelope bg-blue"></i>' +
+                '<div class="timeline-item">' +
+                    duracion+
+                '<h3 class="timeline-header panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#' + Datos[i].ser_edu_id + '">' + Datos[i].tip_serv_den + ' - ' + Datos[i].cur_nom + '</a></h3>' +
+                '<div class="timeline-body panel-collapse collapse" id="' + Datos[i].ser_edu_id + '">' +
+             
+                '<div class="callout callout-info">' +
+                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-cur_id" value="' + Datos[i].cur_id + '" />' +
+                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-tip_serv_id" value="' + Datos[i].tip_serv_id + '" />' +
+                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-ser_edu_fec" value="' + Datos[i].ser_edu_fec + '" />' +
+                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-ser_edu_hin" value="' + Datos[i].ser_edu_hin + '" />' +
+                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-usr_tut_id" value="' + Datos[i].usr_tut_id + '" />' +
+                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-sed_id" value="' + Datos[i].sed_id + '" />' +
+                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-sed_desc" value="' + Datos[i].sed_desc + '" />' +
+                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-amb_id" value="' + Datos[i].amb_id + '" />' +
+                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-ser_edu_desc" value="' + Datos[i].ser_edu_desc + '" />' +
+                '<label>Sede: </label><span> ' + Datos[i].sed_desc + '</span><br/>' +
+                '<label>Aula/Labortorio: </label><span> ' + Datos[i].amb_den + '</span><br/>' +
+                '<label>Tutor: </label><span> ' + Datos[i].usr_tut_nom + ' ' + Datos[i].usr_tut_apat + ' ' + Datos[i].usr_tut_amat + '</span><br/>' +
+                '<label>Descripción: </label><span> ' + Datos[i].ser_edu_desc + '</span><br/>' +
+                //'<label>Creado por: </label><span> ' + Datos[i].ser_edu_desc + '</span><br/>' +
+                '</div>' +
+                '</div>' +
+                '<div class="timeline-footer">' +
+                '<a class="btn btn-primary btn-xs" onclick="editarFormServicio(' + Datos[i].ser_edu_id + ')"  >Editar</a>' +
+                '</div>' +
+                '</div>' +
+                '</li>';
+
+        $('#servicio').append(servicio_head + servicio_body);
+    }
+}
 }
