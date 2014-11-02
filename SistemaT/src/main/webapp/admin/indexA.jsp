@@ -29,12 +29,28 @@
                 </section>
                 <section class="content">
                     <div class="row">
-                        <div class="col-md-10">
+                        <div class="col-md-8">
+                            <!-- select fecha y hora-->
+                            <div class="form-group">
 
+                                <div class="input-group date" id="fecha_hora_srch">
+                                    <input  type="text" placeholder="Buscar..." class="form-control" data-date-format="DD/MM/YYYY" />
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        
+                         <div class="col-md-2">
+                            <div class="form-group">
+                                <button class="btn btn-primary btn btn-block" onclick="buscarServicio()">Buscar</button>
+                            </div>
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
-                                <button class="btn btn-primary btn-lg btn-block" onclick="guardarFormServicio()">Agregar Servicio</button>
+                                <button class="btn btn-primary btn btn-block" onclick="guardarFormServicio()">Agregar servicio</button>
                             </div>
                         </div>
                     </div>
