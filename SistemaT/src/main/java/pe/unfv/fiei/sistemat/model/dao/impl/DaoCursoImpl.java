@@ -124,7 +124,16 @@ public class DaoCursoImpl implements DaoCurso {
 
             } catch (SQLException e) {
                 log4j.error(e.getMessage());
-                result = "Error: " + e.getMessage();
+                if (e.getErrorCode() == Integer.parseInt(SistemTConstants.ERROR_UNIQUE_FIELD)) {
+                    if (e.getMessage().contains("cur_cod")) {
+                        result = "El codigo de curso ingresado ya existe";
+                    }
+                    if (e.getMessage().contains("cur_nom")) {
+                        result = "Ya existe un curso con ese nombre";
+                    }
+                } else {
+                    result = "El curso no pudo crearse";
+                }
             } finally {
                 try {
                     cn.close();
@@ -160,7 +169,16 @@ public class DaoCursoImpl implements DaoCurso {
 
             } catch (SQLException e) {
                 log4j.error(e.getMessage() + " ERROR: " + e.getErrorCode());
-                result = String.valueOf(e.getErrorCode());
+                if (e.getErrorCode() == Integer.parseInt(SistemTConstants.ERROR_UNIQUE_FIELD)) {
+                    if (e.getMessage().contains("cur_cod")) {
+                        result = "El codigo de curso ingresado ya existe";
+                    }
+                    if (e.getMessage().contains("cur_nom")) {
+                        result = "Ya existe un curso con ese nombre";
+                    }
+                } else {
+                    result = "El curso no pudo crearse";
+                }
 
             } finally {
                 try {
