@@ -116,8 +116,8 @@ DROP TABLE IF EXISTS `tbl_curso`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_curso` (
   `cur_id` int(11) NOT NULL AUTO_INCREMENT,
-  `cur_cod` varchar(15) NOT NULL,
-  `cur_nom` varchar(50) NOT NULL,
+  `cur_cod` varchar(15) NOT NULL UNIQUE,
+  `cur_nom` varchar(50) NOT NULL UNIQUE,
   `esp_id` int(11) NOT NULL,
   `cur_est` tinyint(1) NOT NULL,
   PRIMARY KEY (`cur_id`),
