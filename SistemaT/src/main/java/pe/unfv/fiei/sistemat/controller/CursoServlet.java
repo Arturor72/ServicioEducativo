@@ -93,10 +93,8 @@ public class CursoServlet extends HttpServlet {
                             if (result == null) {
                                 target = "/admin/gusuarios/cursos/CursoQry.jsp";
                                 request.setAttribute("mensaje", message);
-                            } else if (result.equalsIgnoreCase(SistemTConstants.ERROR_UNIQUE_FIELD)) {
-                                message = "El código ya existe";
                             } else {
-                                message = "No se insertó correctamente";
+                                message = result;
                             }
                         } else {
                             message = validaCurso(curso);
@@ -150,7 +148,7 @@ public class CursoServlet extends HttpServlet {
                                 target = "/admin/gusuarios/cursos/CursoQry.jsp";
                                 request.setAttribute("mensaje", message);
                             } else {
-                                message = "No se actualizó correctamente";
+                                message = result;
                             }
                         } else {
                             message = validaCurso(curso);
