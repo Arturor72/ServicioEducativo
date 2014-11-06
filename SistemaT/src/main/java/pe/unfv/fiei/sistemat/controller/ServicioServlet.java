@@ -42,6 +42,7 @@ public class ServicioServlet extends HttpServlet {
     private final static String OPERATION_DEL = "DEL";
     private final static String OPERATION_GET = "GET";
     private final static String OPERATION_UPD = "UPD";
+    private final static String OPERATION_QRY_SEARCH = "QRY_SEARCH";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -155,9 +156,9 @@ public class ServicioServlet extends HttpServlet {
                         servicio.setSer_edu_desc(ser_edu_desc);
 
                         servicio.setSer_edu_est(ser_edu_est);
-                        
+
                         servicio.setSer_edu_asist(0);
-                        
+
                     } catch (Exception e) {
                         log4j.error(e.getMessage());
                     }
@@ -291,6 +292,59 @@ public class ServicioServlet extends HttpServlet {
                     message = objError.toString();
                 }
 
+            } else if (operation.equalsIgnoreCase(OPERATION_QRY_SEARCH)) {
+                String ser_edu_fec = request.getParameter("ser_edu_fec");
+                if (ser_edu_fec != null) {
+                    List<Servicio> list = daoServicio.ServicioQryByDate(u.getEsp_id(), ser_edu_fec);
+                    if (list == null) {
+                        objError.put("error", "Error Interno");
+                        message = objError.toJSONString();
+                    } else {
+                        request.setAttribute("listcursos", list);
+
+                        JSONObject obj = new JSONObject();
+
+                        for (Servicio servicio : list) {
+                            obj.put("ser_edu_id", servicio.getSer_edu_id());
+                            obj.put("ser_edu_fec", servicio.getSer_edu_fec().toString());
+                            obj.put("ser_edu_hin", servicio.getSer_edu_hin());
+                            obj.put("cur_id", servicio.getCur_id().getCur_id());
+                            obj.put("cur_nom", servicio.getCur_id().getCur_nom());
+                            obj.put("amb_id", servicio.getAmb_id().getAmd_id());
+                            obj.put("amb_den", servicio.getAmb_id().getAmb_den());
+                            obj.put("sed_id", servicio.getSed_id().getSed_id());
+                            obj.put("sed_desc", servicio.getSed_id().getSed_desc());
+                            obj.put("tip_serv_id", servicio.getTip_serv_id().getTip_ser_id());
+                            obj.put("tip_serv_den", servicio.getTip_serv_id().getTip_ser_den());
+
+                            obj.put("usr_adm_id", servicio.getUsr_adm_id().getUsr_id());
+                            obj.put("usr_adm_cod", servicio.getUsr_adm_id().getUsr_cod());
+                            obj.put("usr_adm_nom", servicio.getUsr_adm_id().getUsr_nom());
+                            obj.put("usr_adm_apat", servicio.getUsr_adm_id().getUsr_apat());
+                            obj.put("usr_adm_amat", servicio.getUsr_adm_id().getUsr_amat());
+                            obj.put("usr_adm_user", servicio.getUsr_adm_id().getUsr_user());
+
+                            obj.put("usr_tut_id", servicio.getUsr_tut_id().getUsr_id());
+                            obj.put("usr_tut_cod", servicio.getUsr_tut_id().getUsr_cod());
+                            obj.put("usr_tut_nom", servicio.getUsr_tut_id().getUsr_nom());
+                            obj.put("usr_tut_apat", servicio.getUsr_tut_id().getUsr_apat());
+                            obj.put("usr_tut_amat", servicio.getUsr_tut_id().getUsr_amat());
+                            obj.put("usr_tut_user", servicio.getUsr_tut_id().getUsr_user());
+
+                            obj.put("ser_edu_asist", servicio.getSer_edu_asist());
+                            obj.put("ser_edu_desc", servicio.getSer_edu_desc());
+                            obj.put("ser_edu_est", servicio.getSer_edu_est());
+                            if (msg.equals("")) {
+                                msg = msg + obj.toJSONString();
+                            } else {
+                                msg = msg + "," + obj.toJSONString();
+                            }
+                        }
+                    }
+                } else {
+                    message = "Fecha nula";
+                }
+
             } else {
                 objError.put("error", "operación no reconocida");
                 message = objError.toJSONString();
@@ -309,6 +363,8 @@ public class ServicioServlet extends HttpServlet {
                     out.print(target);
                     out.close();
                 } else if (operation.equals(OPERATION_GET)) {
+                    out.print("[" + msg + "]");
+                } else if (operation.equalsIgnoreCase(OPERATION_QRY_SEARCH)) {
                     out.print("[" + msg + "]");
                 }
             }
