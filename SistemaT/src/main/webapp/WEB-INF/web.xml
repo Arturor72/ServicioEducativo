@@ -24,6 +24,10 @@
         <servlet-name>SedeServlet</servlet-name>
         <servlet-class>pe.unfv.fiei.sistemat.controller.SedeServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AsistenciaServlet</servlet-name>
+        <servlet-class>pe.unfv.fiei.sistemat.controller.AsistenciaServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>SedeServlet</servlet-name>
         <url-pattern>/SedeServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AsistenciaServlet</servlet-name>
+        <url-pattern>/AsistenciaServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
