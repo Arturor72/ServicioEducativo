@@ -104,7 +104,7 @@ $(function () {
 
             for (i in Datos) {
                 sede_ins.append('<option value="' + Datos[i].sed_id + '">' + Datos[i].sed_desc + '</option>');
-                sede_upd.append('<option value="' + Datos[i].sed_id + '">' + Datos[i].sed_desc+ '</option>');
+                sede_upd.append('<option value="' + Datos[i].sed_id + '">' + Datos[i].sed_desc + '</option>');
 
             }
 
@@ -120,23 +120,23 @@ $(function () {
 function agregarServicios(Datos) {
 
 
-$('#servicio').empty();
+    $('#servicio').empty();
     for (i in Datos) {
         var servicio_head = '<li class="time-label"><span class="bg-red">' + moment(Datos[i].ser_edu_fec).lang("es").format('ll') + '</span></li>';
-        var duracion='';
-        if(Datos[i].tip_serv_id===1){
-            duracion='<span class="time"><i class="fa fa-clock-o"></i>' + moment(Datos[i].ser_edu_fec+' '+Datos[i].ser_edu_hin).format('HH:mm')+ ' a ' + moment(Datos[i].ser_edu_fec+' '+Datos[i].ser_edu_hin).add(2,'hours').format('HH:mm')+ '</span>';
-            
-        }
-        else{
-                        duracion='<span class="time"><i class="fa fa-clock-o"></i>' + moment(Datos[i].ser_edu_fec+' '+Datos[i].ser_edu_hin).format('HH:mm')+ ' a ' + moment(Datos[i].ser_edu_fec+' '+Datos[i].ser_edu_hin).add(1,'hours').format('HH:mm')+ '</span>';
+        var duracion = '';
+        if (Datos[i].tip_serv_id === 1) {
+            duracion = '<span class="time"><i class="fa fa-clock-o"></i>' + moment(Datos[i].ser_edu_fec + ' ' + Datos[i].ser_edu_hin).format('HH:mm') + ' a ' + moment(Datos[i].ser_edu_fec + ' ' + Datos[i].ser_edu_hin).add(2, 'hours').format('HH:mm') + '</span>';
 
         }
-        
+        else {
+            duracion = '<span class="time"><i class="fa fa-clock-o"></i>' + moment(Datos[i].ser_edu_fec + ' ' + Datos[i].ser_edu_hin).format('HH:mm') + ' a ' + moment(Datos[i].ser_edu_fec + ' ' + Datos[i].ser_edu_hin).add(1, 'hours').format('HH:mm') + '</span>';
+
+        }
+
         var servicio_body = '<li>' +
                 '<i class="fa fa-envelope bg-blue"></i>' +
                 '<div class="timeline-item">' +
-                    duracion+
+                duracion +
                 '<h3 class="timeline-header panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#' + Datos[i].ser_edu_id + '">' + Datos[i].tip_serv_den + ' - ' + Datos[i].cur_nom + '</a></h3>' +
                 '<div class="timeline-body panel-collapse collapse" id="' + Datos[i].ser_edu_id + '">' +
                 //curso, tipo de servicio, fecha y hora .... tutor, sede, tipo de ambiente, ambiente
@@ -155,6 +155,10 @@ $('#servicio').empty();
                 '<input type="hidden" id="' + Datos[i].ser_edu_id + '-sed_desc" value="' + Datos[i].sed_desc + '" />' +
                 '<input type="hidden" id="' + Datos[i].ser_edu_id + '-amb_id" value="' + Datos[i].amb_id + '" />' +
                 '<input type="hidden" id="' + Datos[i].ser_edu_id + '-ser_edu_desc" value="' + Datos[i].ser_edu_desc + '" />' +
+                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-usr_tut_nom" value="' + Datos[i].usr_tut_nom + '" />' +
+                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-usr_tut_apat" value="' + Datos[i].usr_tut_apat + '" />' +
+                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-usr_tut_amat" value="' + Datos[i].usr_tut_amat + '" />' +
+                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-amb_den" value="' + Datos[i].amb_den + '" />' +
                 '<label>Sede: </label><span> ' + Datos[i].sed_desc + '</span><br/>' +
                 '<label>Aula/Labortorio: </label><span> ' + Datos[i].amb_den + '</span><br/>' +
                 '<label>Tutor: </label><span> ' + Datos[i].usr_tut_nom + ' ' + Datos[i].usr_tut_apat + ' ' + Datos[i].usr_tut_amat + '</span><br/>' +
@@ -189,15 +193,14 @@ $(function () {
     });
 
 
-$('#fecha_hora_srch').datetimepicker({
+    $('#fecha_hora_srch').datetimepicker({
         pick12HourFormat: false,
         minuteStepping: 1,
         language: 'es',
         pickTime: false,
-        
-        useCurrent: false,               //when true, picker will set the value to the current date/time     
+        useCurrent: false, //when true, picker will set the value to the current date/time     
 
-    showToday: true
+        showToday: true
     });
 
 
@@ -216,10 +219,10 @@ function guardarFormServicio() {
 
     $('#fecha_hora_ins').data("DateTimePicker").disable();
     $('#fecha_hora_ins').data("DateTimePicker").setDate(new Date());
-    
+
     $('#fecha_hora_ins').data("DateTimePicker").setMinDate(new Date());
-    
-    
+
+
 
     $('#sede_ins').prop('disabled', true);
     $('#sede_ins').val(0);
@@ -240,6 +243,7 @@ function selectCurso() {
     var cur_id = $('#curso_ins').val();
     if (cur_id > 0) {
         $('#servicio_ins').prop('disabled', false);
+       
     }
 
     else {
@@ -297,12 +301,12 @@ function selectSede() {
 
     var sed_id = $('#sede_ins').val();
     var ambiente_ins = $('#ambiente_ins');
-    
-    var tutor_ins= $('#tutor_ins');
-    var ins;
-    buscarSede(operation,fecha,hora,tip_serv_id,sed_id,ambiente_ins,tutor_ins,ins);
 
-  
+    var tutor_ins = $('#tutor_ins');
+    var ins;
+    buscarSede(operation, fecha, hora, tip_serv_id, sed_id, ambiente_ins, tutor_ins, ins);
+
+
 }
 
 function selectAmbiente() {
@@ -320,9 +324,9 @@ function selectAmbiente() {
     var tutor_ins = $('#tutor_ins');
     var tip_user_id = 2;
     var ins;
-    buscarTutor(operation,fecha,hora,tip_serv_id,tip_user_id, tutor_ins,amb_id,ins);
+    buscarTutor(operation, fecha, hora, tip_serv_id, tip_user_id, tutor_ins, amb_id, ins);
 
- 
+
 }
 
 
@@ -422,35 +426,146 @@ function editarFormServicio(id) {
     var momentDate = moment(ser_edu_fec + " " + ser_edu_hin);
     var sed_id = $('#' + id + '-sed_id').val();
 
+    var amb_id = $('#' + id + '-amb_id').val();
+    var amb_den = $('#' + id + '-amb_den').val();
+
+
+
     var usr_tut_id = $('#' + id + '-usr_tut_id').val();
+    var usr_tut_nom = $('#' + id + '-usr_tut_nom').val();
+    var usr_tut_apat = $('#' + id + '-usr_tut_apat').val();
+    var usr_tut_amat = $('#' + id + '-usr_tut_amat').val();
+
+ var ser_edu_desc = $('#' + id + '-ser_edu_desc').val();
+    
 
 
     //curso, tipo , fecha y hora .... tutor, sede, tipo de ambiente, ambiente
 
+    //cargando data
     $('#curso_upd').val(cur_id);
     $('#servicio_upd').val(tip_serv_id);
 
-  $('#ambiente_upd').val(usr_tut_id);
+    $('#sede_upd').val(sed_id);
+
+    $('#ambiente_upd').append('<option value="' + amb_id + '">' + amb_den + '</option>');
+    $('#ambiente_upd').val(amb_id);
+    
+    $('#tutor_upd').append('<option value="' + usr_tut_id + '">' + usr_tut_nom + ' ' + usr_tut_apat + ' ' + usr_tut_amat + '</option>');
     $('#tutor_upd').val(usr_tut_id);
     
+    
+     $('#descripcion_upd').val(ser_edu_desc);
+
     $('#fecha_hora_upd').data("DateTimePicker").setDate(new Date(momentDate));
-
-
-    var operation="QRY_DISP";
-   // buscarSede(operation,ser_edu_fec,ser_edu_hin,tip_serv_id,$('#tutor_upd'),);
-//buscarSede(operation,fecha,hora,tip_serv_id,sed_id,ambiente_ins,tutor_ins,ins);
+    $('#servicio_upd').prop('disabled', true);
+    $('#fecha_hora_upd').data("DateTimePicker").disable();
+    $('#fecha_hora_upd').data("DateTimePicker").setMinDate(new Date());
+    $('#sede_upd').prop('disabled', true);
+    $('#ambiente_upd').prop('disabled', true);
+    $('#tutor_upd').prop('disabled', true);
+ 
 
   
-
-   // buscarTutor(operation,fecha,hora,tip_serv_id,tip_user_id, tutor_ins,amb_id,ins);
-
 
 
 
     $('#myModalUpd').modal('show');
- 
+
 
 }
+
+
+function selectCursoUpd() {
+    var cur_id = $('#curso_upd').val();
+    if (cur_id > 0) {
+        $('#servicio_upd').prop('disabled', false);
+       
+    }
+
+    else {
+        $('#servicio_upd').prop('disabled', true);
+        $('#servicio_upd').val(0);
+
+        $('#fecha_hora_upd').data("DateTimePicker").disable();
+        $('#fecha_hora_upd').data("DateTimePicker").setDate(new Date());
+
+        $('#sede_upd').prop('disabled', true);
+        $('#sede_upd').val(0);
+
+        $('#ambiente_upd').prop('disabled', true);
+        $('#ambiente_upd').val(0);
+
+        $('#tutor_upd').prop('disabled', true);
+        $('#tutor_upd').val(0);
+    }
+}
+
+function selectServicioUpd() {
+    var serv_id = $('#servicio_upd').val();
+    if (serv_id > 0) {
+        $('#fecha_hora_upd').data("DateTimePicker").enable();
+        $('#sede_upd').prop('disabled', false);
+    }
+    else {
+        $('#fecha_hora_upd').data("DateTimePicker").disable();
+        $('#fecha_hora_upd').data("DateTimePicker").setDate(new Date());
+
+        $('#sede_upd').prop('disabled', true);
+        $('#sede_upd').val(0);
+
+        $('#ambiente_upd').prop('disabled', true);
+        $('#ambiente_upd').val(0);
+
+        $('#tutor_upd').prop('disabled', true);
+        $('#tutor_upd').val(0);
+    }
+}
+
+
+//traer datos segun fecha, hora ,tipo de servicio y sede
+function selectSedeUpd() {
+//QRYJSON
+
+    var operation = "QRY_DISP";
+    var cur_id = $('#curso_upd').val();
+    var tip_serv_id = $('#servicio_upd').val();
+
+    var total_fecha = $('#fecha_hora_upd').data("DateTimePicker").getDate();
+    var fecha = moment(total_fecha).format('YYYY-MM-DD');
+    var hora = moment(total_fecha).format('HH:mm:00');
+
+
+    var sed_id = $('#sede_upd').val();
+    var ambiente_ins = $('#ambiente_upd');
+
+    var tutor_ins = $('#tutor_upd');
+    var ins;
+    buscarSede(operation, fecha, hora, tip_serv_id, sed_id, ambiente_ins, tutor_ins, ins);
+
+
+}
+
+function selectAmbienteUpd() {
+
+    var operation = "QRY_DISP";
+
+    var tip_serv_id = $('#servicio_upd').val();
+
+    var total_fecha = $('#fecha_hora_upd').data("DateTimePicker").getDate();
+    var fecha = moment(total_fecha).format('YYYY-MM-DD');
+    var hora = moment(total_fecha).format('HH:mm:00');
+
+    var sed_id = $('#sede_upd').val();
+    var amb_id = $('#ambiente_upd').val();
+    var tutor_ins = $('#tutor_upd');
+    var tip_user_id = 2;
+    var ins;
+    buscarTutor(operation, fecha, hora, tip_serv_id, tip_user_id, tutor_ins, amb_id, ins);
+
+
+}
+
 function actualizarServicio() {
 
     alert($('#curso_upd').val() + " " + $('#servicio_upd').val() + " " + $('#tutor_upd').val());
@@ -459,65 +574,9 @@ function actualizarServicio() {
 }
 
 
+function buscarSede(operation, fecha, hora, tip_serv_id, sed_id, ambiente_select, tutor_select, amb_id, forma) {
 
-function buscarTutor(operation,fecha,hora,tip_serv_id,tip_user_id, select_tutor,amb_id,forma){
-    
-    var parametros = {
-        operation: operation,
-        fecha: fecha,
-        hora: hora,
-        tip_serv_id: tip_serv_id,
-        tip_user_id: tip_user_id
-
-
-    };
-
-    if (fecha.length > 0 && hora.length > 0 && tip_serv_id > 0 && amb_id > 0) {
-       select_tutor.prop('disabled', false);
-        $.ajax({
-            data: parametros,
-            url: '/SistemaT/UsuarioServlet',
-            type: 'post',
-            beforeSend: function () {
-
-            },
-            success: function (response) {
-                // alert(response);
-                //console.log(response);
-
-                var Datos = JSON.parse(response);
-                select_tutor.empty();
-                select_tutor.append('<option value="0">Seleccione</option>');
-                select_tutor.prop('disabled', false);
-                for (i in Datos) {
-                  select_tutor.append('<option value="' + Datos[i].usr_id + '">' + Datos[i].usr_nom + ' ' + Datos[i].usr_apat + ' ' + Datos[i].usr_amat + '</option>');
-                    //curso_ins.append('<option value="' + Datos[i].cur_id + '">' + Datos[i].cur_nom + '</option>');
-
-                }
-
-
-            },
-            error: function (result, f) {
-                alert('ERROR ' + result.status + ' ' + result.statusText + ' ' + f);
-            }
-        });
-
-    }
-    if (amb_id <= 0) {
-        select_tutor.empty();
-        select_tutor.append('<option value="0">Seleccione</option>');
-
-        select_tutor.prop('disabled', true);
-        select_tutor.val(0);
-    }
-    
-}
-
-
-
-function buscarSede(operation,fecha,hora,tip_serv_id,sed_id,ambiente_select,tutor_select,forma){
-    
-     // console.log(fecha + " " + hora + " " + tip_serv_id + " " + sed_id);
+    // console.log(fecha + " " + hora + " " + tip_serv_id + " " + sed_id);
 
 
     var parametros = {
@@ -545,14 +604,18 @@ function buscarSede(operation,fecha,hora,tip_serv_id,sed_id,ambiente_select,tuto
 
                 var Datos = JSON.parse(response);
                 ambiente_select.empty();
-               ambiente_select.append('<option value="0">Seleccione</option>');
-               ambiente_select.prop('disabled', false);
+                ambiente_select.append('<option value="0">Seleccione</option>');
+                ambiente_select.prop('disabled', false);
                 for (i in Datos) {
                     ambiente_select.append('<option value="' + Datos[i].amb_id + '">' + Datos[i].amb_den + '</option>');
                     //curso_ins.append('<option value="' + Datos[i].cur_id + '">' + Datos[i].cur_nom + '</option>');
 
+
+
                 }
 
+
+               
 
             },
             error: function (result, f) {
@@ -574,12 +637,71 @@ function buscarSede(operation,fecha,hora,tip_serv_id,sed_id,ambiente_select,tuto
 }
 
 
-function buscarServicio(){
-    
+
+
+function buscarTutor(operation, fecha, hora, tip_serv_id, tip_user_id, select_tutor, amb_id, forma) {
+
+    var parametros = {
+        operation: operation,
+        fecha: fecha,
+        hora: hora,
+        tip_serv_id: tip_serv_id,
+        tip_user_id: tip_user_id
+
+
+    };
+
+    if (fecha.length > 0 && hora.length > 0 && tip_serv_id > 0 && amb_id > 0) {
+        select_tutor.prop('disabled', false);
+        $.ajax({
+            data: parametros,
+            url: '/SistemaT/UsuarioServlet',
+            type: 'post',
+            beforeSend: function () {
+
+            },
+            success: function (response) {
+                // alert(response);
+                //console.log(response);
+
+                var Datos = JSON.parse(response);
+                select_tutor.empty();
+                select_tutor.append('<option value="0">Seleccione</option>');
+                select_tutor.prop('disabled', false);
+                for (i in Datos) {
+                    select_tutor.append('<option value="' + Datos[i].usr_id + '">' + Datos[i].usr_nom + ' ' + Datos[i].usr_apat + ' ' + Datos[i].usr_amat + '</option>');
+                    //curso_ins.append('<option value="' + Datos[i].cur_id + '">' + Datos[i].cur_nom + '</option>');
+
+                }
+
+
+            },
+            error: function (result, f) {
+                alert('ERROR ' + result.status + ' ' + result.statusText + ' ' + f);
+            }
+        });
+
+    }
+    if (amb_id <= 0) {
+        select_tutor.empty();
+        select_tutor.append('<option value="0">Seleccione</option>');
+
+        select_tutor.prop('disabled', true);
+        select_tutor.val(0);
+    }
+
+}
+
+
+
+
+
+function buscarServicio() {
+
     var total_fecha = $('#fecha_hora_srch').data("DateTimePicker").getDate();
     var fecha = moment(total_fecha).format('YYYY-MM-DD');
- 
- var operation = 'QRY';
+
+    var operation = 'QRY';
 
     var parametros = {
         operation: operation
@@ -594,29 +716,29 @@ function buscarServicio(){
             var path = window.location.host;
             //$("#servicio").html("Procesando, espere por favor...");
             // $('#servicio').append('<div class="loading-img"></div>'); 
-           // $('#servicio').html('<img src="'+path+'/SistemaT/img/cargando.GIF"/>'); 
+            // $('#servicio').html('<img src="'+path+'/SistemaT/img/cargando.GIF"/>'); 
         },
         success: function (response) {
             //console.log(response);
 
             var Datos = JSON.parse(response);
-           
-           console.log(moment(fecha,"YYYY-MM-DD").isValid());
-           console.log(fecha);
-         
-           
-           if(moment(fecha,"YYYY-MM-DD").isValid() ){
-            buscarFecServicios(Datos,fecha);
-                }
-                else{ 
-                    agregarServicios(Datos);
-                }
+
+            console.log(moment(fecha, "YYYY-MM-DD").isValid());
+            console.log(fecha);
+
+
+            if (moment(fecha, "YYYY-MM-DD").isValid()) {
+                buscarFecServicios(Datos, fecha);
+            }
+            else {
+                agregarServicios(Datos);
+            }
         },
         error: function (result, f) {
             alert('ERROR ' + result.status + ' ' + result.statusText + ' ' + f);
         }
     });
-    
+
 
 
 }
@@ -625,55 +747,121 @@ function buscarServicio(){
 
 
 
-function buscarFecServicios(Datos,fecha) {
+function buscarFecServicios(Datos, fecha) {
 
 
-     $('#servicio').empty();
+    $('#servicio').empty();
     for (i in Datos) {
-        
-        if(Datos[i].ser_edu_fec===fecha){
-        var servicio_head = '<li class="time-label"><span class="bg-red">' + moment(Datos[i].ser_edu_fec).lang("es").format('ll') + '</span></li>';
-        var duracion='';
-        if(Datos[i].tip_serv_id===1){
-            duracion='<span class="time"><i class="fa fa-clock-o"></i>' + moment(Datos[i].ser_edu_fec+' '+Datos[i].ser_edu_hin).format('HH:mm')+ ' a ' + moment(Datos[i].ser_edu_fec+' '+Datos[i].ser_edu_hin).add(2,'hours').format('HH:mm')+ '</span>';
-            
-        }
-        else{
-                        duracion='<span class="time"><i class="fa fa-clock-o"></i>' + moment(Datos[i].ser_edu_fec+' '+Datos[i].ser_edu_hin).format('HH:mm')+ ' a ' + moment(Datos[i].ser_edu_fec+' '+Datos[i].ser_edu_hin).add(1,'hours').format('HH:mm')+ '</span>';
 
-        }
-        
-        var servicio_body = '<li>' +
-                '<i class="fa fa-envelope bg-blue"></i>' +
-                '<div class="timeline-item">' +
-                    duracion+
-                '<h3 class="timeline-header panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#' + Datos[i].ser_edu_id + '">' + Datos[i].tip_serv_den + ' - ' + Datos[i].cur_nom + '</a></h3>' +
-                '<div class="timeline-body panel-collapse collapse" id="' + Datos[i].ser_edu_id + '">' +
-             
-                '<div class="callout callout-info">' +
-                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-cur_id" value="' + Datos[i].cur_id + '" />' +
-                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-tip_serv_id" value="' + Datos[i].tip_serv_id + '" />' +
-                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-ser_edu_fec" value="' + Datos[i].ser_edu_fec + '" />' +
-                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-ser_edu_hin" value="' + Datos[i].ser_edu_hin + '" />' +
-                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-usr_tut_id" value="' + Datos[i].usr_tut_id + '" />' +
-                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-sed_id" value="' + Datos[i].sed_id + '" />' +
-                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-sed_desc" value="' + Datos[i].sed_desc + '" />' +
-                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-amb_id" value="' + Datos[i].amb_id + '" />' +
-                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-ser_edu_desc" value="' + Datos[i].ser_edu_desc + '" />' +
-                '<label>Sede: </label><span> ' + Datos[i].sed_desc + '</span><br/>' +
-                '<label>Aula/Labortorio: </label><span> ' + Datos[i].amb_den + '</span><br/>' +
-                '<label>Tutor: </label><span> ' + Datos[i].usr_tut_nom + ' ' + Datos[i].usr_tut_apat + ' ' + Datos[i].usr_tut_amat + '</span><br/>' +
-                '<label>Descripción: </label><span> ' + Datos[i].ser_edu_desc + '</span><br/>' +
-                //'<label>Creado por: </label><span> ' + Datos[i].ser_edu_desc + '</span><br/>' +
-                '</div>' +
-                '</div>' +
-                '<div class="timeline-footer">' +
-                '<a class="btn btn-primary btn-xs" onclick="editarFormServicio(' + Datos[i].ser_edu_id + ')"  >Editar</a>' +
-                '</div>' +
-                '</div>' +
-                '</li>';
+        if (Datos[i].ser_edu_fec === fecha) {
+            alert(i);
+            var servicio_head = '<li class="time-label"><span class="bg-red">' + moment(Datos[i].ser_edu_fec).lang("es").format('ll') + '</span></li>';
+            var duracion = '';
+            if (Datos[i].tip_serv_id === 1) {
+                duracion = '<span class="time"><i class="fa fa-clock-o"></i>' + moment(Datos[i].ser_edu_fec + ' ' + Datos[i].ser_edu_hin).format('HH:mm') + ' a ' + moment(Datos[i].ser_edu_fec + ' ' + Datos[i].ser_edu_hin).add(2, 'hours').format('HH:mm') + '</span>';
 
-        $('#servicio').append(servicio_head + servicio_body);
+            }
+            else {
+                duracion = '<span class="time"><i class="fa fa-clock-o"></i>' + moment(Datos[i].ser_edu_fec + ' ' + Datos[i].ser_edu_hin).format('HH:mm') + ' a ' + moment(Datos[i].ser_edu_fec + ' ' + Datos[i].ser_edu_hin).add(1, 'hours').format('HH:mm') + '</span>';
+
+            }
+
+            var servicio_body = '<li>' +
+                    '<i class="fa fa-envelope bg-blue"></i>' +
+                    '<div class="timeline-item">' +
+                    duracion +
+                    '<h3 class="timeline-header panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#' + Datos[i].ser_edu_id + '">' + Datos[i].tip_serv_den + ' - ' + Datos[i].cur_nom + '</a></h3>' +
+                    '<div class="timeline-body panel-collapse collapse" id="' + Datos[i].ser_edu_id + '">' +
+                    '<div class="callout callout-info">' +
+                    '<input type="hidden" id="' + Datos[i].ser_edu_id + '-cur_id" value="' + Datos[i].cur_id + '" />' +
+                    '<input type="hidden" id="' + Datos[i].ser_edu_id + '-tip_serv_id" value="' + Datos[i].tip_serv_id + '" />' +
+                    '<input type="hidden" id="' + Datos[i].ser_edu_id + '-ser_edu_fec" value="' + Datos[i].ser_edu_fec + '" />' +
+                    '<input type="hidden" id="' + Datos[i].ser_edu_id + '-ser_edu_hin" value="' + Datos[i].ser_edu_hin + '" />' +
+                    '<input type="hidden" id="' + Datos[i].ser_edu_id + '-usr_tut_id" value="' + Datos[i].usr_tut_id + '" />' +
+                    '<input type="hidden" id="' + Datos[i].ser_edu_id + '-sed_id" value="' + Datos[i].sed_id + '" />' +
+                    '<input type="hidden" id="' + Datos[i].ser_edu_id + '-sed_desc" value="' + Datos[i].sed_desc + '" />' +
+                    '<input type="hidden" id="' + Datos[i].ser_edu_id + '-amb_id" value="' + Datos[i].amb_id + '" />' +
+                    '<input type="hidden" id="' + Datos[i].ser_edu_id + '-ser_edu_desc" value="' + Datos[i].ser_edu_desc + '" />' +
+                    '<label>Sede: </label><span> ' + Datos[i].sed_desc + '</span><br/>' +
+                    '<label>Aula/Labortorio: </label><span> ' + Datos[i].amb_den + '</span><br/>' +
+                    '<label>Tutor: </label><span> ' + Datos[i].usr_tut_nom + ' ' + Datos[i].usr_tut_apat + ' ' + Datos[i].usr_tut_amat + '</span><br/>' +
+                    '<label>Descripción: </label><span> ' + Datos[i].ser_edu_desc + '</span><br/>' +
+                    //'<label>Creado por: </label><span> ' + Datos[i].ser_edu_desc + '</span><br/>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="timeline-footer">' +
+                    '<a class="btn btn-primary btn-xs" onclick="editarFormServicio(' + Datos[i].ser_edu_id + ')"  >Editar</a>' +
+                    '</div>' +
+                    '</div>' +
+                    '</li>';
+
+            $('#servicio').append(servicio_head + servicio_body);
+        }
+
+        else {
+
+            $('#servicio').append("<h3>No se encontraron resultados</h3>");
+            // alert(i);
+        }
     }
 }
-}
+
+
+
+
+$(function () {
+    $("#fecha_hora_srch").on("dp.change", function (e) {
+
+        //  alert(e.date);
+
+
+
+        //var total_fecha = $('#fecha_hora_srch').data("DateTimePicker").getDate();
+        var total_fecha = e.date;
+        var fecha = moment(total_fecha).format('YYYY-MM-DD');
+
+        var operation = 'QRY';
+
+        var parametros = {
+            operation: operation
+        };
+
+
+        $.ajax({
+            data: parametros,
+            url: '/SistemaT/ServicioServlet',
+            type: 'post',
+            beforeSend: function () {
+                var path = window.location.host;
+                //$("#servicio").html("Procesando, espere por favor...");
+                // $('#servicio').append('<div class="loading-img"></div>'); 
+                // $('#servicio').html('<img src="'+path+'/SistemaT/img/cargando.GIF"/>'); 
+            },
+            success: function (response) {
+                //console.log(response);
+                //alert(response);
+                var Datos = JSON.parse(response);
+
+                //console.log(moment(fecha,"YYYY-MM-DD").isValid());
+                //console.log(fecha);
+
+
+                if (moment(fecha, "YYYY-MM-DD").isValid()) {
+                    //console.log(response);
+                    buscarFecServicios(Datos, fecha);
+                }
+                else {
+                    //   console.log(response);
+                    agregarServicios(Datos);
+                }
+            },
+            error: function (result, f) {
+                alert('ERROR ' + result.status + ' ' + result.statusText + ' ' + f);
+            }
+        });
+
+
+    });
+
+});
+  

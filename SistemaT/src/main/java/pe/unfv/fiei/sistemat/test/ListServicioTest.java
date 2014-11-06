@@ -19,7 +19,7 @@ public class ListServicioTest {
 
     public static void main(String[] args) {
         DaoServicio daoServicio = new DaoServicioImpl();
-        List<Servicio> list = daoServicio.ServicioQry(1);
+        List<Servicio> list = daoServicio.ServicioQryByDate(1, "2014-10-01");
         for (Servicio servicio : list) {
             System.out.println("************Test***********************");
             System.out.println("-"+servicio.getSer_edu_id());
