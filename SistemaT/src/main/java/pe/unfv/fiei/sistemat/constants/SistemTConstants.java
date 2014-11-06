@@ -35,6 +35,9 @@ public class SistemTConstants {
     public static final String USER_UPDATE = "UPDATE dbservicio.tbl_usuario SET usr_cod = ?, tip_usr_id = ?, usr_nom = ?, usr_apat = ?, usr_amat = ?, usr_dni = ?, usr_gen = ?, usr_cel = ?, usr_mail = ?, usr_user = ?, usr_pass = AES_ENCRYPT(?,'F1O2R3114'), usr_est = ?, esp_id = ? WHERE usr_id = ?";
     public static final String USER_GET_LIST_DISPONIBLE = "{call tutoresDisp(?,?,?,?,?)}";
 
+    /* ASISTENCIA Constants */
+    public static final String ASISTENCIA_INSERT = "INSERT INTO tbl_asistencia (ser_edu_id, al_id, ast_asist) VALUES (?, ?, ?)";
+    
     /* CURSO Constants */
     public static final String CURSO_SELECT = "SELECT cur_id, cur_cod, cur_nom, esp_id, cur_est FROM tbl_curso WHERE esp_id = ? AND cur_est=TRUE ";
     public static final String CURSO_UPDATE = "UPDATE tbl_curso SET cur_cod=?, cur_nom=?, esp_id=?, cur_est=? WHERE cur_id = ?";

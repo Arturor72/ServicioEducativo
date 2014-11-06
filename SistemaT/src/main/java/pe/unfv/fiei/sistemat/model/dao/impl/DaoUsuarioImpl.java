@@ -16,7 +16,6 @@ import org.apache.log4j.Logger;
 import pe.unfv.fiei.sistemat.constants.SistemTConstants;
 import pe.unfv.fiei.sistemat.model.connection.StConnection;
 import pe.unfv.fiei.sistemat.model.dao.DaoUsuario;
-import pe.unfv.fiei.sistemat.model.dto.Ambiente;
 import pe.unfv.fiei.sistemat.model.dto.Usuario;
 
 /**

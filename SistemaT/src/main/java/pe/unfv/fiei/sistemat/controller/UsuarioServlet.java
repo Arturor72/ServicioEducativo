@@ -16,7 +16,6 @@ import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
 import pe.unfv.fiei.sistemat.model.dao.DaoUsuario;
 import pe.unfv.fiei.sistemat.model.dao.impl.DaoUsuarioImpl;
-import pe.unfv.fiei.sistemat.model.dto.Ambiente;
 import pe.unfv.fiei.sistemat.model.dto.Usuario;
 import pe.unfv.fiei.sistemat.util.Util;
 
