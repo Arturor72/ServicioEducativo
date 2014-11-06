@@ -146,6 +146,7 @@ function agregarServicios(Datos) {
                 //aula 1 , laboratorio 2
 
                 '<div class="callout callout-info">' +
+                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-ser_edu_id" value="' + Datos[i].ser_edu_id + '" />' +        
                 '<input type="hidden" id="' + Datos[i].ser_edu_id + '-cur_id" value="' + Datos[i].cur_id + '" />' +
                 '<input type="hidden" id="' + Datos[i].ser_edu_id + '-tip_serv_id" value="' + Datos[i].tip_serv_id + '" />' +
                 '<input type="hidden" id="' + Datos[i].ser_edu_id + '-ser_edu_fec" value="' + Datos[i].ser_edu_fec + '" />' +
@@ -416,6 +417,9 @@ function editarFormServicio(id) {
 
     //seteando valores en el formulario
     //enviar codigo de sede, fecha, y la hora codigo tipo amb
+     var ser_edu_id = $('#' + id + '-ser_edu_id').val();
+  
+    
     var cur_id = $('#' + id + '-cur_id').val();
 
     var tip_serv_id = $('#' + id + '-tip_serv_id').val();
@@ -436,13 +440,15 @@ function editarFormServicio(id) {
     var usr_tut_apat = $('#' + id + '-usr_tut_apat').val();
     var usr_tut_amat = $('#' + id + '-usr_tut_amat').val();
 
- var ser_edu_desc = $('#' + id + '-ser_edu_desc').val();
+    var ser_edu_desc = $('#' + id + '-ser_edu_desc').val();
     
 
 
     //curso, tipo , fecha y hora .... tutor, sede, tipo de ambiente, ambiente
 
     //cargando data
+    $('#id_upd').val(ser_edu_id);
+    
     $('#curso_upd').val(cur_id);
     $('#servicio_upd').val(tip_serv_id);
 
@@ -566,9 +572,88 @@ function selectAmbienteUpd() {
 
 }
 
-function actualizarServicio() {
+function editarServicio() {
 
-    alert($('#curso_upd').val() + " " + $('#servicio_upd').val() + " " + $('#tutor_upd').val());
+    var operation = "UPD";
+    var serv_edu_id =$('#id_upd').val();
+    var tipo_serv_id = $('#servicio_upd').val();
+   
+    //var ser_edu_id = $('#' + id + '-ser_edu_id').val();
+   // alert();
+    var total_fecha = $('#fecha_hora_upd').data("DateTimePicker").getDate();
+    var ser_edu_fec = moment(total_fecha).format('YYYY-MM-DD');
+    var ser_edu_hin = moment(total_fecha).format('HH:mm:00');
+
+    var sed_id = $('#sede_upd').val();
+    var amb_id = $('#ambiente_upd').val();
+    var usr_tut_id = $('#tutor_upd').val();
+    var curso_id = $('#curso_upd').val();
+
+    var ser_edu_desc = $('#descripcion_upd').val();
+
+
+    //console.log(tip_serv_id );
+
+    var parametros = {
+        operation: operation,
+        serv_edu_id:serv_edu_id,
+        ser_edu_fec: ser_edu_fec,
+        ser_edu_hin: ser_edu_hin,
+        curso_id: curso_id,
+        amb_id: amb_id,
+        sed_id: sed_id,
+        tipo_serv_id: tipo_serv_id,
+        usr_tut_id: usr_tut_id,
+        ser_edu_desc: ser_edu_desc
+
+
+    };
+
+    if (ser_edu_fec.length > 0 &&
+            ser_edu_hin.length > 0 &&
+            tipo_serv_id > 0 &&
+            curso_id > 0 &&
+            amb_id > 0 &&
+            sed_id > 0 &&
+            usr_tut_id > 0
+            ) {
+        $.ajax({
+            data: parametros,
+            url: '/SistemaT/ServicioServlet',
+            type: 'post',
+            beforeSend: function () {
+
+            },
+            success: function (response) {
+
+                if (response === 'error') {
+
+
+                    $('#mensaje_upd').addClass('alert alert-danger');
+                    $('#mensaje_upd').html('Servicio no se pudo actualizar');
+                }
+                else {
+                    // alert("si registro" + response);
+
+                    $('#mensaje_upd').addClass('alert alert-success');
+                    $('#mensaje_upd').html('Servicio actualizado satisfactoriamente');
+                    setTimeout(function () {
+                        url = "/SistemaT/admin/indexA.jsp";
+                        $(location).attr('href', url);
+                    }, 2000);
+                }
+
+
+
+            },
+            error: function (result, f) {
+                alert('ERROR ' + result.status + ' ' + result.statusText + ' ' + f);
+            }
+        });
+    }
+
+
+   // alert($('#curso_upd').val() + " " + $('#servicio_upd').val() + " " + $('#tutor_upd').val());
 
 
 }
@@ -818,12 +903,14 @@ $(function () {
 
         //var total_fecha = $('#fecha_hora_srch').data("DateTimePicker").getDate();
         var total_fecha = e.date;
-        var fecha = moment(total_fecha).format('YYYY-MM-DD');
+        var ser_edu_fec= moment(total_fecha).format('YYYY-MM-DD');
 
-        var operation = 'QRY';
+        var operation = 'QRY_SEARCH';
 
         var parametros = {
-            operation: operation
+            operation: operation,
+            ser_edu_fec:ser_edu_fec
+            
         };
 
 
@@ -838,22 +925,27 @@ $(function () {
                 // $('#servicio').html('<img src="'+path+'/SistemaT/img/cargando.GIF"/>'); 
             },
             success: function (response) {
-                //console.log(response);
-                //alert(response);
+                console.log(response);
+           
                 var Datos = JSON.parse(response);
-
-                //console.log(moment(fecha,"YYYY-MM-DD").isValid());
-                //console.log(fecha);
-
-
-                if (moment(fecha, "YYYY-MM-DD").isValid()) {
-                    //console.log(response);
-                    buscarFecServicios(Datos, fecha);
-                }
-                else {
-                    //   console.log(response);
+                
+                if(Datos.length>0){
+                
                     agregarServicios(Datos);
                 }
+                else{
+                        $("#servicio").html("No se encontraron resultados");
+                }
+                
+
+           /*     if (moment(fecha, "YYYY-MM-DD").isValid()) {
+                    //console.log(response);
+                    buscarFecServicios(Datos, fecha);
+                }*/
+              
+                    //   console.log(response);
+                   
+                
             },
             error: function (result, f) {
                 alert('ERROR ' + result.status + ' ' + result.statusText + ' ' + f);
