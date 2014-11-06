@@ -121,7 +121,7 @@
                     <!-- select -->
                     <div class="form-group">
                         <label>Curso</label>
-                        <select name="curso_upd" id="curso_upd" class="form-control">
+                        <select name="curso_upd" id="curso_upd" class="form-control" onchange="selectCursoUpd()">
                             <option value="0" selected>Seleccione</option>
                         </select>
                     </div>
@@ -129,7 +129,7 @@
                     <!-- select -->
                     <div class="form-group">
                         <label>Tipo de servicio</label>
-                        <select name="servicio_upd" id="servicio_upd" class="form-control">
+                        <select name="servicio_upd" id="servicio_upd" class="form-control" onchange="selectServicioUpd()">
                             <option value="0" selected>Seleccione</option>
                             <option value="1">Taller</option>
                             <option value="2">Tutoria</option>
@@ -156,7 +156,7 @@
                     <!-- select -->
                     <div class="form-group">
                         <label>Sede</label>
-                        <select name="sede_upd" id="sede_upd" class="form-control">
+                        <select name="sede_upd" id="sede_upd" class="form-control" onchange="selectSedeUpd()">
                             <option value="0" selected>Seleccione</option>
                         </select>
                     </div>
@@ -166,7 +166,7 @@
                     <!-- select -->
                     <div class="form-group">
                         <label>Ambiente</label>
-                        <select name="ambiente_upd" id="ambiente_upd" class="form-control">
+                        <select name="ambiente_upd" id="ambiente_upd" class="form-control" onchange="selectAmbienteUpd()">
                             <option value="0" selected>Seleccione</option>
                         </select>
                     </div>
@@ -194,7 +194,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" id="guarda" onclick="actualizarServicio()" >Guardar</button>
+                    <button type="button" class="btn btn-primary" id="guarda" onclick="actualizarServicio()" >Actualizar</button>
                 </div>
             </form> <!-- /.form -->
         </div><!-- /.modal content -->
