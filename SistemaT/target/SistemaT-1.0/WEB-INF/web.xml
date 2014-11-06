@@ -12,6 +12,22 @@
         <servlet-name>CursoServlet</servlet-name>
         <servlet-class>pe.unfv.fiei.sistemat.controller.CursoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServicioServlet</servlet-name>
+        <servlet-class>pe.unfv.fiei.sistemat.controller.ServicioServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AmbienteServlet</servlet-name>
+        <servlet-class>pe.unfv.fiei.sistemat.controller.AmbienteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SedeServlet</servlet-name>
+        <servlet-class>pe.unfv.fiei.sistemat.controller.SedeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AsistenciaServlet</servlet-name>
+        <servlet-class>pe.unfv.fiei.sistemat.controller.AsistenciaServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -23,6 +39,22 @@
     <servlet-mapping>
         <servlet-name>UsuarioServlet</servlet-name>
         <url-pattern>/UsuarioServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServicioServlet</servlet-name>
+        <url-pattern>/ServicioServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AmbienteServlet</servlet-name>
+        <url-pattern>/AmbienteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SedeServlet</servlet-name>
+        <url-pattern>/SedeServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AsistenciaServlet</servlet-name>
+        <url-pattern>/AsistenciaServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -23,7 +23,7 @@
             <aside class="right-side">
                 <section class="content-header">
                     <h1>
-                        Gestión de Administradores
+                        Gestión de administradores
                     </h1>
                 </section>
                 <section class="content">
@@ -31,34 +31,40 @@
                         <div class="col-xs-12">
                             <div class="box">
                                 <div class="box-header">
+                                    <div class="row">
+                                        <div class="col-md-10 col-xs-6">
+                                            <h3 class="box-title">Administradores</h3>
+                                        </div>
 
-                                    <div class="col-md-10 col-xs-6">
-                                        <h3 class="box-title">Administradores</h3>
+                                        <div class="col-md-2 col-xs-6" >
+                                            <div class="box-footer">
+                                            <button class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#myModal"><img class="btn-admin" src="<%= request.getContextPath()%>/img/admin.png"/> Administrador</button>
+                                            </div>
+                                        </div>
                                     </div>
-
-                                    <div class="col-md-2 col-xs-8" >
-                                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal"><img src="<%= request.getContextPath()%>/img/add3.png"/> Administrador</button>
-                                    </div>
-
                                 </div><!-- /.box-header -->
-
-
 
                                 <div class="box-body table-responsive">
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Código</th>
-                                                <th>Nombre Admin</th>
-                                                <th class="mrc"> <a href=""><img src="<%= request.getContextPath()%>/img/delete.png" onclick="usuarioDel()"/></a> </th>
-                                                <th class="mrc"> <a href=""><img src="<%= request.getContextPath()%>/img/edit.png" onclick="usuarioUpd()"/></a> </th>
+                                                <th class="mrc">Apellidos y nombres</th>
+                                                <th class="mrc">C&oacute;digo</th>
+                                                <th class="mrc">Alias</th>
+                                                <th class="mrc">Correo electr&oacute;nico</th>
+                                                <th class="mrc">M&oacute;vil</th>
+                                                <th class="mrc"> <img src="<%= request.getContextPath()%>/img/delete.png" onclick="mostrarMensajeEliminar()"/></th>
+                                                <th class="mrc"> <img src="<%= request.getContextPath()%>/img/edit.png" onclick="solicitarUsuarioId()"/></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <c:forEach var="a" items="${list}">
                                                 <tr>
-                                                    <td>${a.usr_cod}</td>
-                                                    <td>${a.usr_nom} ${a.usr_apat} ${a.usr_amat}</td>
+                                                    <td>${a.usr_apat} ${a.usr_amat}, ${a.usr_nom} </td>
+                                                    <td class="mrc">${a.usr_cod}</td>
+                                                    <td class="mrc">${a.usr_user}</td>
+                                                    <td>${a.usr_mail}</td>
+                                                    <td class="mrc">${a.usr_cel}</td>
                                                     <td class="mrc"> <input type="checkbox" name="DEL" value="${a.usr_id}"> </td>
                                                     <td class="mrc"> <input type="radio" name="UPD" value="${a.usr_id}"> </td>
                                                 </tr>
@@ -68,10 +74,8 @@
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
                         </div>
-
                     </div>
                 </section>
-
             </aside>
         </div>
 
@@ -80,7 +84,7 @@
         <%@include file="../../../WEB-INF/jspf/linksfooter.jspf" %>
         <!-- page script -->
         <script type="text/javascript">
-            $(function() {
+            $(function () {
                 $("#example1").dataTable();
                 $('#example2').dataTable({
                     "bPaginate": true,
@@ -102,7 +106,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h3 class="modal-title" id="myModalLabel">Registro Administrador</h3>
+                        <h3 class="modal-title" id="myModalLabel">Nuevo administrador</h3>
                     </div><!-- /.model-header -->
                     <form role="form" data-toggle="validator">
                         <div class="modal-body">
@@ -110,7 +114,7 @@
                             <div class="row">
                                 <div class="col-md-6 col-xs-12">
                                     <fieldset>
-                                        <legend><h4>Datos Personales</h4></legend>
+                                        <legend><h4>Datos personales</h4></legend>
                                         <div class="form-group">
                                             <input type="text" pattern="^[a-zA-ZñÑ\s]*$" class="form-control" id="usrNom" placeholder="Nombre" required>
                                             <div class="help-block with-errors">Solo letras</div>
@@ -148,7 +152,7 @@
                                 </div><!-- /.col -->
                                 <div class="col-md-6 col-xs-12">
                                     <fieldset>
-                                        <legend><h4>Datos de Usuario</h4></legend>
+                                        <legend><h4>Datos de la cuenta usuario</h4></legend>
 
                                         <div class="form-group">
                                             <input type="text" pattern="^[a-zA-Z0-9]*$"class="form-control" id="usrCod" data-error="Codigo no valido" maxlength="10" placeholder="Código" data-error="" required>
@@ -166,18 +170,20 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="password" class="form-control" id="usrPassConf" data-match="#usrPass" data-match-error="Upss,deben coincidir" placeholder="Repita Contraseña" required>
+                                            <input type="password" class="form-control" id="usrPassConf" data-match="#usrPass" data-match-error="Las contrasenias deben coincidir" placeholder="Repita Contraseña" required>
                                             <div class="help-block with-errors"></div>
                                         </div>
 
                                     </fieldset><!-- /.fieldset -->
                                 </div><!-- /.col -->
                             </div><!-- /.row -->
-
+                            <div class="form-group">
+                                <div id="mensaje"></div>
+                            </div>
                         </div><!-- /.modal-body -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary" id="guarda" onclick="guardarUsuario()">Guardar</button>
+                            <button type="button" class="btn btn-primary" id="guarda" onclick="guardarAdmin()">Guardar</button>
                         </div><!-- /.modal-footer -->
                     </form><!-- /.form -->
                 </div><!-- /.model-content -->
@@ -194,7 +200,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h3 class="modal-title" id="myModalLabel">Actualizar Administrador</h3>
+                        <h3 class="modal-title" id="myModalLabel">Actualizar administrador</h3>
                     </div>
                     <form role="form" data-toggle="validator">
                         <div class="modal-body">
@@ -206,7 +212,7 @@
                                     <fieldset>
                                         <legend><h4>Datos personales</h4></legend>
                                         <div class="form-group">
-                                            <input type="text" pattern="^[a-zA-ZñÑ\s]*$" class="form-control" id="usrNomUPD" placeholder="Nombre" required>
+                                            <input type="text" pattern="^[a-zA-ZñÑ\s]*$" class="form-control" id="usrNomUPD" required data-error="Solo debe contener numeros y letras, no espacios" placeholder="Nombre" required="true" value="${usuarioGET.usr_nom}">
                                             <div class="help-block with-errors">Solo letras</div>
                                         </div>
                                         <div class="form-group">
@@ -219,14 +225,14 @@
                                         </div>
 
                                         <div class="form-group">
-                                            Sexo &nbsp;&nbsp;
-                                            <input type="radio" id="usrGen_fUPD" name="usrGenUPD" required value="0"> Femenino
-                                            &nbsp;<input type="radio" id="usrGen_mUPD" name="usrGenUPD" required value="1"> Masculino
+                                            <input type="text" pattern="^[0-9]*$" maxlength="8" class="form-control" id="usrDniUPD" placeholder="DNI" required>
+                                            <div class="help-block with-errors">Solo numeros</div>
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="text" pattern="^[0-9]*$" maxlength="8" class="form-control" id="usrDniUPD" placeholder="DNI" required>
-                                            <div class="help-block with-errors">Solo numeros</div>
+                                            Sexo &nbsp;&nbsp;
+                                            <input type="radio" id="usrGen_fUPD" name="usrGenUPD" required> Femenino
+                                            &nbsp;<input type="radio" id="usrGen_mUPD" name="usrGenUPD" required> Masculino
                                         </div>
 
                                         <div class="form-group">
@@ -258,21 +264,66 @@
                                             <input type="password" class="form-control" id="usrPassUPD" placeholder="Contraseña" required>
                                             <div class="help-block with-errors">No estan permitidos caracteres especiales</div>
                                         </div>
-
-                                        <div class="form-group">
-                                            <input type="password" class="form-control" id="usrPassConfUPD" data-match="#usrPassUPD" data-match-error="Upss,deben coincidir" placeholder="Repita Contraseña" required>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-
                                     </fieldset><!-- /.fieldset -->
                                 </div><!-- /.col -->
                             </div><!-- /.row -->
-
+                            <div class="form-group">
+                                <div id="mensajeUPD"></div>
+                            </div>
                         </div><!-- /.modal-body -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary" id="guarda" onclick="guardarUsuarioUPD()">Guardar</button>
+                            <button type="button" class="btn btn-primary" id="guarda" onclick="actualizarAdmin()">Guardar</button>
                         </div><!-- /.modal-footer -->
+                    </form> <!-- /.form -->
+                </div><!-- /.modal content -->
+            </div><!-- /.modal dialog -->
+        </div><!-- /.modal -->
+        <!--fin-->
+
+        <!-- Modal MSG -->
+        <div class="modal fade" id="myModalMensaje" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h3 class="modal-title" id="myModalMensajeDel"></h3>
+                        <h3 class="modal-title" id="myModalMensajeUpd"></h3>
+                    </div>
+                    <form role="form" data-toggle="validator">
+                        <div class="modal-body">
+                            <div id="modal-mensaje">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                        </div>
+                    </form> <!-- /.form -->
+                </div><!-- /.modal content -->
+            </div><!-- /.modal dialog -->
+        </div><!-- /.modal -->
+
+        <!--fin-->
+
+        <!-- Modal DEL -->
+        <div class="modal fade" id="myModalDel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h3 class="modal-title" >Eliminar administrador</h3>
+                    </div>
+                    <form role="form" data-toggle="validator">
+                        <div class="modal-body">
+                            <div id="modal-mensaje-del"></div>
+                        </div>
+                        <div class="form-group">
+                            <div id="mensaje-del"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary" id="guarda" onclick="eliminarAdmin()" >Aceptar</button>
+                        </div>
                     </form> <!-- /.form -->
                 </div><!-- /.modal content -->
             </div><!-- /.modal dialog -->

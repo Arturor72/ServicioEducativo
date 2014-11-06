@@ -12,7 +12,7 @@
         </div>
         <ul class="sidebar-menu">
             <li class="active">
-                <a href= "<%= request.getContextPath()%>\admin\indexA.jsp">
+                <a href= "<%= request.getContextPath()%>/admin/indexA.jsp">
 
                     <i class="fa fa-dashboard"></i> <span>Servicio Académico</span>
                 </a>
