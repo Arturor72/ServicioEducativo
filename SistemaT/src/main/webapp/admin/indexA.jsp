@@ -114,7 +114,7 @@
             <form role="form" data-toggle="validator">
                 <div class="modal-body">
 
-                    <input type="hidden"  id="idupd" value="${cursoget.cur_id}">
+                    <input type="hidden"  id="id_upd" value="">
 
 
 
@@ -194,7 +194,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" id="guarda" onclick="actualizarServicio()" >Actualizar</button>
+                    <button type="button" class="btn btn-primary" id="guarda" onclick="editarServicio()" >Actualizar</button>
                 </div>
             </form> <!-- /.form -->
         </div><!-- /.modal content -->
