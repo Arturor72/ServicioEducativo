@@ -175,26 +175,37 @@ public class ServicioServlet extends HttpServlet {
 
             } else if (operation.equals(OPERATION_UPD)) {
                 HashMap hm = new HashMap();
+                String serv_edu_id = request.getParameter("serv_edu_id");
                 String ser_edu_fec = request.getParameter("ser_edu_fec");
                 String ser_edu_hin = request.getParameter("ser_edu_hin");
+                
                 String curso_id = request.getParameter("curso_id");
                 String amb_id = request.getParameter("amb_id");
                 String sed_id = request.getParameter("sed_id");
+                
                 String tipo_serv_id = request.getParameter("tipo_serv_id");
                 String usr_tut_id = request.getParameter("usr_tut_id");
                 String ser_edu_desc = request.getParameter("ser_edu_desc");
                 Integer ser_edu_est = Integer.parseInt(SistemTConstants.STATE_ON);
+                
+                hm.put("Id de Servicio",serv_edu_id);
                 hm.put("Fecha", ser_edu_desc);
                 hm.put("Hora de inicio", ser_edu_desc);
+                
                 hm.put("Curso", curso_id);
                 hm.put("Ambiente", amb_id);
                 hm.put("Sede", sed_id);
+                
                 hm.put("Tipo servicio", tipo_serv_id);
                 hm.put("Tutor", usr_tut_id);
                 hm.put("Descripcion", ser_edu_desc);
+                
                 String sAnyNull = Util.getAnyNull(hm);
                 if (sAnyNull == null) {
                     Servicio servicio = new Servicio();
+                    
+                    servicio.setSer_edu_id(Integer.parseInt(serv_edu_id));
+                    
 
                     servicio.setSer_edu_fec(Date.valueOf(ser_edu_fec));
                     servicio.setSer_edu_hin(ser_edu_hin);
@@ -224,7 +235,6 @@ public class ServicioServlet extends HttpServlet {
                         servicio.setSer_edu_desc(ser_edu_desc);
 
                         servicio.setSer_edu_est(ser_edu_est);
-                        servicio.setSer_edu_asist(0);
                     } catch (Exception e) {
                         log4j.error(e.getMessage());
                         objError.put("error", "Error al convertir");
