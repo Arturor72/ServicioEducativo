@@ -62,10 +62,12 @@ public class SistemTConstants {
 
     /* SERVICIO Constants */
     public static final String SERVICIO_SELECT = "SELECT ser_edu_id, ser_edu_fec, ser_edu_hin, cur_id, amb_id, sed_id, tip_serv_id, usr_adm_id, usr_tut_id, ser_edu_asist, ser_edu_desc, ser_edu_est FROM dbservicio.tbl_servicio_educativo se, dbservicio.tbl_usuario u WHERE se.usr_adm_id=u.usr_id AND u.esp_id=? AND  se.ser_edu_est= 1 ORDER BY (ser_edu_fec) DESC";
+    public static final String SERVICIO_SELECT_BY_DATE = "SELECT ser_edu_id, ser_edu_fec, ser_edu_hin, cur_id, amb_id, sed_id, tip_serv_id, usr_adm_id, usr_tut_id, ser_edu_asist, ser_edu_desc, ser_edu_est FROM dbservicio.tbl_servicio_educativo se, dbservicio.tbl_usuario u WHERE se.usr_adm_id=u.usr_id AND u.esp_id=? AND  se.ser_edu_fec= ? AND se.ser_edu_est= 1 ORDER BY (ser_edu_fec) DESC";
 
     public static final String SERVICIO_INSERT = "INSERT INTO dbservicio.tbl_servicio_educativo (ser_edu_id, ser_edu_fec, ser_edu_hin, cur_id, amb_id, sed_id, tip_serv_id, usr_adm_id, usr_tut_id, ser_edu_asist, ser_edu_desc, ser_edu_est) VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     public static final String SERVICIO_DELETE = "UDPATE dbservicio.tbl_servicio_educativo SET ser_edu_est = 0 WHERE ser_edu_id = ?";
     public static final String SERVICIO_GET = "SELECT ser_edu_id, ser_edu_fec, ser_edu_hin, cur_id, amb_id, sed_id, tip_serv_id, usr_adm_id, usr_tut_id, ser_edu_asist, ser_edu_desc, ser_edu_est FROM dbservicio.tbl_servicio_educativo WHERE ser_edu_id=?  AND ser_edu_est= 1";
     public static final String SERVICIO_UPDATE = "UDPATE dbservicio.tbl_servicio_educativo SET ser_edu_fec=?, ser_edu_hin=?, cur_id=?, amb_id=?, sed_id=?, tip_serv_id=?, usr_adm_id=?, usr_tut_id=?, ser_edu_asist=?, ser_edu_desc=?, ser_edu_est=?  WHERE ser_edu_id = ?";
+    
 
 }
