@@ -29,12 +29,12 @@
                 </section>
                 <section class="content">
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-4">
                             <!-- select fecha y hora-->
                             <div class="form-group">
 
-                                <div class="input-group date" id="fecha_hora_srch">
-                                    <input  type="text" placeholder="Buscar..." class="form-control" data-date-format="DD/MM/YYYY" />
+                                <div class="input-group date" id="fecha_hora_srch"  >
+                                    <input  type="text" placeholder="Fecha.." class="form-control" data-date-format="DD/MM/YYYY" />
                                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
                                     </span>
                                 </div>
@@ -42,10 +42,18 @@
                         </div>
 
 
-                        
-                         <div class="col-md-2">
+
+                        <div class="col-md-4">
                             <div class="form-group">
-                                <button class="btn btn-primary btn btn-block" onclick="buscarServicio()">Buscar</button>
+                                <select name="sede_srch" id="sede_srch" class="form-control" onchange="selectSedeSrch()" >
+                                    <option value="0" selected>Sede</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <button class="btn btn-primary btn btn-block" onclick="buscarServicio()">Todos</button>
                             </div>
                         </div>
                         <div class="col-md-2">
@@ -59,14 +67,25 @@
 
                             <div class="panel-group" id="accordion">
                                 <div class="panel panel-default">
+
                                     <ul class="timeline" id="servicio">
 
                                         <!--Contenido de los servicios-->
                                     </ul>
+                                    <div class="row">
+                                        <div id="alerta" class="col-md-12">
+
+                                        </div>
+                                        <!--  <div id="alerta" class="col-md-4">
+                                          <img  class="center-block" src="http://localhost:8084//SistemaT/img/load.GIF"/>
+                                        </div>
+                                        <div class="col-md-4">-->
+
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
                 </section>
 
