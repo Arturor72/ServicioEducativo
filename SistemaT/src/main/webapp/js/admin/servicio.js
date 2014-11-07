@@ -6,6 +6,10 @@
 
 
 $(function () {
+    $("#servicio").css({"left": "-10px"});
+    $("#servicio").css({"opacity": "0.2"});
+
+    $("#servicio").animate({"left": "10px", "opacity": "1"}, 1000);
     var operation = 'QRY';
 
     var parametros = {
@@ -18,14 +22,13 @@ $(function () {
         type: 'post',
         beforeSend: function () {
             var path = window.location.host;
-            //$("#resultado").html("Procesando, espere por favor...");
-            // $('#servicio').append('<div class="loading-img"></div>'); 
-            // $('#servicio').html('<img src="'+path+'/SistemaT/img/cargando.GIF"/>'); 
+            $("#servicio").html('<img  class="center-block" src="http://localhost:8084//SistemaT/img/load.GIF"/>');
         },
         success: function (response) {
             //console.log(response);
 
             var Datos = JSON.parse(response);
+
             agregarServicios(Datos);
 
         },
@@ -83,6 +86,7 @@ $(function () {
 
     var sede_ins = $('#sede_ins');
     var sede_upd = $('#sede_upd');
+    var sede_srch = $('#sede_srch');
 
 
     var parametros = {
@@ -105,6 +109,7 @@ $(function () {
             for (i in Datos) {
                 sede_ins.append('<option value="' + Datos[i].sed_id + '">' + Datos[i].sed_desc + '</option>');
                 sede_upd.append('<option value="' + Datos[i].sed_id + '">' + Datos[i].sed_desc + '</option>');
+                sede_srch.append('<option value="' + Datos[i].sed_id + '">' + Datos[i].sed_desc + '</option>');
 
             }
 
@@ -146,7 +151,7 @@ function agregarServicios(Datos) {
                 //aula 1 , laboratorio 2
 
                 '<div class="callout callout-info">' +
-                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-ser_edu_id" value="' + Datos[i].ser_edu_id + '" />' +        
+                '<input type="hidden" id="' + Datos[i].ser_edu_id + '-ser_edu_id" value="' + Datos[i].ser_edu_id + '" />' +
                 '<input type="hidden" id="' + Datos[i].ser_edu_id + '-cur_id" value="' + Datos[i].cur_id + '" />' +
                 '<input type="hidden" id="' + Datos[i].ser_edu_id + '-tip_serv_id" value="' + Datos[i].tip_serv_id + '" />' +
                 '<input type="hidden" id="' + Datos[i].ser_edu_id + '-ser_edu_fec" value="' + Datos[i].ser_edu_fec + '" />' +
@@ -174,6 +179,7 @@ function agregarServicios(Datos) {
                 '</li>';
 
         $('#servicio').append(servicio_head + servicio_body);
+
     }
 
 }
@@ -244,7 +250,7 @@ function selectCurso() {
     var cur_id = $('#curso_ins').val();
     if (cur_id > 0) {
         $('#servicio_ins').prop('disabled', false);
-       
+
     }
 
     else {
@@ -417,9 +423,9 @@ function editarFormServicio(id) {
 
     //seteando valores en el formulario
     //enviar codigo de sede, fecha, y la hora codigo tipo amb
-     var ser_edu_id = $('#' + id + '-ser_edu_id').val();
-  
-    
+    var ser_edu_id = $('#' + id + '-ser_edu_id').val();
+
+
     var cur_id = $('#' + id + '-cur_id').val();
 
     var tip_serv_id = $('#' + id + '-tip_serv_id').val();
@@ -441,14 +447,14 @@ function editarFormServicio(id) {
     var usr_tut_amat = $('#' + id + '-usr_tut_amat').val();
 
     var ser_edu_desc = $('#' + id + '-ser_edu_desc').val();
-    
+
 
 
     //curso, tipo , fecha y hora .... tutor, sede, tipo de ambiente, ambiente
 
     //cargando data
     $('#id_upd').val(ser_edu_id);
-    
+
     $('#curso_upd').val(cur_id);
     $('#servicio_upd').val(tip_serv_id);
 
@@ -456,12 +462,12 @@ function editarFormServicio(id) {
 
     $('#ambiente_upd').append('<option value="' + amb_id + '">' + amb_den + '</option>');
     $('#ambiente_upd').val(amb_id);
-    
+
     $('#tutor_upd').append('<option value="' + usr_tut_id + '">' + usr_tut_nom + ' ' + usr_tut_apat + ' ' + usr_tut_amat + '</option>');
     $('#tutor_upd').val(usr_tut_id);
-    
-    
-     $('#descripcion_upd').val(ser_edu_desc);
+
+
+    $('#descripcion_upd').val(ser_edu_desc);
 
     $('#fecha_hora_upd').data("DateTimePicker").setDate(new Date(momentDate));
     $('#servicio_upd').prop('disabled', true);
@@ -470,9 +476,9 @@ function editarFormServicio(id) {
     $('#sede_upd').prop('disabled', true);
     $('#ambiente_upd').prop('disabled', true);
     $('#tutor_upd').prop('disabled', true);
- 
 
-  
+
+
 
 
 
@@ -486,7 +492,7 @@ function selectCursoUpd() {
     var cur_id = $('#curso_upd').val();
     if (cur_id > 0) {
         $('#servicio_upd').prop('disabled', false);
-       
+
     }
 
     else {
@@ -575,11 +581,11 @@ function selectAmbienteUpd() {
 function editarServicio() {
 
     var operation = "UPD";
-    var serv_edu_id =$('#id_upd').val();
+    var serv_edu_id = $('#id_upd').val();
     var tipo_serv_id = $('#servicio_upd').val();
-   
+
     //var ser_edu_id = $('#' + id + '-ser_edu_id').val();
-   // alert();
+    // alert();
     var total_fecha = $('#fecha_hora_upd').data("DateTimePicker").getDate();
     var ser_edu_fec = moment(total_fecha).format('YYYY-MM-DD');
     var ser_edu_hin = moment(total_fecha).format('HH:mm:00');
@@ -596,7 +602,7 @@ function editarServicio() {
 
     var parametros = {
         operation: operation,
-        serv_edu_id:serv_edu_id,
+        serv_edu_id: serv_edu_id,
         ser_edu_fec: ser_edu_fec,
         ser_edu_hin: ser_edu_hin,
         curso_id: curso_id,
@@ -653,7 +659,7 @@ function editarServicio() {
     }
 
 
-   // alert($('#curso_upd').val() + " " + $('#servicio_upd').val() + " " + $('#tutor_upd').val());
+    // alert($('#curso_upd').val() + " " + $('#servicio_upd').val() + " " + $('#tutor_upd').val());
 
 
 }
@@ -700,7 +706,7 @@ function buscarSede(operation, fecha, hora, tip_serv_id, sed_id, ambiente_select
                 }
 
 
-               
+
 
             },
             error: function (result, f) {
@@ -782,10 +788,10 @@ function buscarTutor(operation, fecha, hora, tip_serv_id, tip_user_id, select_tu
 
 
 function buscarServicio() {
+    $("#servicio").css({"left": "-10px"});
+    $("#servicio").css({"opacity": "0.2"});
 
-    var total_fecha = $('#fecha_hora_srch').data("DateTimePicker").getDate();
-    var fecha = moment(total_fecha).format('YYYY-MM-DD');
-
+    $("#servicio").animate({"left": "10px", "opacity": "1"}, 1000);
     var operation = 'QRY';
 
     var parametros = {
@@ -798,7 +804,7 @@ function buscarServicio() {
         url: '/SistemaT/ServicioServlet',
         type: 'post',
         beforeSend: function () {
-            var path = window.location.host;
+            //    var path = window.location.host;
             //$("#servicio").html("Procesando, espere por favor...");
             // $('#servicio').append('<div class="loading-img"></div>'); 
             // $('#servicio').html('<img src="'+path+'/SistemaT/img/cargando.GIF"/>'); 
@@ -807,17 +813,8 @@ function buscarServicio() {
             //console.log(response);
 
             var Datos = JSON.parse(response);
+            agregarServicios(Datos);
 
-            console.log(moment(fecha, "YYYY-MM-DD").isValid());
-            console.log(fecha);
-
-
-            if (moment(fecha, "YYYY-MM-DD").isValid()) {
-                buscarFecServicios(Datos, fecha);
-            }
-            else {
-                agregarServicios(Datos);
-            }
         },
         error: function (result, f) {
             alert('ERROR ' + result.status + ' ' + result.statusText + ' ' + f);
@@ -832,85 +829,23 @@ function buscarServicio() {
 
 
 
-function buscarFecServicios(Datos, fecha) {
-
-
-    $('#servicio').empty();
-    for (i in Datos) {
-
-        if (Datos[i].ser_edu_fec === fecha) {
-            alert(i);
-            var servicio_head = '<li class="time-label"><span class="bg-red">' + moment(Datos[i].ser_edu_fec).lang("es").format('ll') + '</span></li>';
-            var duracion = '';
-            if (Datos[i].tip_serv_id === 1) {
-                duracion = '<span class="time"><i class="fa fa-clock-o"></i>' + moment(Datos[i].ser_edu_fec + ' ' + Datos[i].ser_edu_hin).format('HH:mm') + ' a ' + moment(Datos[i].ser_edu_fec + ' ' + Datos[i].ser_edu_hin).add(2, 'hours').format('HH:mm') + '</span>';
-
-            }
-            else {
-                duracion = '<span class="time"><i class="fa fa-clock-o"></i>' + moment(Datos[i].ser_edu_fec + ' ' + Datos[i].ser_edu_hin).format('HH:mm') + ' a ' + moment(Datos[i].ser_edu_fec + ' ' + Datos[i].ser_edu_hin).add(1, 'hours').format('HH:mm') + '</span>';
-
-            }
-
-            var servicio_body = '<li>' +
-                    '<i class="fa fa-envelope bg-blue"></i>' +
-                    '<div class="timeline-item">' +
-                    duracion +
-                    '<h3 class="timeline-header panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#' + Datos[i].ser_edu_id + '">' + Datos[i].tip_serv_den + ' - ' + Datos[i].cur_nom + '</a></h3>' +
-                    '<div class="timeline-body panel-collapse collapse" id="' + Datos[i].ser_edu_id + '">' +
-                    '<div class="callout callout-info">' +
-                    '<input type="hidden" id="' + Datos[i].ser_edu_id + '-cur_id" value="' + Datos[i].cur_id + '" />' +
-                    '<input type="hidden" id="' + Datos[i].ser_edu_id + '-tip_serv_id" value="' + Datos[i].tip_serv_id + '" />' +
-                    '<input type="hidden" id="' + Datos[i].ser_edu_id + '-ser_edu_fec" value="' + Datos[i].ser_edu_fec + '" />' +
-                    '<input type="hidden" id="' + Datos[i].ser_edu_id + '-ser_edu_hin" value="' + Datos[i].ser_edu_hin + '" />' +
-                    '<input type="hidden" id="' + Datos[i].ser_edu_id + '-usr_tut_id" value="' + Datos[i].usr_tut_id + '" />' +
-                    '<input type="hidden" id="' + Datos[i].ser_edu_id + '-sed_id" value="' + Datos[i].sed_id + '" />' +
-                    '<input type="hidden" id="' + Datos[i].ser_edu_id + '-sed_desc" value="' + Datos[i].sed_desc + '" />' +
-                    '<input type="hidden" id="' + Datos[i].ser_edu_id + '-amb_id" value="' + Datos[i].amb_id + '" />' +
-                    '<input type="hidden" id="' + Datos[i].ser_edu_id + '-ser_edu_desc" value="' + Datos[i].ser_edu_desc + '" />' +
-                    '<label>Sede: </label><span> ' + Datos[i].sed_desc + '</span><br/>' +
-                    '<label>Aula/Labortorio: </label><span> ' + Datos[i].amb_den + '</span><br/>' +
-                    '<label>Tutor: </label><span> ' + Datos[i].usr_tut_nom + ' ' + Datos[i].usr_tut_apat + ' ' + Datos[i].usr_tut_amat + '</span><br/>' +
-                    '<label>Descripción: </label><span> ' + Datos[i].ser_edu_desc + '</span><br/>' +
-                    //'<label>Creado por: </label><span> ' + Datos[i].ser_edu_desc + '</span><br/>' +
-                    '</div>' +
-                    '</div>' +
-                    '<div class="timeline-footer">' +
-                    '<a class="btn btn-primary btn-xs" onclick="editarFormServicio(' + Datos[i].ser_edu_id + ')"  >Editar</a>' +
-                    '</div>' +
-                    '</div>' +
-                    '</li>';
-
-            $('#servicio').append(servicio_head + servicio_body);
-        }
-
-        else {
-
-            $('#servicio').append("<h3>No se encontraron resultados</h3>");
-            // alert(i);
-        }
-    }
-}
-
-
-
-
 $(function () {
+
     $("#fecha_hora_srch").on("dp.change", function (e) {
+        $("#servicio").css({"left": "-10px"});
+        $("#servicio").css({"opacity": "0.2"});
 
-        //  alert(e.date);
+        $("#servicio").animate({"left": "10px", "opacity": "1"}, 1000);
 
-
-
-        //var total_fecha = $('#fecha_hora_srch').data("DateTimePicker").getDate();
         var total_fecha = e.date;
-        var ser_edu_fec= moment(total_fecha).format('YYYY-MM-DD');
+        var ser_edu_fec = moment(total_fecha).format('YYYY-MM-DD');
 
         var operation = 'QRY_SEARCH';
 
         var parametros = {
             operation: operation,
-            ser_edu_fec:ser_edu_fec
-            
+            ser_edu_fec: ser_edu_fec
+
         };
 
 
@@ -919,33 +854,32 @@ $(function () {
             url: '/SistemaT/ServicioServlet',
             type: 'post',
             beforeSend: function () {
-                var path = window.location.host;
-                //$("#servicio").html("Procesando, espere por favor...");
-                // $('#servicio').append('<div class="loading-img"></div>'); 
-                // $('#servicio').html('<img src="'+path+'/SistemaT/img/cargando.GIF"/>'); 
+                $("#servicio").html('<img  class="center-block" src="http://localhost:8084//SistemaT/img/load.GIF"/>');
             },
             success: function (response) {
                 console.log(response);
-           
+
                 var Datos = JSON.parse(response);
-                
-                if(Datos.length>0){
-                
+
+                if (Datos.length > 0) {
+                    $("#alerta").empty();
                     agregarServicios(Datos);
                 }
-                else{
-                        $("#servicio").html("No se encontraron resultados");
-                }
-                
+                else {
+                    var alerta = '<div class="callout callout-danger">' +
+                            '<h4>Busqueda</h4>' +
+                            '<p>No se encontraron resultados</p>' +
+                            '</div>';
+                    $('#servicio').empty();
+                    $("#alerta").html(alerta);
 
-           /*     if (moment(fecha, "YYYY-MM-DD").isValid()) {
-                    //console.log(response);
-                    buscarFecServicios(Datos, fecha);
-                }*/
-              
-                    //   console.log(response);
-                   
-                
+                    $("#alerta").css({"left": "-10px"});
+                    $("#alerta").css({"opacity": "0.2"});
+
+                    $("#alerta").animate({"left": "10px", "opacity": "1"}, 1000);
+                }
+
+
             },
             error: function (result, f) {
                 alert('ERROR ' + result.status + ' ' + result.statusText + ' ' + f);
@@ -956,4 +890,65 @@ $(function () {
     });
 
 });
-  
+
+
+function selectSedeSrch() {
+    $("#servicio").css({"left": "-10px"});
+    $("#servicio").css({"opacity": "0.2"});
+
+    $("#servicio").animate({"left": "10px", "opacity": "1"}, 1000);
+    var operation = 'QRY_SEARCH_SEDE';
+    var sed_id = $('#sede_srch').val();
+
+
+    var parametros = {
+        operation: operation,
+        sed_id: sed_id
+
+    };
+
+    if (sed_id > 0) {
+        $.ajax({
+            data: parametros,
+            url: '/SistemaT/ServicioServlet',
+            type: 'post',
+            beforeSend: function () {
+                var path = window.location.host;
+                $("#servicio").html('<img  class="center-block" src="http://localhost:8084//SistemaT/img/load.GIF"/>');
+            },
+            success: function (response) {
+                console.log(response);
+
+                var Datos = JSON.parse(response);
+                //console.log( Datos.error);
+                if (Datos.length > 0) {
+
+                    $("#alerta").empty();
+                    agregarServicios(Datos);
+                }
+
+                else {
+                    var alerta = '<div class="callout callout-danger">' +
+                            '<h4>Busqueda</h4>' +
+                            '<p>No se encontraron resultados</p>' +
+                            '</div>';
+                    $('#servicio').empty();
+                    $("#alerta").html(alerta);
+
+                    $("#alerta").css({"left": "-10px"});
+                    $("#alerta").css({"opacity": "0.2"});
+
+                    $("#alerta").animate({"left": "10px", "opacity": "1"}, 1000);
+                }
+
+
+
+            },
+            error: function (result, f) {
+                alert('ERROR ' + result.status + ' ' + result.statusText + ' ' + f);
+            }
+        });
+
+    }
+}
+
