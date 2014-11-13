@@ -168,6 +168,70 @@ public class DaoServicioImpl implements DaoServicio {
     }
 
     @Override
+    public List<Servicio> ServicioQryBySede(Integer esp_id, String sed_id) {
+        log4j.info("+init ServicioQryBySede");
+        List<Servicio> listServicio = null;
+        String sql = SistemTConstants.SERVICIO_SELECT_BY_SEDE;
+        Connection cn = db.getConnection();
+        if (cn != null) {
+            try {
+                PreparedStatement st = cn.prepareStatement(sql);
+                st.setInt(1, esp_id);
+                st.setString(2, sed_id);
+                ResultSet rs = st.executeQuery();
+                listServicio = new LinkedList<Servicio>();
+                DaoAmbiente daoAmbiente = new DaoAmbienteImpl();
+                DaoSede daoSede = new DaoSedeImpl();
+                DaoTipoServicio daoTipoServicio = new DaoTipoServicioImpl();
+                while (rs.next()) {
+                    Servicio servicio = new Servicio();
+                    servicio.setSer_edu_id(rs.getInt(1));
+                    servicio.setSer_edu_fec(rs.getDate(2));
+                    servicio.setSer_edu_hin(String.valueOf(rs.getTime(3)));
+
+                    String csql = SistemTConstants.CURSO_GET;
+                    st = cn.prepareStatement(csql);
+                    st.setInt(1, esp_id);
+                    st.setInt(2, rs.getInt(4));
+                    ResultSet r2 = st.executeQuery();
+                    servicio.setCur_id(getCurso(r2));
+
+                    servicio.setAmb_id(daoAmbiente.getAmbiente(rs.getInt(5)));
+                    servicio.setSed_id(daoSede.getSede(rs.getInt(6)));
+                    servicio.setTip_serv_id(daoTipoServicio.getTipoServicio(rs.getInt(7)));
+
+                    csql = SistemTConstants.USER_GET;
+                    st = cn.prepareStatement(csql);
+                    st.setInt(1, rs.getInt(8));
+                    r2 = st.executeQuery();
+                    servicio.setUsr_adm_id(getUser(r2));
+                    csql = SistemTConstants.USER_GET;
+                    st = cn.prepareStatement(csql);
+                    st.setInt(1, rs.getInt(9));
+                    r2 = st.executeQuery();
+                    servicio.setUsr_tut_id(getUser(r2));
+                    servicio.setSer_edu_asist(rs.getInt(10));
+                    servicio.setSer_edu_desc(rs.getString(11));
+
+                    servicio.setSer_edu_est(rs.getInt(12));
+                    listServicio.add(servicio);
+                }
+            } catch (SQLException e) {
+                log4j.error(e.getMessage());
+            } finally {
+                try {
+                    cn.close();
+                } catch (SQLException e) {
+                    log4j.error(e.getMessage());
+                }
+            }
+        }
+
+        log4j.info("-finish ServicioQryBySede");
+        return listServicio;
+    }
+    
+    @Override
     public String ServicioIns(Servicio servicio) {
         log4j.info("+init ServicioIns");
         String result = null;
