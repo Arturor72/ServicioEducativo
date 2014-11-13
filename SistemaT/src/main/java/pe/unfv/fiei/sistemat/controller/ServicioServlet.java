@@ -43,6 +43,7 @@ public class ServicioServlet extends HttpServlet {
     private final static String OPERATION_GET = "GET";
     private final static String OPERATION_UPD = "UPD";
     private final static String OPERATION_QRY_SEARCH = "QRY_SEARCH";
+    private final static String OPERATION_QRY_SEARCH_SEDE = "QRY_SEARCH_SEDE";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -357,7 +358,60 @@ public class ServicioServlet extends HttpServlet {
                     message = "Fecha nula";
                 }
 
-            } else {
+            } else if (operation.equalsIgnoreCase(OPERATION_QRY_SEARCH_SEDE)) {
+                String sed_id = request.getParameter("sed_id");
+                if (sed_id != null) {
+                    List<Servicio> list = daoServicio.ServicioQryBySede(u.getEsp_id(), sed_id);
+                    if (list == null) {
+                        objError.put("error", "Error Interno");
+                        message = objError.toJSONString();
+                    } else {
+                        request.setAttribute("listcursos", list);
+
+                        JSONObject obj = new JSONObject();
+
+                        for (Servicio servicio : list) {
+                            obj.put("ser_edu_id", servicio.getSer_edu_id());
+                            obj.put("ser_edu_fec", servicio.getSer_edu_fec().toString());
+                            obj.put("ser_edu_hin", servicio.getSer_edu_hin());
+                            obj.put("cur_id", servicio.getCur_id().getCur_id());
+                            obj.put("cur_nom", servicio.getCur_id().getCur_nom());
+                            obj.put("amb_id", servicio.getAmb_id().getAmd_id());
+                            obj.put("amb_den", servicio.getAmb_id().getAmb_den());
+                            obj.put("sed_id", servicio.getSed_id().getSed_id());
+                            obj.put("sed_desc", servicio.getSed_id().getSed_desc());
+                            obj.put("tip_serv_id", servicio.getTip_serv_id().getTip_ser_id());
+                            obj.put("tip_serv_den", servicio.getTip_serv_id().getTip_ser_den());
+
+                            obj.put("usr_adm_id", servicio.getUsr_adm_id().getUsr_id());
+                            obj.put("usr_adm_cod", servicio.getUsr_adm_id().getUsr_cod());
+                            obj.put("usr_adm_nom", servicio.getUsr_adm_id().getUsr_nom());
+                            obj.put("usr_adm_apat", servicio.getUsr_adm_id().getUsr_apat());
+                            obj.put("usr_adm_amat", servicio.getUsr_adm_id().getUsr_amat());
+                            obj.put("usr_adm_user", servicio.getUsr_adm_id().getUsr_user());
+
+                            obj.put("usr_tut_id", servicio.getUsr_tut_id().getUsr_id());
+                            obj.put("usr_tut_cod", servicio.getUsr_tut_id().getUsr_cod());
+                            obj.put("usr_tut_nom", servicio.getUsr_tut_id().getUsr_nom());
+                            obj.put("usr_tut_apat", servicio.getUsr_tut_id().getUsr_apat());
+                            obj.put("usr_tut_amat", servicio.getUsr_tut_id().getUsr_amat());
+                            obj.put("usr_tut_user", servicio.getUsr_tut_id().getUsr_user());
+
+                            obj.put("ser_edu_asist", servicio.getSer_edu_asist());
+                            obj.put("ser_edu_desc", servicio.getSer_edu_desc());
+                            obj.put("ser_edu_est", servicio.getSer_edu_est());
+                            if (msg.equals("")) {
+                                msg = msg + obj.toJSONString();
+                            } else {
+                                msg = msg + "," + obj.toJSONString();
+                            }
+                        }
+                    }
+                } else {
+                    message = "Sede nula";
+                }
+
+            }else {
                 objError.put("error", "operación no reconocida");
                 message = objError.toJSONString();
             }
@@ -377,6 +431,8 @@ public class ServicioServlet extends HttpServlet {
                 } else if (operation.equals(OPERATION_GET)) {
                     out.print("[" + msg + "]");
                 } else if (operation.equalsIgnoreCase(OPERATION_QRY_SEARCH)) {
+                    out.print("[" + msg + "]");
+                }else if (operation.equalsIgnoreCase(OPERATION_QRY_SEARCH_SEDE)) {
                     out.print("[" + msg + "]");
                 }
             }
