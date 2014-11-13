@@ -25,4 +25,6 @@ public interface DaoServicio {
     public String ServicioDel(List<Integer> ids);
     
     public List<Servicio> ServicioQryByDate(Integer esp_id, String ser_edu_fec);
+    
+    public List<Servicio> ServicioQryBySede(Integer esp_id, String sed_id);
 }
