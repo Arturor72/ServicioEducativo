@@ -45,6 +45,7 @@ public class ServicioServlet extends HttpServlet {
     private final static String OPERATION_QRY_SEARCH = "QRY_SEARCH";
     private final static String OPERATION_QRY_SEARCH_SEDE = "QRY_SEARCH_SEDE";
     private final static String OPERATION_QRY_BY_TUTOR = "QRY_BY_TUTOR";
+    private final static String OPERATION_INS_ASIST = "OPERATION_INS_ASIST";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -56,15 +57,14 @@ public class ServicioServlet extends HttpServlet {
         JSONObject objError = new JSONObject();
         DaoServicio daoServicio = new DaoServicioImpl();
         Usuario u = (Usuario) request.getSession().getAttribute("usuario");
-  
-        
+
         String msg = "";
         if (operation != null) {
             log4j.info("The operation is: " + operation);
 
             if (operation.equalsIgnoreCase(OPERATION_QRY)) {
                 List<Servicio> list = daoServicio.ServicioQry(u.getEsp_id());
-             
+
                 if (list == null) {
                     objError.put("error", "Error Interno");
                     message = objError.toJSONString();
@@ -183,34 +183,33 @@ public class ServicioServlet extends HttpServlet {
                 String serv_edu_id = request.getParameter("serv_edu_id");
                 String ser_edu_fec = request.getParameter("ser_edu_fec");
                 String ser_edu_hin = request.getParameter("ser_edu_hin");
-                
+
                 String curso_id = request.getParameter("curso_id");
                 String amb_id = request.getParameter("amb_id");
                 String sed_id = request.getParameter("sed_id");
-                
+
                 String tipo_serv_id = request.getParameter("tipo_serv_id");
                 String usr_tut_id = request.getParameter("usr_tut_id");
                 String ser_edu_desc = request.getParameter("ser_edu_desc");
                 Integer ser_edu_est = Integer.parseInt(SistemTConstants.STATE_ON);
-                
-                hm.put("Id de Servicio",serv_edu_id);
+
+                hm.put("Id de Servicio", serv_edu_id);
                 hm.put("Fecha", ser_edu_desc);
                 hm.put("Hora de inicio", ser_edu_desc);
-                
+
                 hm.put("Curso", curso_id);
                 hm.put("Ambiente", amb_id);
                 hm.put("Sede", sed_id);
-                
+
                 hm.put("Tipo servicio", tipo_serv_id);
                 hm.put("Tutor", usr_tut_id);
                 hm.put("Descripcion", ser_edu_desc);
-                
+
                 String sAnyNull = Util.getAnyNull(hm);
                 if (sAnyNull == null) {
                     Servicio servicio = new Servicio();
-                    
+
                     servicio.setSer_edu_id(Integer.parseInt(serv_edu_id));
-                    
 
                     servicio.setSer_edu_fec(Date.valueOf(ser_edu_fec));
                     servicio.setSer_edu_hin(ser_edu_hin);
@@ -415,10 +414,9 @@ public class ServicioServlet extends HttpServlet {
                     message = "Sede nula";
                 }
 
-            }else if (operation.equalsIgnoreCase(OPERATION_QRY_BY_TUTOR)) {
-                //String ser_tut_id = request.getParameter("ser_tut_id");
-                 int ser_tut_id = u.getUsr_id();
-                 
+            } else if (operation.equalsIgnoreCase(OPERATION_QRY_BY_TUTOR)) {
+                int ser_tut_id = u.getUsr_id();
+
                 if (ser_tut_id > 0) {
                     List<Servicio> list = daoServicio.ServicioQryByTutor(ser_tut_id);
                     if (list == null) {
@@ -468,7 +466,29 @@ public class ServicioServlet extends HttpServlet {
                     message = "Fecha nula";
                 }
 
-            }else {
+            } else if (operation.equalsIgnoreCase(OPERATION_INS_ASIST)) {
+                String ser_edu_id = request.getParameter("ser_edu_id");
+
+                if (ser_edu_id != null) {
+                    try {
+                        String result = daoServicio.ServicioInsAsist(Integer.parseInt(ser_edu_id));
+
+                        if (result != null) {
+                            objError.put("error", "Error Interno");
+                            message = objError.toJSONString();
+                        } else {
+                            JSONObject obj = new JSONObject();
+                            obj.put("respuesta", 1);
+                            msg = obj.toString();
+                        }
+                    } catch (NumberFormatException e) {
+                        message = "No es un numero ID";
+                    }
+                } else {
+                    message = "Servicio ID nulo";
+                }
+
+            } else {
                 objError.put("error", "operación no reconocida");
                 message = objError.toJSONString();
             }
@@ -489,9 +509,11 @@ public class ServicioServlet extends HttpServlet {
                     out.print("[" + msg + "]");
                 } else if (operation.equalsIgnoreCase(OPERATION_QRY_SEARCH)) {
                     out.print("[" + msg + "]");
-                }else if (operation.equalsIgnoreCase(OPERATION_QRY_SEARCH_SEDE)) {
+                } else if (operation.equalsIgnoreCase(OPERATION_QRY_SEARCH_SEDE)) {
                     out.print("[" + msg + "]");
-                }else if (operation.equalsIgnoreCase(OPERATION_QRY_BY_TUTOR)) {
+                } else if (operation.equalsIgnoreCase(OPERATION_QRY_BY_TUTOR)) {
+                    out.print("[" + msg + "]");
+                }else if (operation.equalsIgnoreCase(OPERATION_INS_ASIST)) {
                     out.print("[" + msg + "]");
                 }
             }
