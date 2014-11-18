@@ -56,12 +56,15 @@ public class ServicioServlet extends HttpServlet {
         JSONObject objError = new JSONObject();
         DaoServicio daoServicio = new DaoServicioImpl();
         Usuario u = (Usuario) request.getSession().getAttribute("usuario");
+  
+        
         String msg = "";
         if (operation != null) {
             log4j.info("The operation is: " + operation);
 
             if (operation.equalsIgnoreCase(OPERATION_QRY)) {
                 List<Servicio> list = daoServicio.ServicioQry(u.getEsp_id());
+             
                 if (list == null) {
                     objError.put("error", "Error Interno");
                     message = objError.toJSONString();
@@ -413,9 +416,11 @@ public class ServicioServlet extends HttpServlet {
                 }
 
             }else if (operation.equalsIgnoreCase(OPERATION_QRY_BY_TUTOR)) {
-                String ser_tut_id = request.getParameter("ser_tut_id");
-                if (ser_tut_id != null) {
-                    List<Servicio> list = daoServicio.ServicioQryByTutor(Integer.parseInt(ser_tut_id));
+                //String ser_tut_id = request.getParameter("ser_tut_id");
+                 int ser_tut_id = u.getUsr_id();
+                 
+                if (ser_tut_id > 0) {
+                    List<Servicio> list = daoServicio.ServicioQryByTutor(ser_tut_id);
                     if (list == null) {
                         objError.put("error", "Error Interno");
                         message = objError.toJSONString();
