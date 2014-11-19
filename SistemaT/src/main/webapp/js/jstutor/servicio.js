@@ -26,8 +26,8 @@ $(function () {
             $("#servicio").html('<img  class="center-block" src="http://localhost:8084//SistemaT/img/load.GIF"/>');
         },
         success: function (response) {
-            alert(response);
-           console.log(response);
+           // alert(response);
+          // console.log(response);
 
             var Datos = JSON.parse(response);
 
