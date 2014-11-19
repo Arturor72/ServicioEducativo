@@ -25,7 +25,7 @@ $(function () {
             $("#servicio").html('<img  class="center-block" src="http://localhost:8084//SistemaT/img/load.GIF"/>');
         },
         success: function (response) {
-            //console.log(response);
+            console.log(response);
 
             var Datos = JSON.parse(response);
 
@@ -127,7 +127,34 @@ function agregarServicios(Datos) {
 
     $('#servicio').empty();
     for (i in Datos) {
-        var servicio_head = '<li class="time-label"><span class="bg-red">' + moment(Datos[i].ser_edu_fec).lang("es").format('ll') + '</span></li>';
+        var fecha=moment(Datos[i].ser_edu_fec).lang("es").format('ll');
+        var servicio_head = '';
+        var estado=Datos[i].ser_edu_est;
+        if(estado===1){
+          servicio_head = '<li class="time-label"><span class="bg-purple">' + fecha + '</span></li>';  
+            
+        }
+        if(estado===2){
+          servicio_head = '<li class="time-label"><span class="bg-yellow">' + fecha + '</span></li>';  
+            
+        }
+        
+        if(estado===3){
+          servicio_head = '<li class="time-label"><span class="bg-green">' + fecha + '</span></li>';  
+            
+        }
+        
+        if(estado===4){
+          servicio_head = '<li class="time-label"><span class="bg-red">' + fecha + '</span></li>';  
+            
+        }
+        
+         if(estado===5){
+          servicio_head = '<li class="time-label"><span class="bg-red">' + fecha + '</span></li>';  
+            
+        }
+        
+        
         var duracion = '';
         if (Datos[i].tip_serv_id === 1) {
             duracion = '<span class="time"><i class="fa fa-clock-o"></i>' + moment(Datos[i].ser_edu_fec + ' ' + Datos[i].ser_edu_hin).format('HH:mm') + ' a ' + moment(Datos[i].ser_edu_fec + ' ' + Datos[i].ser_edu_hin).add(2, 'hours').format('HH:mm') + '</span>';
