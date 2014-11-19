@@ -16,6 +16,16 @@ public class SistemTConstants {
     /*State for active and inactive registers */
     public static final String STATE_ON = "1";
     public static final String STATE_OFF = "0";
+    
+    /*State for active and inactive registers */
+    
+    public static final String STATE_SERVICE_OFF = "0"; //This state is when the service is delete
+    public static final String STATE_SERVICE_CREATE = "1"; //This state is when the service is create
+    public static final String STATE_SERVICE_TUTOR = "2"; //This state is when the tutor attended to service 
+   public static final String STATE_SERVICE_STUDENT = "3"; //This state is when the tutor check the alumno's attended to service  
+   public static final String STATE_SERVICE_PAST = "4"; //This state is when the service was store and tutor a
+   public static final String STATE_SERVICE_PAST_AND_DSTUDENT = "5"; //This state is when the service was store 
+    
 
     /*Errors for unique field*/
     public static final String ERROR_UNIQUE_FIELD = "1062";
@@ -65,14 +75,18 @@ public class SistemTConstants {
     public static final String TIPO_SERVICIO_GET = "SELECT tip_serv_id, tip_serv_den, tip_serv_durac FROM tbl_tipo_servicio WHERE tip_serv_id = ?";
 
     /* SERVICIO Constants */
-    public static final String SERVICIO_SELECT = "SELECT ser_edu_id, ser_edu_fec, ser_edu_hin, cur_id, amb_id, sed_id, tip_serv_id, usr_adm_id, usr_tut_id, ser_edu_asist, ser_edu_desc, ser_edu_est FROM dbservicio.tbl_servicio_educativo se, dbservicio.tbl_usuario u WHERE se.usr_adm_id=u.usr_id AND u.esp_id=? AND  se.ser_edu_est= 1 ORDER BY (ser_edu_fec) DESC";
-    public static final String SERVICIO_SELECT_BY_DATE = "SELECT ser_edu_id, ser_edu_fec, ser_edu_hin, cur_id, amb_id, sed_id, tip_serv_id, usr_adm_id, usr_tut_id, ser_edu_asist, ser_edu_desc, ser_edu_est FROM dbservicio.tbl_servicio_educativo se, dbservicio.tbl_usuario u WHERE se.usr_adm_id=u.usr_id AND u.esp_id=? AND  se.ser_edu_fec= ? AND se.ser_edu_est= 1 ORDER BY (ser_edu_fec) DESC";
-    public static final String SERVICIO_SELECT_BY_SEDE = "SELECT ser_edu_id, ser_edu_fec, ser_edu_hin, cur_id, amb_id, sed_id, tip_serv_id, usr_adm_id, usr_tut_id, ser_edu_asist, ser_edu_desc, ser_edu_est FROM dbservicio.tbl_servicio_educativo se, dbservicio.tbl_usuario u WHERE se.usr_adm_id=u.usr_id AND u.esp_id=? AND  se.sed_id= ? AND se.ser_edu_est= 1 ORDER BY (ser_edu_fec) DESC";
-    public static final String SERVICIO_SELECT_BY_TUTOR = "SELECT ser_edu_id, ser_edu_fec, ser_edu_hin, cur_id, amb_id, sed_id, tip_serv_id, usr_adm_id, usr_tut_id, ser_edu_asist, ser_edu_desc, ser_edu_est FROM dbservicio.tbl_servicio_educativo se, dbservicio.tbl_usuario u WHERE se.usr_tut_id= ? AND se.usr_tut_id=u.usr_id AND se.ser_edu_est= 1 ORDER BY (ser_edu_fec) DESC";
+    public static final String SERVICIO_SELECT = "SELECT ser_edu_id, ser_edu_fec, ser_edu_hin, cur_id, amb_id, sed_id, tip_serv_id, usr_adm_id, usr_tut_id, ser_edu_asist, ser_edu_desc, ser_edu_est FROM dbservicio.tbl_servicio_educativo se, dbservicio.tbl_usuario u WHERE se.usr_adm_id=u.usr_id AND u.esp_id=? AND  se.ser_edu_est <> 0 ORDER BY (ser_edu_fec) DESC";
+    public static final String SERVICIO_SELECT_BY_DATE = "SELECT ser_edu_id, ser_edu_fec, ser_edu_hin, cur_id, amb_id, sed_id, tip_serv_id, usr_adm_id, usr_tut_id, ser_edu_asist, ser_edu_desc, ser_edu_est FROM dbservicio.tbl_servicio_educativo se, dbservicio.tbl_usuario u WHERE se.usr_adm_id=u.usr_id AND u.esp_id=? AND  se.ser_edu_fec= ? AND se.ser_edu_est <> 0 ORDER BY (ser_edu_fec) DESC";
+    public static final String SERVICIO_SELECT_BY_SEDE = "SELECT ser_edu_id, ser_edu_fec, ser_edu_hin, cur_id, amb_id, sed_id, tip_serv_id, usr_adm_id, usr_tut_id, ser_edu_asist, ser_edu_desc, ser_edu_est FROM dbservicio.tbl_servicio_educativo se, dbservicio.tbl_usuario u WHERE se.usr_adm_id=u.usr_id AND u.esp_id=? AND  se.sed_id= ? AND se.ser_edu_est <> 0 ORDER BY (ser_edu_fec) DESC";
+    public static final String SERVICIO_SELECT_BY_TUTOR = "SELECT ser_edu_id, ser_edu_fec, ser_edu_hin, cur_id, amb_id, sed_id, tip_serv_id, usr_adm_id, usr_tut_id, ser_edu_asist, ser_edu_desc, ser_edu_est FROM dbservicio.tbl_servicio_educativo se, dbservicio.tbl_usuario u WHERE se.usr_tut_id= ? AND se.usr_tut_id=u.usr_id AND se.ser_edu_est <> 0 ORDER BY (ser_edu_fec) DESC";
     public static final String SERVICIO_INSERT = "INSERT INTO dbservicio.tbl_servicio_educativo (ser_edu_id, ser_edu_fec, ser_edu_hin, cur_id, amb_id, sed_id, tip_serv_id, usr_adm_id, usr_tut_id, ser_edu_asist, ser_edu_desc, ser_edu_est) VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    public static final String SERVICIO_DELETE = "UDPATE dbservicio.tbl_servicio_educativo SET ser_edu_est = 0 WHERE ser_edu_id = ?";
-    public static final String SERVICIO_GET = "SELECT ser_edu_id, ser_edu_fec, ser_edu_hin, cur_id, amb_id, sed_id, tip_serv_id, usr_adm_id, usr_tut_id, ser_edu_asist, ser_edu_desc, ser_edu_est FROM dbservicio.tbl_servicio_educativo WHERE ser_edu_id=?  AND ser_edu_est= 1";
+    public static final String SERVICIO_CHANGE_STATE = "UDPATE dbservicio.tbl_servicio_educativo SET ser_edu_est = ? WHERE ser_edu_id = ?";
+    public static final String SERVICIO_GET = "SELECT ser_edu_id, ser_edu_fec, ser_edu_hin, cur_id, amb_id, sed_id, tip_serv_id, usr_adm_id, usr_tut_id, ser_edu_asist, ser_edu_desc, ser_edu_est FROM dbservicio.tbl_servicio_educativo WHERE ser_edu_id=?  AND ser_edu_est <> 0";
     public static final String SERVICIO_UPDATE = "UPDATE dbservicio.tbl_servicio_educativo SET ser_edu_fec=?, ser_edu_hin=?, cur_id=?, amb_id=?, sed_id=?, tip_serv_id=?, usr_adm_id=?, usr_tut_id=?, ser_edu_asist=?, ser_edu_desc=?, ser_edu_est=?  WHERE ser_edu_id = ?";
     public static final String SERVICIO_UPDATE_ASIST = "UPDATE dbservicio.tbl_servicio_educativo SET ser_edu_asist=1  WHERE ser_edu_id = ?";
+    public static final String SERVICIO_GET_PAST = "SELECT ser_edu_id, ser_edu_fec, ser_edu_hin, cur_id, amb_id, sed_id, tip_serv_id, usr_adm_id, usr_tut_id, ser_edu_asist, ser_edu_desc, ser_edu_est FROM tbl_servicio_educativo sa WHERE TIMESTAMP(CONCAT(CAST(sa.ser_edu_fec as CHAR ), ' ',CAST(sa.ser_edu_hin as CHAR))) < now() AND (sa_ser_edu_asist=0)";
     
+    
+
+
 }
