@@ -73,4 +73,6 @@ public class SistemTConstants {
     public static final String SERVICIO_DELETE = "UDPATE dbservicio.tbl_servicio_educativo SET ser_edu_est = 0 WHERE ser_edu_id = ?";
     public static final String SERVICIO_GET = "SELECT ser_edu_id, ser_edu_fec, ser_edu_hin, cur_id, amb_id, sed_id, tip_serv_id, usr_adm_id, usr_tut_id, ser_edu_asist, ser_edu_desc, ser_edu_est FROM dbservicio.tbl_servicio_educativo WHERE ser_edu_id=?  AND ser_edu_est= 1";
     public static final String SERVICIO_UPDATE = "UPDATE dbservicio.tbl_servicio_educativo SET ser_edu_fec=?, ser_edu_hin=?, cur_id=?, amb_id=?, sed_id=?, tip_serv_id=?, usr_adm_id=?, usr_tut_id=?, ser_edu_asist=?, ser_edu_desc=?, ser_edu_est=?  WHERE ser_edu_id = ?";
+    public static final String SERVICIO_UPDATE_ASIST = "UPDATE dbservicio.tbl_servicio_educativo SET ser_edu_asist=1  WHERE ser_edu_id = ?";
+    
 }

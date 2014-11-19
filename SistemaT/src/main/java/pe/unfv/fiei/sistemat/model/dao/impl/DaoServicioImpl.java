@@ -102,7 +102,7 @@ public class DaoServicioImpl implements DaoServicio {
         log4j.info("-finish ServicioQry");
         return listServicio;
     }
-    
+
     @Override
     public List<Servicio> ServicioQryByDate(Integer esp_id, String ser_edu_fec) {
         log4j.info("+init ServicioQryByDate");
@@ -230,7 +230,8 @@ public class DaoServicioImpl implements DaoServicio {
         log4j.info("-finish ServicioQryBySede");
         return listServicio;
     }
-        @Override
+
+    @Override
     public List<Servicio> ServicioQryByTutor(Integer tut_id) {
         log4j.info("+init ServicioQryByTutor");
         List<Servicio> listServicio = null;
@@ -291,6 +292,7 @@ public class DaoServicioImpl implements DaoServicio {
         log4j.info("-finish ServicioQryByTutor");
         return listServicio;
     }
+
     @Override
     public String ServicioIns(Servicio servicio) {
         log4j.info("+init ServicioIns");
@@ -468,6 +470,38 @@ public class DaoServicioImpl implements DaoServicio {
             }
         }
         log4j.info("-finish ServicioDel");
+        return result;
+    }
+
+    @Override
+    public String ServicioInsAsist(Integer serv_edu_id) {
+        log4j.info("+init ServicioInsAsist");
+
+        String result = null;
+        String sql = SistemTConstants.SERVICIO_UPDATE_ASIST;
+        Connection cn = db.getConnection();
+        if (cn != null) {
+            try {
+                PreparedStatement psmt = cn.prepareStatement(sql);
+                psmt.setInt(1, serv_edu_id);
+                int c = psmt.executeUpdate();
+                if (c <= 0) {
+                    result = "No se actualizó la asistencia";
+                    log4j.error(result);
+                }
+            } catch (SQLException e) {
+                result = "Error al cerrar la conexión" + e.getMessage();
+                log4j.error(result);
+            } finally {
+                try {
+                    cn.close();
+                } catch (SQLException e) {
+                    result = "Error al cerrar la conexión" + e.getMessage();
+                    log4j.error(result);
+                }
+            }
+        }
+        log4j.info("+init ServicioInsAsist");
         return result;
     }
 

@@ -29,4 +29,6 @@ public interface DaoServicio {
     public List<Servicio> ServicioQryBySede(Integer esp_id, String sed_id);
     
     public List<Servicio> ServicioQryByTutor(Integer tut_id);
+    
+    public String ServicioInsAsist(Integer serv_edu_id);
 }
