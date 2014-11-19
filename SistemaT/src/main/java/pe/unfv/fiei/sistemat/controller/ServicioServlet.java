@@ -120,7 +120,7 @@ public class ServicioServlet extends HttpServlet {
                 String tipo_serv_id = request.getParameter("tipo_serv_id");
                 String usr_tut_id = request.getParameter("usr_tut_id");
                 String ser_edu_desc = request.getParameter("ser_edu_desc");
-                Integer ser_edu_est = Integer.parseInt(SistemTConstants.STATE_ON);
+                Integer ser_edu_est = Integer.parseInt(SistemTConstants.STATE_SERVICE_CREATE);
                 hm.put("Fecha", ser_edu_desc);
                 hm.put("Hora de inicio", ser_edu_desc);
                 hm.put("Curso", curso_id);
@@ -191,7 +191,7 @@ public class ServicioServlet extends HttpServlet {
                 String tipo_serv_id = request.getParameter("tipo_serv_id");
                 String usr_tut_id = request.getParameter("usr_tut_id");
                 String ser_edu_desc = request.getParameter("ser_edu_desc");
-                Integer ser_edu_est = Integer.parseInt(SistemTConstants.STATE_ON);
+                Integer ser_edu_est = Integer.parseInt(SistemTConstants.STATE_SERVICE_CREATE);
 
                 hm.put("Id de Servicio", serv_edu_id);
                 hm.put("Fecha", ser_edu_desc);
