@@ -441,14 +441,15 @@ public class DaoServicioImpl implements DaoServicio {
     @Override
     public String ServicioDel(List<Integer> lst) {
         log4j.info("+init ServicioDel");
-        String sql = SistemTConstants.SERVICIO_DELETE;
+        String sql = SistemTConstants.SERVICIO_CHANGE_STATE;
         Connection cn = db.getConnection();
         String result = null;
         if (cn != null) {
             try {
                 PreparedStatement psmt = cn.prepareStatement(sql);
                 for (Integer x : lst) {
-                    psmt.setInt(1, x);
+                    psmt.setInt(1, 0);
+                    psmt.setInt(2, x);
                     int r = psmt.executeUpdate();
                     if (r == 0) {
                         result = "No se elimino" + x;
@@ -462,6 +463,7 @@ public class DaoServicioImpl implements DaoServicio {
             } finally {
                 try {
                     cn.close();
+
                 } catch (SQLException e) {
                     log4j.error(e.getMessage());
                     result = "Error: " + e.getMessage();
@@ -489,6 +491,13 @@ public class DaoServicioImpl implements DaoServicio {
                     result = "No se actualizó la asistencia";
                     log4j.error(result);
                 }
+                {
+                    String mresult = changeServicioState(serv_edu_id, Integer.parseInt(SistemTConstants.STATE_SERVICE_TUTOR));
+                    if (mresult != null) {
+                        result = mresult;
+                        log4j.error(result);
+                    }
+                }
             } catch (SQLException e) {
                 result = "Error al cerrar la conexión" + e.getMessage();
                 log4j.error(result);
@@ -502,6 +511,75 @@ public class DaoServicioImpl implements DaoServicio {
             }
         }
         log4j.info("+init ServicioInsAsist");
+        return result;
+    }
+
+    @Override
+    public String changeServicioState(Integer serv_edu_id, Integer state) {
+        log4j.info("+init changeServicioState");
+        String result = null;
+        Connection cn = db.getConnection();
+        String sql = SistemTConstants.SERVICIO_CHANGE_STATE;
+        if (cn != null) {
+            try {
+                PreparedStatement psmt = cn.prepareStatement(sql);
+                psmt.setInt(1, state);
+                psmt.setInt(2, serv_edu_id);
+                int c = psmt.executeUpdate();
+                if (c <= 0) {
+                    result = "Error al actualziar estado";
+                    log4j.error(result);
+                }
+                try {
+                    psmt.close();
+                } catch (SQLException e) {
+                    log4j.error(e.getMessage());
+                    result = "Error: " + e.getMessage();
+                }
+            } catch (SQLException e) {
+                log4j.error(e.getMessage());
+            } finally {
+                try {
+                    cn.close();
+                } catch (SQLException e) {
+                    log4j.error(e.getMessage());
+                }
+            }
+        }
+        log4j.info("-finish changeServicioState");
+        return result;
+    }
+
+    @Override
+    public String UpdateStateService() {
+        String result = null;
+        log4j.info("+init UpdateStateService");
+        String sql = SistemTConstants.SERVICIO_GET_PAST;
+        Connection cn = db.getConnection();
+        if (cn != null) {
+            try {
+                PreparedStatement pstm = cn.prepareStatement(sql);
+                ResultSet rs = pstm.executeQuery();
+                while (rs.next()) {
+                    String mresult = changeServicioState(rs.getInt(0), Integer.parseInt(SistemTConstants.STATE_SERVICE_PAST));
+                    if (mresult != null) {
+                        result = "No cambio el estado en" + rs.getInt(0);
+                    }
+                }
+            } catch (SQLException e) {
+                result = "Error SQL";
+                log4j.error(result + " " + e.getMessage());
+            } finally {
+                try {
+                    cn.close();
+                } catch (SQLException e) {
+                    result = "Error al cerrar la conexion";
+                    log4j.error(result + " " + e.getMessage());
+                }
+            }
+
+        }
+        log4j.info("-finish UpdateStateService");
         return result;
     }
 
