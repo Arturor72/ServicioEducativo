@@ -4,6 +4,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
         <%@include file="../WEB-INF/jspf/title.jspf" %>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <%@include file="../WEB-INF/jspf/links.jspf" %>
@@ -21,8 +22,10 @@
 
                 </section>
 
+
                 <section class="content">
                     <div class="row">
+                        <!--<span id="clock"></span>-->
                         <div class="col-md-4">
                             <!-- select fecha y hora-->
                             <div class="form-group">
@@ -50,7 +53,7 @@
                                 <button class="btn btn-primary btn btn-block" onclick="buscarServicio()">Todos</button>
                             </div>
                         </div>
-                       
+
                     </div>
                     <div class="row">
                         <div class="col-md-12">
@@ -66,7 +69,7 @@
                                         <div id="alerta" class="col-md-12">
 
                                         </div>
-                                    
+
 
                                     </div>
                                 </div>
@@ -83,6 +86,12 @@
 
             </aside>
         </div>
+
+
+
+
+
+
         <%@include file="../WEB-INF/jspf/linksfooter.jspf" %>
         <!-- page script -->
         <script type="text/javascript">
@@ -100,5 +109,47 @@
         </script>
         <%@include file="../WEB-INF/jspf/footerLoginTutor.jspf" %>
         <script src="<%= request.getContextPath()%>/js/jstutor/servicio.js"></script>
+
+
+
     </body>
 </html>
+
+
+
+
+<!--    mi modal upd-->
+<div class="modal fade" id="myModalIns" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h3 class="modal-title" id="myModalLabel">Registrar alumnos</h3>
+            </div>
+
+
+
+            <form role="form" data-toggle="validator">
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label>Alumno</label>
+                        <input />
+                    </div>
+
+
+
+
+                    <div class="form-group">
+                        <div id="mensaje_ins"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary"  onclick="guardarLista()" >Guardar</button>
+                </div>
+            </form> <!-- /.form -->
+        </div><!-- /.modal content -->
+    </div><!-- /.modal dialog -->
+</div><!-- /.modal -->
