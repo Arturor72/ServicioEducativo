@@ -17,8 +17,8 @@ import pe.unfv.fiei.sistemat.model.connection.StConnection;
  *
  * @author JULIO
  */
-public class DaoAsistenciaImpl implements DaoAsistencia{
-    
+public class DaoAsistenciaImpl implements DaoAsistencia {
+
     static Logger log4j = Logger.getLogger(DaoUsuarioImpl.class);
     StConnection db = null;
 
@@ -46,6 +46,11 @@ public class DaoAsistenciaImpl implements DaoAsistencia{
                         log4j.error(message);
                     }
                 }
+                DaoServicioImpl daoServicioImpl = new DaoServicioImpl();
+                String mresult = daoServicioImpl.changeServicioState(serEduId, Integer.parseInt(SistemTConstants.STATE_SERVICE_STUDENT));
+                if (mresult != null) {
+                    message = "No actualizó estado";
+                }
             } catch (SQLException e) {
                 log4j.error(e.getMessage());
                 message = "[ERROR] " + e.getMessage();
@@ -61,5 +66,5 @@ public class DaoAsistenciaImpl implements DaoAsistencia{
         log4j.info("- init asistencia alumnos INSERT");
         return message;
     }
-    
+
 }
