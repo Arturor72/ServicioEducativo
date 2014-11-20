@@ -84,7 +84,8 @@ public class SistemTConstants {
     public static final String SERVICIO_GET = "SELECT ser_edu_id, ser_edu_fec, ser_edu_hin, cur_id, amb_id, sed_id, tip_serv_id, usr_adm_id, usr_tut_id, ser_edu_asist, ser_edu_desc, ser_edu_est FROM dbservicio.tbl_servicio_educativo WHERE ser_edu_id=?  AND ser_edu_est <> 0";
     public static final String SERVICIO_UPDATE = "UPDATE dbservicio.tbl_servicio_educativo SET ser_edu_fec=?, ser_edu_hin=?, cur_id=?, amb_id=?, sed_id=?, tip_serv_id=?, usr_adm_id=?, usr_tut_id=?, ser_edu_asist=?, ser_edu_desc=?, ser_edu_est=?  WHERE ser_edu_id = ?";
     public static final String SERVICIO_UPDATE_ASIST = "UPDATE dbservicio.tbl_servicio_educativo SET ser_edu_asist=1  WHERE ser_edu_id = ? ";
-    public static final String SERVICIO_GET_PAST = "SELECT ser_edu_id, ser_edu_fec, ser_edu_hin, cur_id, amb_id, sed_id, tip_serv_id, usr_adm_id, usr_tut_id, ser_edu_asist, ser_edu_desc, ser_edu_est FROM tbl_servicio_educativo sa WHERE TIMESTAMP(CONCAT(CAST(sa.ser_edu_fec as CHAR ), ' ',CAST(sa.ser_edu_hin as CHAR))) < now() AND (sa_ser_edu_asist=0)";
+    public static final String SERVICIO_GET_PAST = "SELECT ser_edu_id, ser_edu_fec, ser_edu_hin, cur_id, amb_id, sed_id, tip_serv_id, usr_adm_id, usr_tut_id, ser_edu_asist, ser_edu_desc, ser_edu_est FROM tbl_servicio_educativo sa WHERE TIMESTAMP(CONCAT(CAST(sa.ser_edu_fec as CHAR ), ' ',CAST(sa.ser_edu_hin as CHAR))) < now() AND (sa.ser_edu_asist=0) AND  sa.ser_edu_id=?";
+    public static final String SERVICIO_GET_PAST_ASIST = "SELECT  sa.* FROM tbl_servicio_educativo sa INNER JOIN tbl_asistencia asi ON sa.ser_edu_id=asi.ser_edu_id where TIMESTAMP(CONCAT(CAST(sa.ser_edu_fec as CHAR ), ' ',CAST(sa.ser_edu_hin as CHAR))) < now() AND  sa.ser_edu_id=?";
     
     
 
