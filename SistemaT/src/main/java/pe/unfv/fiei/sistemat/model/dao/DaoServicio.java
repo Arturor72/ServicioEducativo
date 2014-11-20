@@ -23,16 +23,18 @@ public interface DaoServicio {
     public String ServicioUpd(Servicio servicio);
 
     public String ServicioDel(List<Integer> ids);
-    
+
     public List<Servicio> ServicioQryByDate(Integer esp_id, String ser_edu_fec);
-    
+
     public List<Servicio> ServicioQryBySede(Integer esp_id, String sed_id);
-    
+
     public List<Servicio> ServicioQryByTutor(Integer tut_id);
-    
+
     public String ServicioInsAsist(Integer serv_edu_id);
-    
+
     public String changeServicioState(Integer serv_edu_id, Integer state);
-    
-    public String UpdateStateService();
+
+    public String UpdateStateServicePast(Integer serv_edu_id);
+
+    public String UpdateStateServicePastAsist(Integer serv_edu_id);
 }
