@@ -395,6 +395,16 @@ public class DaoServicioImpl implements DaoServicio {
     }
 
     @Override
+    public String UpdateStateServicePast(Integer serv_edu_id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String UpdateStateServicePastAsist(Integer serv_edu_id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
     public String ServicioUpd(Servicio servicio) {
         log4j.info("+init ServicioUpd");
         String result = null;
@@ -550,7 +560,7 @@ public class DaoServicioImpl implements DaoServicio {
         return result;
     }
 
-    @Override
+   
     public String UpdateStateService() {
         String result = null;
         log4j.info("+init UpdateStateService");
