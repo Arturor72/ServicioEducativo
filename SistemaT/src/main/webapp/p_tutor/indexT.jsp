@@ -130,26 +130,38 @@
 
 
 
-            <form role="form" data-toggle="validator">
-                <div class="modal-body">
 
-                    <div class="form-group">
-                        <label>Alumno</label>
-                        <input />
-                    </div>
+            <div class="modal-body table-responsive">
+
+                <table id="tblAlumno" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Apellidos</th>
+                            <th class="mrc">Asistió</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+
+                </table>
 
 
 
 
-                    <div class="form-group">
-                        <div id="mensaje_ins"></div>
-                    </div>
+
+
+
+                <div class="form-group">
+                    <div id="mensaje_ins"></div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary"  onclick="guardarLista()" >Guardar</button>
-                </div>
-            </form> <!-- /.form -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary"  onclick="guardarLista()" >Guardar</button>
+            </div>
+
         </div><!-- /.modal content -->
     </div><!-- /.modal dialog -->
 </div><!-- /.modal -->
