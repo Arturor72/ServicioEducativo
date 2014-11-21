@@ -47,6 +47,8 @@ public class SistemTConstants {
 
     /* ASISTENCIA Constants */
     public static final String ASISTENCIA_INSERT = "INSERT INTO tbl_asistencia (ser_edu_id, al_id, ast_asist) VALUES (?, ?, ?)";
+    public static final String ALUMNO_SELECT = "SELECT al_id, al_cod, al_nom, al_apat, al_amat, al_cel, al_mail, al_susp FROM dbservicio.tbl_alumno";
+
     
     /* CURSO Constants */
     public static final String CURSO_SELECT = "SELECT cur_id, cur_cod, cur_nom, esp_id, cur_est FROM tbl_curso WHERE esp_id = ? AND cur_est=TRUE ";
