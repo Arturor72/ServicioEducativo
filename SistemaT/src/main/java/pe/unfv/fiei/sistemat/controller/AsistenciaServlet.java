@@ -31,8 +31,9 @@ public class AsistenciaServlet extends HttpServlet {
 
         String operation = request.getParameter("operation");
         String message = null;
+        String msg = "";
         DaoAsistencia daoAsistencia = new DaoAsistenciaImpl();
-        String target = "";
+
 
         if (operation != null) {
             log4j.info("The operation is: " + operation);
@@ -43,7 +44,7 @@ public class AsistenciaServlet extends HttpServlet {
                 if (list != null) {
                     message = daoAsistencia.registrarAsistenciaAlumnos(Integer.valueOf(serEduId), list, 1);
                     if (message == null) {
-                        target = "";
+                       msg="Los alumno(s) han sido registrados exitosamente";
                     } else {
                         message = "No se ingreso correctamente";
                     }
@@ -58,8 +59,9 @@ public class AsistenciaServlet extends HttpServlet {
                 out.print("error#" + message);
                 out.close();
             } else {
-                RequestDispatcher dispatcher = request.getRequestDispatcher(target);
-                dispatcher.forward(request, response);
+                if (operation.equals(OPERATION_INS)) {
+                    out.print(msg);
+                }
             }
         }
 
