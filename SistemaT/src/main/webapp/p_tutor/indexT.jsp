@@ -25,7 +25,9 @@
 
                 <section class="content">
                     <div class="row">
-                        <!--<span id="clock"></span>-->
+                        <span id="clock1" class="timer"></span>
+                         <span id="clock2" class="timer"></span>
+ 
                         <div class="col-md-4">
                             <!-- select fecha y hora-->
                             <div class="form-group">
@@ -60,7 +62,7 @@
 
                             <div class="panel-group" id="accordion">
                                 <div class="panel panel-default">
-
+                                <input type="hidden" id="response"  />
                                     <ul class="timeline" id="servicio">
 
                                         <!--Contenido de los servicios-->
@@ -108,9 +110,9 @@
             });
         </script>
         <%@include file="../WEB-INF/jspf/footerLoginTutor.jspf" %>
+        
         <script src="<%= request.getContextPath()%>/js/jstutor/servicio.js"></script>
-
-
+       
 
     </body>
 </html>
@@ -128,7 +130,7 @@
                 <h3 class="modal-title" id="myModalLabel">Registrar alumnos</h3>
             </div>
 
-
+            <input type="hidden" id="ser-id"  />
 
 
             <div class="modal-body table-responsive">
