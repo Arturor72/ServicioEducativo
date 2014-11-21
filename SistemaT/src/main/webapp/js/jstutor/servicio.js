@@ -6,17 +6,62 @@
 
 
 $(function () {
+
     cargarServicios();
-    //  var response=$('#response').get().innerHTML;
+      timer(1,11);
+            timer(2,2);
 
+   /* $("#clock")
+   .countdown("2015/01/01", function(event) {
+      $(this).text(
+     event.strftime('%D days %H:%M:%S')
+    );
+  });
+  */
+ 
+    // alert("sadasd");
+    //alert(moment());
+    /*  var then = "21/11/2014 11:00:00";
+     var now=moment();
+     //var time =moment(moment(),"DD/MM/YYYY HH:mm:ss").diff(moment(then,"DD/MM/YYYY HH:mm:ss")).format("HH:mm:ss");
+     
+     var t1 =now.diff(then);
+     alert(t1);
+     var time =then.diff(now);
+     
+     alert(time);
+     */
+/*
+//var now  = "04/09/2013 15:00:00";
+    var now = moment();
+    var then = "21/11/2014 11:15:00";
 
-    //  alert($('#response'));
-    // alert(response);
-    //var Datos=JSON.parse(response);    
-    //setTimeout(displayTime(Datos), 1000);
-
+    var ms = moment(now, "DD/MM/YYYY HH:mm:ss").diff(moment(then, "DD/MM/YYYY HH:mm:ss"));
+    var d = moment.duration(ms);
+//var s = Math.floor(d.asHours()) + moment.utc(ms).format(":mm:ss");
+    var s = moment.utc(d.asMilliseconds()).format("HH:mm:ss");
+    alert(s);
+//alert(milliseccondsToTime(time));
+*/
 
 });
+
+function milliseccondsToTime(duration) {
+    var seconds = parseInt((duration / 1000) % 60)
+            , minutes = parseInt((duration / (1000 * 60)) % 60)
+            , hours = parseInt((duration / (1000 * 60 * 60)) % 24)
+            , days = parseInt(duration / (1000 * 60 * 60 * 24));
+
+    var hoursDays = parseInt(days * 24);
+    hours += hoursDays;
+    hours = (hours < 10) ? "0" + hours : hours;
+    minutes = (minutes < 10) ? "0" + minutes : minutes;
+    seconds = (seconds < 10) ? "0" + seconds : seconds;
+    return hours + ":" + minutes + ":" + seconds;
+}
+
+
+
 function  buscarServicio() {
     cargarServicios();
 }
@@ -42,12 +87,27 @@ function cargarServicios() {
         success: function (response) {
 
 
-
             var Datos = JSON.parse(response);
             agregarServicios(Datos);
-            // displayTime(Datos);
 
 
+
+        },
+        complete: function () {
+            var response = $('#response').val();
+            console.log(response);
+            var Datos = JSON.parse(response);
+            
+           
+//$('#clock-57').countdown('2014/11/21 12:30:00');
+            //setTimeout(displayTime(Datos), 1000);
+            
+          /*  $("#clock-57")
+   .countdown("2015/01/01", function(event) {
+      $(this).text(
+     event.strftime('%D days %H:%M:%S')
+    );
+  });*/
         },
         error: function (result, f) {
             alert('ERROR ' + result.status + ' ' + result.statusText + ' ' + f);
@@ -93,39 +153,47 @@ $(function () {
 function agregarServicios(Datos) {
 
     $('#servicio').empty();
+   
     for (i in Datos) {
 
         var fecha = moment(Datos[i].ser_edu_fec).lang("es").format('ll');
         var servicio_head = '';
         var estado = Datos[i].ser_edu_est;
-        var disabled = 'disabled';
+        var disabledConfirm = 'disabled';
+        var disabledReg = 'disabled';
         var confirmar = '';
+
         if (estado === 1) {
             servicio_head = '<li class="time-label"><span id="headConfirm-' + Datos[i].ser_edu_id + '" class="bg-purple">' + fecha + '</span></li>';
-            disabled = '';
+            disabledConfirm = '';
+            disabledReg = '';
             confirmar = 'Confirmar';
         }
         if (estado === 2) {
             servicio_head = '<li class="time-label"><span id="headConfirm-' + Datos[i].ser_edu_id + '" class="bg-yellow">' + fecha + '</span></li>';
-            disabled = 'disabled';
+            disabledConfirm = 'disabled';
+            disabledReg = '';
             confirmar = 'Confimado';
         }
 
         if (estado === 3) {
             servicio_head = '<li class="time-label"><span id="headConfirm-' + Datos[i].ser_edu_id + '" class="bg-green">' + fecha + '</span></li>';
-            disabled = 'disabled';
+            disabledConfirm = 'disabled';
+            disabledReg = 'disabled';
             confirmar = 'Confimado';
         }
 
         if (estado === 4) {
             servicio_head = '<li class="time-label"><span id="headConfirm-' + Datos[i].ser_edu_id + '" class="bg-red">' + fecha + '</span></li>';
-            disabled = 'disabled';
+            disabledConfirm = 'disabled';
+            disabledReg = 'disabled';
             confirmar = 'Confimado';
         }
 
         if (estado === 5) {
             servicio_head = '<li class="time-label"><span id="headConfirm-' + Datos[i].ser_edu_id + '" class="bg-red">' + fecha + '</span></li>';
-            disabled = 'disabled';
+            disabledConfirm = 'disabled';
+            disabledReg = 'disabled';
             confirmar = 'Confimado';
         }
 
@@ -139,11 +207,11 @@ function agregarServicios(Datos) {
         else {
             duracion = '<span class="time"><i class="fa fa-clock-o"></i>' + moment(Datos[i].ser_edu_fec + ' ' + Datos[i].ser_edu_hin).format('HH:mm') + ' a ' + moment(Datos[i].ser_edu_fec + ' ' + Datos[i].ser_edu_hin).add(1, 'hours').format('HH:mm') + '</span>';
         }
-
+        var reloj = '<span id="clock-' + Datos[i].ser_edu_id + '"></span>';
+         
         var servicio_body = '<li>' +
                 '<i class="fa fa-envelope bg-blue"></i>' +
                 '<div class="timeline-item">' +
-                '<div id="clock-' + Datos[i].ser_edu_id + '"></div>' +
                 duracion +
                 '<h3 class="timeline-header panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#' + Datos[i].ser_edu_id + '">' + Datos[i].tip_serv_den + ' - ' + Datos[i].cur_nom + '</a></h3>' +
                 '<div class="timeline-body panel-collapse collapse" id="' + Datos[i].ser_edu_id + '">' +
@@ -176,8 +244,8 @@ function agregarServicios(Datos) {
                 '</div>' +
                 '</div>' +
                 '<div class="timeline-footer">' +
-                '<a class="btn btn-primary btn-xs" id="btnConfirm-' + Datos[i].ser_edu_id + '" onclick="confirmar(' + Datos[i].ser_edu_id + ')"  ' + disabled + '>' + confirmar + ' </a>' +
-                '<a class="btn btn-primary btn-xs" onclick="guardarAlumnos(' + Datos[i].ser_edu_id + ')"  >Registrar</a>' +
+                '<a class="btn btn-primary btn-xs" id="btnConfirm-' + Datos[i].ser_edu_id + '" onclick="confirmar(' + Datos[i].ser_edu_id + ')"  ' + disabledConfirm + '>' + reloj + ' ' + confirmar + ' </a>' +
+                '<a class="btn btn-primary btn-xs" onclick="registrarFormAlumno(' + Datos[i].ser_edu_id + ')"  ' + disabledReg + ' >Registrar</a>' +
                 '</div>' +
                 '</div>' +
                 '</li>';
@@ -185,7 +253,8 @@ function agregarServicios(Datos) {
 //displayTime(Datos[i].ser_edu_id);
     }
     var response = JSON.stringify(Datos);
-    $("#servicio").append('<div  id="response">' + response + '</div>');
+    $('#response').val(response);
+    // $("#servicio").append('<div  id="response">' + response + '</div>');
 }
 
 
@@ -372,25 +441,20 @@ function selectSedeSrch() {
 }
 
 
-function registrarFormAlumno() {
+function registrarFormAlumno(id) {
+
     cargarAlumnos();
+
+    $('#ser-id').val(id);
     $('#myModalIns').modal('show');
 }
-function displayTime(Datos) {
-    var time = moment().format('HH:mm:ss');
-//$('#clock-'+id).html(time);
-
-    for (i in Datos) {
-        $('#clock-' + Datos[i].ser_edu_id).html(time);
-    }
-
-    setTimeout(displayTime(Datos), 1000);
-}
-
-$(function () {
 
 
-});
+
+
+
+
+
 function cargarAlumnos() {
 
     /*
@@ -443,39 +507,130 @@ function agregarAlumnos(Datos) {
 
 
 }
-function guardarAlumnos(serEduId) {
+function guardarAlumnos() {
     var ids = [];
+
+    var serEduId = $('#ser-id').val();
     $("input[name='INS']:checked").each(function () {
 
         ids.push($(this).val());
 
     });
-    var al_id = ids.toString();
+    console.log(serEduId);
+
+
+    var alId = ids.toString();
     //alert(ids.toString());
     var operation = 'INS';
     // var serEduId=;
     var parametros = {
         operation: operation,
         serEduId: serEduId,
-        al_id: al_id
+        alId: alId
 
     };
-    $.ajax({
-        data: parametros,
-        url: '/SistemaT/AsistenciaServlet',
-        type: 'post',
-        beforeSend: function () {
-            //var path = window.location.host;
-            // $("#servicio").html('<img  class="center-block" src="http://'+path+'//SistemaT/img/load.GIF"/>');
-        },
-        success: function (response) {
+    if (alId.length > 0) {
+        $.ajax({
+            data: parametros,
+            url: '/SistemaT/AsistenciaServlet',
+            type: 'post',
+            beforeSend: function () {
+                //var path = window.location.host;
+                // $("#servicio").html('<img  class="center-block" src="http://'+path+'//SistemaT/img/load.GIF"/>');
+            },
+            success: function (response) {
+                if (response === 'error') {
 
-            console.log(response);
-        },
-        error: function (result, f) {
-            alert('ERROR ' + result.status + ' ' + result.statusText + ' ' + f);
+                    $('#mensaje_ins').empty();
+                    $('#mensaje_ins').addClass('alert alert-danger');
+                    $('#mensaje_ins').html('No se pudo completar el registro');
+                }
+                else {
+                    // alert("si registro" + response);
+                    $('#mensaje_ins').empty();
+                    $('#mensaje_ins').removeClass('alert alert-danger');
+                    $('#mensaje_ins').addClass('alert alert-success');
+                    $('#mensaje_ins').html(response);
+                    setTimeout(function () {
+                        url = "/SistemaT/p_tutor/indexT.jsp";
+                        $(location).attr('href', url);
+                    }, 2000);
+                }
+            },
+            error: function (result, f) {
+                alert('ERROR ' + result.status + ' ' + result.statusText + ' ' + f);
+            }
+        });
+
+    }
+    else {
+        $('#mensaje_ins').empty();
+        $('#mensaje_ins').addClass('alert alert-danger');
+        $('#mensaje_ins').html('No se ha seleccionado ningun alumno');
+
+    }
+}
+
+function displayTime(Datos) {
+
+ var now = moment();
+
+    for (i in Datos) {
+       
+        //var then = "21/11/2014 11:50:00";
+       
+        var then = Datos[i].ser_edu_fec + " " + Datos[i].ser_edu_hin;
+        console.log("mi i"+i+"     esto es el ms=" + ms);
+        var ms = moment(then, "DD/MM/YYYY HH:mm:ss").diff(moment(now, "DD/MM/YYYY HH:mm:ss"));
+       console.log("..----.--");
+        
+        console.log("mi i"+i+"     esto es el ms=" + ms);
+        var d = moment.duration(ms);
+        var s = moment.utc(d.asMilliseconds()).format("mm:ss");
+         $('#clock-' + Datos[i].ser_edu_id).html(s + " " + d);
+      /*  if(d<=900000){
+        
+       // console.log(i+" " + s);
+         //console.log("otra vez");
+       
         }
-    });
+        else{
+             console.log(i+" " + s);
+             $('#clock-' + Datos[i].ser_edu_id).html("");
+        }*/
+
+    }
+
+            setTimeout(function () {
+        displayTime(Datos)
+    }, 1000);
+}
 
 
+
+
+function secondPassed(row) {
+    var seconds = timerData[row].remaining;
+    var minutes = Math.round((seconds - 30) / 60);
+    var remainingSeconds = seconds % 60;
+    if (remainingSeconds < 10) {
+        remainingSeconds = "0" + remainingSeconds;
+    }
+    $('#clock' + row).html( minutes + ":" + remainingSeconds) ;
+    //document.getElementById('clock' + row).innerHTML = minutes + ":" + remainingSeconds;
+    if (seconds == 0) {
+        clearInterval(timerData[row].timerId);
+        //document.getElementById('clock' + row).innerHTML = "Buzz Buzz";
+         $('#clock' + row).html( "Buzz Buzz") ;
+    } else {
+        seconds--;
+    }
+    timerData[row].remaining = seconds;
+}
+
+function timer(row, min) {
+    timerData[row] = {
+        remaining: min * 60,
+        timerId: setInterval(function () { secondPassed(row); }, 1000)
+    };
 }
