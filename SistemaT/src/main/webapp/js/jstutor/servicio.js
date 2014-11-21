@@ -177,7 +177,7 @@ function agregarServicios(Datos) {
                 '</div>' +
                 '<div class="timeline-footer">' +
                 '<a class="btn btn-primary btn-xs" id="btnConfirm-' + Datos[i].ser_edu_id + '" onclick="confirmar(' + Datos[i].ser_edu_id + ')"  ' + disabled + '>' + confirmar + ' </a>' +
-                '<a class="btn btn-primary btn-xs" onclick="registrarFormAlumno(' + Datos[i].ser_edu_id + ')"  >Registrar</a>' +
+                '<a class="btn btn-primary btn-xs" onclick="guardarAlumnos(' + Datos[i].ser_edu_id + ')"  >Registrar</a>' +
                 '</div>' +
                 '</div>' +
                 '</li>';
@@ -372,7 +372,7 @@ function selectSedeSrch() {
 }
 
 
-function registrarFormAlumno(id) {
+function registrarFormAlumno() {
     cargarAlumnos();
     $('#myModalIns').modal('show');
 }
@@ -413,7 +413,7 @@ function cargarAlumnos() {
         },
         success: function (response) {
 
-
+            console.log(response);
 
             var Datos = JSON.parse(response);
             agregarAlumnos(Datos);
@@ -429,16 +429,53 @@ function cargarAlumnos() {
 
 
 function agregarAlumnos(Datos) {
+    $('#tblAlumno').empty();
     for (i in Datos) {
 
         var fila = '<tr>' +
-                '<td>' + Datos[i].codigo + '</td>' +
-                '<td>' + Datos[i].codigo + '</td>' +
-                '<td>' + Datos[i].codigo + '</td>' +
-                '<td> <input type="checkbox" value="' + Datos[i].codigo + '"> </td>' +
+                '<td>' + Datos[i].al_cod + '</td>' +
+                '<td>' + Datos[i].al_nom + '</td>' +
+                '<td>' + Datos[i].al_apat + ' ' + Datos[i].al_amat + '</td>' +
+                '<td> <input name="INS" type="checkbox" value="' + Datos[i].al_id + '"> </td>' +
                 '</tr>';
         $('#tblAlumno').append(fila);
     }
+
+
+}
+function guardarAlumnos(serEduId) {
+    var ids = [];
+    $("input[name='INS']:checked").each(function () {
+
+        ids.push($(this).val());
+
+    });
+    var al_id = ids.toString();
+    //alert(ids.toString());
+    var operation = 'INS';
+    // var serEduId=;
+    var parametros = {
+        operation: operation,
+        serEduId: serEduId,
+        al_id: al_id
+
+    };
+    $.ajax({
+        data: parametros,
+        url: '/SistemaT/AsistenciaServlet',
+        type: 'post',
+        beforeSend: function () {
+            //var path = window.location.host;
+            // $("#servicio").html('<img  class="center-block" src="http://'+path+'//SistemaT/img/load.GIF"/>');
+        },
+        success: function (response) {
+
+            console.log(response);
+        },
+        error: function (result, f) {
+            alert('ERROR ' + result.status + ' ' + result.statusText + ' ' + f);
+        }
+    });
 
 
 }
