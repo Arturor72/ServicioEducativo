@@ -97,8 +97,8 @@
         <!--inicio-->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
-            <div class="modal-dialog">
-                <div class="modal-content">
+         <!--   <div class="modal-dialog">
+                <div class="modal-content">-->
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                         <h3 class="modal-title" id="myModalLabel">Registro Curso</h3>
@@ -126,8 +126,8 @@
                             <button type="button" class="btn btn-primary" id="guarda" onclick="guardarCurso()" >Guardar</button>
                         </div>
                     </form> <!-- /.form -->
-                </div><!-- /.modal content -->
-            </div><!-- /.modal dialog -->
+                <!--</div><!-- /.modal content -->
+           <!-- </div><!-- /.modal dialog -->
         </div><!-- /.modal -->
 
         <!--fin-->
@@ -135,8 +135,8 @@
         <!--    mi modal upd-->
         <div class="modal fade" id="myModalUpd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
-            <div class="modal-dialog">
-                <div class="modal-content">
+         <!--   <div class="modal-dialog">
+                <div class="modal-content">-->
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                         <h3 class="modal-title" id="myModalLabel">Actualizar Curso</h3>
@@ -165,8 +165,8 @@
                             <button type="button" class="btn btn-primary" id="guarda" onclick="guardarCursoUpd()" >Guardar</button>
                         </div>
                     </form> <!-- /.form -->
-                </div><!-- /.modal content -->
-            </div><!-- /.modal dialog -->
+               <!-- </div><!-- /.modal content -->
+          <!--  </div><!-- /.modal dialog -->
         </div><!-- /.modal -->
 
         <!--fin-->
@@ -177,8 +177,8 @@
         <!--    mi modal upd-->
         <div class="modal fade" id="myModalMensaje" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
-            <div class="modal-dialog">
-                <div class="modal-content">
+          <!--  <div class="modal-dialog">
+                <div class="modal-content">-->
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 
@@ -197,8 +197,8 @@
                             <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
                         </div>
                     </form> <!-- /.form -->
-                </div><!-- /.modal content -->
-            </div><!-- /.modal dialog -->
+               <!-- </div><!-- /.modal content -->
+            <!--</div><!-- /.modal dialog -->
         </div><!-- /.modal -->
 
         <!--fin-->
@@ -213,8 +213,8 @@
         <!--    mi modal del-->
         <div class="modal fade" id="myModalDel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
-            <div class="modal-dialog">
-                <div class="modal-content">
+          <!--  <div class="modal-dialog">
+                <div class="modal-content">-->
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                         <h3 class="modal-title" >Eliminar Curso</h3>
@@ -232,8 +232,8 @@
                             <button type="button" class="btn btn-primary" id="guarda" onclick="confirm()" >Aceptar</button>
                         </div>
                     </form> <!-- /.form -->
-                </div><!-- /.modal content -->
-            </div><!-- /.modal dialog -->
+               <!-- </div><!-- /.modal content -->
+           <!-- </div><!-- /.modal dialog -->
         </div><!-- /.modal -->
 
         <!--fin-->

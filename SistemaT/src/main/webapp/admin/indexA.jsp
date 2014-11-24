@@ -124,8 +124,8 @@
 <!--    mi modal upd-->
 <div class="modal fade" id="myModalUpd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
-    <div class="modal-dialog">
-        <div class="modal-content">
+    <!--<div class="modal-dialog">
+        <div class="modal-content">-->
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h3 class="modal-title" id="myModalLabel">Actualizar Servicio</h3>
@@ -216,8 +216,8 @@
                     <button type="button" class="btn btn-primary" id="guarda" onclick="editarServicio()" >Actualizar</button>
                 </div>
             </form> <!-- /.form -->
-        </div><!-- /.modal content -->
-    </div><!-- /.modal dialog -->
+        <!--</div><!-- /.modal content -->
+    <!--</div><!-- /.modal dialog -->
 </div><!-- /.modal -->
 
 <!--fin-->
@@ -239,8 +239,8 @@
 <!--    mi modal upd-->
 <div class="modal fade" id="myModalIns" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
-    <div class="modal-dialog">
-        <div class="modal-content">
+   <!-- <div class="modal-dialog">
+        <div class="modal-content">-->
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h3 class="modal-title" id="myModalLabel">Crear Servicio</h3>
@@ -329,8 +329,8 @@
                     <button type="button" class="btn btn-primary"  onclick="guardarServicio()" >Guardar</button>
                 </div>
             </form> <!-- /.form -->
-        </div><!-- /.modal content -->
-    </div><!-- /.modal dialog -->
+      <!--  </div><!-- /.modal content -->
+   <!-- </div><!-- /.modal dialog -->
 </div><!-- /.modal -->
 
 <!--fin-->
