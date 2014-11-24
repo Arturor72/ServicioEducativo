@@ -8,6 +8,7 @@
         <%@include file="../WEB-INF/jspf/title.jspf" %>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <%@include file="../WEB-INF/jspf/links.jspf" %>
+       
     </head>
     <body class="skin-blue">
         <%@include file="../WEB-INF/jspf/headerT.jspf" %>
@@ -26,8 +27,8 @@
                 <section class="content">
                     <div class="row">
                         <span id="clock1" class="timer"></span>
-                         <span id="clock2" class="timer"></span>
- 
+                        <span id="clock2" class="timer"></span>
+
                         <div class="col-md-4">
                             <!-- select fecha y hora-->
                             <div class="form-group">
@@ -62,7 +63,7 @@
 
                             <div class="panel-group" id="accordion">
                                 <div class="panel panel-default">
-                                <input type="hidden" id="response"  />
+                                    <input type="hidden" id="response"  />
                                     <ul class="timeline" id="servicio">
 
                                         <!--Contenido de los servicios-->
@@ -96,74 +97,72 @@
 
         <%@include file="../WEB-INF/jspf/linksfooter.jspf" %>
         <!-- page script -->
-        <script type="text/javascript">
-            $(function () {
-                $("#example1").dataTable();
-                $('#example2').dataTable({
-                    "bPaginate": true,
-                    "bLengthChange": false,
-                    "bFilter": false,
-                    "bSort": true,
-                    "bInfo": true,
-                    "bAutoWidth": false
-                });
-            });
-        </script>
-        <%@include file="../WEB-INF/jspf/footerLoginTutor.jspf" %>
-        
-        <script src="<%= request.getContextPath()%>/js/jstutor/servicio.js"></script>
-       
 
+        <%@include file="../WEB-INF/jspf/footerLoginTutor.jspf" %>
+
+        <script src="<%= request.getContextPath()%>/js/jstutor/servicio.js"></script>
+
+        <!--<script type="text/javascript">
+                    $(function () {
+                       
+                        $('#example2').dataTable({
+                            "bPaginate": true,
+                            "bLengthChange": false,
+                            "bFilter": false,
+                            "bSort": true,
+                            "bInfo": true,
+                            "bAutoWidth": false
+                        });
+                    });
+                </script>-->
     </body>
 </html>
 
 
-
-
+<div class="modal fade" id="ajax-modal" tabindex="-1" aria-hidden="true"></div>
+<button id="miboton" class="demo btn btn-primary btn-lg" >View Demo</button>
 <!--    mi modal upd-->
-<div class="modal fade" id="myModalIns" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal container fade" id="myModalIns" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
-    <div class="modal-dialog">
-        <div class="modal-content">
+   <!-- <div class="modal-dialog">
+        <div class="modal-content">-->
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h3 class="modal-title" id="myModalLabel">Registrar alumnos</h3>
             </div>
 
             <input type="hidden" id="ser-id"  />
+            
+                <div class="modal-body table-responsive" >
+      
+
+                    <table id="tblAlumno" class="table table-bordered table-striped" cellspacing="0">
+                      <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nombre</th>
+                                <th>Apellidos</th>
+                                <th class="mrc">Asistió</th>
+                            </tr>
+                        </thead>
+             
+                    </table>
 
 
-            <div class="modal-body table-responsive">
-
-                <table id="tblAlumno" class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Nombre</th>
-                            <th>Apellidos</th>
-                            <th class="mrc">Asistió</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-
-                </table>
-
-
-
-
-
-
-
-                <div class="form-group">
-                    <div id="mensaje_ins"></div>
+                    <div class="form-group">
+                        <div id="mensaje_ins"></div>
+                    </div>
                 </div>
-            </div>
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                 <button type="button" class="btn btn-primary"  onclick="guardarAlumnos()" >Guardar</button>
             </div>
 
-        </div><!-- /.modal content -->
-    </div><!-- /.modal dialog -->
+        <!--</div><!-- /.modal content -->
+    <!--</div><!-- /.modal dialog -->
 </div><!-- /.modal -->
+
+
+
+
