@@ -6,19 +6,27 @@
 
 
 $(function () {
-
+  
     cargarServicios();
-      timer(1,11);
-            timer(2,2);
+    
+   
+    // 
+    // 
+    // 
+    // 
+  // timer(1,11);
+    //      timer(2,2);
+//$().dataTable();
 
-   /* $("#clock")
-   .countdown("2015/01/01", function(event) {
-      $(this).text(
+
+    /* $("#clock")
+     .countdown("2015/01/01", function(event) {
+     $(this).text(
      event.strftime('%D days %H:%M:%S')
-    );
-  });
-  */
- 
+     );
+     });
+     */
+
     // alert("sadasd");
     //alert(moment());
     /*  var then = "21/11/2014 11:00:00";
@@ -31,18 +39,24 @@ $(function () {
      
      alert(time);
      */
-/*
-//var now  = "04/09/2013 15:00:00";
-    var now = moment();
-    var then = "21/11/2014 11:15:00";
+    /*
+     //var now  = "04/09/2013 15:00:00";
+     var now = moment();
+     var then = "21/11/2014 11:15:00";
+     
+     var ms = moment(now, "DD/MM/YYYY HH:mm:ss").diff(moment(then, "DD/MM/YYYY HH:mm:ss"));
+     var d = moment.duration(ms);
+     //var s = Math.floor(d.asHours()) + moment.utc(ms).format(":mm:ss");
+     var s = moment.utc(d.asMilliseconds()).format("HH:mm:ss");
+     alert(s);
+     //alert(milliseccondsToTime(time));
+     */
 
-    var ms = moment(now, "DD/MM/YYYY HH:mm:ss").diff(moment(then, "DD/MM/YYYY HH:mm:ss"));
-    var d = moment.duration(ms);
-//var s = Math.floor(d.asHours()) + moment.utc(ms).format(":mm:ss");
-    var s = moment.utc(d.asMilliseconds()).format("HH:mm:ss");
-    alert(s);
-//alert(milliseccondsToTime(time));
-*/
+
+
+
+
+
 
 });
 
@@ -97,17 +111,17 @@ function cargarServicios() {
             var response = $('#response').val();
             console.log(response);
             var Datos = JSON.parse(response);
-            
-           
+
+
 //$('#clock-57').countdown('2014/11/21 12:30:00');
             //setTimeout(displayTime(Datos), 1000);
-            
-          /*  $("#clock-57")
-   .countdown("2015/01/01", function(event) {
-      $(this).text(
-     event.strftime('%D days %H:%M:%S')
-    );
-  });*/
+
+            /*  $("#clock-57")
+             .countdown("2015/01/01", function(event) {
+             $(this).text(
+             event.strftime('%D days %H:%M:%S')
+             );
+             });*/
         },
         error: function (result, f) {
             alert('ERROR ' + result.status + ' ' + result.statusText + ' ' + f);
@@ -153,7 +167,7 @@ $(function () {
 function agregarServicios(Datos) {
 
     $('#servicio').empty();
-   
+
     for (i in Datos) {
 
         var fecha = moment(Datos[i].ser_edu_fec).lang("es").format('ll');
@@ -208,7 +222,7 @@ function agregarServicios(Datos) {
             duracion = '<span class="time"><i class="fa fa-clock-o"></i>' + moment(Datos[i].ser_edu_fec + ' ' + Datos[i].ser_edu_hin).format('HH:mm') + ' a ' + moment(Datos[i].ser_edu_fec + ' ' + Datos[i].ser_edu_hin).add(1, 'hours').format('HH:mm') + '</span>';
         }
         var reloj = '<span id="clock-' + Datos[i].ser_edu_id + '"></span>';
-         
+
         var servicio_body = '<li>' +
                 '<i class="fa fa-envelope bg-blue"></i>' +
                 '<div class="timeline-item">' +
@@ -444,9 +458,13 @@ function selectSedeSrch() {
 function registrarFormAlumno(id) {
 
     cargarAlumnos();
-
+ 
     $('#ser-id').val(id);
-    $('#myModalIns').modal('show');
+   //$('#myModalIns').modal('show');
+    
+ setTimeout(function(){$('#myModalIns').modal('show');}, 1000);
+
+   
 }
 
 
@@ -467,21 +485,28 @@ function cargarAlumnos() {
     var parametros = {
         operation: operation
     };
+    var tabla = $('#tblAlumno').dataTable();
     $.ajax({
         data: parametros,
         url: '/SistemaT/AlumnoServlet',
         type: 'post',
         beforeSend: function () {
-            /*var path = window.location.host;
-             $("#servicio").html('<img  class="center-block" src="http://'+path+'//SistemaT/img/load.GIF"/>');*/
+           // $('body').modalmanager('loading');
+        //  var path = window.location.host;
+     
+        $('body').modalmanager('loading');
+       
         },
         success: function (response) {
 
             console.log(response);
 
             var Datos = JSON.parse(response);
-            agregarAlumnos(Datos);
-            // displayTime(Datos);
+            agregarAlumnos(Datos, tabla);
+
+
+        },
+        complete: function () {
 
 
         },
@@ -492,19 +517,17 @@ function cargarAlumnos() {
 }
 
 
-function agregarAlumnos(Datos) {
-    $('#tblAlumno').empty();
+function agregarAlumnos(Datos,tabla) {
+    tabla.fnClearTable();
+    //alert(Datos.length);
     for (i in Datos) {
-
-        var fila = '<tr>' +
-                '<td>' + Datos[i].al_cod + '</td>' +
-                '<td>' + Datos[i].al_nom + '</td>' +
-                '<td>' + Datos[i].al_apat + ' ' + Datos[i].al_amat + '</td>' +
-                '<td> <input name="INS" type="checkbox" value="' + Datos[i].al_id + '"> </td>' +
-                '</tr>';
-        $('#tblAlumno').append(fila);
+        tabla.fnAddData([
+            Datos[i].al_cod,
+            Datos[i].al_nom,
+            Datos[i].al_apat + ' ' + Datos[i].al_amat,
+            '<input class="center-block" name="INS" type="checkbox" value="' + Datos[i].al_id + '">'
+        ]);
     }
-
 
 }
 function guardarAlumnos() {
@@ -573,35 +596,35 @@ function guardarAlumnos() {
 
 function displayTime(Datos) {
 
- var now = moment();
+    var now = moment();
 
     for (i in Datos) {
-       
+
         //var then = "21/11/2014 11:50:00";
-       
+
         var then = Datos[i].ser_edu_fec + " " + Datos[i].ser_edu_hin;
-        console.log("mi i"+i+"     esto es el ms=" + ms);
+        console.log("mi i" + i + "     esto es el ms=" + ms);
         var ms = moment(then, "DD/MM/YYYY HH:mm:ss").diff(moment(now, "DD/MM/YYYY HH:mm:ss"));
-       console.log("..----.--");
-        
-        console.log("mi i"+i+"     esto es el ms=" + ms);
+        console.log("..----.--");
+
+        console.log("mi i" + i + "     esto es el ms=" + ms);
         var d = moment.duration(ms);
         var s = moment.utc(d.asMilliseconds()).format("mm:ss");
-         $('#clock-' + Datos[i].ser_edu_id).html(s + " " + d);
-      /*  if(d<=900000){
-        
-       // console.log(i+" " + s);
+        $('#clock-' + Datos[i].ser_edu_id).html(s + " " + d);
+        /*  if(d<=900000){
+         
+         // console.log(i+" " + s);
          //console.log("otra vez");
-       
-        }
-        else{
-             console.log(i+" " + s);
-             $('#clock-' + Datos[i].ser_edu_id).html("");
-        }*/
+         
+         }
+         else{
+         console.log(i+" " + s);
+         $('#clock-' + Datos[i].ser_edu_id).html("");
+         }*/
 
     }
 
-            setTimeout(function () {
+    setTimeout(function () {
         displayTime(Datos)
     }, 1000);
 }
@@ -616,12 +639,12 @@ function secondPassed(row) {
     if (remainingSeconds < 10) {
         remainingSeconds = "0" + remainingSeconds;
     }
-    $('#clock' + row).html( minutes + ":" + remainingSeconds) ;
+    $('#clock' + row).html(minutes + ":" + remainingSeconds);
     //document.getElementById('clock' + row).innerHTML = minutes + ":" + remainingSeconds;
     if (seconds == 0) {
         clearInterval(timerData[row].timerId);
         //document.getElementById('clock' + row).innerHTML = "Buzz Buzz";
-         $('#clock' + row).html( "Buzz Buzz") ;
+        $('#clock' + row).html("Buzz Buzz");
     } else {
         seconds--;
     }
@@ -631,6 +654,8 @@ function secondPassed(row) {
 function timer(row, min) {
     timerData[row] = {
         remaining: min * 60,
-        timerId: setInterval(function () { secondPassed(row); }, 1000)
+        timerId: setInterval(function () {
+            secondPassed(row);
+        }, 1000)
     };
 }
