@@ -856,6 +856,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
   // MODAL CLASS DEFINITION
   // ======================
 
+
   var Modal = function (element, options) {
     this.options   = options
     this.$element  = $(element)
