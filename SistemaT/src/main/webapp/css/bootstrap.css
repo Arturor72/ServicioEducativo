@@ -5933,6 +5933,9 @@ button.close {
   -webkit-appearance: none;
 }
 
+
+
+
 .modal-open {
   overflow: hidden;
 }
@@ -5948,7 +5951,6 @@ button.close {
   overflow: auto;
   overflow-y: scroll;
 }
-
 .modal.fade .modal-dialog {
   -webkit-transform: translate(0, -25%);
       -ms-transform: translate(0, -25%);
