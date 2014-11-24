@@ -35,3 +35,6 @@
 <script type="text/javascript" src="<%= request.getContextPath()%>/js/plugins/jquery.countdown.min.js"></script>
 
 
+
+<script type="text/javascript" src="<%= request.getContextPath()%>/js/bootstrap-modal.js"></script>
+<script type="text/javascript" src="<%= request.getContextPath()%>/js/bootstrap-modalmanager.js"></script>
