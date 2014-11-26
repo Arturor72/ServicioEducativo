@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package pe.unfv.fiei.sistemat.model.dao.impl;
 
 import java.sql.Connection;
@@ -24,18 +23,18 @@ import pe.unfv.fiei.sistemat.model.dto.Usuario;
  *
  * @author Arturo
  */
-public class DaoAlumnoImpl implements DaoAlumno{
- static Logger log4j = Logger.getLogger(DaoUsuarioImpl.class);
+public class DaoAlumnoImpl implements DaoAlumno {
+
+    static Logger log4j = Logger.getLogger(DaoUsuarioImpl.class);
     StConnection db = null;
 
     public DaoAlumnoImpl() {
         db = new StConnection();
     }
 
-    
     @Override
     public List<Alumno> alumnoQry() {
-         log4j.info("+ init alumnoQRY");
+        log4j.info("+ init alumnoQRY");
         List<Alumno> list = null;
         String sql = SistemTConstants.ALUMNO_SELECT;
         log4j.info("Sentence" + sql);
@@ -70,5 +69,41 @@ public class DaoAlumnoImpl implements DaoAlumno{
         log4j.info("- finish alumnoQRY");
         return list;
     }
-    
+
+    @Override
+    public String alumnoSusp(List<Integer> al_id, Integer state) {
+        log4j.info("+ init alumnoSusp");
+        String result = null;
+        String sql = SistemTConstants.ALUMNO_CHANGE_STATE;
+        Connection cn = db.getConnection();
+        if (cn != null) {
+            try {
+                PreparedStatement psmt = cn.prepareStatement(sql);
+                for (Integer x : al_id) {
+                    psmt.setInt(1, state);
+                    psmt.setInt(2, x);
+                    int r = psmt.executeUpdate();
+                    if (r == 0) {
+                        result = "No se actualizo" + x;
+                        log4j.error(result);
+                    }
+                }
+            } catch (SQLException e) {
+                result = e.getMessage();
+                log4j.error(e.getMessage());
+            } finally {
+                try {
+                    cn.close();
+                } catch (SQLException e) {
+                    result = e.getMessage();
+                    log4j.error(e.getMessage());
+                }
+            }
+
+        }
+
+        log4j.info("- init alumnoSusp");
+        return result;
+    }
+
 }
