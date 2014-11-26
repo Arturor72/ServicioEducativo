@@ -40,6 +40,8 @@ public class AlumnoServlet extends HttpServlet {
      */
     Logger log4j = Logger.getLogger(UsuarioServlet.class);
     private final static String OPERATION_QRY_ALUMNOS = "QRY_ALUMNOS";
+    private final static String OPERATION_SUSP_ALUMNOS = "SUSP_ALUMNOS";
+    private final static String OPERATION_NOR_ALUMNOS = "NOR_ALUMNOS";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -75,6 +77,30 @@ public class AlumnoServlet extends HttpServlet {
                 } else {
                     message = "Lista nula o vacia de alumnos.";
                 }
+            } else if (operation.equalsIgnoreCase(OPERATION_SUSP_ALUMNOS)) {
+                String alId = request.getParameter("al_id");
+                List<Integer> list = Util.toids(alId);
+                if (list != null) {
+                    message = daoAlumno.alumnoSusp(list, 1);
+                    if (message == null) {
+                        msg = "Los alumno(s) han sido suspendidos exitosamente";
+                    } else {
+                        message = "No se realizo la suspension correctamente";
+                    }
+                }
+
+            } else if (operation.equals(OPERATION_NOR_ALUMNOS)) {
+                String alId = request.getParameter("al_id");
+                List<Integer> list = Util.toids(alId);
+                if (list != null) {
+                    message = daoAlumno.alumnoSusp(list, 0);
+                    if (message == null) {
+                        msg = "Los alumno(s) han sido suspendidos exitosamente";
+                    } else {
+                        message = "No se realizo la suspension correctamente";
+                    }
+                }
+
             } else {
                 message = "Solicitud no reconocida.";
             }
@@ -83,7 +109,7 @@ public class AlumnoServlet extends HttpServlet {
             if (message != null) {
                 out.print("[" + message + "]");
             } else {
-                if (operation.equals(OPERATION_QRY_ALUMNOS)) {
+                if (operation.equals(OPERATION_QRY_ALUMNOS) || operation.equals(OPERATION_SUSP_ALUMNOS)) {
                     out.print("[" + msg + "]");
                 }
             }
