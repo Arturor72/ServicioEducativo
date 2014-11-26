@@ -16,4 +16,7 @@ import pe.unfv.fiei.sistemat.model.dto.Alumno;
 public interface DaoAlumno {
  
     public List<Alumno> alumnoQry();
+    
+    public String alumnoSusp(List<Integer> al_id, Integer state);
+        
 }
