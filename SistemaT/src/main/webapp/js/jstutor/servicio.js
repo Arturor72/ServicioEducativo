@@ -6,19 +6,32 @@
 
 
 $(function () {
-  
+
     cargarServicios();
-    
-   
-    // 
-    // 
-    // 
-    // 
-  // timer(1,11);
-    //      timer(2,2);
-//$().dataTable();
-
-
+    /*
+     for(var i=0; i<18;i++){
+     
+     $('#my-clock-'+i).
+     countdown("2014/11/25 22:19:00", function(event) {
+     
+     
+     
+     var duration=event.strftime('%M:%S');
+     
+     if(duration<='15:00'){
+     
+     $(this).text(duration);
+     }
+     
+     if(duration==='00:00'){
+     $(this).text('duration'); 
+     } 
+     
+     
+     
+     });
+     }
+     */
     /* $("#clock")
      .countdown("2015/01/01", function(event) {
      $(this).text(
@@ -77,6 +90,7 @@ function milliseccondsToTime(duration) {
 
 
 function  buscarServicio() {
+     
     cargarServicios();
 }
 function cargarServicios() {
@@ -109,19 +123,11 @@ function cargarServicios() {
         },
         complete: function () {
             var response = $('#response').val();
-            console.log(response);
+            
             var Datos = JSON.parse(response);
-
-
-//$('#clock-57').countdown('2014/11/21 12:30:00');
-            //setTimeout(displayTime(Datos), 1000);
-
-            /*  $("#clock-57")
-             .countdown("2015/01/01", function(event) {
-             $(this).text(
-             event.strftime('%D days %H:%M:%S')
-             );
-             });*/
+            console.log("largo: " +Datos.length);    
+            displayClock(Datos);
+ 
         },
         error: function (result, f) {
             alert('ERROR ' + result.status + ' ' + result.statusText + ' ' + f);
@@ -179,7 +185,7 @@ function agregarServicios(Datos) {
 
         if (estado === 1) {
             servicio_head = '<li class="time-label"><span id="headConfirm-' + Datos[i].ser_edu_id + '" class="bg-purple">' + fecha + '</span></li>';
-            disabledConfirm = '';
+            disabledConfirm = 'enable';
             disabledReg = '';
             confirmar = 'Confirmar';
         }
@@ -258,7 +264,9 @@ function agregarServicios(Datos) {
                 '</div>' +
                 '</div>' +
                 '<div class="timeline-footer">' +
+                // + disabledConfirm +
                 '<a class="btn btn-primary btn-xs" id="btnConfirm-' + Datos[i].ser_edu_id + '" onclick="confirmar(' + Datos[i].ser_edu_id + ')"  ' + disabledConfirm + '>' + reloj + ' ' + confirmar + ' </a>' +
+                //'<a class="btn btn-primary btn-xs disabled" id="btnConfirm-' + Datos[i].ser_edu_id + '" onclick="confirmar(' + Datos[i].ser_edu_id + ')" >' + reloj + ' ' + confirmar + ' </a>' +
                 '<a class="btn btn-primary btn-xs" onclick="registrarFormAlumno(' + Datos[i].ser_edu_id + ')"  ' + disabledReg + ' >Registrar</a>' +
                 '</div>' +
                 '</div>' +
@@ -362,7 +370,7 @@ $(function () {
         $("#servicio").animate({"left": "10px", "opacity": "1"}, 1000);
         var total_fecha = e.date;
         var ser_edu_fec = moment(total_fecha).format('YYYY-MM-DD');
-        var operation = 'QRY_SEARCH';
+        var operation = 'QRY_SEARCH_TUTOR';
         var parametros = {
             operation: operation,
             ser_edu_fec: ser_edu_fec
@@ -406,7 +414,7 @@ function selectSedeSrch() {
     $("#servicio").css({"left": "-10px"});
     $("#servicio").css({"opacity": "0.2"});
     $("#servicio").animate({"left": "10px", "opacity": "1"}, 1000);
-    var operation = 'QRY_SEARCH_SEDE';
+    var operation = 'QRY_SEARCH_SEDE_TUTOR';
     var sed_id = $('#sede_srch').val();
     var parametros = {
         operation: operation,
@@ -458,13 +466,15 @@ function selectSedeSrch() {
 function registrarFormAlumno(id) {
 
     cargarAlumnos();
- 
-    $('#ser-id').val(id);
-   //$('#myModalIns').modal('show');
-    
- setTimeout(function(){$('#myModalIns').modal('show');}, 1000);
 
-   
+    $('#ser-id').val(id);
+    //$('#myModalIns').modal('show');
+
+    setTimeout(function () {
+        $('#myModalIns').modal('show');
+    }, 1000);
+
+
 }
 
 
@@ -491,11 +501,11 @@ function cargarAlumnos() {
         url: '/SistemaT/AlumnoServlet',
         type: 'post',
         beforeSend: function () {
-           // $('body').modalmanager('loading');
-        //  var path = window.location.host;
-     
-        $('body').modalmanager('loading');
-       
+            // $('body').modalmanager('loading');
+            //  var path = window.location.host;
+
+            $('body').modalmanager('loading');
+
         },
         success: function (response) {
 
@@ -517,7 +527,7 @@ function cargarAlumnos() {
 }
 
 
-function agregarAlumnos(Datos,tabla) {
+function agregarAlumnos(Datos, tabla) {
     tabla.fnClearTable();
     //alert(Datos.length);
     for (i in Datos) {
@@ -594,6 +604,11 @@ function guardarAlumnos() {
     }
 }
 
+
+function relog() {
+
+
+}
 function displayTime(Datos) {
 
     var now = moment();
@@ -659,3 +674,36 @@ function timer(row, min) {
         }, 1000)
     };
 }
+
+function displayClock(Datos) {
+/*
+
+
+           for (i in Datos) {
+
+                $("#clock-" + Datos[i].ser_edu_id).countdown(Datos[i].ser_edu_fec + " " + Datos[i].ser_edu_hin, function (event) {
+                  
+                    var duracion = event.strftime('%M:%S');
+                   var btnConfirm=$('#btnConfirm-' + Datos[i].ser_edu_id);
+                    //console.log("i= "+i+ "    duracion "+duracion);
+
+
+
+                    if (duracion <= '15:00') {
+                         console.log("i= "+i+ "    duracion "+duracion);
+                        btnConfirm.removeClass('disabled');
+                        $(this).text(duracion);
+
+                    }
+
+
+                    if (duracion === '00:00') {
+                         console.log("i= "+i+ "    duracion "+duracion);
+                        btnConfirm.addClass('disabled');
+                        $(this).text('duration');
+                      
+
+                    }
+                });
+            }*/
+        }
