@@ -47,7 +47,11 @@ public class SistemTConstants {
 
     /* ASISTENCIA Constants */
     public static final String ASISTENCIA_INSERT = "INSERT INTO tbl_asistencia (ser_edu_id, al_id, ast_asist) VALUES (?, ?, ?)";
-    public static final String ALUMNO_SELECT = "SELECT al_id, al_cod, al_nom, al_apat, al_amat, al_cel, al_mail, al_susp FROM dbservicio.tbl_alumno";
+    
+    
+    /* ALUMNO Constants */
+    public static final String ALUMNO_SELECT = "SELECT al_id, al_cod, al_nom, al_apat, al_amat, al_cel, al_mail, al_susp FROM dbservicio.tbl_alumno WHERE al_susp<>0 ";
+    public static final String ALUMNO_CHANGE_STATE = " UPDATE dbservicio.tbl_alumno SET al_susp=? WHERE al_id=?";
 
     
     /* CURSO Constants */
@@ -80,6 +84,8 @@ public class SistemTConstants {
     public static final String SERVICIO_SELECT = "SELECT ser_edu_id, ser_edu_fec, ser_edu_hin, cur_id, amb_id, sed_id, tip_serv_id, usr_adm_id, usr_tut_id, ser_edu_asist, ser_edu_desc, ser_edu_est FROM dbservicio.tbl_servicio_educativo se, dbservicio.tbl_usuario u WHERE se.usr_adm_id=u.usr_id AND u.esp_id=? AND  se.ser_edu_est <> 0 ORDER BY (ser_edu_fec) DESC";
     public static final String SERVICIO_SELECT_BY_DATE = "SELECT ser_edu_id, ser_edu_fec, ser_edu_hin, cur_id, amb_id, sed_id, tip_serv_id, usr_adm_id, usr_tut_id, ser_edu_asist, ser_edu_desc, ser_edu_est FROM dbservicio.tbl_servicio_educativo se, dbservicio.tbl_usuario u WHERE se.usr_adm_id=u.usr_id AND u.esp_id=? AND  se.ser_edu_fec= ? AND se.ser_edu_est <> 0 ORDER BY (ser_edu_fec) DESC";
     public static final String SERVICIO_SELECT_BY_SEDE = "SELECT ser_edu_id, ser_edu_fec, ser_edu_hin, cur_id, amb_id, sed_id, tip_serv_id, usr_adm_id, usr_tut_id, ser_edu_asist, ser_edu_desc, ser_edu_est FROM dbservicio.tbl_servicio_educativo se, dbservicio.tbl_usuario u WHERE se.usr_adm_id=u.usr_id AND u.esp_id=? AND  se.sed_id= ? AND se.ser_edu_est <> 0 ORDER BY (ser_edu_fec) DESC";
+    public static final String SERVICIO_SELECT_BY_DATE_TUTOR = "SELECT ser_edu_id, ser_edu_fec, ser_edu_hin, cur_id, amb_id, sed_id, tip_serv_id, usr_adm_id, usr_tut_id, ser_edu_asist, ser_edu_desc, ser_edu_est FROM dbservicio.tbl_servicio_educativo se, dbservicio.tbl_usuario u WHERE se.usr_tut_id=u.usr_id AND u.esp_id=? AND  se.ser_edu_fec= ? AND se.ser_edu_est <> 0 AND se.usr_tut_id= ? ORDER BY (ser_edu_fec) DESC";
+    public static final String SERVICIO_SELECT_BY_SEDE_TUTOR = "SELECT ser_edu_id, ser_edu_fec, ser_edu_hin, cur_id, amb_id, sed_id, tip_serv_id, usr_adm_id, usr_tut_id, ser_edu_asist, ser_edu_desc, ser_edu_est FROM dbservicio.tbl_servicio_educativo se, dbservicio.tbl_usuario u WHERE se.usr_tut_id=u.usr_id AND u.esp_id=? AND  se.sed_id= ? AND se.ser_edu_est <> 0 AND se.usr_tut_id= ? ORDER BY (ser_edu_fec) DESC";
     public static final String SERVICIO_SELECT_BY_TUTOR = "SELECT ser_edu_id, ser_edu_fec, ser_edu_hin, cur_id, amb_id, sed_id, tip_serv_id, usr_adm_id, usr_tut_id, ser_edu_asist, ser_edu_desc, ser_edu_est FROM dbservicio.tbl_servicio_educativo se, dbservicio.tbl_usuario u WHERE se.usr_tut_id= ? AND se.usr_tut_id=u.usr_id AND se.ser_edu_est <> 0 ORDER BY (ser_edu_fec) DESC";
     public static final String SERVICIO_INSERT = "INSERT INTO dbservicio.tbl_servicio_educativo (ser_edu_id, ser_edu_fec, ser_edu_hin, cur_id, amb_id, sed_id, tip_serv_id, usr_adm_id, usr_tut_id, ser_edu_asist, ser_edu_desc, ser_edu_est) VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     public static final String SERVICIO_CHANGE_STATE = "UPDATE dbservicio.tbl_servicio_educativo SET ser_edu_est = ? WHERE ser_edu_id = ? ";
