@@ -26,9 +26,9 @@
 
                 <section class="content">
                     <div class="row">
-                        <span id="clock1" class="timer"></span>
-                        <span id="clock2" class="timer"></span>
-
+                        
+               
+              
                         <div class="col-md-4">
                             <!-- select fecha y hora-->
                             <div class="form-group">
@@ -102,25 +102,11 @@
 
         <script src="<%= request.getContextPath()%>/js/jstutor/servicio.js"></script>
 
-        <!--<script type="text/javascript">
-                    $(function () {
-                       
-                        $('#example2').dataTable({
-                            "bPaginate": true,
-                            "bLengthChange": false,
-                            "bFilter": false,
-                            "bSort": true,
-                            "bInfo": true,
-                            "bAutoWidth": false
-                        });
-                    });
-                </script>-->
+    
     </body>
 </html>
 
 
-<div class="modal fade" id="ajax-modal" tabindex="-1" aria-hidden="true"></div>
-<button id="miboton" class="demo btn btn-primary btn-lg" >View Demo</button>
 <!--    mi modal upd-->
 <div class="modal container fade" id="myModalIns" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
