@@ -32,7 +32,7 @@
 <script type="text/javascript" src="<%= request.getContextPath()%>/js/plugins/datetimepicker/bootstrap-datetimepicker.js"></script>
 
 <!--<script type="text/javascript" src="<%= request.getContextPath()%>/js/plugins/jquery.countdown.js"></script>-->
-<script type="text/javascript" src="<%= request.getContextPath()%>/js/plugins/jquery.countdown.min.js"></script>
+<script type="text/javascript" src="<%= request.getContextPath()%>/js/jquery.countdown.min.js"></script>
 
 
 
