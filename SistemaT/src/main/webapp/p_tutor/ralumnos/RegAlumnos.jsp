@@ -29,7 +29,7 @@
                     </div>
                     <ul class="sidebar-menu">
                         <li class="active">
-                            <a href="../indexT.html">
+                            <a href="../indexT.jsp">
                                 <i class="fa fa-dashboard"></i> <span>Tus Servicios</span>
                             </a>
                         </li>
@@ -64,10 +64,10 @@
                         <div class="col-xs-12">
                             <div class="box">
                                 <div class="box-header">
-                                    <h3 class="box-title">Alumnos - [TUTORIA O TALLER]</h3>
+                                    <h3 class="box-title">Asistencia de alumnos</h3>
                                 </div><!-- /.box-header -->
                                 <div class="box-body table-responsive">
-                                    <table id="example1" class="table table-bordered table-striped">
+                                    <table id="tblAlumno" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -76,44 +76,11 @@
                                                 <th class="mrc">Asistió</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Julio</td>
-                                                <td>Carranza</td>
-                                                <td class="mrc"> <input type="checkbox"> </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Fernando</td>
-                                                <td>Tupac Yupanqui</td>
-                                                <td class="mrc"> <input type="checkbox"> </td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Allison</td>
-                                                <td>Arana</td>
-                                                <td class="mrc"> <input type="checkbox"> </td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>Claudia</td>
-                                                <td>Marchand </td>
-                                                <td class="mrc"> <input type="checkbox"> </td>
-                                            </tr>
+                                        
 
                                     </table>
 
-                                    <div class="row">
-
-                                        <div class="col-xs-12">
-                                            <div class="form-group">
-                                                <label>Descripción</label>
-                                                <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                                            </div>
-                                        </div>
-
-                                    </div>
+                              
                                     <div class="row">
                                         <div class="col-md-3 col-xs-1"></div>
                                         <div class="col-md-5 col-xs-6"><button class="btn btn-primary ">Registrar Alumnos</button></div>
@@ -143,7 +110,7 @@
         <!-- page script -->
         <script type="text/javascript">
             $(function() {
-                $("#example1").dataTable();
+                $("#tblAlumno").dataTable();
                 $('#example2').dataTable({
                     "bPaginate": true,
                     "bLengthChange": false,
