@@ -27,6 +27,10 @@ public interface DaoServicio {
     public List<Servicio> ServicioQryByDate(Integer esp_id, String ser_edu_fec);
 
     public List<Servicio> ServicioQryBySede(Integer esp_id, String sed_id);
+    
+    public List<Servicio> ServicioQryByDateTutor(Integer esp_id, String ser_edu_fec, Integer usr_tut);
+
+    public List<Servicio> ServicioQryBySedeTutor(Integer esp_id, String sed_id, Integer usr_tut);
 
     public List<Servicio> ServicioQryByTutor(Integer tut_id);
 
