@@ -69,7 +69,7 @@
                                     <h3 class="box-title">Alumnos</h3>
                                 </div><!-- /.box-header -->
                                 <div class="box-body table-responsive">
-                                    <table id="example1" class="table table-bordered table-striped">
+                                    <table id="tblAlumno" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -78,31 +78,7 @@
                                                 <th class="mrc"> <a href=""><img src="../../img/suspender.png" /></a> </th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Julio</td>
-                                                <td>Carranza</td>
-                                                <td class="mrc"> <input type="checkbox"> </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Fernando</td>
-                                                <td>Tupac Yupanqui</td>
-                                                <td class="mrc"> <input type="checkbox"> </td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Allison</td>
-                                                <td>Arana</td>
-                                                <td class="mrc"> <input type="checkbox"> </td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>Claudia</td>
-                                                <td>Marchand </td>
-                                                <td class="mrc"> <input type="checkbox"> </td>
-                                            </tr>
+                                       
                                     </table>
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
@@ -116,9 +92,13 @@
 
 
         <%@include file="../../WEB-INF/jspf/linksfooter.jspf" %>
-        <script type="text/javascript">
+        
+      
+        <%@include file="../../WEB-INF/jspf/footerLoginTutor.jspf" %>
+<script src="<%= request.getContextPath()%>/js/jstutor/alumno.js"></script>
+  <script type="text/javascript">
             $(function() {
-                $("#example1").dataTable();
+                $("#tblAlumno").dataTable();
                 $('#example2').dataTable({
                     "bPaginate": true,
                     "bLengthChange": false,
@@ -129,7 +109,5 @@
                 });
             });
         </script>
-        <%@include file="../../WEB-INF/jspf/footerLoginTutor.jspf" %>
-
     </body>
 </html>
