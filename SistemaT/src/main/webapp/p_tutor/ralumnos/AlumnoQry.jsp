@@ -75,7 +75,7 @@
                                                 <th>#</th>
                                                 <th>Nombre</th>
                                                 <th>Apellidos</th>
-                                                <th class="mrc"> <a href=""><img src="../../img/suspender.png" /></a> </th>
+                                                <th class="mrc"> <img  onclick="mostrarMensajeSuspender()" src="../../img/suspender.png" /></th>
                                             </tr>
                                         </thead>
                                        
@@ -111,3 +111,62 @@
         </script>
     </body>
 </html>
+
+
+
+
+
+ <!--    mi modal upd-->
+        <div class="modal fade" id="myModalMensaje" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+          <!--  <div class="modal-dialog">
+                <div class="modal-content">-->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+
+                        <h3 class="modal-title" id="myModalMensajeDel"></h3>
+                        <h3 class="modal-title" id="myModalMensajeUpd"></h3>
+                    </div>
+                    <form role="form" data-toggle="validator">
+                        <div class="modal-body">
+
+                            <div id="modal-mensaje">
+
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                        </div>
+                    </form> <!-- /.form -->
+               <!-- </div><!-- /.modal content -->
+            <!--</div><!-- /.modal dialog -->
+        </div><!-- /.modal -->
+
+        <!--fin-->
+
+<!--    mi modal del-->
+        <div class="modal fade" id="myModalSus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+          <!--  <div class="modal-dialog">
+                <div class="modal-content">-->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h3 class="modal-title" >Suspender Alumnos</h3>
+                    </div>
+                    <form role="form" data-toggle="validator">
+                        <div class="modal-body">
+
+                            <div id="modal-mensaje-del"></div>
+                        </div>
+                        <div class="form-group">
+                            <div id="mensaje-del"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary" id="guarda" onclick="suspenderAlumnos()" >Aceptar</button>
+                        </div>
+                    </form> <!-- /.form -->
+               <!-- </div><!-- /.modal content -->
+           <!-- </div><!-- /.modal dialog -->
+        </div><!-- /.modal -->
