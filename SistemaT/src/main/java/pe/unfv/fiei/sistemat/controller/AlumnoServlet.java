@@ -48,6 +48,7 @@ public class AlumnoServlet extends HttpServlet {
         String operation = request.getParameter("operation");
         String message = null;
         String msg = "";
+        JSONObject objError = new JSONObject();
         DaoAlumno daoAlumno = new DaoAlumnoImpl();
 
         if (operation != null) {
@@ -85,7 +86,10 @@ public class AlumnoServlet extends HttpServlet {
                     if (message == null) {
                         msg = "Los alumno(s) han sido suspendidos exitosamente";
                     } else {
-                        message = "No se realizo la suspension correctamente";
+
+                        objError.put("error", "No se realizo la suspension correctamente");
+                        message = objError.toJSONString();
+
                     }
                 }
 
@@ -95,14 +99,17 @@ public class AlumnoServlet extends HttpServlet {
                 if (list != null) {
                     message = daoAlumno.alumnoSusp(list, 0);
                     if (message == null) {
-                        msg = "Los alumno(s) han sido suspendidos exitosamente";
+                        msg = "Los alumno(s) no estan suspendidos";
                     } else {
-                        message = "No se realizo la suspension correctamente";
+                        objError.put("error", "No se realizo el levantamiento de suspension correctamente");
+                        message = objError.toJSONString();
                     }
                 }
 
             } else {
-                message = "Solicitud no reconocida.";
+
+                objError.put("error", "Solicitud no reconocida.");
+                message = objError.toJSONString();
             }
             response.setContentType("text/html;charset=UTF-8");
             PrintWriter out = response.getWriter();
