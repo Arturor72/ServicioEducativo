@@ -535,7 +535,7 @@ function agregarAlumnos(Datos, tabla) {
             Datos[i].al_cod,
             Datos[i].al_nom,
             Datos[i].al_apat + ' ' + Datos[i].al_amat,
-            '<input class="center-block" name="INS" type="checkbox" value="' + Datos[i].al_id + '">'
+            '<input class="center-check" name="INS" type="checkbox" value="' + Datos[i].al_id + '">'
         ]);
     }
 
