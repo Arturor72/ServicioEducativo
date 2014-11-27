@@ -9,12 +9,20 @@ and open the template in the editor.
 */
 .mrc{
     text-align: center
-    
+
 }
 
 .btn-admin, .btn-curso, .btn-tutor {
-    
+
     height: 25px;
     width:auto;
-    
+
+}
+
+
+.center-check{
+
+    position: relative;
+    left: 45%;
+
 }
