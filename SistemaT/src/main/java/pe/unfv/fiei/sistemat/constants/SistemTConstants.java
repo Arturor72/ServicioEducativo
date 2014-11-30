@@ -50,7 +50,7 @@ public class SistemTConstants {
     
     
     /* ALUMNO Constants */
-    public static final String ALUMNO_SELECT = "SELECT al_id, al_cod, al_nom, al_apat, al_amat, al_cel, al_mail, al_susp FROM dbservicio.tbl_alumno WHERE al_susp<>0 ";
+    public static final String ALUMNO_SELECT = "SELECT al_id, al_cod, al_nom, al_apat, al_amat, al_cel, al_mail, al_susp FROM dbservicio.tbl_alumno";
     public static final String ALUMNO_CHANGE_STATE = " UPDATE dbservicio.tbl_alumno SET al_susp=? WHERE al_id=?";
 
     
