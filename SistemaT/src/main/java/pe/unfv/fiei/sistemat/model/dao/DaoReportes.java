@@ -14,7 +14,7 @@ import pe.unfv.fiei.sistemat.model.dto.report.ReportTHM;
  * @author Arturo
  */
 public interface DaoReportes {
-    public List<ReportTHM> ReportTHMQry(Integer mes, Integer esp_id);
+    public List<ReportTHM> ReportTHMQry(Integer mes, Integer esp_id, Integer anio);
     
     public String ReportATQry(Integer serv_id, Integer esp_id);
         
