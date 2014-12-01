@@ -30,7 +30,7 @@
                     </div>
                     <ul class="sidebar-menu">
                         <li >
-                            <a href="../indexT.html">
+                            <a href="../indexT.jsp">
                                 <i class="fa fa-dashboard"></i> <span>Servicio Académico</span>
                             </a>
                         </li>
@@ -75,7 +75,9 @@
                                                 <th>#</th>
                                                 <th>Nombre</th>
                                                 <th>Apellidos</th>
-                                                <th class="mrc"> <img  onclick="mostrarMensajeSuspender()" src="../../img/suspender.png" /></th>
+                                                <th>Estado</th>
+                                               <!-- <th class="mrc"> <img  onclick="mostrarMensajeSuspender()" src="../../img/suspender.png" /></th>-->
+                                                 
                                             </tr>
                                         </thead>
                                        
@@ -160,7 +162,7 @@
                             <div id="modal-mensaje-del"></div>
                         </div>
                         <div class="form-group">
-                            <div id="mensaje-del"></div>
+                            <div id="mensaje_ins"></div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
