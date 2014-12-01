@@ -29,10 +29,14 @@
                 </ul>
             </li>
 
-            <li class="">
-                <a href="index.html">
+            <li class="treeview">
+                <a href="#">
                     <i class="fa fa-dashboard"></i> <span>Reportes</span>
+                    <i class="fa fa-angle-left pull-right"></i>
                 </a>
+                <ul class="treeview-menu">
+                    <li><a href="<%= request.getContextPath()%>/admin/reportes/reportTHM.jsp" ><i class="fa fa-angle-double-right"></i> Horas trabajador por tutor</a></li>
+                </ul>
             </li>
         </ul>
     </section>
