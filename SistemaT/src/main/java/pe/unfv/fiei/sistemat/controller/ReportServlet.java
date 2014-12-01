@@ -44,7 +44,8 @@ public class ReportServlet extends HttpServlet {
                 List<ReportTHM> listReport = null;
                 try {
                     Integer mes = Integer.parseInt(request.getParameter("mes"));
-                    listReport = daoReportes.ReportTHMQry(mes, u.getEsp_id());
+                    Integer anio=Integer.parseInt(request.getParameter("anio"));
+                    listReport = daoReportes.ReportTHMQry(mes, u.getEsp_id(),anio);
                 } catch (NumberFormatException e) {
                     log4j.error(e.getMessage());
                     objError.put("error", e.getMessage());
