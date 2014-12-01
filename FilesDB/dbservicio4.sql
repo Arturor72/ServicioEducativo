@@ -482,4 +482,42 @@ inner join tbl_especialidad esp on esp.esp_id = tu.esp_id and tu.esp_id =espid;
 END //
 
 -- FINISH PROCEDURE TUTORES DISPONIBLES
+--  INIT REPORTS
+
+DELIMITER //
+CREATE PROCEDURE reportTHM
+(IN mmes INTEGER, espid INTEGER)
+BEGIN
+SELECT u.*, 
+SUM(
+CASE 
+    WHEN se.tip_serv_id =1 THEN 2
+    WHEN se.tip_serv_id=2 THEN 1tutoresDisptutoresDisp
+END ) AS choras, 
+MONTH(CAST(se.ser_edu_fec AS CHAR)) as mes
+FROM dbservicio.tbl_usuario u 
+INNER JOIN dbservicio.tbl_servicio_educativo se
+ON u.usr_id=se.usr_tut_id
+INNER JOIN tbl_curso c 
+ON se.cur_id=c.cur_id
+ where u.tip_usr_id='2' and  MONTH(CAST(se.ser_edu_fec AS CHAR))=mmes and u.esp_id=espid group by  u.usr_id;
+END //
+DELIMITER ;
+
+
+
+DELIMITER //
+CREATE PROCEDURE reportAT
+(IN ser_id INTEGER, espid INTEGER)
+BEGIN
+SELECT COUNT(*) FROM tbl_asistencia asis 
+INNER JOIN tbl_servicio_educativo se
+ON asis.ser_edu_id=se.ser_edu_id
+INNER JOIN tbl_usuario u
+ON u.usr_id =se.usr_adm_id
+where ser_edu_id=ser_id and u.esp_id=espid ;
+END //
+DELIMITER ;
+
+--  FINISH REPORTS
 
