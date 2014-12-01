@@ -71,7 +71,7 @@ public class ReportServlet extends HttpServlet {
                         }
                     }
                 } else {
-                    objError.put("error", "Error al obtener lista");
+                    objError.put("error", "vacio");
                     message = objError.toString();
                     log4j.error(message);
                 }
