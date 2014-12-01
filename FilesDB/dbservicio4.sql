@@ -500,7 +500,7 @@ INNER JOIN dbservicio.tbl_servicio_educativo se
 ON u.usr_id=se.usr_tut_id
 INNER JOIN tbl_curso c 
 ON se.cur_id=c.cur_id
- where u.tip_usr_id='2' and  MONTH(CAST(se.ser_edu_fec AS CHAR))=mmes and u.esp_id=espid group by  u.usr_id;
+ where u.tip_usr_id='2' and  MONTH(CAST(se.ser_edu_fec AS CHAR))=mmes and YEAR(CAST(se.ser_edu_fec as CHAR))= anio and u.esp_id=espid group by  u.usr_id;
 END //
 DELIMITER ;
 
