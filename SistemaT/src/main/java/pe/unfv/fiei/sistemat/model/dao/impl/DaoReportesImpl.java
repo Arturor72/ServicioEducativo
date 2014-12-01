@@ -32,7 +32,7 @@ public class DaoReportesImpl implements DaoReportes {
     }
 
     @Override
-    public List<ReportTHM> ReportTHMQry(Integer mes, Integer esp_id) {
+    public List<ReportTHM> ReportTHMQry(Integer mes, Integer esp_id, Integer anio) {
         log4j.info("+init ReportTHMQry");
         List<ReportTHM> list = null;
         Connection cn = db.getConnection();
@@ -42,6 +42,7 @@ public class DaoReportesImpl implements DaoReportes {
                 PreparedStatement psmt = cn.prepareCall(sql);
                 psmt.setInt(1, mes);
                 psmt.setInt(2, esp_id);
+                psmt.setInt(3, anio);
                 ResultSet rs = psmt.executeQuery();
                 list = new LinkedList<ReportTHM>();
                 while (rs.next()) {
