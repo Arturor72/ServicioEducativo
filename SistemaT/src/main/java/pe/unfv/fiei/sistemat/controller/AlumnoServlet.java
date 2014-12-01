@@ -82,7 +82,7 @@ public class AlumnoServlet extends HttpServlet {
                 String alId = request.getParameter("al_id");
                 List<Integer> list = Util.toids(alId);
                 if (list != null) {
-                    message = daoAlumno.alumnoSusp(list, 1);
+                    message = daoAlumno.alumnoSusp(list, 0);
                     if (message == null) {
                         msg = "Los alumno(s) han sido suspendidos exitosamente";
                     } else {
@@ -97,7 +97,7 @@ public class AlumnoServlet extends HttpServlet {
                 String alId = request.getParameter("al_id");
                 List<Integer> list = Util.toids(alId);
                 if (list != null) {
-                    message = daoAlumno.alumnoSusp(list, 0);
+                    message = daoAlumno.alumnoSusp(list, 1);
                     if (message == null) {
                         msg = "Los alumno(s) no estan suspendidos";
                     } else {
