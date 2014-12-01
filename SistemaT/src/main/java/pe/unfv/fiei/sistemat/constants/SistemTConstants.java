@@ -96,6 +96,9 @@ public class SistemTConstants {
     public static final String SERVICIO_GET_PAST_ASIST = "SELECT  sa.* FROM tbl_servicio_educativo sa INNER JOIN tbl_asistencia asi ON sa.ser_edu_id=asi.ser_edu_id where TIMESTAMP(CONCAT(CAST(sa.ser_edu_fec as CHAR ), ' ',CAST(sa.ser_edu_hin as CHAR))) < now() AND  sa.ser_edu_id=?";
     
     
-
+    /* REPORT CANTIDAD DE HORAS POR TUTOR SEGUN ESPECIALIDAD*/
+    public static final String REPORT_THM = "{call reportTHM(?,?)}";
+    /* REPORT CANTIDAD DE ASISTENCIA A UN TALLER X*/
+    public static final String REPORT_AT = "{call reportAT(?,?)}";
 
 }
