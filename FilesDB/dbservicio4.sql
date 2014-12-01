@@ -492,7 +492,7 @@ SELECT u.*,
 SUM(
 CASE 
     WHEN se.tip_serv_id =1 THEN 2
-    WHEN se.tip_serv_id=2 THEN 1tutoresDisptutoresDisp
+    WHEN se.tip_serv_id=2 THEN 1
 END ) AS choras, 
 MONTH(CAST(se.ser_edu_fec AS CHAR)) as mes
 FROM dbservicio.tbl_usuario u 
