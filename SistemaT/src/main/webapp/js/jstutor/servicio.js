@@ -113,7 +113,7 @@ function cargarServicios() {
             $("#servicio").html('<img  class="center-block" src="http://' + path + '//SistemaT/img/load.GIF"/>');
         },
         success: function (response) {
-
+            console.log(response);
 
             var Datos = JSON.parse(response);
             agregarServicios(Datos);
@@ -186,13 +186,13 @@ function agregarServicios(Datos) {
         if (estado === 1) {
             servicio_head = '<li class="time-label"><span id="headConfirm-' + Datos[i].ser_edu_id + '" class="bg-purple">' + fecha + '</span></li>';
             disabledConfirm = 'enable';
-            disabledReg = '';
+            disabledReg = 'disabled';
             confirmar = 'Confirmar';
         }
         if (estado === 2) {
             servicio_head = '<li class="time-label"><span id="headConfirm-' + Datos[i].ser_edu_id + '" class="bg-yellow">' + fecha + '</span></li>';
             disabledConfirm = 'disabled';
-            disabledReg = '';
+            disabledReg = 'enable';
             confirmar = 'Confimado';
         }
 
@@ -267,7 +267,7 @@ function agregarServicios(Datos) {
                 // + disabledConfirm +
                 '<a class="btn btn-primary btn-xs" id="btnConfirm-' + Datos[i].ser_edu_id + '" onclick="confirmar(' + Datos[i].ser_edu_id + ')"  ' + disabledConfirm + '>' + reloj + ' ' + confirmar + ' </a>' +
                 //'<a class="btn btn-primary btn-xs disabled" id="btnConfirm-' + Datos[i].ser_edu_id + '" onclick="confirmar(' + Datos[i].ser_edu_id + ')" >' + reloj + ' ' + confirmar + ' </a>' +
-                '<a class="btn btn-primary btn-xs" onclick="registrarFormAlumno(' + Datos[i].ser_edu_id + ')"  ' + disabledReg + ' >Registrar</a>' +
+                '<a class="btn btn-primary btn-xs ' + disabledReg + '" id="btnReg-' + Datos[i].ser_edu_id + '" onclick="registrarFormAlumno(' + Datos[i].ser_edu_id + ','+Datos[i].tip_serv_id+')"   >Registrar</a>' +
                 '</div>' +
                 '</div>' +
                 '</li>';
@@ -304,6 +304,7 @@ $(function () {
 function confirmar(id) {
     var path = window.location.host;
     var btn = $('#btnConfirm-' + id);
+    var reg = $('#btnReg-' + id);
     var head = $('#headConfirm-' + id);
 //alert(tag);
     var operation = 'OPERATION_INS_ASIST';
@@ -349,6 +350,7 @@ function confirmar(id) {
                 head.addClass("bg-yellow").removeClass("bg-purple");
                 //head.css({"opacity": "0.2"});
                 btn.addClass('disabled');
+                reg.addClass('enable').removeClass("disabled");
                 btn.html('Confirmado');
             }
 
@@ -463,7 +465,7 @@ function selectSedeSrch() {
 }
 
 
-function registrarFormAlumno(id) {
+function registrarFormAlumno(id,tip_serv_id) {
 
     cargarAlumnos();
 
@@ -544,13 +546,17 @@ function guardarAlumnos() {
     var ids = [];
 
     var serEduId = $('#ser-id').val();
+    var tipo=  parseInt($('#'+serEduId+'-tip_serv_id').val()) ;
+    
     $("input[name='INS']:checked").each(function () {
 
         ids.push($(this).val());
 
     });
-    console.log(serEduId);
-
+    //console.log(tipo);
+    var largo=ids.length;
+   
+    
 
     var alId = ids.toString();
     //alert(ids.toString());
@@ -562,7 +568,55 @@ function guardarAlumnos() {
         alId: alId
 
     };
-    if (alId.length > 0) {
+    
+    if (largo > 0) {
+        
+        if(tipo===2){
+            
+            
+            if(ids.length<=3 && ids.length>=1){
+                
+                       $.ajax({
+            data: parametros,
+            url: '/SistemaT/AsistenciaServlet',
+            type: 'post',
+            beforeSend: function () {
+                //var path = window.location.host;
+                // $("#servicio").html('<img  class="center-block" src="http://'+path+'//SistemaT/img/load.GIF"/>');
+            },
+            success: function (response) {
+                if (response === 'error') {
+
+                    $('#mensaje_ins').empty();
+                    $('#mensaje_ins').addClass('alert alert-danger');
+                    $('#mensaje_ins').html('No se pudo completar el registro');
+                }
+                else {
+                    // alert("si registro" + response);
+                    $('#mensaje_ins').empty();
+                    $('#mensaje_ins').removeClass('alert alert-danger');
+                    $('#mensaje_ins').addClass('alert alert-success');
+                    $('#mensaje_ins').html(response);
+                    setTimeout(function () {
+                        url = "/SistemaT/p_tutor/indexT.jsp";
+                        $(location).attr('href', url);
+                    }, 2000);
+                }
+            },
+            error: function (result, f) {
+                alert('ERROR ' + result.status + ' ' + result.statusText + ' ' + f);
+            }
+        });
+            }
+            else{
+                
+        $('#mensaje_ins').empty();
+        $('#mensaje_ins').addClass('alert alert-danger');
+        $('#mensaje_ins').html('Solo debes registrar hasta 3 alumnos');
+            }
+        }
+        
+        else{
         $.ajax({
             data: parametros,
             url: '/SistemaT/AsistenciaServlet',
@@ -594,7 +648,7 @@ function guardarAlumnos() {
                 alert('ERROR ' + result.status + ' ' + result.statusText + ' ' + f);
             }
         });
-
+        }
     }
     else {
         $('#mensaje_ins').empty();
@@ -603,6 +657,8 @@ function guardarAlumnos() {
 
     }
 }
+
+
 
 
 function relog() {
