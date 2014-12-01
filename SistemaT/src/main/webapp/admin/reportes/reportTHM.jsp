@@ -5,21 +5,21 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@include file="../WEB-INF/jspf/headerLogin.jspf" %>
+<%@include file="../../WEB-INF/jspf/headerLogin.jspf" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <%@include file="../WEB-INF/jspf/title.jspf" %>
+        <%@include file="../../WEB-INF/jspf/title.jspf" %>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-        <%@include file="../WEB-INF/jspf/links.jspf" %>
+        <%@include file="../../WEB-INF/jspf/links.jspf" %>
 
     </head>
     <body class="skin-blue">
-        <%@include file="../WEB-INF/jspf/header.jspf" %>
+        <%@include file="../../WEB-INF/jspf/header.jspf" %>
         <div class="wrapper row-offcanvas row-offcanvas-left">
 
-            <%@include file="../WEB-INF/jspf/asideMenu.jspf" %>
+            <%@include file="../../WEB-INF/jspf/asideMenu.jspf" %>
             <aside class="right-side">
                 <section class="content-header">
                     <h1>
@@ -91,7 +91,7 @@
 
             </aside>
         </div>
-        <%@include file="../WEB-INF/jspf/linksfooter.jspf" %>
+        <%@include file="../../WEB-INF/jspf/linksfooter.jspf" %>
         <script type="text/javascript">
             $(function () {
                 $("#example1").dataTable();
@@ -110,7 +110,7 @@
     </body>
 </html>
 
-<%@include file="../WEB-INF/jspf/footerLogin.jspf" %>
+<%@include file="../../WEB-INF/jspf/footerLogin.jspf" %>
 
 
 
