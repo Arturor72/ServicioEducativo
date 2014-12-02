@@ -36,6 +36,10 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="<%= request.getContextPath()%>/admin/reportes/reportTHM.jsp" ><i class="fa fa-angle-double-right"></i> Horas trabajador por tutor</a></li>
+                     <li><a href="<%= request.getContextPath()%>/admin/reportes/reportAT.jsp" ><i class="fa fa-angle-double-right"></i> AT</a></li>
+                     <li><a href="<%= request.getContextPath()%>/admin/reportes/reportTC.jsp" ><i class="fa fa-angle-double-right"></i> TC</a></li>
+                      <li><a href="<%= request.getContextPath()%>/admin/reportes/reportACE.jsp" ><i class="fa fa-angle-double-right"></i> ACE</a></li>
+                       
                 </ul>
             </li>
         </ul>
