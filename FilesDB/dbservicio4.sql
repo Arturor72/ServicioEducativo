@@ -519,5 +519,33 @@ where ser_edu_id=ser_id and u.esp_id=espid ;
 END //
 DELIMITER ;
 
+DELIMITER //
+CREATE PROCEDURE reportACE
+(IN espid INTEGER)
+BEGIN
+SELECT c.*, count(asi.al_id) FROM tbl_asistencia asi 
+INNER JOIN tbl_servicio_educativo se 
+ON asi.ser_edu_id=se.ser_edu_id
+INNER JOIN tbl_curso c
+ON c.cur_id=se.cur_id
+WHERE  c.esp_id=1
+group by c.cur_id asc;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE reportTC
+(IN curid INTEGER, tiposerv INTEGER)
+BEGIN
+SELECT u.*, c.* FROM tbl_servicio_educativo se INNER JOIN tbl_usuario u
+ON se.usr_tut_id=u.usr_id
+INNER JOIN tbl_curso c
+ON se.cur_id=c.cur_id
+INNER JOIN tbl_tipo_servicio ts
+ON se.tip_serv_id =ts.tip_serv_id
+where c.cur_id=curid and ts.tip_serv_id=tiposerv;
+END //
+DELIMITER ;
+
 --  FINISH REPORTS
 
