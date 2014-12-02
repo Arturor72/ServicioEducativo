@@ -15,7 +15,10 @@ import org.apache.log4j.Logger;
 import pe.unfv.fiei.sistemat.constants.SistemTConstants;
 import pe.unfv.fiei.sistemat.model.connection.StConnection;
 import pe.unfv.fiei.sistemat.model.dao.DaoReportes;
+import pe.unfv.fiei.sistemat.model.dto.Curso;
 import pe.unfv.fiei.sistemat.model.dto.Usuario;
+import pe.unfv.fiei.sistemat.model.dto.report.ReportACE;
+import pe.unfv.fiei.sistemat.model.dto.report.ReportTC;
 import pe.unfv.fiei.sistemat.model.dto.report.ReportTHM;
 
 /**
@@ -105,6 +108,96 @@ public class DaoReportesImpl implements DaoReportes {
         }
         log4j.info("-finish  ReportATQry");
         return result;
+    }
+
+    @Override
+    public List<ReportACE> ReportACEQry(Integer esp_id) {
+        log4j.info("+init ReportACEQry");
+        List<ReportACE> list = null;
+        Connection cn = db.getConnection();
+        String sql = SistemTConstants.REPORT_ACE;
+        if (cn != null) {
+            try {
+                PreparedStatement psmt = cn.prepareCall(sql);
+                psmt.setInt(1, esp_id);
+
+                ResultSet rs = psmt.executeQuery();
+                list = new LinkedList<ReportACE>();
+                while (rs.next()) {
+                    ReportACE report = new ReportACE();
+                    Curso c = new Curso();
+                    c.setCur_id(rs.getInt(1));
+                    c.setCur_cod(rs.getString(2));
+                    c.setCur_nom(rs.getString(3));
+                    c.setEsp_id(rs.getInt(4));
+                    c.setCur_est(rs.getBoolean(5));
+                    report.setCurso(c);
+                    report.setTotal(rs.getInt(6));
+                    list.add(report);
+                }
+            } catch (SQLException e) {
+                log4j.error(e.getMessage());
+            } finally {
+                try {
+                    cn.close();
+                } catch (SQLException e) {
+                    log4j.error(e.getMessage());
+                }
+            }
+        }
+        log4j.info("-finish ReportACEQry");
+        return list;
+    }
+
+    @Override
+    public List<ReportTC> ReportTCQry(Integer esp_id, Integer tip_serv_id) {
+        log4j.info("+init ReportTCQry");
+        List<ReportTC> list = null;
+        Connection cn = db.getConnection();
+        String sql = SistemTConstants.REPORT_TC;
+        if (cn != null) {
+            try {
+                PreparedStatement psmt = cn.prepareCall(sql);
+                psmt.setInt(1, esp_id);
+                psmt.setInt(2, tip_serv_id);
+                ResultSet rs = psmt.executeQuery();
+                list = new LinkedList<ReportTC>();
+                while (rs.next()) {
+                    ReportTC report = new ReportTC();
+                    Usuario u = new Usuario();
+                    u.setUsr_id(rs.getInt(1));
+                    u.setUsr_cod(rs.getString(2));
+                    u.setTip_usr_id(rs.getInt(3));
+                    u.setUsr_nom(rs.getString(4));
+                    u.setUsr_apat(rs.getString(5));
+                    u.setUsr_amat(rs.getString(6));
+                    u.setUsr_dni(rs.getString(7));
+                    u.setUsr_cel(rs.getString(9));
+                    u.setUsr_mail(rs.getString(10));
+                    u.setUsr_user(rs.getString(11));
+                    u.setEsp_id(rs.getInt(14));
+                    Curso c = new Curso();
+                    c.setCur_id(rs.getInt(15));
+                    c.setCur_cod(rs.getString(16));
+                    c.setCur_nom(rs.getString(17));
+                    c.setEsp_id(rs.getInt(18));
+                    c.setCur_est(rs.getBoolean(19));
+                    report.setUser_tutor(u);
+                    report.setCurso(c);
+                    list.add(report);
+                }
+            } catch (SQLException e) {
+                log4j.error(e.getMessage());
+            } finally {
+                try {
+                    cn.close();
+                } catch (SQLException e) {
+                    log4j.error(e.getMessage());
+                }
+            }
+        }
+        log4j.info("-finish ReportTCQry");
+        return list;
     }
 
 }
