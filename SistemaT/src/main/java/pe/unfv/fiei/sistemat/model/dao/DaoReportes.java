@@ -7,6 +7,8 @@
 package pe.unfv.fiei.sistemat.model.dao;
 
 import java.util.List;
+import pe.unfv.fiei.sistemat.model.dto.report.ReportACE;
+import pe.unfv.fiei.sistemat.model.dto.report.ReportTC;
 import pe.unfv.fiei.sistemat.model.dto.report.ReportTHM;
 
 /**
@@ -15,6 +17,10 @@ import pe.unfv.fiei.sistemat.model.dto.report.ReportTHM;
  */
 public interface DaoReportes {
     public List<ReportTHM> ReportTHMQry(Integer mes, Integer esp_id, Integer anio);
+    
+    public List<ReportACE> ReportACEQry(Integer esp_id);
+
+    public List<ReportTC> ReportTCQry(Integer esp_id, Integer tip_serv_id);
     
     public String ReportATQry(Integer serv_id, Integer esp_id);
         
