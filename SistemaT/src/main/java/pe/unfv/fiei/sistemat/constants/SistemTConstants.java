@@ -100,5 +100,9 @@ public class SistemTConstants {
     public static final String REPORT_THM = "{call reportTHM(?,?,?)}";
     /* REPORT CANTIDAD DE ASISTENCIA A UN TALLER X*/
     public static final String REPORT_AT = "{call reportAT(?,?)}";
+    /* REPORT CANTIDAD DE ASISTENCIA A TODOS LOS CURSOS */
+    public static final String REPORT_ACE = "{call reportACE(?)}";
+    /* REPORT TUTORES QUE DICTARON UN CURSO DETERMINADO */
+    public static final String REPORT_TC = "{call reportTC(?,?)}";
 
 }
