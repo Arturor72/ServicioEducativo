@@ -82,7 +82,9 @@ public class ReportServlet extends HttpServlet {
 
             } else if (operacion.equalsIgnoreCase(REPORT_AT)) {
                 try {
+                    log4j.error(request.getParameter("serv_edu_id"));
                     Integer serv_edu_id = Integer.parseInt(request.getParameter("serv_edu_id"));
+                    
                     Integer cantidad = Integer.parseInt(daoReportes.ReportATQry(serv_edu_id, u.getEsp_id()));
                     JSONObject obj = new JSONObject();
                     obj.put("cantidad", cantidad);
@@ -131,7 +133,8 @@ public class ReportServlet extends HttpServlet {
                 List<ReportTC> listReport = null;
                 try {
                     Integer tip_serv_id = Integer.parseInt(request.getParameter("tip_serv_id"));
-                    listReport = daoReportes.ReportTCQry(u.getEsp_id(), tip_serv_id);
+                    Integer cur_id = Integer.parseInt(request.getParameter("cur_id"));
+                    listReport = daoReportes.ReportTCQry(cur_id, tip_serv_id);
                 } catch (NumberFormatException e) {
                     log4j.error(e.getMessage());
                     objError.put("error", e.getMessage());
