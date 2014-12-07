@@ -7,6 +7,7 @@
 package pe.unfv.fiei.sistemat.test;
 
 import java.util.List;
+import pe.unfv.fiei.sistemat.model.dao.DaoReportes;
 import pe.unfv.fiei.sistemat.model.dao.impl.DaoReportesImpl;
 import pe.unfv.fiei.sistemat.model.dto.report.ReportACE;
 import pe.unfv.fiei.sistemat.model.dto.report.ReportTC;
@@ -24,11 +25,13 @@ public class ReportTest {
 //             
 //        }
         
-        List<ReportACE> list=new DaoReportesImpl().ReportACEQry(1);
-        for (ReportACE reportACE : list) {
-            System.out.println(""+reportACE.getCurso().getCur_nom());
-            System.out.println(""+reportACE.getTotal());
-        }
+//        List<ReportACE> list=new DaoReportesImpl().ReportACEQry(1);
+//        for (ReportACE reportACE : list) {
+//            System.out.println(""+reportACE.getCurso().getCur_nom());
+//            System.out.println(""+reportACE.getTotal());
+//        }
+        DaoReportes daoReportes=new DaoReportesImpl();
+        System.out.println(""+daoReportes.ReportATQry(47, 5)  );
     }
     
     
