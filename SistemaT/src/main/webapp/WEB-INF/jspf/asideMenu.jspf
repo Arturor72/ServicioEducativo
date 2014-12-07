@@ -35,10 +35,10 @@
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<%= request.getContextPath()%>/admin/reportes/reportTHM.jsp" ><i class="fa fa-angle-double-right"></i> Horas trabajador por tutor</a></li>
-                     <li><a href="<%= request.getContextPath()%>/admin/reportes/reportAT.jsp" ><i class="fa fa-angle-double-right"></i> AT</a></li>
-                     <li><a href="<%= request.getContextPath()%>/admin/reportes/reportTC.jsp" ><i class="fa fa-angle-double-right"></i> TC</a></li>
-                      <li><a href="<%= request.getContextPath()%>/admin/reportes/reportACE.jsp" ><i class="fa fa-angle-double-right"></i> ACE</a></li>
+                    <li><a href="<%= request.getContextPath()%>/admin/reportes/reportTHM.jsp" ><i class="fa fa-angle-double-right"></i> Horas trabajadas por tutor por mes</a></li>
+                     <li><a href="<%= request.getContextPath()%>/admin/reportes/reportAT.jsp" ><i class="fa fa-angle-double-right"></i> Asistencia de Tutor</a></li>
+                     <li><a href="<%= request.getContextPath()%>/admin/reportes/reportTC.jsp" ><i class="fa fa-angle-double-right"></i> Tutores que dictaron los cursos</a></li>
+                      <li><a href="<%= request.getContextPath()%>/admin/reportes/reportACE.jsp" ><i class="fa fa-angle-double-right"></i> Cantidad de asistencia a los cursos</a></li>
                        
                 </ul>
             </li>
