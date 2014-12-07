@@ -23,7 +23,7 @@
             <aside class="right-side">
                 <section class="content-header">
                     <h1>
-                        Horas trabajadas por tutor
+                        Cantidad de Asistencia a un Taller
                     </h1>
 
                 </section>
@@ -45,11 +45,12 @@
                               <!-- select fecha y hora-->
                             <div class="form-group">
 
-                                <div class="input-group date" id="fecha_hora_srch"  >
-                                    <input  type="text" placeholder="Fecha.." class="form-control" data-date-format="MM/YYYY" />
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
-                                </div>
+                              <div class="form-group">
+                                <select  id="selectServ" class="form-control" onchange="selectServicios()" >
+                                    <option value="0" selected>Servicio</option>
+                                  
+                                </select>
+                            </div>
                             </div>
 
                         </div>

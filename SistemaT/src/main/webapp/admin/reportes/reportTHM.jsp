@@ -23,7 +23,7 @@
             <aside class="right-side">
                 <section class="content-header">
                     <h1>
-                        Horas trabajadas por tutor
+                        Horas trabajadas por tutor por mes
                     </h1>
 
                 </section>

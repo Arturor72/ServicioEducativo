@@ -23,32 +23,33 @@
             <aside class="right-side">
                 <section class="content-header">
                     <h1>
-                        Horas trabajadas por tutor
+                       
+                        Tutores que dictaron los cursos
                     </h1>
 
                 </section>
                 <section class="content">
                     <div class="row">
-                        <div class="col-md-2">
 
-                        </div>
-
-
-
-                        <div class="col-md-2">
-
-                        </div>
-
-                        <div class="col-md-4">
-
-                        </div>
-                        <div class="col-md-4">
+                       <div class="col-md-6">
                             <div class="form-group">
-                                <select name="servicio_ins" id="servicio_ins" class="form-control" onchange="selectServicio()" >
+                                <select name="cursoTC" id="cursoTC" class="form-control"  >
+                                    <option value="0">Curso</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <select name="servicio_ins" id="servicio_ins" class="form-control" >
                                     <option value="0" selected>Tipo de servicio</option>
                                     <option value="1">Taller</option>
                                     <option value="2">Tutoria</option>
                                 </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <button class="btn btn-primary btn btn-block" onclick="selectServicio()">Ver</button>
                             </div>
                         </div>
                     </div>

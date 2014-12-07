@@ -23,7 +23,7 @@
             <aside class="right-side">
                 <section class="content-header">
                     <h1>
-                        Horas trabajadas por tutor
+                        Cantidad de asistencia a los cursos
                     </h1>
 
                 </section>
